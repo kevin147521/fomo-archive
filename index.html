@@ -275,7 +275,6 @@ function render() {
   grid.innerHTML = filtered.map(p => {
     const audClass = p.audience === 'everyone' ? 'free' : 'paid';
     const audLabel = p.audience === 'everyone' ? '🆓 公開' : '💎 付費';
-    const localLink = p._dir ? `content/${p._dir}/article.html` : '';
     const pdfLink = p._filename ? `PDF/${p._filename}` : (p._dir ? `content/${p._dir}/article.pdf` : '');
     if (p._dir && !p._filename) {
         // Derive the PDF filename the same way rename_pdfs.py does
@@ -300,12 +299,9 @@ function render() {
           ${p._article_size > 0 ? `<span>💾 ${Math.round(p._article_size/1024)} KB</span>` : ''}
         </div>
         <div class="actions">
-          ${p._dir
-            ? `<a class="primary" href="${localLink}">📄 本機閱讀</a>`
-            : `<span style="color:var(--muted);font-size:12px;">未抓取</span>`}
           ${p._filename
-            ? `<a class="pdf" href="${pdfLink}">📑 PDF</a>`
-            : ''}
+            ? `<a class="primary pdf" href="${pdfLink}">📑 讀 PDF</a>`
+            : `<span style="color:var(--muted);font-size:12px;">未抓取</span>`}
           <a href="${originalLink}" target="_blank" rel="noopener">↗ 原站</a>
         </div>
       </div>
