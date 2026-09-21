@@ -170,9 +170,85 @@ footer {
   .stat .v { font-size: 18px; }
   .toolbar { flex-direction: column; align-items: stretch; }
 }
+
+/* Password gate */
+body.locked .wrap { display: none !important; }
+#gate {
+  position: fixed; inset: 0; z-index: 99999;
+  background: linear-gradient(135deg, #fafaf7 0%, #f0ebdf 100%);
+  display: none; align-items: center; justify-content: center;
+}
+body.locked #gate { display: flex; }
+#gate-box {
+  background: #fff;
+  border: 1px solid #e9e3d6;
+  padding: 36px 44px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 8px 32px -12px rgba(20,23,30,.15);
+  max-width: 380px;
+  width: 90%;
+}
+#gate-box h2 { margin: 0 0 6px; font-size: 18px; color: #14171e; letter-spacing: -0.01em; }
+#gate-box p { color: #7c7a72; font-size: 13px; margin: 0 0 18px; }
+#gate-input {
+  padding: 11px 14px; border: 1px solid #e9e3d6; border-radius: 9px;
+  font-size: 15px; font-family: inherit; width: 100%; box-sizing: border-box;
+  background: #fafaf7; color: #1f2533; outline: none;
+}
+#gate-input:focus { border-color: #2f6f5e; background: #fff; }
+#gate-error { color: #b06367; margin-top: 10px; font-size: 13px; min-height: 18px; }
 </style>
 </head>
-<body>
+<body class="locked">
+<div id="gate">
+  <div id="gate-box">
+    <h2>🔒 私人 archive</h2>
+    <p>請輸入密碼</p>
+    <form id="gate-form" autocomplete="off">
+      <input id="gate-input" type="password" placeholder="password" autofocus>
+      <div id="gate-error"></div>
+    </form>
+  </div>
+</div>
+<script>
+(function(){
+  // SHA-256 hash of the password — replace PLACEHOLDER_HASH with the real hash after picking a password
+  var EXPECTED_HASH = '442cbf3fdf0f24777036e660c32d6e4b5f7621231bff2754673c5a188a2f614a';
+  var KEY = 'fomo_auth_v1';
+  function sha256(text){
+    var buf = new TextEncoder().encode(text);
+    return crypto.subtle.digest('SHA-256', buf).then(function(h){
+      return Array.from(new Uint8Array(h)).map(function(b){
+        return b.toString(16).padStart(2,'0');
+      }).join('');
+    });
+  }
+  function unlock(){
+    document.body.classList.remove('locked');
+    try { sessionStorage.setItem(KEY, '1'); } catch(e){}
+  }
+  // Auto-unlock if previously authenticated in this session
+  try {
+    if (sessionStorage.getItem(KEY) === '1') {
+      document.body.classList.remove('locked');
+    }
+  } catch(e){}
+  document.getElementById('gate-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var pw = document.getElementById('gate-input').value;
+    sha256(pw).then(function(h){
+      if (h === EXPECTED_HASH) {
+        unlock();
+      } else {
+        document.getElementById('gate-error').textContent = '密碼錯誤';
+        document.getElementById('gate-input').value = '';
+        document.getElementById('gate-input').focus();
+      }
+    });
+  });
+})();
+</script>
 <div class="wrap">
   <header class="hero">
     <h1>FOMO研究院電子報 — 文章索引</h1>
