@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KP商周專欄(第1997/1998，1999期)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --line: #e9e3d6; --line-soft: #f0ebdf;
+  --text: #1f2533; --text-2: #3a4256; --muted: #7c7a72; --ink: #14171e;
+  --primary: #2f6f5e; --accent: #c97b3f;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(47,111,94,.04) 0%, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(201,123,63,.04) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 28px 96px; }
+
+.meta-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px;
+  font-feature-settings: 'tnum';
+}
+.meta-bar .tag {
+  padding: 3px 9px; border-radius: 4px; font-weight: 500;
+  background: var(--line-soft); color: var(--text-2);
+}
+.meta-bar .tag.free { background: #dde9f3; color: #4a7ba6; }
+.meta-bar .tag.paid { background: #f0dbdb; color: #b06367; }
+.meta-bar a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--line); }
+.meta-bar a:hover { color: var(--primary); border-color: var(--primary); }
+
+h1.article-title {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 36px; font-weight: 400; line-height: 1.25;
+  color: var(--ink); margin: 14px 0 24px; letter-spacing: -0.005em;
+}
+h1.chapter {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 28px; font-weight: 400; line-height: 1.3;
+  color: var(--ink); margin: 56px 0 18px; padding-top: 28px;
+  border-top: 1px solid var(--line);
+  letter-spacing: -0.005em;
+}
+h2.section {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  color: var(--text); margin: 36px 0 12px;
+  padding-left: 12px; border-left: 3px solid var(--primary);
+}
+h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+
+p {
+  font-size: 16.5px; line-height: 1.85; margin: 0 0 18px;
+  color: var(--text);
+  font-family: 'Outfit', 'Noto Serif TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  font-weight: 400;
+}
+p strong, strong { color: var(--ink); font-weight: 600; }
+
+ul, ol { margin: 0 0 18px; padding-left: 26px; }
+li { font-size: 16px; line-height: 1.8; margin-bottom: 6px; }
+
+a { color: var(--primary); text-decoration: underline; text-decoration-color: rgba(47,111,94,.3); text-underline-offset: 2px; }
+a:hover { text-decoration-color: var(--primary); }
+
+blockquote {
+  margin: 28px 0; padding: 18px 24px;
+  background: var(--line-soft); border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-2); font-style: normal;
+}
+blockquote p { margin: 0; color: var(--text-2); }
+blockquote p + p { margin-top: 12px; }
+
+hr {
+  border: 0; height: 1px; background: var(--line);
+  margin: 36px auto; width: 60%;
+}
+
+figure {
+  margin: 32px 0; text-align: center;
+}
+.image2-inset, .captioned-image-container .image2-inset {
+  margin: 0;
+}
+.image2-inset picture, .image2-inset img {
+  display: block; max-width: 100%; height: auto; margin: 0 auto;
+  border-radius: 8px;
+}
+figure img {
+  max-width: 100%; height: auto; border-radius: 8px;
+  display: block; margin: 0 auto;
+  box-shadow: 0 4px 18px -8px rgba(20,23,30,.15);
+}
+.image2-img, .image2-image {
+  max-width: 100%; height: auto;
+}
+.captioned-image-container {
+  margin: 32px -20px;
+}
+.image-link { display: block; text-decoration: none !important; }
+.figcaption {
+  font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5;
+  text-align: center; font-style: italic;
+}
+
+/* Buttons / interactive UI from Substack we want to hide */
+.button, .pencraft, .subscription-widget, .paywall,
+[class*="paywall"], [class*="subscribe"], [class*="Subscribe"],
+.embed, .digest-post-embed { display: none !important; }
+
+.footer-cta {
+  margin-top: 60px; padding: 28px 32px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; text-align: center;
+}
+.footer-cta p { font-size: 14px; color: var(--muted); margin: 0; }
+.footer-cta a {
+  display: inline-block; margin: 4px 6px;
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--line); text-decoration: none;
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+}
+.footer-cta a.primary {
+  background: var(--primary); color: white; border-color: var(--primary);
+}
+
+.toc {
+  margin: 0 0 36px; padding: 20px 24px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.toc-title {
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+.toc ol li { counter-increment: toc; padding: 4px 0; font-size: 14px; }
+.toc ol li::before { content: counters(toc, ".") " "; color: var(--muted); margin-right: 4px; }
+.toc ol li.h1 { font-weight: 600; color: var(--ink); margin-top: 8px; }
+.toc ol li.h2 { color: var(--text-2); padding-left: 18px; }
+.toc a { color: var(--text-2); text-decoration: none; }
+.toc a:hover { color: var(--primary); }
+
+@media (max-width: 768px) {
+  .wrap { padding: 28px 18px 60px; }
+  h1.article-title { font-size: 26px; }
+  h1.chapter { font-size: 22px; }
+  p { font-size: 16px; }
+  .captioned-image-container { margin: 24px -10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta-bar">
+    <a href="../../index.html">← 索引</a>
+    <span class="tag paid">💎 付費</span>
+    <span>2026-04-03</span>
+    <span>588 字</span>
+    <a href="https://www.fomosoc.com/p/kp199719981999" target="_blank" rel="noopener">↗ 原站</a>
+  </div>
+  <h1 class="article-title">KP商周專欄(第1997/1998，1999期)</h1>
+  <div class="toc"><div class="toc-title">本文目錄</div><ol>
+<li class="h1"><a href="#第四期專欄-出刊日期-2026-02-26">第四期專欄(出刊日期： 2026-02-26)</a>
+</li>
+<li class="h1"><a href="#OpenAI開春第一樁人事案-為何可能終結ChatGPT時代">OpenAI開春第一樁人事案，為何可能終結ChatGPT時代？</a>
+</li>
+<li class="h1"><a href="#第五期專欄-出刊日期-2026-03-05">第五期專欄(出刊日期： 2026-03-05)</a>
+</li>
+<li class="h1"><a href="#才5年-開山始祖降級二線追趕者-諾和諾德輸掉減肥藥之戰啟示">才5年，開山始祖降級二線追趕者，諾和諾德輸掉減肥藥之戰啟示</a>
+</li>
+</ol></div>
+  <article class="body">
+<div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!Fphe!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7bef5985-5ac5-47e3-9c74-a23985b9539d_700x933.jpeg 424w, https://substackcdn.com/image/fetch/$s_!Fphe!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7bef5985-5ac5-47e3-9c74-a23985b9539d_700x933.jpeg 848w, https://substackcdn.com/image/fetch/$s_!Fphe!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7bef5985-5ac5-47e3-9c74-a23985b9539d_700x933.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!Fphe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7bef5985-5ac5-47e3-9c74-a23985b9539d_700x933.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/7bef5985-5ac5-47e3-9c74-a23985b9539d_700x933.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":933,"width":700,"resizeWidth":null,"bytes":null,"alt":null,"title":null,"type":null,"href":null,"belowTheFold":false,"topImage":true,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' fetchpriority="high" height="933" loading="lazy" sizes="100vw" src="images/img_002_2189a2f2.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!Fphe!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7bef5985-5ac5-47e3-9c74-a23985b9539d_700x933.jpeg 424w, https://substackcdn.com/image/fetch/$s_!Fphe!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7bef5985-5ac5-47e3-9c74-a23985b9539d_700x933.jpeg 848w, https://substackcdn.com/image/fetch/$s_!Fphe!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7bef5985-5ac5-47e3-9c74-a23985b9539d_700x933.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!Fphe!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7bef5985-5ac5-47e3-9c74-a23985b9539d_700x933.jpeg 1456w" width="700"/></picture><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"><svg fill="none" height="20" role="img" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><title></title><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></figure></div><p>歡迎來到 FOMO研究院的特別內容。這幾篇文章是我受邀於《商業周刊》發表的獨家專欄。根據協議，專欄文章在刊登滿一個月後，我會將完整內容解禁，專屬分享給研究院的付費會員。</p><p><strong>?? 閱讀前的小提醒：</strong></p><ol><li><p><strong>原汁原味的「導演剪輯版」：</strong> 商周刊登的版本經過了編輯部的精簡與潤飾，而我發布在這裡的，是未經刪減的原始草稿。即使你已經看過雜誌版本，這篇原稿保留了更多我個人的推演過程，讀起來會有截然不同的風味。</p></li><li><p><strong>底層邏輯，不怕過時：</strong> 你可能會想，一個月前的文章現在看會不會太遲？熟悉我的老讀者都知道，我寫作的核心始終是拆解「底層的商業邏輯」，而非追逐短線新聞。因此，這份產業鏈的結構性分析，即使過了一個月，含金量依然不減。</p></li><li><p><strong>為何沒收到這篇的 Email 通知？</strong> 為了避免過度轟炸大家的信箱，這系列的解禁文章，我都會以「不發送 Email 與推播」的形式獨立上架。我會在週末的常規電子報中，再把連結整理給大家慢慢回顧。</p></li></ol><p>祝大家閱讀愉快！??</p><div class="paywall-jump" data-component-name="PaywallToDOM"></div><h1 class="chapter" id="第四期專欄-出刊日期-2026-02-26"><strong>第四期專欄(出刊日期： 2026-02-26)</strong></h1><h1 class="chapter" id="OpenAI開春第一樁人事案-為何可能終結ChatGPT時代"><strong>OpenAI開春第一樁人事案，為何可能終結ChatGPT時代？</strong></h1><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!fDE6!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff9b71dd8-8073-4b7b-8fb1-6ff3b09d10fa_800x452.jpeg 424w, https://substackcdn.com/image/fetch/$s_!fDE6!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff9b71dd8-8073-4b7b-8fb1-6ff3b09d10fa_800x452.jpeg 848w, https://substackcdn.com/image/fetch/$s_!fDE6!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff9b71dd8-8073-4b7b-8fb1-6ff3b09d10fa_800x452.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!fDE6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff9b71dd8-8073-4b7b-8fb1-6ff3b09d10fa_800x452.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/f9b71dd8-8073-4b7b-8fb1-6ff3b09d10fa_800x452.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":452,"width":800,"resizeWidth":null,"bytes":null,"alt":null,"title":null,"type":null,"href":null,"belowTheFold":false,"topImage":false,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' height="452" loading="lazy" sizes="100vw" src="images/img_003_43211d5a.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!fDE6!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff9b71dd8-8073-4b7b-8fb1-6ff3b09d10fa_800x452.jpeg 424w, https://substackcdn.com/image/fetch/$s_!fDE6!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff9b71dd8-8073-4b7b-8fb1-6ff3b09d10fa_800x452.jpeg 848w, https://substackcdn.com/image/fetch/$s_!fDE6!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff9b71dd8-8073-4b7b-8fb1-6ff3b09d10fa_800x452.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!fDE6!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff9b71dd8-8073-4b7b-8fb1-6ff3b09d10fa_800x452.jpeg 1456w" width="800"/></picture><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"><svg fill="none" height="20" role="img" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><title></title><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></figure></div><p><a href="https://www.businessweekly.com.tw/archive/Article?StrId=7013866">https://www.businessweekly.com.tw/archive/Article?StrId=7013866</a></p><p><strong>如果說 2023 年是 AI 的「聊天元年」，那麼 2026 年，毫無疑問是 AI 的「行動元年」。</strong></p><p>就在 <strong>2026 年 2 月 15 日</strong>，<strong>OpenAI</strong> 投下了一顆震撼彈：宣佈將開源 AI 代理框架 <strong>OpenClaw</strong> 的創始人，奧地利開發者<strong>彼得・史坦伯格</strong>（Peter Steinberger）招入麾下，由他領導下一代<strong>個人 AI 代理</strong>的開發。</p><p>這不僅僅是一次矽谷常見的「<strong>人才收購</strong>」（acqui-hire）。這是一場發生在檯面下的激烈角力，據悉，<strong>Meta</strong> 執行長<strong>馬克・祖克柏</strong>（Mark Zuckerberg）曾親自在 WhatsApp 上向史坦伯格拋出橄欖枝，甚至親自試用了 OpenClaw 一週並給出詳細反饋，試圖以天價合約攔截這位天才開發者。但最終，史坦伯格選擇了 <strong>OpenAI</strong>。</p><p>為什麼兩位科技巨頭要爭搶一位奧地利開發者？因為他們都看懂了同一件事：<strong>AI 的下一個兆級戰場，不在模型</strong>（Model）。</p><div><hr/></div><h2 class="section"><strong>什麼是 OpenClaw？（從「顧問」到「管家」的跨越）</strong></h2><p>要理解這場戰爭，我們先得理解 OpenClaw 到底做對了什麼。</p><p>目前的 ChatGPT 像是一位博學的「<strong>顧問</strong>」：你問它如何訂機票，它給你列出清單；你問它如何回郵件，它幫你寫好草稿。但最後，點擊鼠標、打開 App、刷卡付錢的人，還是你。</p><p>OpenClaw 的出現，把這個「顧問」變成了「<strong>管家</strong>」。</p><p>它是一個「<strong>自動化代理</strong>（AI Agent）」。簡單來說，它是一套讓 AI 擁有「<strong>手腳</strong>」的系統。透過 OpenClaw，你不需要寫代碼，只需要在介面上跟它說一句：「幫我訂一張去東京最便宜的機票，並通知我老婆。」</p><p>OpenClaw 就會自動登入網站、比價、下單，甚至同步到你的行事曆。它能接管你的郵件、控制家裡的燈光、甚至幫你在 Spotify 播歌。它不只是「說」，它是直接「<strong>做</strong>」。</p><p>這帶來了一個深遠的商業影響：當 AI 代理人開始替人類做消費決策時，傳統的「<strong>品牌廣告</strong>」將面臨失效。AI 不會被廣告吸引，它只看數據。<strong>掌握了代理人，就等於掌握了未來的消費入口</strong>。</p><p>在 OpenClaw 出現之前，類似的 AI 工具通常需要複雜的編程背景。但 Steinberger 的目標很單純：「<strong>做一個連我媽都能用的 AI 代理</strong>。」</p><p>這讓 OpenClaw 在短短幾個月內，在 GitHub（全球開發者社區）斬獲了驚人的<strong>近 20 萬顆星</strong>，每週有超過 <strong>200 萬人次</strong> 訪問。這種「<strong>病毒式</strong>」的增長，證明了市場對「<strong>行動型 AI</strong>」的飢渴。</p><div><hr/></div><h2 class="section"><strong>為何「本地優先」是 API 帝國的生存威脅？</strong></h2><p>OpenClaw 最核心的魅力在於：它能 <strong>24 小時不間斷</strong> 地替你工作，而且這一切都發生在<strong>你家裡的電腦上</strong>。</p><p>2026 年 1 月，全球 <strong>M4 晶片</strong> 的高階 Mac Mini 出現嚴重缺貨。原因很簡單：OpenClaw 的擁躉們發現，這是運行這個「<strong>私人 AI 管家</strong>」的最佳載體。當時甚至有個迷因：「Apple 應該給 OpenClaw 創始人發獎金，因為他一個人就賣掉了 40 萬台 Mac Mini。」</p><p>過去，你跟 AI 說的每一句話、你的信用卡資訊、你的私人行程，都要傳回 OpenAI 的雲端伺服器。但在 OpenClaw 的邏輯裡，這一切都發生在你家客廳那台 Mac Mini 的硬碟裡。</p><p>OpenClaw 的設計，允許 AI 代理的核心協同邏輯、記憶體（以本地 Markdown 文件形式存在）和任務調度，<strong>完全在用戶自己的設備上運行</strong>。它只在需要複雜推理時，才通過 API 調用雲端的大語言模型（LLM）。</p><p>這種架構，對 OpenAI 以 API 為核心的商業模式構成了<strong>生存級別的威脅</strong>。</p><ol><li><p><strong>商品化的風險</strong>：<br/>OpenAI 帝國的經濟基石，是建立在雲端 API 的大量調用之上。而 OpenClaw 這樣的框架，將雲端 LLM 降級為一個可插拔的「<strong>推理插件</strong>」。</p></li></ol><p>用戶可以隨意切換使用 Claude、Gemini 或任何開源模型。在這種模式下，OpenAI 不再是不可或缺的平台，而淪為了一個可以被比價和替代的「<strong>算力供應商</strong>」。</p><p>價值從「擁有模型」轉移到了「<strong>協同模型</strong>」，而後者正是 OpenClaw 試圖從 OpenAI 手中奪走的權力。</p><ol start="2"><li><p><strong>數據護城河的瓦解</strong>：雲端模式讓 OpenAI 能源源不斷地獲取用戶互動數據，用以訓練和迭代更強大的模型。而「<strong>本地優先</strong>」架構將數據牢牢鎖在用戶端，切斷了這條至關重要的數據流。</p></li></ol><p>因此，將史坦伯格這位「<strong>主權 AI</strong>」的傳教士招安，並讓 OpenClaw 基金會接受 OpenAI 的「資助」，本質上是將一個潛在的革命領袖，變成了體制內的改良者。</p><div><hr/></div><h2 class="section"><strong>創業者的兩難</strong></h2><p>既然 OpenClaw 如此成功且具威脅性，為什麼史坦伯格不選擇繼續獨立發展，反而選擇「投誠」？</p><p>這揭示了 2026 年 AI 創業最殘酷的真相：<strong>AI 本質上是一場非常昂貴的遊戲</strong>。</p><p>在矽谷，一個新的共識正在形成：AI 創業陷入了「<strong>易攻難守</strong>」的尷尬境地。藉助強大的開源模型，現在要寫出一個爆紅的 AI 工具門檻極低。但在爆紅之後呢？等待創業者的是<strong>高昂的維護成本與算力需求</strong>。</p><p>這就是「<strong>創業者的陷阱</strong>」：許多天才開發者發現，與其辛苦找商業模式、對抗巨頭，不如把專案做紅，將其視為一份「昂貴的履歷」，然後直接「賣身」給巨頭。</p><p>在這次的人才招募中，奧特曼拿出了一張王牌：<strong>與 Cerebras 交易綁定的龐大算力承諾</strong>。奧特曼承諾，這將能戲劇性地加速 OpenClaw 代理人的執行效能。</p><p>為什麼算力承諾比祖克柏的熱情更有效？因為 OpenClaw 雖然是「本地優先」，但維持其生態運轉極其昂貴。</p><p>史坦伯格坦承，這個開源專案目前處於<strong>嚴重虧損</strong>狀態，每月燒掉 <strong>10,000 到 20,000 美元</strong>。即便有贊助資金，他也全部轉手用於支付專案的依賴項費用，自己分文未取。</p><p>「我現在是在賠錢做這件事，」史坦伯格說道。他因為成功以過億美元出售了上一家公司 PSPDFKit，因此並不缺錢，可以把這當作興趣。</p><p>但這每個月兩萬美元的燒錢速度，對於不少個人開發者來說是一筆巨款，甚至是一棟房子的貸款；但對於 OpenAI 而言，這可能連他們一早上的咖啡預算都不到。</p><p>這就是為什麼這場遊戲最終只屬於巨人。你可以寫出偉大的程式碼，但你<strong>無法憑空變出算力</strong>。</p><div><hr/></div><h2 class="section"><strong>殊途同歸：矽谷巨頭的「代理人」共識</strong></h2><p>OpenAI 將史坦伯格收編，並非單一事件，而是整個矽谷<strong>戰略轉向</strong>的縮影。</p><p>當我們將 OpenAI、Meta 和 Anthropic 近期的動作拼湊在一起，一幅清晰的圖景浮現出來：<strong>所有的巨頭都在試圖讓 AI 擁有「身體」與「感官」</strong>。</p><p><strong>OpenAI 正在打造「全端帝國」</strong>：</p><p>他們不僅僅是買下了史坦伯格的軟體大腦（OpenClaw），更早在 2025 年就以 <strong>65 億美元</strong> 收購了 <strong>Jony Ive</strong>（前蘋果設計長）的硬體公司 io。</p><p>這是一個極具野心的閉環：OpenAI 的模型是「<strong>大腦</strong>」，OpenClaw 是負責協調手腳的「<strong>神經系統</strong>」，而 Jony Ive 正在設計的神秘設備則是 AI 在物理世界的「<strong>軀體</strong>」。</p><p>這兩者的結合至關重要，因為沒有硬體的代理是殘疾的（無法感知物理世界），而沒有代理的硬體是瞎子（無法理解並執行複雜任務）。</p><p>他們試圖繞過蘋果和 Google，直接建立一個屬於 OpenAI 的、軟硬整合的「<strong>主權個人 AI</strong>」。</p><p><strong>Meta 則在編織一張「無所不在的網」</strong>：</p><p>祖克柏雖然沒搶到史坦伯格，但他手上的牌同樣強大。Meta 不僅收購了另一家 AI Agents 公司 Manus，更重要的是，他們擁有目前市場上最成功的 AI 硬體：<strong>Ray-Ban Meta 智慧眼鏡</strong>。</p><p>當 OpenAI 還在研發硬體時，Meta 的眼鏡已經架在數百萬人的鼻樑上，成為 AI 的「<strong>眼睛</strong>」與「<strong>耳朵</strong>」。Meta 的策略非常務實：利用社交軟體接管你的數位生活，利用智慧眼鏡接管你的物理視角。對 Meta 而言，代理人不是一個獨立的 App，而是像空氣一樣滲透在你的眼鏡和聊天視窗裡。</p><p><strong>Anthropic 則堅守「桌面戰場」</strong>：</p><p>不同於前兩者的硬體野心，Anthropic 推出的 <strong>Claude Cowork</strong> 專注於成為你電腦桌面上最安全的「<strong>虛擬同事</strong>」。它不試圖接管你的生活，但試圖接管你的工作流。這是一種更為聚焦的「代理」，它讓 AI 能夠安全地操作你的文件夾和應用程式，解決的是「<strong>生產力</strong>」的最後一哩路。</p><div><hr/></div><h2 class="section"><strong>價值重心的轉移——從「模型權重」到「協同邏輯」</strong></h2><p>這場搶人大戰的背後，折射出 AI 產業價值重心的一次<strong>史詩級轉移</strong>：從<strong>模型權重</strong>（Model Weights） 轉向了<strong>協同邏輯</strong>（Orchestration Logic）。</p><p>過去幾年，AI 競賽的核心是訓練更大、更強的基礎模型。但隨著頂級模型能力趨於飽和，開源模型迎頭趕上，單純的模型性能已不再是牢不可破的護城河。</p><p>真正的瓶頸，變成了如何將這些強大的「大腦」轉化為能可靠執行複雜任務、真正為用戶「<strong>辦事</strong>」的實用工具。</p><p>這也解釋了為什麼在 Claude Cowork 和 OpenClaw 推出後，傳統軟體開始被大幅拋售。</p><p>過去，我們為了解決不同問題，需要下載不同的 App、訂閱不同的 SaaS 服務。但現在，代理人展示了驚人的<strong>跨平台執行力</strong>。</p><p>如果 OpenClaw 能直接操控瀏覽器完成訂房，你還需要 Airbnb 的 App 嗎？如果 Claude Cowork 能自動整理數據並生成報表，你還需要學習 Excel 的複雜函數嗎？</p><p><strong>軟體正在被「隱形化」</strong>。在代理人的時代，軟體不再是目的地，而僅僅是代理人路過的基礎設施。史坦伯格之所以值錢，正是因為他打造了這把「<strong>殺死軟體</strong>」的刀。</p><p>OpenAI 招安史坦伯格，本質上是承認了：<strong>光有大腦</strong>（LLM）。如果 AI 不能幫用戶訂機票、發郵件、看世界（通過眼鏡或新硬體），那麼再聰明的模型也只是一個高級聊天機器人。</p><div><hr/></div><h2 class="section"><strong>進入代理人的世代</strong></h2><p>然而，這場交易也留下了一個巨大的懸念。</p><p>OpenClaw 的靈魂是<strong>開源與用戶主權</strong>，而 OpenAI 是一家商業公司。讓一家依靠 API 賺錢的公司，去資助一個旨在減少 API 依賴的「本地優先」項目，這本身就是一個巨大的「<strong>信任悖論</strong>」。</p><p>OpenAI 通過收編潛在的顛覆者，嘗試打造自己的<strong>垂直整合帝國</strong>。</p><p>2026 年，我們獲得了歷史上最聰明的管家，但也可能交出了最後的鑰匙。當行動元年落幕，我們需要問的或許不再是 AI 能為我們做什麼，而是，<strong>我們有甚麼做得比 AI 的工作</strong>？</p><div><hr/></div><h1 class="chapter" id="第五期專欄-出刊日期-2026-03-05"><strong>第五期專欄(出刊日期： 2026-03-05)</strong></h1><h1 class="chapter" id="才5年-開山始祖降級二線追趕者-諾和諾德輸掉減肥藥之戰啟示"><strong>才5年，開山始祖降級二線追趕者，諾和諾德輸掉減肥藥之戰啟示</strong></h1><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!EFar!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F03649c9d-e6a4-408a-b4f4-65f75fffd5a0_800x452.jpeg 424w, https://substackcdn.com/image/fetch/$s_!EFar!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F03649c9d-e6a4-408a-b4f4-65f75fffd5a0_800x452.jpeg 848w, https://substackcdn.com/image/fetch/$s_!EFar!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F03649c9d-e6a4-408a-b4f4-65f75fffd5a0_800x452.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!EFar!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F03649c9d-e6a4-408a-b4f4-65f75fffd5a0_800x452.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/03649c9d-e6a4-408a-b4f4-65f75fffd5a0_800x452.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":452,"width":800,"resizeWidth":null,"bytes":null,"alt":null,"title":null,"type":null,"href":null,"belowTheFold":true,"topImage":false,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' height="452" loading="lazy" sizes="100vw" src="images/img_004_ec6b2bfc.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!EFar!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F03649c9d-e6a4-408a-b4f4-65f75fffd5a0_800x452.jpeg 424w, https://substackcdn.com/image/fetch/$s_!EFar!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F03649c9d-e6a4-408a-b4f4-65f75fffd5a0_800x452.jpeg 848w, https://substackcdn.com/image/fetch/$s_!EFar!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F03649c9d-e6a4-408a-b4f4-65f75fffd5a0_800x452.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!EFar!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F03649c9d-e6a4-408a-b4f4-65f75fffd5a0_800x452.jpeg 1456w" width="800"/></picture><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"><svg fill="none" height="20" role="img" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><title></title><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></figure></div><p><a href="https://www.businessweekly.com.tw/archive/Article?StrId=7013903">https://www.businessweekly.com.tw/archive/Article?StrId=7013903</a></p><p>諾和諾德（Novo Nordisk）曾經是減肥藥這個故事當之無愧的主角。</p><p>2021 年，<strong>Wegovy</strong> 上市，開啟了<strong>現代減肥藥</strong>的新紀元。<strong>GLP-1</strong> 這個原本用於糖尿病的機制，突然成為全球最熱門的投資主題。諾和諾德的市值一度超越 <strong>LVMH</strong>，成為<strong>歐洲最值錢</strong>的上市公司。<strong>Ozempic</strong> 和 <strong>Wegovy</strong> 這兩個名字，從醫學期刊走進了社交媒體、名人八卦、甚至政治辯論。</p><p>但到了<strong>2026</strong>，主角已經換人了。</p><div><hr/></div><h2 class="section"><strong>市佔率：數字不會說謊</strong></h2><p>禮來的心臟代謝健康部門（涵蓋 <strong>Mounjaro</strong> 和 <strong>Zepbound</strong>）在 <strong>2025 年</strong> 創造了近 <strong>400 億美元</strong> 營收，第四季度年增 <strong>43%</strong>。諾和諾德則預測 <strong>2026 年</strong> 調整後營收和營業利益將下降 <strong>5-13%</strong>。</p><p>在美國 <strong>GLP-1</strong> 市場，禮來現在佔據約 <strong>60%</strong> 的份額，諾和諾德約 <strong>40%</strong>。這個比例還在繼續傾斜。</p><p>這裡有一個值得注意的細節：你可能會看到諾和諾德的 <strong>Ozempic</strong> 在北美 <strong>GLP-1</strong> 市場仍然保有 <strong>49.8%</strong> 的份額。</p><p>但這個數字有誤導性，因為<strong>Ozempic 主要用於糖尿病</strong>，而糖尿病市場的競爭動態與肥胖市場不同。在真正的減肥藥市場，在那個<strong>成長最快、利潤最高</strong>的領域，諾和諾德已經失去了領導地位。</p><div><hr/></div><h2 class="section"><strong>療效差距：無法迴避的現實</strong></h2><p>為甚麼諾和諾德會被迎頭趕上？核心問題很簡單：這場競爭的勝負，歸根結底是<strong>療效數字的比較</strong>。</p><p>諾和諾德的 <strong>semaglutide</strong>（Wegovy/Ozempic 的活性成分）在臨床試驗中能達到約 <strong>15-20%</strong> 的體重下降。這個數字在五年前是革命性的，在 <strong>GLP-1</strong> 出現之前，減肥藥的療效通常只有 <strong>5-10%</strong>。</p><p>但禮來的 <strong>tirzepatide</strong>（Zepbound/Mounjaro 的活性成分）把這個數字推到了 <strong>20-25%</strong>。在頭對頭試驗中，tirzepatide 的平均體重下降是 <strong>20.2%</strong>，而 semaglutide 是 <strong>13.7%</strong>。</p><p>為什麼會有這個差距？<strong>機制不同</strong>。<strong>Semaglutide</strong> 是 <strong>GLP-1 單受體激動劑</strong>，<strong>tirzepatide</strong> 是 <strong>GLP-1/GIP 雙受體激動劑</strong>。多一個作用靶點，多一層代謝調節，多幾個百分點的體重下降。</p><div><hr/></div><h2 class="section"><strong>REDEFINE 4：期望落空的時刻</strong></h2><p>諾和諾德並非不知道自己落後。<strong>CagriSema</strong> 是他們的反擊計畫，把 semaglutide 和另一種腸道荷爾蒙類似物 <strong>cagrilintide</strong>（模擬 amylin）結合起來，試圖用雙藥組合追上禮來的雙受體機制。</p><p><strong>2026 年 2 月 23 日</strong>，<strong>REDEFINE 4</strong> 試驗結果公布。這是一個 <strong>84 週</strong>、<strong>809 人</strong> 的三期「頭對頭試驗」，直接比較諾和諾德的<strong>CagriSema</strong>和禮來的<strong>tirzepatide</strong>。</p><p>結果是，CagriSema 達到 <strong>23.0%</strong> 體重下降，但對比禮來的 tirzepatide 達到 <strong>25.5%</strong>。</p><p>好像也相差不遠？讓我解釋一下這個結果為什麼是<strong>災難性的</strong>。</p><p>首先，這是諾和諾德<strong>自己設計、自己執行</strong>的試驗。他們選擇了試驗長度（<strong>84 週</strong>，比標準的 68-72 週更長）、病人群體、劑量方案。在這種情況下，通常公司會設計一個對自己有利的試驗。但即使如此，<strong>CagriSema 還是輸了</strong>。</p><p>其次，<strong>23%</strong> 的體重下降在絕對意義上是很好的數字，比諾和諾德原本的 Wegovy 的 <strong>15-16%</strong> 好得多。但問題是，市場不是用絕對標準評估諾和諾德的。市場評估的是：這個藥能不能幫助諾和諾德<strong>奪回領導地位</strong>？答案是<strong>不能</strong>。</p><p>第三，這個結果暗示<strong>機制上的劣勢</strong>可能是根本性的。<strong>GLP-1 + amylin</strong> 的組合，似乎無法匹敵 <strong>GLP-1 + GIP</strong> 的組合。</p><p>這基本上就是<strong>最壞的情況</strong>，諾和諾德的新武器，比起禮來的舊武器還要不如。</p><div><hr/></div><h2 class="section"><strong>降價：承認現實的代價</strong></h2><p><strong>2026 年 2 月 24 日</strong>，也就是 REDEFINE 4 結果公布的隔天，諾和諾德宣布將<strong>大幅調降美國定價</strong>。</p><p>從 <strong>2027 年 1 月 1 日</strong> 起，<strong>Wegovy</strong>、<strong>Ozempic</strong>、<strong>Rybelsus</strong> 的月定價統一降至 <strong>675 美元</strong>。這意味著：<strong>Wegovy 降價約 50%</strong>（從約 1,350 美元），<strong>Ozempic 降價約 34%</strong>（從約 1,027 美元）。</p><p>這個決定有幾層含義。</p><p>第一，這是對<strong>療效劣勢</strong>的直接回應。當你的藥效果比競爭對手差，你只能在<strong>價格上競爭</strong>。</p><p>第二，這是對<strong>投資人壓力</strong>的回應。股價暴跌、財測下修、分析師降評。諾和諾德需要做些什麼來證明管理層有在積極應對。<strong>降價是最直接、最可見的行動</strong>。</p><p>第三，這是一個<strong>市佔率保衛戰</strong>的信號。在供不應求的市場，你可以維持高價。在競爭激烈的市場，你必須用<strong>價格換取銷量</strong>。諾和諾德選擇了後者。</p><p>但事實上是，當你的產品在效果上不再是市場最佳選擇時，<strong>價格就成了你唯一能用來談判的籌碼</strong>。</p><p>禮來需要跟進降價嗎？短期內不需要。當你在療效上領先，當你的市佔率在擴大，你沒有理由主動犧牲利潤率。但長期下來，禮來也可能會有降價的壓力。</p><div><hr/></div><h2 class="section"><strong>口服藥：最後的希望</strong></h2><p>打針雖然效果好，但很多人怕痛，而在這邊諾和諾德短期內已經輸了。但<strong>口服藥市場</strong>還有機會。</p><p>口服 <strong>GLP-1</strong> 是下一個前沿。不需要自己打針，使用更方便，長期來看製造成本可能更低，能夠觸及更廣泛的病人群體。</p><p>諾和諾德在這裡有<strong>先發優勢</strong>。口服 semaglutide（<strong>Rybelsus</strong>，以及 2025 年底獲批、2026 年初上市的口服 Wegovy）是第一個上市的口服 <strong>GLP-1</strong>。這很重要，在一個快速成長的市場，先進入者有建立品牌認知和處方習慣的優勢。</p><p>但這裡有一個有趣的對比：禮來的 <strong>orforglipron</strong> 是<strong>小分子</strong>（更容易吸收、可能不需要空腹服用），而諾和諾德的口服 semaglutide 和 amycretin 是<strong>多肽</strong>（吸收更困難，但可能療效上限更高）。</p><p>諾和諾德在口服戰場還沒輸，但壓力極大，必須在「<strong>方便性</strong>」和「<strong>耐受性</strong>」上做出差異化。</p><p>諾和諾德能否憑藉其在口服胜肽藥物上的深厚積累和潛在更優的效果，守住這片最後的灘頭堡，將直接決定它在未來市場格局中的地位，是成為一個與禮來<strong>分庭抗禮的雙寡頭</strong>之一，還是徹底淪為一個<strong>二線追趕者</strong>。</p><div><hr/></div><h2 class="section"><strong>併購困局：有錢卻花不出去</strong></h2><p>製藥業有一個不成文的規則：當內部研發跟不上市場變化時，就用<strong>併購</strong>來補。這不是什麼新鮮策略，從輝瑞到艾伯維，幾乎每一家大型藥廠都是靠著關鍵收購才能維持成長動能。</p><p>諾和諾德不是不懂這個道理。2025 年底，當減肥藥新星 <strong>Metsera</strong> 傳出要出售的消息時，諾和諾德立刻出手，開出約 <strong>65 億美元</strong> 的報價（含里程碑款項最高可達 <strong>90 億美元</strong>）。這是一個合理的戰略邏輯：既然自己的 <strong>CagriSema</strong> 前景堪憂，不如買下一家有潛力的公司來補強管線。</p><p>但最終，<strong>輝瑞</strong>以約 <strong>100 億美元</strong> 的價格拿下了 Metsera。</p><p>諾和諾德為什麼會輸？不是因為出價不夠高。事實上，當輝瑞把價格推到 100 億美元時，諾和諾德選擇了退出競標。</p><p>真正的原因是<strong>反壟斷風險</strong>。Metsera 的董事會在公告中明確表示，選擇輝瑞是因為諾和諾德的提案「<strong>存在無法接受的法律和監管風險</strong>」。輝瑞甚至在競標過程中提起了聯邦反壟斷訴訟，指控諾和諾德收購 Metsera 將幫助其維持在減肥藥市場的主導地位。</p><p>這揭示了諾和諾德面臨的一個<strong>結構性困境</strong>：作為減肥藥市場的（前）領導者，它在這個領域的任何重大收購都會引發監管機構的高度關注。尤其在當前「<strong>美國優先</strong>」的政策環境下，一家丹麥公司想要收購美國生技公司，面臨的審查只會更加嚴格。</p><p>諾和諾德的 CEO Doustdar 說公司今年有高達 <strong>350 億美元</strong> 的併購火力，但<strong>有錢不代表能花得出去</strong>。如果每一筆在減肥藥領域的重大收購都會遭遇反壟斷阻力，那這些「彈藥」的實際用途就大打折扣。</p><p>在這個背景之下，投資人正在敦促公司看向肥胖和糖尿病之外的領域，心血管疾病、罕見疾病、甚至癌症。但 Doustdar 在最近的法說會上說：「<strong>我們想要保持、維持並擴大我們在糖尿病和肥胖領域的領導地位，成為這兩個領域的世界最佳</strong>。」</p><p>這是堅持還是固執？目前還很難說。但有一點是清楚的，這讓諾和諾德陷入了一個<strong>兩難</strong>：繼續專注於減肥藥，但併購選項受限；還是轉向其他治療領域，但那意味著放棄自己最熟悉的戰場。</p><div><hr/></div><h2 class="section"><strong>管線：下一代的競爭</strong></h2><p>讓我們看遠一點。</p><p><strong>CagriSema</strong> 的失敗不只是一個藥物的失敗，而是一個<strong>策略的失敗</strong>。諾和諾德試圖用「<strong>GLP-1 + 另一種腸道荷爾蒙</strong>」的組合來追趕禮來的「<strong>GLP-1 + GIP</strong>」雙受體機制，結果證明這條路走不通。</p><p>下一個戰場是<strong>三重激動劑</strong>，同時作用於 <strong>GLP-1</strong>、<strong>GIP</strong> 和 <strong>glucagon</strong> 三個受體。早期研究顯示，這種多受體方法有望達到更高的體重下降（預測超過 <strong>28%</strong>）。</p><p>禮來的三重激動劑 <strong>retatrutide</strong> 已經在三期試驗中（<strong>TRIUMPH 項目</strong>）。早期數據顯示的療效讓分析師們超出了最高預期。如果這個藥物成功上市，禮來將在下一代減肥藥中繼續領先。</p><p>諾和諾德呢？他們也有三重激動劑在管線中。<strong>UBT251</strong> 在中國的二期試驗顯示，<strong>24 週</strong> 內達到最高 <strong>19.7%</strong> 的體重下降。這是有希望的數據，但還是早期階段。更重要的是，這個藥物是<strong>授權引進的</strong>，不是諾和諾德自己開發的，這暗示了公司在<strong>內部創新上的瓶頸</strong>。</p><div><hr/></div><h2 class="section"><strong>更大的圖景</strong></h2><p>退後一步看，這場諾和諾德 vs. 禮來的競爭，其實是一個關於製藥業的<strong>經典商業案例</strong>。</p><p>與科技業不同，藥品市場沒有<strong>網路效應</strong>，不會因為更多人使用 Wegovy 而讓它變得更有效。與消費品產業不同，藥品也缺乏真正的<strong>品牌忠誠</strong>，可口可樂的配方幾十年不變，但品牌護城河依然深厚；製藥業沒有這種奢侈。</p><p>醫生開藥的習慣、保險給付的談判、病人的熟悉感確實創造了某種慣性，但當<strong>療效差距夠明顯</strong>時，這種慣性很容易被打破。當 <strong>tirzepatide</strong> 比 <strong>semaglutide</strong> 多減 <strong>5-7 個百分點</strong> 的體重，當 <strong>retatrutide</strong> 的數據比 tirzepatide 更驚人，市場會快速重新洗牌。</p><p>這就是為甚麼諾和諾德的<strong>先發優勢</strong>，最終只是爭取時間的緩衝，而非持久的護城河。真正決定勝負的，是<strong>下一代分子的療效與安全性數據</strong>。</p><p>當然，肥胖藥物市場仍然在快速成長。未來十年可能還會有多次技術迭代。諾和諾德的深厚能力不會一夜之間消失。但現在的情況很清楚：<strong>曾經的先驅者已經變成了追趕者</strong>，而追趕一點也不容易。</p><p>但對於病人和整個醫療體系來說，這場競爭其實是好消息。<strong>競爭推動創新、改善療效、降低價格</strong>。未來幾年，我們可能會看到更有效的藥物、更方便的劑型、更可負擔的價格。</p>
+  </article>
+  <div class="footer-cta">
+    <p>本機離線版本 • 圖片與內文完整</p>
+    <a class="primary" href="../../index.html">← 回索引</a>
+    <a href="https://www.fomosoc.com/p/kp199719981999" target="_blank" rel="noopener">在原站開啟 ↗</a>
+  </div>
+</div>
+</body>
+</html>

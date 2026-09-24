@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KP商周專欄(第2000，2001期)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --line: #e9e3d6; --line-soft: #f0ebdf;
+  --text: #1f2533; --text-2: #3a4256; --muted: #7c7a72; --ink: #14171e;
+  --primary: #2f6f5e; --accent: #c97b3f;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(47,111,94,.04) 0%, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(201,123,63,.04) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 28px 96px; }
+
+.meta-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px;
+  font-feature-settings: 'tnum';
+}
+.meta-bar .tag {
+  padding: 3px 9px; border-radius: 4px; font-weight: 500;
+  background: var(--line-soft); color: var(--text-2);
+}
+.meta-bar .tag.free { background: #dde9f3; color: #4a7ba6; }
+.meta-bar .tag.paid { background: #f0dbdb; color: #b06367; }
+.meta-bar a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--line); }
+.meta-bar a:hover { color: var(--primary); border-color: var(--primary); }
+
+h1.article-title {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 36px; font-weight: 400; line-height: 1.25;
+  color: var(--ink); margin: 14px 0 24px; letter-spacing: -0.005em;
+}
+h1.chapter {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 28px; font-weight: 400; line-height: 1.3;
+  color: var(--ink); margin: 56px 0 18px; padding-top: 28px;
+  border-top: 1px solid var(--line);
+  letter-spacing: -0.005em;
+}
+h2.section {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  color: var(--text); margin: 36px 0 12px;
+  padding-left: 12px; border-left: 3px solid var(--primary);
+}
+h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+
+p {
+  font-size: 16.5px; line-height: 1.85; margin: 0 0 18px;
+  color: var(--text);
+  font-family: 'Outfit', 'Noto Serif TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  font-weight: 400;
+}
+p strong, strong { color: var(--ink); font-weight: 600; }
+
+ul, ol { margin: 0 0 18px; padding-left: 26px; }
+li { font-size: 16px; line-height: 1.8; margin-bottom: 6px; }
+
+a { color: var(--primary); text-decoration: underline; text-decoration-color: rgba(47,111,94,.3); text-underline-offset: 2px; }
+a:hover { text-decoration-color: var(--primary); }
+
+blockquote {
+  margin: 28px 0; padding: 18px 24px;
+  background: var(--line-soft); border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-2); font-style: normal;
+}
+blockquote p { margin: 0; color: var(--text-2); }
+blockquote p + p { margin-top: 12px; }
+
+hr {
+  border: 0; height: 1px; background: var(--line);
+  margin: 36px auto; width: 60%;
+}
+
+figure {
+  margin: 32px 0; text-align: center;
+}
+.image2-inset, .captioned-image-container .image2-inset {
+  margin: 0;
+}
+.image2-inset picture, .image2-inset img {
+  display: block; max-width: 100%; height: auto; margin: 0 auto;
+  border-radius: 8px;
+}
+figure img {
+  max-width: 100%; height: auto; border-radius: 8px;
+  display: block; margin: 0 auto;
+  box-shadow: 0 4px 18px -8px rgba(20,23,30,.15);
+}
+.image2-img, .image2-image {
+  max-width: 100%; height: auto;
+}
+.captioned-image-container {
+  margin: 32px -20px;
+}
+.image-link { display: block; text-decoration: none !important; }
+.figcaption {
+  font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5;
+  text-align: center; font-style: italic;
+}
+
+/* Buttons / interactive UI from Substack we want to hide */
+.button, .pencraft, .subscription-widget, .paywall,
+[class*="paywall"], [class*="subscribe"], [class*="Subscribe"],
+.embed, .digest-post-embed { display: none !important; }
+
+.footer-cta {
+  margin-top: 60px; padding: 28px 32px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; text-align: center;
+}
+.footer-cta p { font-size: 14px; color: var(--muted); margin: 0; }
+.footer-cta a {
+  display: inline-block; margin: 4px 6px;
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--line); text-decoration: none;
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+}
+.footer-cta a.primary {
+  background: var(--primary); color: white; border-color: var(--primary);
+}
+
+.toc {
+  margin: 0 0 36px; padding: 20px 24px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.toc-title {
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+.toc ol li { counter-increment: toc; padding: 4px 0; font-size: 14px; }
+.toc ol li::before { content: counters(toc, ".") " "; color: var(--muted); margin-right: 4px; }
+.toc ol li.h1 { font-weight: 600; color: var(--ink); margin-top: 8px; }
+.toc ol li.h2 { color: var(--text-2); padding-left: 18px; }
+.toc a { color: var(--text-2); text-decoration: none; }
+.toc a:hover { color: var(--primary); }
+
+@media (max-width: 768px) {
+  .wrap { padding: 28px 18px 60px; }
+  h1.article-title { font-size: 26px; }
+  h1.chapter { font-size: 22px; }
+  p { font-size: 16px; }
+  .captioned-image-container { margin: 24px -10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta-bar">
+    <a href="../../index.html">← 索引</a>
+    <span class="tag paid">💎 付費</span>
+    <span>2026-04-24</span>
+    <span>692 字</span>
+    <a href="https://www.fomosoc.com/p/kp20002001" target="_blank" rel="noopener">↗ 原站</a>
+  </div>
+  <h1 class="article-title">KP商周專欄(第2000，2001期)</h1>
+  <div class="toc"><div class="toc-title">本文目錄</div><ol>
+<li class="h1"><a href="#第六期專欄-出刊日期-2026-03-12">第六期專欄(出刊日期： 2026-03-12)</a>
+</li>
+<li class="h1"><a href="#再推平價iPhone-學生買得起的筆電-蘋果求你-進圈-的AI大計">再推平價iPhone、學生買得起的筆電，蘋果求你「進圈」的AI大計</a>
+</li>
+<li class="h1"><a href="#第七期專欄-出刊日期-2026-03-19">第七期專欄(出刊日期： 2026-03-19)</a>
+</li>
+<li class="h1"><a href="#透視真正的中東危機-鎖住三成氦氣-成半導體未爆彈">透視真正的中東危機：鎖住三成氦氣，成半導體未爆彈</a>
+</li>
+</ol></div>
+  <article class="body">
+<div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!O_DZ!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff948dc37-fbc7-49e8-94ae-440b183a0b0b_700x933.jpeg 424w, https://substackcdn.com/image/fetch/$s_!O_DZ!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff948dc37-fbc7-49e8-94ae-440b183a0b0b_700x933.jpeg 848w, https://substackcdn.com/image/fetch/$s_!O_DZ!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff948dc37-fbc7-49e8-94ae-440b183a0b0b_700x933.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!O_DZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff948dc37-fbc7-49e8-94ae-440b183a0b0b_700x933.jpeg 1456w" type="image/webp"/><img alt="商業周刊" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/f948dc37-fbc7-49e8-94ae-440b183a0b0b_700x933.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":933,"width":700,"resizeWidth":null,"bytes":null,"alt":"商業周刊","title":null,"type":null,"href":null,"belowTheFold":false,"topImage":true,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' fetchpriority="high" height="933" loading="lazy" sizes="100vw" src="images/img_002_306319a8.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!O_DZ!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff948dc37-fbc7-49e8-94ae-440b183a0b0b_700x933.jpeg 424w, https://substackcdn.com/image/fetch/$s_!O_DZ!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff948dc37-fbc7-49e8-94ae-440b183a0b0b_700x933.jpeg 848w, https://substackcdn.com/image/fetch/$s_!O_DZ!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff948dc37-fbc7-49e8-94ae-440b183a0b0b_700x933.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!O_DZ!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff948dc37-fbc7-49e8-94ae-440b183a0b0b_700x933.jpeg 1456w" title="商業周刊" width="700"/></picture><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"><svg fill="none" height="20" role="img" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><title></title><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></figure></div><p>歡迎來到 FOMO研究院的特別內容。這幾篇文章是我受邀於《商業周刊》發表的獨家專欄。根據協議，專欄文章在刊登滿一個月後，我會將完整內容解禁，專屬分享給研究院的付費會員。</p><p><strong>?? 閱讀前的小提醒：</strong></p><ol><li><p><strong>原汁原味的「導演剪輯版」：</strong> 商周刊登的版本經過了編輯部的精簡與潤飾，而我發布在這裡的，是未經刪減的原始草稿。即使你已經看過雜誌版本，這篇原稿保留了更多我個人的推演過程，讀起來會有截然不同的風味。</p></li><li><p><strong>底層邏輯，不怕過時：</strong> 你可能會想，一個月前的文章現在看會不會太遲？熟悉我的老讀者都知道，我寫作的核心始終是拆解「底層的商業邏輯」，而非追逐短線新聞。因此，這份產業鏈的結構性分析，即使過了一個月，含金量依然不減。</p></li><li><p><strong>為何沒收到這篇的 Email 通知？</strong> 為了避免過度轟炸大家的信箱，這系列的解禁文章，我都會以「不發送 Email 與推播」的形式獨立上架。我會在週末的常規電子報中，再把連結整理給大家慢慢回顧。</p></li></ol><p>祝大家閱讀愉快！??</p><div class="paywall-jump" data-component-name="PaywallToDOM"></div><h1 class="chapter" id="第六期專欄-出刊日期-2026-03-12"><strong>第六期專欄(出刊日期： 2026-03-12)</strong></h1><h1 class="chapter" id="再推平價iPhone-學生買得起的筆電-蘋果求你-進圈-的AI大計"><strong>再推平價iPhone、學生買得起的筆電，蘋果求你「進圈」的AI大計</strong></h1><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!eDlW!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc3094480-758e-4c6f-abbd-44e6c0171857_800x452.jpeg 424w, https://substackcdn.com/image/fetch/$s_!eDlW!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc3094480-758e-4c6f-abbd-44e6c0171857_800x452.jpeg 848w, https://substackcdn.com/image/fetch/$s_!eDlW!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc3094480-758e-4c6f-abbd-44e6c0171857_800x452.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!eDlW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc3094480-758e-4c6f-abbd-44e6c0171857_800x452.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/c3094480-758e-4c6f-abbd-44e6c0171857_800x452.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":452,"width":800,"resizeWidth":null,"bytes":null,"alt":null,"title":null,"type":null,"href":null,"belowTheFold":false,"topImage":false,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' height="452" loading="lazy" sizes="100vw" src="images/img_003_04c98003.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!eDlW!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc3094480-758e-4c6f-abbd-44e6c0171857_800x452.jpeg 424w, https://substackcdn.com/image/fetch/$s_!eDlW!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc3094480-758e-4c6f-abbd-44e6c0171857_800x452.jpeg 848w, https://substackcdn.com/image/fetch/$s_!eDlW!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc3094480-758e-4c6f-abbd-44e6c0171857_800x452.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!eDlW!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc3094480-758e-4c6f-abbd-44e6c0171857_800x452.jpeg 1456w" width="800"/></picture><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"><svg fill="none" height="20" role="img" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><title></title><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></figure></div><p><a href="https://www.businessweekly.com.tw/archive/Article?StrId=7013919">https://www.businessweekly.com.tw/archive/Article?StrId=7013919</a></p><p><strong>599 美元的 MacBook，599 美元的 iPhone。</strong></p><p>過去十八年，蘋果的哲學很簡單：我們只做<strong>高端</strong>，讓別人去搶那些不賺錢的市場。<strong>iPhone SE</strong>？三四年才更新一次，還在用 <strong>2014 年</strong> 的設計語言。便宜 Mac？不存在，想省錢請去買 <strong>Chromebook</strong>。</p><p>這套策略行得通，是因為蘋果的護城河夠深：<strong>iOS 生態系</strong>、<strong>App Store</strong>、<strong>iCloud</strong>、<strong>AirPods</strong>、<strong>Apple Watch</strong>，一旦你進來，就很難出去。所以他們不需要在乎那些買不起的人，反正遲早會被拉進來。</p><p>但現在有件事變了：<strong>AI</strong>。</p><div><hr/></div><h2 class="section"><strong>AI 改變了一切</strong></h2><p>過去的「<strong>數據重力</strong>」是「數據存在哪裡，你就被綁在哪裡」；照片在 iCloud、檔案在 Google Drive，搬家很麻煩。但 <strong>AI 時代</strong> 正在重新洗牌。現在的「數據重力」是「<strong>哪個 AI 最懂你，你就離不開哪個平台</strong>」。</p><p>於是，<strong>2024 年 WWDC</strong>，蘋果發表了 <strong>Apple Intelligence</strong>，一套完全建構在<strong>本地端</strong>的 <strong>AI</strong> 系統。不是 <strong>ChatGPT</strong> 那種把你的資料丟上雲端處理的模式，是直接在你的裝置上跑大型語言模型，處理你的照片、郵件、訊息、筆記。</p><p>這套系統有幾個特點：</p><p>第一，它需要<strong>算力</strong>。只有 <strong>A17 Pro</strong> 以上的晶片才能跑完整功能。這意味著你手上那台 <strong>iPhone 12</strong>、<strong>iPhone 13</strong>，甚至 <strong>iPhone 14</strong>，都被排除在外。</p><p>第二，它依賴<strong>個人資料</strong>。<strong>Apple Intelligence</strong> 的價值在於「<strong>懂你</strong>」，它會學習你的寫作風格、你的照片偏好、你的行程習慣。這需要時間，也需要你持續使用。</p><p>第三，它是一個<strong>平台</strong>。就像當年的 <strong>iOS</strong> 一樣，<strong>Apple Intelligence</strong> 正在成為開發者建構應用的基礎層，讓任何 <strong>App</strong> 都能接入這套 <strong>AI</strong> 系統。</p><p>當 <strong>AI</strong> 成為新的作業系統，當你的所有個人資料都被 <strong>Apple Intelligence</strong> 整理、學習、最佳化之後，你還會想換到 <strong>Android</strong> 嗎？你還會想換到 <strong>Windows</strong> 嗎？</p><p>這跟 <strong>iOS</strong> 當年的劇本一模一樣。一旦你的照片、訊息、<strong>App</strong> 購買紀錄都在蘋果生態系裡，換機成本就變得極高。現在，<strong>Apple Intelligence</strong> 要把這個鎖定效應再提升一個層次：<strong>不只是你的資料在這裡，連「懂你」的 AI 也在這裡</strong>。</p><p>所以蘋果必須搶快，他們要在用戶還沒對 <strong>ChatGPT</strong> 或 <strong>Gemini</strong> 產生依賴之前，先讓 <strong>Apple Intelligence</strong> 成為那個「<strong>擁有你最多數據的 AI</strong>」。</p><div><hr/></div><h2 class="section"><strong>「e」系列和 MacBook Neo</strong></h2><h3><strong>iPhone 17e：便宜但不妥協</strong></h3><p>於是，蘋果在 <strong>2025 年</strong> 殺掉了 <strong>iPhone SE</strong> 這個品牌，換成了「<strong>e</strong>」系列，而且承諾<strong>每年更新</strong>。</p><p>過去的 <strong>SE</strong> 是什麼？三四年才出一次，用的是過時的設計（<strong>2022 年</strong> 的 <strong>SE 3</strong> 還在用 <strong>4.7 吋</strong> 螢幕和 <strong>Home 鍵</strong>），本質上是「我們有便宜的，但你最好買貴的」。</p><p>現在的「<strong>e</strong>」系列完全不同。<strong>iPhone 17e</strong> 用的是最新的 <strong>A19 晶片</strong>，跟標準版 <strong>iPhone 17</strong> 同一個世代，不是舊晶片回收。<strong>16 核 Neural Engine</strong>，完整支援 <strong>Apple Intelligence</strong> 所有功能。<strong>256GB</strong> 起步（比去年 <strong>16e</strong> 的 <strong>128GB</strong> 翻倍）、<strong>MagSafe</strong> 無線充電、<strong>Ceramic Shield 2</strong> 玻璃、自研 <strong>C1X 數據機</strong>。</p><h3><strong>MacBook Neo：用 iPhone 晶片打 Chromebook</strong></h3><p>同樣的邏輯，套用在 <strong>Mac</strong> 上。</p><p><strong>MacBook Neo</strong> 是蘋果史上第一台用 <strong>iPhone 晶片</strong> 的筆電。<strong>A18 Pro</strong>，原本是 <strong>iPhone 16 Pro</strong> 的心臟，現在被塞進一台 <strong>13 吋</strong>、無風扇、<strong>16 小時續航</strong> 的鋁合金筆電裡。</p><p>為什麼不用 <strong>M 系列</strong>？因為<strong>成本</strong>。</p><p><strong>A18 Pro</strong> 已經在台積電 <strong>3 奈米製程</strong> 上量產了將近兩年，良率成熟、產能穩定。開發一顆新的「低階 <strong>M 晶片</strong>」需要時間和資源，而且會讓產品線變得更複雜。直接拿 <strong>iPhone 晶片</strong> 來用，蘋果可以把這些<strong>規模經濟</strong>的優勢轉化成<strong>價格優勢</strong>。</p><p><strong>599 美元</strong> 消費者價，<strong>499 美元</strong> 學生價。這個價格，直接殺進 <strong>Chromebook</strong> 的地盤。</p><h3><strong>教育市場的戰略意義</strong></h3><p>在美國 <strong>K-12 教育市場</strong>，<strong>Chromebook</strong> 的市佔率大約是 <strong>75%</strong>。七成五。這意味著絕大多數美國學生的第一台「電腦」，用的是 <strong>Google</strong> 的系統，建立的是 <strong>Google</strong> 的使用習慣。</p><p>蘋果在這個戰場上幾乎是缺席的。不是因為學生不想要 <strong>Mac</strong>，而是價格差太多。當學區採購預算是 <strong>250 到 400 美元</strong> 一台，而最便宜的 <strong>MacBook Air</strong> 要 <strong>899 美元</strong> 學生價，這根本不是同一個競技場。</p><p><strong>499 美元的 MacBook Neo</strong>，第一次讓這場比賽變得有意義。</p><p>而且這不只是「賣硬體」的問題。一個高中生如果用了四年 <strong>MacBook</strong>，他大學會買什麼？他出社會會用什麼？他的 <strong>iCloud</strong> 裡會有什麼？他的 <strong>Apple Intelligence</strong> 會學到多少關於他的事？</p><p>這是所謂的<strong>飛輪效應</strong>。蘋果願意在硬體上少賺一點，因為後面有 <strong>iCloud 訂閱</strong>、<strong>Apple Music</strong>、<strong>App Store</strong>、<strong>Apple One</strong>，以及未來可能出現的付費 <strong>AI</strong> 功能。服務業務的毛利率是 <strong>70-80%</strong>，硬體才 <strong>30-40%</strong>。</p><p>這是蘋果認真地說：「<strong>我們要讓每一個新用戶，從第一天開始就是 AI 用戶</strong>。」</p><div><hr/></div><h2 class="section"><strong>Siri 的未完成革命</strong></h2><p>但這裡有一個還沒兌現的承諾。</p><p><strong>2024 年 WWDC</strong> 上，蘋果展示了「<strong>進化版 Siri</strong>」的概念：能看懂你螢幕上的內容、能執行跨 <strong>App</strong> 的複雜任務、能理解你的個人脈絡並主動提供建議。這是 <strong>Apple Intelligence</strong> 的終極形態，一個真正的 <strong>AI 助理</strong>，而不只是一堆零散的 <strong>AI</strong> 功能。</p><p>原本預計 <strong>2025 年</strong> 推出，延期了。現在預計 <strong>2026 年中到下半年</strong>。</p><p>所以在進化版 <strong>Siri</strong> 上線之前，蘋果需要盡可能多的用戶進入 <strong>Apple Intelligence</strong> 生態系。他們需要讓用戶開始習慣用 <strong>AI</strong> 整理照片、用 <strong>AI</strong> 寫郵件、用 <strong>AI</strong> 翻譯訊息。當這些習慣建立起來，當你的個人資料和使用模式都被 <strong>Apple Intelligence</strong> 學習過之後，進化版 <strong>Siri</strong> 上線時，效果才會真正驚人。</p><p>而且，到那時候你已經走不了了。</p><div><hr/></div><h2 class="section"><strong>用 Google 的引擎打 Google 的市場</strong></h2><p>這裡有一個值得玩味的細節。</p><p><strong>2026 年 1 月 12 日</strong>，蘋果和 <strong>Google</strong> 發布聯合聲明，宣布了一項多年期合作：<strong>Apple Intelligence</strong> 的下一代基礎模型，將基於 <strong>Google</strong> 的 <strong>Gemini</strong> 技術。</p><p>換句話說，蘋果用來搶 <strong>Chromebook</strong> 市場的 <strong>MacBook Neo</strong>，它的 <strong>AI 大腦</strong>，有一部分是 <strong>Google</strong> 提供的。為什麼蘋果要這麼做？</p><p>因為他們趕不上，這是典型的<strong>蘋果式務實主義</strong>：當自己做不到最好的時候，就去買最好的，然後把它包裝成蘋果體驗。</p><p>但這也創造了一個奇妙的局面：<strong>蘋果正在用 Google 的 AI 引擎，去搶 Google 在教育市場經營了十年的地盤</strong>。<strong>MacBook Neo</strong> 的每一個 <strong>Apple Intelligence</strong> 功能，當它需要調用雲端的大型模型時，底層跑的是 <strong>Gemini</strong>。</p><p>據報導，蘋果正在加速開發自己的 <strong>AI 伺服器晶片</strong>（代號「<strong>Baltra</strong>」），預計 <strong>2026 下半年</strong> 量產，<strong>2027 年</strong> 建立專用資料中心。<strong>Gemini</strong> 合作被廣泛視為一座「<strong>過渡橋樑</strong>」，讓蘋果爭取時間追上大型模型的訓練能力。</p><p>這就是科技產業的弔詭之處。你的敵人可能同時也是你的供應商。蘋果和 <strong>Google</strong> 在搜尋引擎、瀏覽器、地圖、教育市場上是死對頭，但在 <strong>AI 基礎設施</strong> 上，他們剛簽了一份<strong>十億美元的合約</strong>。</p><div><hr/></div><h2 class="section"><strong>iPhone SE 的前車之鑑</strong></h2><p>推出低價產品會擔心蠶食效應嗎？ <strong>iPhone SE</strong> 的歷史可以給我們一些參考。</p><p><strong>2020 年</strong> 第二代 <strong>SE</strong> 上市時，很多人擔心它會搶走 <strong>iPhone 11</strong> 和 <strong>XR</strong> 的銷量。結果呢？分析發現，大約 <strong>50%</strong> 的 <strong>SE</strong> 買家是「<strong>新用戶</strong>」，從 <strong>Android</strong> 跳槽過來的、第一次買 <strong>iPhone</strong> 的、或是從非常老舊的機型升級的。這些人本來不會買 <strong>799</strong> 或 <strong>999 美元</strong> 的 <strong>iPhone</strong>，是 <strong>SE</strong> 的價格讓他們願意跨進來。</p><p>同樣的邏輯應該適用於 <strong>17e</strong> 和 <strong>Neo</strong>。願意花 <strong>1099</strong> 買 <strong>MacBook Air</strong> 的人，通常有他的理由，可能是需要更多記憶體、更大螢幕、或是 <strong>M 系列晶片</strong> 的性能。這些需求不會因為 <strong>Neo</strong> 存在就消失。</p><p>而那些買 <strong>Neo</strong> 的人，有很大一部分本來會買 <strong>Chromebook</strong> 或便宜 <strong>Windows</strong> 筆電。這是<strong>增量</strong>，不是替代。</p><h3><strong>Walmart 實驗的啟示</strong></h3><p>這正是 <strong>Walmart</strong> 實驗帶來的啟示。<strong>2024 年</strong>，他們和 <strong>Walmart</strong> 合作，把停產的 <strong>M1 MacBook Air</strong> 以 <strong>699 美元</strong> 清庫存，後來甚至降到 <strong>549</strong>。</p><p>這批買家的輪廓非常清楚：他們上網、寫文件、看影片、偶爾修圖。他們不需要最新晶片，也不在乎買的是「舊款」。他們在乎的是：<strong>這是一台真正的 Mac，而且我買得起</strong>。</p><div><hr/></div><h2 class="section"><strong>風險與未知數</strong></h2><p>當然，這套策略不是沒有風險。</p><p>最明顯的是 <strong>8GB 記憶體</strong> 的天花板。<strong>macOS</strong> 和瀏覽器對記憶體的需求只會越來越高，如果 <strong>Neo</strong> 用兩三年就開始卡頓，學校和家長會怎麼想？教育市場通常期待設備能撐 <strong>4 到 6 年</strong>。</p><p>另一個風險是<strong>軟體支援週期</strong>。<strong>Neo</strong> 用的是 <strong>A 系列晶片</strong>，而不是 <strong>Mac</strong> 專屬的 <strong>M 系列</strong>。如果未來 <strong>macOS</strong> 的某些功能開始假設用戶有 <strong>M 晶片</strong> 的架構或性能，<strong>Neo</strong> 可能會被提早拋棄。這會讓它成為蘋果產品線裡的「<strong>孤兒</strong>」。</p><p>還有<strong>記憶體價格</strong>的持續風險。蘋果的合約大多在 <strong>2026 年中</strong> 到期，如果 <strong>AI</strong> 需求繼續爆發，價格可能會再漲一波。到時候蘋果要嘛吃下成本、要嘛漲價、要嘛降規格，都不是好選項。</p><p>但這些風險，對蘋果來說是可控的。他們的<strong>供應鏈優勢</strong>、他們的<strong>軟硬體整合能力</strong>、他們的<strong>定價權</strong>，這些都是其他廠商沒有的籌碼。</p><div><hr/></div><h2 class="section"><strong>真正的賭注</strong></h2><p>回頭看這整盤棋，蘋果真正在賭的是什麼？不是 <strong>599 美元</strong> 的定價能賺多少錢。不是 <strong>Neo</strong> 是不是比 <strong>Chromebook</strong> 好。</p><p>蘋果賭的是：<strong>在 AI 時代，「誰先建立起個人化的 AI 關係」，誰就贏了</strong>。所以他們願意借用 <strong>Google</strong> 的引擎、犧牲硬體毛利、突然對 <strong>Chromebook</strong> 的地盤感興趣。</p><p>因為每一台賣出去的 <strong>Neo</strong>，每一支賣出去的 <strong>17e</strong>，都是一個新用戶開始讓 <strong>Apple Intelligence</strong> 學習他是誰。他的寫作習慣、他的照片偏好、他的行程模式、他的溝通風格。這些資料不會上傳到蘋果的伺服器，但它們會留在裝置上，成為那個用戶與 <strong>Apple Intelligence</strong> 之間<strong>獨特的連結</strong>。</p><p>兩年後，當這個用戶考慮換手機或換電腦時，他面對的不只是「要不要離開 <strong>iCloud</strong>」的問題，變成了「<strong>要不要放棄一個已經懂我的 AI</strong>」的問題。</p><p>這是比 <strong>App Store</strong> 鎖定更深的護城河。<strong>App</strong> 可以重新下載，照片可以轉移，但一個花了兩年學習你的 <strong>AI</strong>？那是帶不走的。</p><p>蘋果在 <strong>2007 年</strong> 用 <strong>iPhone</strong> 改變了手機產業，但真正令用家留下的不是硬體，而是後來的 <strong>iOS 生態系</strong>。<strong>2026 年</strong>，他們試圖重演這個劇本：<strong>先用便宜的硬體把人拉進來，然後用 AI 把他們留住</strong>。</p><p>只是這一次，他們的秘密武器裡，有一部分是跟死對頭借來的。</p><div><hr/></div><h1 class="chapter" id="第七期專欄-出刊日期-2026-03-19"><strong>第七期專欄(出刊日期： 2026-03-19)</strong></h1><h1 class="chapter" id="透視真正的中東危機-鎖住三成氦氣-成半導體未爆彈"><strong>透視真正的中東危機：鎖住三成氦氣，成半導體未爆彈</strong></h1><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!Nj7W!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F01b31693-69f2-400b-ab76-a1d5cd608a05_800x452.jpeg 424w, https://substackcdn.com/image/fetch/$s_!Nj7W!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F01b31693-69f2-400b-ab76-a1d5cd608a05_800x452.jpeg 848w, https://substackcdn.com/image/fetch/$s_!Nj7W!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F01b31693-69f2-400b-ab76-a1d5cd608a05_800x452.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!Nj7W!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F01b31693-69f2-400b-ab76-a1d5cd608a05_800x452.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/01b31693-69f2-400b-ab76-a1d5cd608a05_800x452.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":452,"width":800,"resizeWidth":null,"bytes":null,"alt":null,"title":null,"type":null,"href":null,"belowTheFold":true,"topImage":false,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' height="452" loading="lazy" sizes="100vw" src="images/img_004_9244998e.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!Nj7W!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F01b31693-69f2-400b-ab76-a1d5cd608a05_800x452.jpeg 424w, https://substackcdn.com/image/fetch/$s_!Nj7W!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F01b31693-69f2-400b-ab76-a1d5cd608a05_800x452.jpeg 848w, https://substackcdn.com/image/fetch/$s_!Nj7W!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F01b31693-69f2-400b-ab76-a1d5cd608a05_800x452.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!Nj7W!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F01b31693-69f2-400b-ab76-a1d5cd608a05_800x452.jpeg 1456w" width="800"/></picture><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"><svg fill="none" height="20" role="img" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><title></title><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></figure></div><p><a href="https://www.businessweekly.com.tw/archive/Article?StrId=7013959">https://www.businessweekly.com.tw/archive/Article?StrId=7013959</a></p><p>過去兩週，所有頭條都在喊同一件事：<strong>油價</strong>。<strong>布蘭特原油</strong>從 <strong>90 美元</strong> 飆到 <strong>119 美元</strong> 再回落，分析師每天更新預測，加油站漲價成為晚間新聞的固定環節。</p><p>這很合理，因為<strong>石油</strong>是全球交易量最大的商品，價格波動直接打在每個人的油箱和電費帳單上，而且自從 <strong>1973 年</strong> 以來，每次中東危機在媒體上都被簡化成「<strong>石油危機</strong>」。</p><p>但如果你只看油價，你會錯過<strong>荷姆茲海峽危機</strong>真正的結構性問題。</p><p>一個反直覺的事實是，<strong>石油反而是最快能解決的</strong>。一旦海峽重開、船隊恢復通行，油價會在幾天內暴跌，期貨市場是前瞻性的，光是「可能重開」的風聲就能讓價格回吐三成。</p><p>排隊的油輪幾天內就能開始裝貨，沙烏地和阿聯的產能一兩個月內就能恢復正常。痛，但痛得快，好得也快。</p><p>但如果只看油價，會錯過這場危機的另一個面向，那些<strong>復原時間比石油長得多</strong>的供應鏈。</p><div><hr/></div><h2 class="section"><strong>LNG：兩週停擺，兩個月才能醒過來</strong></h2><p><strong>卡達</strong> 是全球第二大的<strong>液化天然氣</strong> 出口國，<strong>Ras Laffan</strong> 綜合設施每年產能 <strong>7,700 萬噸</strong>，而它 <strong>100%</strong> 的出口都要經過荷姆茲海峽。<strong>三月二日</strong> 伊朗無人機攻擊後，整座設施停擺，<strong>QatarEnergy</strong> 宣布不可抗力，全球 <strong>LNG</strong> 供應瞬間少了<strong>兩成</strong>。</p><p>歐洲天然氣價格一週內漲了<strong>六成</strong>。亞洲現貨價創下多年新高。而問題是：就算明天海峽重開，<strong>LNG 也不會馬上回來</strong>。</p><h3><strong>為什麼 LNG 不能說開就開？</strong></h3><p><strong>液化天然氣</strong> 的「液化」兩個字，代表你必須把甲烷冷卻到<strong>零下 162 度</strong>。<strong>Ras Laffan</strong> 那種規模的設施，是全世界最複雜的低溫工程之一，不是水龍頭，不能說開就開。當整套系統因為緊急狀況停機後，你不能直接按下重啟鍵。設備必須經過緩慢、受控的降溫程序，否則熱應力會損壞關鍵組件。光是這個「<strong>冷機</strong>」階段，至少就要<strong>兩週</strong>。然後再花兩週，把產能從零逐步拉回滿載水準。</p><p>最樂觀的情況，<strong>四到六週後</strong> 才能恢復正常出貨量。這代表什麼？就算戰爭下週結束，<strong>三月和四月的供應缺口已經鎖死了</strong>。歐洲和亞洲的電費帳單會在接下來兩三個月持續墊高，工業用戶可能被迫減產，而這些成本最終都會轉嫁到終端商品價格上。</p><p>石油有戰略儲備可以從地下儲槽裡放出來救急，美國和 <strong>IEA</strong> 成員國已經釋出<strong>四億桶</strong> 緩衝。但全球沒有 <strong>LNG 戰略儲備</strong> 這種東西。缺了就是缺了，只能等設施重啟。</p><div><hr/></div><h2 class="section"><strong>氦氣：更小，但更嚴重的問題</strong></h2><p>不過，如果說 <strong>LNG</strong> 是被低估的問題，<strong>氦氣</strong> 就是好像更小，但事實上更嚴重的問題。</p><p>這裡有一個很少人知道的事實：全球大約<strong>三成到三成六</strong> 的氦氣供應，來自<strong>卡達 Ras Laffan</strong>。不是因為卡達特別去開採氦氣，而是因為<strong>氦氣是液化天然氣製程的副產品</strong>。</p><p>卡達北方氣田的天然氣裡，含有大約 <strong>0.04% 到 0.1%</strong> 的氦氣。當這些天然氣被送進液化設施、冷卻到零下 162 度變成 <strong>LNG</strong> 的過程中，氦氣會因為沸點更低（<strong>零下 269 度</strong>）而被分離出來。換句話說，你沒辦法「單獨」生產氦氣，只有當 <strong>LNG 產線</strong> 在運轉時，氦氣才會作為副產品被產出。</p><p>這就是為什麼卡達能供應全球三成以上的氦氣：不是因為他們刻意開採，而是因為他們有全世界最大的 <strong>LNG</strong> 設施，而那些設施在生產 <strong>LNG</strong> 的同時「<strong>順便</strong>」產出了大量氦氣。</p><p>但這也代表：當 <strong>Ras Laffan</strong> 停擺，<strong>氦氣生產是跟著 LNG 一起停的</strong>。當 <strong>LNG</strong> 需要一個月以上才能重啟，氦氣也得等那麼久，甚至更久，因為氦氣的純化和液化是整個製程鏈的後段步驟。<strong>全球三分之一的供應，一夜之間消失</strong>。</p><h3><strong>半導體的命脈</strong></h3><p>氦氣市場很小，全球大概只有 <strong>50 到 60 億美元</strong>，跟石油或天然氣比起來根本不在同一個量級。但它的最大應用場景，正是<strong>半導體製造</strong>。</p><p>在晶圓製程中，氦氣用來冷卻高溫蝕刻和沉積步驟，也用來維持超高純度的惰性環境。<strong>台積電</strong>、<strong>三星</strong>、<strong>SK 海力士</strong>、<strong>Intel</strong>，所有先進製程的晶圓廠都離不開它。而且需求正在爆炸：隨著 <strong>AI 晶片</strong> 和 <strong>HBM 記憶體</strong> 的產能擴張，半導體現在已經是全球最大的氦氣消費產業，佔比超過<strong>兩成</strong>，去年才剛超越醫療用途。</p><div><hr/></div><h2 class="section"><strong>這不是第一次了</strong></h2><p>氦氣危機其實是個老問題。從 <strong>2006 年</strong> 到現在，業界已經經歷過<strong>四次大規模短缺</strong>。每一次的劇本都差不多：某個主要生產設施出事（美國儲備政策變動、俄羅斯 <strong>Amur</strong> 廠爆炸延遲、卡達設施歲修），供應突然吃緊，價格翻倍，下游產業開始配給制，然後在某個大廠恢復生產後逐漸緩解。</p><p>每次危機都暴露出同一個結構性弱點：氦氣的生產<strong>高度集中在少數幾個國家和設施</strong>（美國、卡達、俄羅斯、阿爾及利亞），而且它是<strong>副產品</strong>，不能獨立增產。你想要更多氦氣，就得等更多天然氣被液化，但天然氣液化設施的產能是固定的，不會因為氦氣短缺就突然變多。</p><p>更麻煩的是，<strong>氦氣是不可再生資源</strong>。它是地球上唯一一種會逸散到太空、永遠消失的元素。你沒辦法「製造」氦氣，只能從天然氣裡分離出來，或是等某些放射性元素慢慢衰變（這個時間尺度是地質級的）。</p><h3><strong>半導體產業的應對</strong></h3><p>過去每次危機，半導體產業的應對方式都是：增加庫存、投資回收系統、分散供應來源。<strong>三星</strong> 現在的氦氣回收率據說超過 <strong>90%</strong>，<strong>SK 海力士</strong> 宣稱有<strong>六個月以上</strong> 的庫存，<strong>台積電</strong> 也說已經分散供應商。</p><p>但這次不一樣。這不是某一座工廠歲修或某條產線延遲，這是<strong>全球三分之一的供應在一夜之間被地緣政治鎖死</strong>，而且沒有人知道什麼時候能恢復。</p><div><hr/></div><h2 class="section"><strong>對台灣半導體的三層影響</strong></h2><h3><strong>第一層：電力供應</strong></h3><p>對台灣來說，這場危機的影響可以拆成三個層次來看。</p><p><strong>第一層是電力，這是最直接的</strong>。台積電佔台灣總用電量約 <strong>9%</strong>，而根據台積電 <strong>2024 永續報告</strong>（目前最新版），公司總用電量達 <strong>274.56 億度</strong>，其中 <strong>93%</strong> 來自外購電力。台灣約 <strong>33.7%</strong> 的液化天然氣進口來自卡達，而截至 <strong>2026 年 1 月</strong>，台電發電結構中天然氣佔 <strong>50.2%</strong>、煤炭佔 <strong>31.3%</strong>。</p><p>這裡有一個關鍵數字：台灣法定 <strong>LNG 安全存量只有約 11 天</strong>，跟石油的 <strong>100 天</strong> 戰略儲備差很多。經濟部強調三月供應無虞，但如果衝突持續升級，電價審議委員會可能需要評估調整電價。</p><h3><strong>第二層：氦氣供應</strong></h3><p><strong>第二層是氦氣</strong>。氦氣嵌入晶圓廠的日常運作，包括熱管理、晶圓冷卻、洩漏檢測，以及蝕刻時作為載氣使用。不像氖氣（<strong>2022 年</strong> 俄烏戰爭後幾個月內就找到替代來源），氦氣在晶片製造中<strong>沒有可行的替代品</strong>，也沒有快速的解決方案。</p><p>台積電目前表示不預期會有顯著影響，但正在監控情況。這讓人想起 <strong>2022 年</strong> 俄羅斯入侵烏克蘭引發的氦氣和氖氣短缺，那次事件促使南韓追求供應多元化和這些氣體的國內生產。</p><h3><strong>第三層：溴的隱憂</strong></h3><p><strong>第三層是溴</strong>，這是另一個被忽略的材料。溴用於半導體蝕刻製程以去除不需要的材料，高純度氫溴酸（<strong>HBr</strong>）則專門用於 <strong>DRAM</strong> 和 <strong>NAND 快閃記憶體</strong> 生產中的多晶矽蝕刻。南韓 <strong>97.5%</strong> 的溴進口來自<strong>以色列</strong>，對，就是那個正在打仗的以色列。台灣的數據沒有公開揭露，但如果對以色列溴的依賴程度類似，這會是另一個需要關注的變數。</p><div><hr/></div><h2 class="section"><strong>一個反直覺的結論：美國廠的意外優勢</strong></h2><p>這裡有一個值得思考的面向：台積電的海外布局，是否意外地成為對沖這類風險的工具？</p><p>在<strong>亞利桑那廠</strong>，<strong>Air Liquide</strong> 供應氫氣、氦氣和二氧化碳。<strong>Linde</strong> 的 CEO 表示亞利桑那廠的供應系統已到位並運作中，一廠已全面使用，二廠正依計畫爬坡。</p><p>這代表什麼？台積電在美國的產能有<strong>獨立的氦氣供應鏈</strong>，不受卡達停擺影響。但台灣本土的產能——仍然是台積電產能的絕大多數——仍然暴露在這個風險之下。</p><p>過去幾年，「台積電去美國設廠」的討論大多圍繞在地緣政治壓力、成本考量、人才問題。但這場危機凸顯了另一個較少被提及的面向：<strong>供應鏈多元化</strong>。當中東戰爭可以同時影響台灣的電力供應和晶圓廠的關鍵氣體，把部分產能放在不同的供應鏈網絡裡，開始有了不一樣的意義。</p><p>這可能是這場危機最反直覺的結論之一：<strong>中東戰爭，反而讓「把產能分散到美國」的論述變得更有說服力</strong>。</p><div><hr/></div><h2 class="section"><strong>關鍵變數與時間軸</strong></h2><p>與其預測「會有多慘」，不如追蹤幾個關鍵變數：</p><p><strong>時間變數：海峽封鎖持續多久</strong>？這是最核心的問題。氦氣顧問 <strong>Phil Kornbluth</strong> 指出，如果停擺超過兩週，工業氣體經銷商就必須重新調配低溫設備、重新驗證供應商關係，這個過程本身就要好幾個月，而且是「不管卡達產能什麼時候恢復」。他的估計是：氦氣生產停擺至少<strong>兩到三個月</strong>，加上額外兩個月來理順物流，意味著供應鏈要真正恢復正常，可能需要<strong>四到六個月</strong>。</p><p><strong>庫存變數：南韓晶片廠的氦氣庫存約可維持六個月</strong>，但這不代表「六個月內沒事」。庫存是緩衝，不是免死金牌。即使戰爭在一個月內結束，補貨的時間差仍然存在——你的庫存持續消耗，但新貨要等物流鏈重新運轉才會到。如果衝突拖過兩三個月，庫存消耗加上補貨延遲，壓力會開始浮現。台灣的庫存數據沒有公開揭露，這本身就是一個值得追問的問題。</p><p><strong>替代來源變數</strong>：理論上，加拿大和美國也是大型氦氣供應商。但短期內要取得足夠數量並不容易，這些產能本來就有既定客戶，不是說轉就能轉。新的供應來源（加拿大新礦場、坦尚尼亞、美國擴產）確實在開發中，但要真正上線還要好幾年。這是長期解方，不是短期救火。</p><div><hr/></div><h2 class="section"><strong>所以，重點是什麼？</strong></h2><p>當你下次看到新聞標題寫「油價因中東局勢飆漲」，記得這只是<strong>冰山最顯眼的那一角</strong>。</p><p><strong>石油</strong> 會最快恢復，因為它有戰略儲備、有成熟的替代航線、有前瞻性的期貨市場能快速消化資訊。<strong>LNG</strong> 會慢一拍，因為設施重啟需要時間，而且沒有全球儲備可以緩衝。<strong>肥料</strong> 會影響接下來整年的糧食價格，因為春耕窗口錯過了就是錯過了。</p><p>但<strong>氦氣</strong> 是那個藏在最深處、最少人注意的問題。它連結著<strong>半導體</strong>、連結著 <strong>AI</strong>、連結著<strong>醫療</strong>，而全球三分之一的供應被鎖在一個正在打仗的海峽後面。</p>
+  </article>
+  <div class="footer-cta">
+    <p>本機離線版本 • 圖片與內文完整</p>
+    <a class="primary" href="../../index.html">← 回索引</a>
+    <a href="https://www.fomosoc.com/p/kp20002001" target="_blank" rel="noopener">在原站開啟 ↗</a>
+  </div>
+</div>
+</body>
+</html>

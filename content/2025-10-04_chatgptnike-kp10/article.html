@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChatGPT殺進電商？Nike醒過來了嗎？醫療板塊怎麼反彈了？- KP思考筆記(第10期)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --line: #e9e3d6; --line-soft: #f0ebdf;
+  --text: #1f2533; --text-2: #3a4256; --muted: #7c7a72; --ink: #14171e;
+  --primary: #2f6f5e; --accent: #c97b3f;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(47,111,94,.04) 0%, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(201,123,63,.04) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 28px 96px; }
+
+.meta-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px;
+  font-feature-settings: 'tnum';
+}
+.meta-bar .tag {
+  padding: 3px 9px; border-radius: 4px; font-weight: 500;
+  background: var(--line-soft); color: var(--text-2);
+}
+.meta-bar .tag.free { background: #dde9f3; color: #4a7ba6; }
+.meta-bar .tag.paid { background: #f0dbdb; color: #b06367; }
+.meta-bar a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--line); }
+.meta-bar a:hover { color: var(--primary); border-color: var(--primary); }
+
+h1.article-title {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 36px; font-weight: 400; line-height: 1.25;
+  color: var(--ink); margin: 14px 0 24px; letter-spacing: -0.005em;
+}
+h1.chapter {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 28px; font-weight: 400; line-height: 1.3;
+  color: var(--ink); margin: 56px 0 18px; padding-top: 28px;
+  border-top: 1px solid var(--line);
+  letter-spacing: -0.005em;
+}
+h2.section {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  color: var(--text); margin: 36px 0 12px;
+  padding-left: 12px; border-left: 3px solid var(--primary);
+}
+h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+
+p {
+  font-size: 16.5px; line-height: 1.85; margin: 0 0 18px;
+  color: var(--text);
+  font-family: 'Outfit', 'Noto Serif TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  font-weight: 400;
+}
+p strong, strong { color: var(--ink); font-weight: 600; }
+
+ul, ol { margin: 0 0 18px; padding-left: 26px; }
+li { font-size: 16px; line-height: 1.8; margin-bottom: 6px; }
+
+a { color: var(--primary); text-decoration: underline; text-decoration-color: rgba(47,111,94,.3); text-underline-offset: 2px; }
+a:hover { text-decoration-color: var(--primary); }
+
+blockquote {
+  margin: 28px 0; padding: 18px 24px;
+  background: var(--line-soft); border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-2); font-style: normal;
+}
+blockquote p { margin: 0; color: var(--text-2); }
+blockquote p + p { margin-top: 12px; }
+
+hr {
+  border: 0; height: 1px; background: var(--line);
+  margin: 36px auto; width: 60%;
+}
+
+/* Figure & image */
+figure {
+  margin: 32px 0; text-align: center;
+}
+.image2-inset, .captioned-image-container .image2-inset {
+  margin: 0;
+}
+.image2-inset picture, .image2-inset img {
+  display: block; max-width: 100%; height: auto; margin: 0 auto;
+  border-radius: 8px;
+}
+figure img {
+  max-width: 100%; height: auto; border-radius: 8px;
+  display: block; margin: 0 auto;
+  box-shadow: 0 4px 18px -8px rgba(20,23,30,.15);
+}
+.image2-img, .image2-image {
+  max-width: 100%; height: auto;
+}
+.captioned-image-container {
+  margin: 32px -20px;
+}
+.image-link { display: block; text-decoration: none !important; }
+.figcaption {
+  font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5;
+  text-align: center; font-style: italic;
+}
+
+/* Buttons / interactive UI from Substack we want to hide */
+.button, .pencraft, .subscription-widget, .paywall,
+[class*="paywall"], [class*="subscribe"], [class*="Subscribe"],
+.embed, .digest-post-embed { display: none !important; }
+
+.footer-cta {
+  margin-top: 60px; padding: 28px 32px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; text-align: center;
+}
+.footer-cta p { font-size: 14px; color: var(--muted); margin: 0; }
+.footer-cta a {
+  display: inline-block; margin: 4px 6px;
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--line); text-decoration: none;
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+}
+.footer-cta a.primary {
+  background: var(--primary); color: white; border-color: var(--primary);
+}
+
+.toc {
+  margin: 0 0 36px; padding: 20px 24px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.toc-title {
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+.toc ol li { counter-increment: toc; padding: 4px 0; font-size: 14px; }
+.toc ol li::before { content: counters(toc, ".") " "; color: var(--muted); margin-right: 4px; }
+.toc ol li.h1 { font-weight: 600; color: var(--ink); margin-top: 8px; }
+.toc ol li.h2 { color: var(--text-2); padding-left: 18px; }
+.toc a { color: var(--text-2); text-decoration: none; }
+.toc a:hover { color: var(--primary); }
+
+@media (max-width: 768px) {
+  .wrap { padding: 28px 18px 60px; }
+  h1.article-title { font-size: 26px; }
+  h1.chapter { font-size: 22px; }
+  p { font-size: 16px; }
+  .captioned-image-container { margin: 24px -10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta-bar">
+    <a href="../../index.html">← 索引</a>
+    <span class="tag free">🆓 公開</span>
+    <span>2025-10-04</span>
+    <span>354 字</span>
+    <a href="https://www.fomosoc.com/p/chatgptnike-kp10" target="_blank" rel="noopener">↗ 原站</a>
+  </div>
+  <h1 class="article-title">ChatGPT殺進電商？Nike醒過來了嗎？醫療板塊怎麼反彈了？- KP思考筆記(第10期)</h1>
+  
+  <article class="body">
+<div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!XPxu!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F10e4db86-0ed9-42f0-b31a-da319e968baa_1024x1024.jpeg 424w, https://substackcdn.com/image/fetch/$s_!XPxu!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F10e4db86-0ed9-42f0-b31a-da319e968baa_1024x1024.jpeg 848w, https://substackcdn.com/image/fetch/$s_!XPxu!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F10e4db86-0ed9-42f0-b31a-da319e968baa_1024x1024.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!XPxu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F10e4db86-0ed9-42f0-b31a-da319e968baa_1024x1024.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/10e4db86-0ed9-42f0-b31a-da319e968baa_1024x1024.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":1024,"width":1024,"resizeWidth":null,"bytes":148660,"alt":null,"title":null,"type":"image/jpeg","href":null,"belowTheFold":false,"topImage":true,"internalRedirect":"https://fomosoc.substack.com/i/175075643?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F10e4db86-0ed9-42f0-b31a-da319e968baa_1024x1024.jpeg","isProcessing":false,"align":null,"offset":false}' fetchpriority="high" height="1024" loading="lazy" sizes="100vw" src="images/img_002_e41cb6a6.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!XPxu!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F10e4db86-0ed9-42f0-b31a-da319e968baa_1024x1024.jpeg 424w, https://substackcdn.com/image/fetch/$s_!XPxu!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F10e4db86-0ed9-42f0-b31a-da319e968baa_1024x1024.jpeg 848w, https://substackcdn.com/image/fetch/$s_!XPxu!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F10e4db86-0ed9-42f0-b31a-da319e968baa_1024x1024.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!XPxu!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F10e4db86-0ed9-42f0-b31a-da319e968baa_1024x1024.jpeg 1456w" width="1024"/></picture><div class="image-link-expand"></div></div></figure></div><p>大家好，我是KP。</p><p>歡迎來到我的第10期思考筆記。（上週那篇特別受歡迎的算是Bonus，不算在內哈哈！）</p><p>這個星期對我意義非凡，因為它見證了Substack這個社群的兩個「第一次」。</p><p>第一個「第一次」，是寫了一篇我渴望研究已久，卻未必「熱門」的主題：歐洲軍工。</p><blockquote><p><strong>能擁有這種不被流量綁架的底氣，專注於我認為真正重要的事，這份自由，是你們每位付費院友給的。</strong></p></blockquote><p>第二個「第一次」，是挑戰由付費讀者們提名和票選出來的主題----量子計算。</p><p>我必須承認，如果讓我自己選，這個主題不會這麼早出現。因為它就像量子本身一樣，充滿了不確定性，許多公司和理論都還在非常早期的階段，不像AI那樣已有清晰的路徑。</p><p>在寫作的過程中，我也遇到一個難題，就是裡面有超級多的物理學詞語，由其是量子世界的物理學。我其實以前也有稍為看過不少量子力學的視頻，但也只是了解皮毛。</p><blockquote><p><strong>最大的難題是，如何解釋到量子計算中的一切，同時文章不會變成一篇物理學論文，而是保持一篇投資的分析。</strong></p></blockquote><p>最後的成果不知道大家覺得如何，不妨和我說說你的看法。</p><p>相信我，為了不辜負大家的選擇，背後啃下的量子力學研究，遠比你們看到的文字要多得多。但這個過程也讓我獲益匪淺，感謝大家推著我一同探索這個艱深的領域。</p><p>（順帶一提，上次投票只有兩百多位付費院友參與，這項「指定研究題目」的權利是大家的福利，千萬別浪費了！）</p><p>好了，感言到此為止。聊聊本週的「思考筆記」又有哪些值得我們深思的市場動態。</p><p>FOMO研究院的內容主要分以下兩部份：</p><ul><li><p><strong>「深入研究」：</strong>每週一至兩篇，專注於對一個核心主題進行極度深入的研究，是付費會員獨享的重磅分析，每個月也會開放一篇給免費會員閱讀。</p></li><li><p><strong>「思考筆記」</strong>：每週一篇的中長文，就像你正在讀的這篇。它是一篇投資散文集，將過去一週我對市場一些主題的看法分享給大家，將會是永久免費。</p></li></ul><p>這期的「思考筆記」有四個主題：</p><ul><li><p><strong>主題一：沉睡的獅子醒了，還是回光返照？- Nike</strong><br/>Nike終於交出了一份亮麗的財報，這究竟是王者歸來的號角，還是曇花一現？</p></li><li><p><strong>主題二：白宮上演世紀大和解，醫療股暴漲背後的政治大戲</strong><br/>今年市場上的「扶不起的阿斗」----醫療保健板塊，最近竟迎來久違的暴漲。華盛頓的會議室裡，到底發生了什麼？</p></li><li><p><strong>主題三：一家零營收、百億市值公司的誕生 - Fermi</strong><br/>這家神秘的公司究竟是何方神聖？一家沒有營收的公司股價爆升，又預示著什麼市場信號？</p></li><li><p><strong>主題四：ChatGPT殺進電商，對Etsy和Shopify分別意味着甚麼？</strong><br/>Etsy和Shopify同樣迎來大漲，但對它們而言，這究竟是蜜糖，還是毒藥？</p></li></ul><p>話不多說，我們開始！</p><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div><div><hr/></div><h3>主題一：沉睡的獅子醒了，還是迴光返照？- Nike</h3><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!HpDa!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7fc4cc22-474b-49a9-a953-0021ca8d6434_958x638.jpeg 424w, https://substackcdn.com/image/fetch/$s_!HpDa!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7fc4cc22-474b-49a9-a953-0021ca8d6434_958x638.jpeg 848w, https://substackcdn.com/image/fetch/$s_!HpDa!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7fc4cc22-474b-49a9-a953-0021ca8d6434_958x638.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!HpDa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7fc4cc22-474b-49a9-a953-0021ca8d6434_958x638.jpeg 1456w" type="image/webp"/><img alt="Nike Earnings: History Shows 63% Chance of Post-Report Drop" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/7fc4cc22-474b-49a9-a953-0021ca8d6434_958x638.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":638,"width":958,"resizeWidth":null,"bytes":null,"alt":"Nike Earnings: History Shows 63% Chance of Post-Report Drop","title":null,"type":null,"href":null,"belowTheFold":true,"topImage":false,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' height="638" loading="lazy" sizes="100vw" src="images/img_003_9a235510.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!HpDa!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7fc4cc22-474b-49a9-a953-0021ca8d6434_958x638.jpeg 424w, https://substackcdn.com/image/fetch/$s_!HpDa!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7fc4cc22-474b-49a9-a953-0021ca8d6434_958x638.jpeg 848w, https://substackcdn.com/image/fetch/$s_!HpDa!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7fc4cc22-474b-49a9-a953-0021ca8d6434_958x638.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!HpDa!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7fc4cc22-474b-49a9-a953-0021ca8d6434_958x638.jpeg 1456w" title="Nike Earnings: History Shows 63% Chance of Post-Report Drop" width="958"/></picture><div class="image-link-expand"></div></div><figcaption class="figcaption">Nike Earnings: History Shows 63% Chance of Post-Report Drop</figcaption></figure></div><p>Nike這個名字，在過去幾年可以說是過氣的代名詞。</p><p>這個曾經的王者，被On和Hoka這些後起之秀追著打，自己的策略也亂了套，股價更是一路走下坡。很多人都在問：Nike是不是老了，跑不動了？</p><p>就在這個禮拜，一份財報出來，股價一天大漲6%，市場突然又興奮了起來。</p><p>所以，到底發生了什麼？是這頭沉睡的獅子終於醒了，還是只是一次迴光返照？</p><div><hr/></div><h4>昔日的錯誤：傲慢的國王</h4><p>首先，我們先來看看Nike之前做錯了甚麼。</p><p>在Covid時期，Nike變得很傲慢。他們自以為是個奢侈品牌，不再需要那些老夥伴了。他們從Foot Locker這樣的批發商撤出，試圖單打獨鬥，直接面對消費者，大搞直營(DTC)。</p><p>現在，新任CEO Elliott Hill上台後，做的第一件大事就是「巡迴道歉」。</p><p>他重新擁抱了那些被拋棄的零售夥伴。財報顯示，批發渠道（Wholesale）營收增加5-7%，遠超預期。</p><blockquote><p><strong>說明什麼？說明Nike放下了身段，承認「國王也需要軍隊」，而這些零售商就是他在人間打仗的軍隊。</strong></p></blockquote><h4>獅子睡醒：重新專注跑步鞋</h4><p>然後，過去幾年，Nike在哪裡輸得最慘？跑步鞋。</p><p>當所有人都穿著Hoka和On的時候，Nike的跑鞋部門簡直像個被遺忘的角落。</p><p>而這份財報最大的亮點之一，就是跑步鞋業務的強勢反彈，銷售額暴增超過20%。他們重新設計了Vomero、Pegasus這些經典系列，用實打實的產品創新，告訴市場：「我才是老大」。</p><blockquote><p><strong>這一步棋，不僅搶回了市佔率。更重要的是，重新奪回了在「專業性能」上的話語權，告訴市場，Nike的跑步鞋是專業的。</strong></p></blockquote><div><hr/></div><h4>未解的難題：三個沉重的鐵錨</h4><p>所以，Nike準備王者歸來，絕對反擊了嗎？</p><p>我們先來看看CEO Elliott Hill說了甚麼。</p><p>他在財報會議後表示，「進展不會是完全線性的。」</p><blockquote><p><strong>將其翻譯一下就是：「不要期望每個季度都如此順利。」</strong></p></blockquote><p>為甚麼？因為Nike還有三個問題未解決。</p><ol><li><p><strong>中國市場是個黑洞。</strong> 銷售額下滑，面對本土品牌的崛起和疲軟的經濟，他們拿不出明確的答案。</p></li><li><p><strong>Converse是個沉重的包袱。</strong> 這個品牌暴跌了28%，它就像一個拖累整家公司的鐵錨。</p></li><li><p><strong>逆風越來越強。</strong> 關稅將讓他們額外損失5億美元。這可不是零錢，它會直接衝擊獲利能力。</p></li></ol><div><hr/></div><h4>結論：一架正在重新拉升的飛機</h4><blockquote><p><strong>現在的Nike，就像一架擁有兩個強力新引擎（重歸批發 + 跑鞋創新）的飛機，但機尾同時也拖著三個沉重的鐵錨（Converse + 中國市場 + 關稅）。</strong></p></blockquote><p>這次財報的好消息，證明了新引擎的馬力足夠強勁，足以暫時抵銷鐵錨的拖累，讓飛機重新拉升。</p><p>這不是一個無腦買入的信號，但它是一個明確的證據，證明Nike的新作戰計畫是有效的。它證明了這家公司在犯下大錯之後，有能力進行深刻的自我修正。</p><p>對於我們投資者而言，這比單純的標題更有價值。接下來要觀察的，就是他們需要花多久，才能砍斷那兩條拖後腿的鐵錨。</p><div><hr/></div><h3>主題二：白宮上演世紀大和解，醫療股暴漲背後的政治大戲</h3><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!dzTt!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0bc98f88-d2b4-4d43-8711-e9a1ae6af9f6_1280x720.jpeg 424w, https://substackcdn.com/image/fetch/$s_!dzTt!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0bc98f88-d2b4-4d43-8711-e9a1ae6af9f6_1280x720.jpeg 848w, https://substackcdn.com/image/fetch/$s_!dzTt!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0bc98f88-d2b4-4d43-8711-e9a1ae6af9f6_1280x720.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!dzTt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0bc98f88-d2b4-4d43-8711-e9a1ae6af9f6_1280x720.jpeg 1456w" type="image/webp"/><img alt="Trump announces Pfizer deal he says will lower certain drug prices" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/0bc98f88-d2b4-4d43-8711-e9a1ae6af9f6_1280x720.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":720,"width":1280,"resizeWidth":null,"bytes":null,"alt":"Trump announces Pfizer deal he says will lower certain drug prices","title":null,"type":null,"href":null,"belowTheFold":true,"topImage":false,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' height="720" loading="lazy" sizes="100vw" src="images/img_004_ada18394.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!dzTt!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0bc98f88-d2b4-4d43-8711-e9a1ae6af9f6_1280x720.jpeg 424w, https://substackcdn.com/image/fetch/$s_!dzTt!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0bc98f88-d2b4-4d43-8711-e9a1ae6af9f6_1280x720.jpeg 848w, https://substackcdn.com/image/fetch/$s_!dzTt!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0bc98f88-d2b4-4d43-8711-e9a1ae6af9f6_1280x720.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!dzTt!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0bc98f88-d2b4-4d43-8711-e9a1ae6af9f6_1280x720.jpeg 1456w" title="Trump announces Pfizer deal he says will lower certain drug prices" width="1280"/></picture><div class="image-link-expand"></div></div><figcaption class="figcaption">Trump announces Pfizer deal he says will lower certain drug prices</figcaption></figure></div><p>今年市場上有個「扶不起的阿斗」——醫療保健板塊，最近居然迎來了久違的暴漲。</p><p>發生了什麼事？難道什麼神藥被發明出來了？</p><p>不。</p><blockquote><p><strong>這一切，都源於一場在白宮橢圓形辦公室裡，由Donald Trump親自導演的「世紀大和解」。</strong></p></blockquote><p>要看懂這場戲，你得先知道，為什麼醫療股之前會這麼慘。</p><div><hr/></div><h4>三把懸在頭頂的刀</h4><p>原因無他，就是三把刀懸在所有藥廠頭上，市場一直擔心Trump會作出以下三個舉動：</p><ol><li><p><strong>全面價格管制：</strong> 政府直接出手，設定藥價上限。</p></li><li><p><strong>強制議價：</strong> 賦予政府醫保（Medicare）直接和藥廠殺價的權力。</p></li><li><p><strong>關稅核武：</strong> 對進口藥品徵收100%的懲罰性關稅。</p></li></ol><blockquote><p><strong>這三把刀，隨便一把掉下來，整個行業的利潤都會被血洗。所以資金只能持續觀望，導致板塊估值被死死壓住。</strong></p></blockquote><p>然後，好戲開場了。</p><p>Trump揮舞著關稅大棒，威脅要在10月1日開鍘。就在此時，輝瑞（Pfizer）率先跑出來，和白宮達成協議，以「讓步」換取了三年的關稅豁免。</p><p>輝瑞端出了三道看似豐盛的「大菜」：</p><ol><li><p><strong>最惠國定價：</strong> 承諾賣給低收入醫保（Medicaid）的藥，價格不比其他先進國家貴。</p></li><li><p><strong>民眾直接購藥：</strong> 參與一個叫「TrumpRx.gov」的網站，提供50-85%的折扣。（雖然這網站2026年才上線）</p></li><li><p><strong>投資美國：</strong> 承諾未來幾年投入700億美元在美國研發和設廠。</p></li></ol><p>消息一出，市場直接瘋了。輝瑞股價暴漲，並帶動了禮來（Eli Lilly）、默克（Merck）等一眾歐美藥廠股價集體狂歡。投資者認為，最壞的情況過去了。</p><div><hr/></div><h4>拆解「割肉」的藝術：每一刀都避開要害</h4><p>現在，我們來拆解一下輝瑞到底「割」了什麼肉。你會發現，每一刀都巧妙地避開了要害。</p><p><strong>第一刀，對Medicaid降價。</strong><br/>這塊業務佔輝瑞營收不到5%。這就像一個億萬富翁「慷慨地」說要請全公司的人喝星巴克，聽起來很大方，但對他來說根本九牛一毛。他巧妙地避開了佔營收大頭的私人保險和Medicare市場。</p><p><strong>第二刀，參與折扣網站。</strong><br/>這更是高明的公關秀。美國90%的人都有保險，他們自己付的錢，遠比這個所謂的「折扣價」還低。這項德政，真正能幫到的，只有極少數沒保險的人，更像是在做慈善，而非讓利。</p><p><strong>第三刀，投資美國。</strong><br/>這更像是順水推舟。大型藥廠本來就在全球佈局，擴大在美生產是既定策略。這700億裡有多少是「新」投資，又有多少是把舊計畫重新包裝，沒人知道。早前蘋果CEO Tim Cook已經做過一次示範，現在輝瑞只不過是照抄功課而已。</p><p>最關鍵的是，那個100%的關稅威脅，本身就是一隻「紙老虎」。它巧妙地排除了佔市場90%的「學名藥」(Generic Drug)，也排除了絕大多數「已在美國設廠」的巨頭。</p><p>最有趣的是，有分析師指出：輝瑞在宣布這份「重大」協議後，連一毛錢的財務預測都沒改。</p><blockquote><p><strong>輝瑞看似做出了巨大讓步，實則以極小的代價，換取了未來三年的監管穩定性，巧妙地避開了核心業務衝擊。</strong></p></blockquote><p>這是一場精心編排的摔角比賽。Trump扮演了威武的英雄，輝瑞扮演了識時務的對手，兩人在台上打得火熱，最後握手言和，各自宣布勝利。</p><div><hr/></div><h4>華爾街為何狂歡？答案只有一個詞</h4><p><strong>解脫（Relief）</strong>。</p><blockquote><p><strong>這就像你一直擔心自己得了絕症，每天活在恐懼中。結果醫生告訴你，只是個小感冒。你慶祝的不是你得了感冒，而是你慶幸自己得的不是絕症。</strong></p></blockquote><p>華爾街慶祝的，不是這份協議有多好，而是它用一個無關痛癢的方案，排除了那三把刀落下來的可怕可能性。不確定性消失了，這比任何實質的利好都更讓市場興奮。</p><p>這又一次是Donald Trump最愛的「交易的藝術」(The Art of the Deal)：</p><ul><li><p><strong>對Trump：</strong> 他兌現了「降低藥價」的承諾，獲得了巨大的政治資本。</p></li><li><p><strong>對藥廠：</strong> 它們用一個幾乎無成本的「讓步」，化解了最大的監管風險，堪稱「棄車保帥」的典範。</p></li></ul><p>更重要的是，輝瑞的劇本為所有藥廠提供了一個「可複製的投降範本」。</p><p>接下來，就等著看其他藥廠排隊上演同樣的「白宮簽約秀」了。</p><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div><div><hr/></div><h3>主題三：一家零營收、百億市值公司的誕生 - Fermi</h3><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!MGDf!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2be0381f-e6ee-45dd-9686-25943b63fb4f_1500x1000.jpeg 424w, https://substackcdn.com/image/fetch/$s_!MGDf!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2be0381f-e6ee-45dd-9686-25943b63fb4f_1500x1000.jpeg 848w, https://substackcdn.com/image/fetch/$s_!MGDf!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2be0381f-e6ee-45dd-9686-25943b63fb4f_1500x1000.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!MGDf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2be0381f-e6ee-45dd-9686-25943b63fb4f_1500x1000.jpeg 1456w" type="image/webp"/><img alt="This Data Center IPO Shows Wall Street Is Still Hungry for AI Stocks" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/2be0381f-e6ee-45dd-9686-25943b63fb4f_1500x1000.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":971,"width":1456,"resizeWidth":null,"bytes":null,"alt":"This Data Center IPO Shows Wall Street Is Still Hungry for AI Stocks","title":null,"type":null,"href":null,"belowTheFold":true,"topImage":false,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' height="971" loading="lazy" sizes="100vw" src="images/img_005_26248f01.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!MGDf!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2be0381f-e6ee-45dd-9686-25943b63fb4f_1500x1000.jpeg 424w, https://substackcdn.com/image/fetch/$s_!MGDf!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2be0381f-e6ee-45dd-9686-25943b63fb4f_1500x1000.jpeg 848w, https://substackcdn.com/image/fetch/$s_!MGDf!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2be0381f-e6ee-45dd-9686-25943b63fb4f_1500x1000.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!MGDf!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2be0381f-e6ee-45dd-9686-25943b63fb4f_1500x1000.jpeg 1456w" title="This Data Center IPO Shows Wall Street Is Still Hungry for AI Stocks" width="1456"/></picture><div class="image-link-expand"></div></div><figcaption class="figcaption">This Data Center IPO Shows Wall Street Is Still Hungry for AI Stocks</figcaption></figure></div><p>如果你想感受當前AI基建浪潮的熱度，只需要關注一家公司：<strong>Fermi</strong>。</p><p>這家成立不到一年的德州公司，本週二剛完成IPO，週三股價就飆漲了55%。</p><p>它發布了什麼革命性的產品嗎？</p><p>沒有。它甚至還沒有任何營收。</p><blockquote><p><strong>這家公司的上市，與其說是基於現實的業績，不如說是基於一個宏大且極具吸引力的未來故事。這個故事，完美地迎合了當下市場所有的興奮點。</strong></p></blockquote><div><hr/></div><h4>一個令人嚮往的未來故事</h4><p>Fermi描繪的藍圖，直接瞄準了AI時代最核心的痛點：</p><ol><li><p><strong>解決AI的電力焦慮：</strong> AI的盡頭是電力。Fermi計畫在德州取得一塊巨大的土地，打造全球規模最大的數據中心園區，為AI提供源源不絕的能源。</p></li><li><p><strong>創新的能源方案：</strong> 他們不只蓋數據中心，更要自己發電。能源組合涵蓋了天然氣、太陽能，甚至規劃了先進的核反應爐，並將其命名為「Trump發電廠」（真懂玩）。</p></li><li><p><strong>強大的政治背景：</strong> 公司的共同創辦人，是前美國能源部長、德州州長Rick Perry。這無疑為市場注入了一劑強心針，暗示著公司在應對複雜的能源監管方面，可能具備獨特優勢。</p></li></ol><p><strong>AI + 能源 + 政治</strong>。這個強大的故事組合，讓投資人對其未來充滿想像，也解釋了為何一家還在虧損的公司，能在上市之初就獲得近200億美元的驚人市值。</p><div><hr/></div><h4>故事背後的風險細節</h4><p>現在，讓我們暫時把這個宏大的故事放一邊，用更審慎的眼光來檢視一下其中的細節。你會發現，這個美好的願景，建立在幾個重要的假設之上。</p><ol><li><p><strong>客戶合約的約束力：</strong> 這家公司成立至今，營收是零，虧損了640萬美元。更致命的是，他們手上唯一的潛在客戶，簽的只是一份<strong>「無約束力」</strong>的意向書。這意味著對方可以隨時拍拍屁股走人，而Fermi拿他一點辦法也沒有。在看到具有約束力的長期合約之前，未來的收入仍存在不確定性。</p></li><li><p><strong>CEO的過往紀錄：</strong> 公司CEO Toby Neugebauer上一個創業項目（GloriFi）以破產告終。更值得注意的是，法庭指定的託管人對其在該公司的行為提出了嚴厲指控。這段過往，構成了投資人必須審慎評估的一個重要風險因素。</p></li><li><p><strong>核電建設的挑戰：</strong> 建造核電廠是一個極其複雜且耗時的工程。歷史數據顯示，同類型的核反應爐建設週期可能長達15年，且常伴隨著預算超支問題。因此，公司設定的2031年完成首座反應爐的目標，或許要打個問號。</p></li><li><p><strong>高槓桿的商業模式：</strong> 這次IPO籌到的錢，聽起來很多，但對於他們宏偉的計畫來說，連買建材的頭期款都不夠。根據他們自己的預測，明年需要舉債24億美元，後年需要66億美元。這家公司未來的命運，完全取決於它能否在現金流進來之前，不斷從資本市場借到錢來續命。一旦客戶延遲、建設超支或融資不順，公司將陷入「負面螺旋」，股權價值可能瞬間崩解。</p></li></ol><div><hr/></div><h4>我們從中得到的啟示</h4><p>那麼，Fermi的成功上市，再在首日大漲，究竟告訴了我們什麼？</p><blockquote><p><strong>它清晰地表明，在當前由AI驅動的市場環境中，投資的邏輯在一定程度上，已經從評估「既有事實（Fact）」轉向了投資「未來可能性（Faith）」。</strong></p></blockquote><p>你不再僅僅需要證明你現在能賺多少錢，更需要讓市場「相信」你未來有潛力賺到遠超想像的錢。</p><p>因此，Fermi就像一個「市場情緒的溫度計」。它的股價波動，不僅反映了公司的基本面，更反映了市場對AI前景的樂觀預期和風險偏好。</p><p>這是一支典型的<strong>「故事股」</strong>。它具備了所有吸引眼球的元素：宏大的敘事、前沿的科技話題、以及極高的風險與回報潛力。</p><p>對於我們投資者而言，在面對這類公司時，必須清楚地認識到自己投資的標的屬性。</p><blockquote><p><strong>你買入的，與其說是一家公司的股票，不如說是一張高風險、高回回報的選擇權。它成功的潛力巨大，但通往成功的道路也充滿了挑戰。</strong></p></blockquote><p>在這場由AI點燃的熱潮中，Fermi的案例提醒我們：</p><blockquote><p><strong>當所有人都為宏大的故事感到興奮時，我們更需要成為那個冷靜下來，仔細閱讀合約細則的人。</strong></p></blockquote><div><hr/></div><h3>主題四：ChatGPT殺進電商，對Etsy和Shopify分別意味着甚麼？</h3><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!fSIh!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4bd46a3a-fdce-4056-9948-93084122898f_2881x1620.png 424w, https://substackcdn.com/image/fetch/$s_!fSIh!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4bd46a3a-fdce-4056-9948-93084122898f_2881x1620.png 848w, https://substackcdn.com/image/fetch/$s_!fSIh!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4bd46a3a-fdce-4056-9948-93084122898f_2881x1620.png 1272w, https://substackcdn.com/image/fetch/$s_!fSIh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4bd46a3a-fdce-4056-9948-93084122898f_2881x1620.png 1456w" type="image/webp"/><img alt="Etsy pops 16% as OpenAI announces ChatGPT Instant Checkout for the shopping  site" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/4bd46a3a-fdce-4056-9948-93084122898f_2881x1620.png","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":819,"width":1456,"resizeWidth":null,"bytes":null,"alt":"Etsy pops 16% as OpenAI announces ChatGPT Instant Checkout for the shopping  site","title":null,"type":null,"href":null,"belowTheFold":true,"topImage":false,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' height="819" loading="lazy" sizes="100vw" src="images/img_006_6e3057eb.png" srcset="https://substackcdn.com/image/fetch/$s_!fSIh!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4bd46a3a-fdce-4056-9948-93084122898f_2881x1620.png 424w, https://substackcdn.com/image/fetch/$s_!fSIh!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4bd46a3a-fdce-4056-9948-93084122898f_2881x1620.png 848w, https://substackcdn.com/image/fetch/$s_!fSIh!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4bd46a3a-fdce-4056-9948-93084122898f_2881x1620.png 1272w, https://substackcdn.com/image/fetch/$s_!fSIh!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4bd46a3a-fdce-4056-9948-93084122898f_2881x1620.png 1456w" title="Etsy pops 16% as OpenAI announces ChatGPT Instant Checkout for the shopping  site" width="1456"/></picture><div class="image-link-expand"></div></div><figcaption class="figcaption">Etsy pops 16% as OpenAI announces ChatGPT Instant Checkout for the shopping  site</figcaption></figure></div><p>電商的世界，迎來了一場變革。而帶來這場變革的，正是當今科技界的「當紅炸子雞」—— OpenAI。</p><p>最近，OpenAI 推出了一個名為 「即時結帳」（Instant Checkout） 的功能，直接在 ChatGPT 的對話框裡，讓用戶完成購物。</p><p>這一步棋，看似只是增加了一個小功能，實則是一次釜底抽薪式的戰略突襲。</p><blockquote><p><strong>它宣告了一件事：AI 不再只是你的助理，它即將成為你購物的唯一入口。</strong></p></blockquote><p>而第一批被選中，加入這場革命的，正是 Etsy 和 Shopify。</p><div><hr/></div><h4>究竟發生了甚麼？</h4><p>想像一下這個場景：</p><p>你對ChatGPT說：「幫我為我太太挑一份結婚紀念日禮物，她喜歡手工製作、風格獨特的項鍊，預算在100美元左右。」</p><p>過去，ChatGPT會給你一些建議和連結。</p><p>但現在，如果提到想買某個東西，AI 不再只是給你一堆連結，而是可以直接展示 Etsy 賣家的商品，讓你當場下單。 而包括 Glossier、SKIMS 在內的超過一百萬個 Shopify 商家，也即將加入這個行列。</p><p>這徹底顛覆了過去幾十年的電商邏輯。</p><p>過去二十年，電商的黃金法則是「購物漏斗」：發現（Discovery）→ 比較（Comparison）→ 轉換（Conversion）。我們透過Google搜尋、在Amazon上比價、最終點擊購買。</p><blockquote><p><strong>而 OpenAI 的做法，是將整個漏斗壓縮成一個步驟：對話即購物。 這是一場對 Google 搜尋和 Amazon 商城的直接挑戰。</strong></p></blockquote><p>對於OpenAI來說，這個合作的好處不用多說，就是流量變現。</p><p>OpenAI 坐擁每週超過 7 億的活躍用戶，但過去主要的變現方式只有訂閱。</p><p>這次合作，它將對每一筆透過 ChatGPT 完成的交易，向商家收取一筆「小額費用」。 這開啟了一個無比巨大的新收入來源，讓 OpenAI 從一個工具提供商，轉型為一個巨大的流量分發平台。</p><div><hr/></div><h4>兩個主角，兩種處境</h4><p>另一方面，有趣的是，這次合作的兩位主角，處境截然不同。</p><p><strong>對Etsy來說，這是一支急需的強心針。</strong><br/>這家以手工藝品聞名的平台正陷入困境。2025年第二季，其商品交易總額（GMV）年減4.8%，活躍買家和賣家數量雙雙下滑。<br/>對Etsy而言，這次合作是接觸ChatGPT數億用戶、重新激活流失買家的「救命稻草」，尤其是在其具備天然優勢的「送禮」場景。</p><p><strong>而對Shopify對說，這則是強者恆強的擴張。</strong><br/>Shopify則處於強勢地位，第二季營收和GMV均飆升31%。對它來說，與OpenAI的合作是「錦上添花」，是其「AI優先」戰略的自然延伸，讓旗下百萬商家多了一個強大的銷售渠道。</p><p>對市場來說，兩者都受惠，Etsy在一天之內飆漲近16%，Shopify也大漲超過6%。</p><div><hr/></div><h4>狂歡之後的冷靜思考</h4><p>在最初的狂歡過後，華爾街的分析師們給出了更冷靜的思考，分歧也隨之出現。</p><p>樂觀派認為，這是「代理式商務」（Agentic Commerce）的開端。 根據研究，即使只有 2.1% 的 ChatGPT 查詢與購物相關，也可能在美國產生高達 7500 萬到 1 億筆的線上訂單。 投資人買入的，是這個巨大的未來潛力。</p><p>但亦有一派表示擔憂，他們提出了一個致命的問題：</p><blockquote><p><strong>「如果消費者不再需要登錄 Etsy 的網站就能完成購買，那 Etsy 還如何擁有自己的客戶？」</strong></p></blockquote><p>這意味著，Etsy 上的商家，可能會逐漸失去對客戶體驗的控制權，他們的品牌被「架空」，淪為 OpenAI 這個超級入口的「代工廠」。 客戶忠誠度將轉移到 AI 身上，而不是商家本身。</p><div><hr/></div><h4>結論：下一代電商戰場的序幕</h4><p>OpenAI與Etsy、Shopify的結盟，絕不是一次簡單的商業合作，它是AI企圖重塑零售業權力結構的宣言。</p><p>對投資者而言：這是一條全新的賽道。短期內，Etsy和Shopify獲得了巨大的流量入口。但長期來看，我們必須思考：</p><ol><li><p><strong>價值歸屬：</strong> 在這場新的遊戲中，最終利潤會流向AI平台（OpenAI），還是商品平台（Etsy/Shopify）？</p></li><li><p><strong>客戶關係：</strong> 誰最終「擁有」客戶？是提供對話體驗的AI，還是提供商品和服務的商家？</p></li><li><p><strong>轉換效率：</strong> 在ChatGPT中的實際下單轉換率，能否支撐起市場的高預期？</p></li></ol><p>這場革命才剛剛開始。我們需要關注的，將是用戶的實際採用率、購物轉換的真實數據，以及Google和Amazon的反擊速度。但可以肯定的是，我們正站在一個時代的交叉口，購物的方式，將從此變得不再一樣。</p><blockquote><p><strong>這不僅僅是幾個公司的合作，這是下一代電商戰場的序幕。而這場戰爭的勝負，將決定未來十年，誰才是網上購物真正的「守門人」。</strong></p></blockquote><div><hr/></div><h4>特別鳴謝：FOMO研究院榮譽院董</h4><p>研究院開設付費兩個多星期，我想向每一位院友的信任與支持，致上最誠摯的感謝。你們的加入，是研究院能順利啟航的基石。</p><p>在此之上，我也想特別向幾位「榮譽院董」表達我最深的謝意。你們的額外支持，不僅是對我工作的巨大肯定，也為研究院的未來發展提供了關鍵的助力。</p><p>這份信任，我銘記於心，並會以更高品質的研究來回報。</p><p><strong>榮譽院董名單</strong> (按英文字母順序):</p><ul><li><p>Annoyed_Koala</p></li><li><p>David Tsai</p></li><li><p>Hugo I.</p></li><li><p>Ian Wu</p></li><li><p>Jimmy.kuanyu</p></li><li><p>一位榮譽院董</p></li></ul><p>最後，宣傳一下自己，我在Threads，Facebook和IG都有定期發文，另外Telegram有頻道，每天早上我會發當天重要新聞摘要，有興趣可以追蹤一下我，鏈結是:</p><p><a href="https://linktr.ee/fomo_soc">https://linktr.ee/fomo_soc</a></p><p>另外，如果你已經加入付費會員，不要浪費了群組的功能，進入我們Substack的Chat功能一起討論市場!</p><ul><li><p>KP</p><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div></li></ul>
+  </article>
+  <div class="footer-cta">
+    <p>本機離線版本 • 圖片與內文完整</p>
+    <a class="primary" href="../../index.html">← 回索引</a>
+    <a href="https://www.fomosoc.com/p/chatgptnike-kp10" target="_blank" rel="noopener">在原站開啟 ↗</a>
+  </div>
+</div>
+</body>
+</html>

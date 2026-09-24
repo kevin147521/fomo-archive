@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KP商周專欄(第2009，2010期)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --line: #e9e3d6; --line-soft: #f0ebdf;
+  --text: #1f2533; --text-2: #3a4256; --muted: #7c7a72; --ink: #14171e;
+  --primary: #2f6f5e; --accent: #c97b3f;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(47,111,94,.04) 0%, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(201,123,63,.04) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 28px 96px; }
+
+.meta-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px;
+  font-feature-settings: 'tnum';
+}
+.meta-bar .tag {
+  padding: 3px 9px; border-radius: 4px; font-weight: 500;
+  background: var(--line-soft); color: var(--text-2);
+}
+.meta-bar .tag.free { background: #dde9f3; color: #4a7ba6; }
+.meta-bar .tag.paid { background: #f0dbdb; color: #b06367; }
+.meta-bar a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--line); }
+.meta-bar a:hover { color: var(--primary); border-color: var(--primary); }
+
+h1.article-title {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 36px; font-weight: 400; line-height: 1.25;
+  color: var(--ink); margin: 14px 0 24px; letter-spacing: -0.005em;
+}
+h1.chapter {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 28px; font-weight: 400; line-height: 1.3;
+  color: var(--ink); margin: 56px 0 18px; padding-top: 28px;
+  border-top: 1px solid var(--line);
+  letter-spacing: -0.005em;
+}
+h2.section {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  color: var(--text); margin: 36px 0 12px;
+  padding-left: 12px; border-left: 3px solid var(--primary);
+}
+h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+
+p {
+  font-size: 16.5px; line-height: 1.85; margin: 0 0 18px;
+  color: var(--text);
+  font-family: 'Outfit', 'Noto Serif TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  font-weight: 400;
+}
+p strong, strong { color: var(--ink); font-weight: 600; }
+
+ul, ol { margin: 0 0 18px; padding-left: 26px; }
+li { font-size: 16px; line-height: 1.8; margin-bottom: 6px; }
+
+a { color: var(--primary); text-decoration: underline; text-decoration-color: rgba(47,111,94,.3); text-underline-offset: 2px; }
+a:hover { text-decoration-color: var(--primary); }
+
+blockquote {
+  margin: 28px 0; padding: 18px 24px;
+  background: var(--line-soft); border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-2); font-style: normal;
+}
+blockquote p { margin: 0; color: var(--text-2); }
+blockquote p + p { margin-top: 12px; }
+
+hr {
+  border: 0; height: 1px; background: var(--line);
+  margin: 36px auto; width: 60%;
+}
+
+figure {
+  margin: 32px 0; text-align: center;
+}
+.image2-inset, .captioned-image-container .image2-inset {
+  margin: 0;
+}
+.image2-inset picture, .image2-inset img {
+  display: block; max-width: 100%; height: auto; margin: 0 auto;
+  border-radius: 8px;
+}
+figure img {
+  max-width: 100%; height: auto; border-radius: 8px;
+  display: block; margin: 0 auto;
+  box-shadow: 0 4px 18px -8px rgba(20,23,30,.15);
+}
+.image2-img, .image2-image {
+  max-width: 100%; height: auto;
+}
+.captioned-image-container {
+  margin: 32px -20px;
+}
+.image-link { display: block; text-decoration: none !important; }
+.figcaption {
+  font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5;
+  text-align: center; font-style: italic;
+}
+
+/* Buttons / interactive UI from Substack we want to hide */
+.button, .pencraft, .subscription-widget, .paywall,
+[class*="paywall"], [class*="subscribe"], [class*="Subscribe"],
+.embed, .digest-post-embed { display: none !important; }
+
+.footer-cta {
+  margin-top: 60px; padding: 28px 32px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; text-align: center;
+}
+.footer-cta p { font-size: 14px; color: var(--muted); margin: 0; }
+.footer-cta a {
+  display: inline-block; margin: 4px 6px;
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--line); text-decoration: none;
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+}
+.footer-cta a.primary {
+  background: var(--primary); color: white; border-color: var(--primary);
+}
+
+.toc {
+  margin: 0 0 36px; padding: 20px 24px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.toc-title {
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+.toc ol li { counter-increment: toc; padding: 4px 0; font-size: 14px; }
+.toc ol li::before { content: counters(toc, ".") " "; color: var(--muted); margin-right: 4px; }
+.toc ol li.h1 { font-weight: 600; color: var(--ink); margin-top: 8px; }
+.toc ol li.h2 { color: var(--text-2); padding-left: 18px; }
+.toc a { color: var(--text-2); text-decoration: none; }
+.toc a:hover { color: var(--primary); }
+
+@media (max-width: 768px) {
+  .wrap { padding: 28px 18px 60px; }
+  h1.article-title { font-size: 26px; }
+  h1.chapter { font-size: 22px; }
+  p { font-size: 16px; }
+  .captioned-image-container { margin: 24px -10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta-bar">
+    <a href="../../index.html">← 索引</a>
+    <span class="tag paid">💎 付費</span>
+    <span>2026-06-25</span>
+    <span>406 字</span>
+    <a href="https://www.fomosoc.com/p/kp20092010" target="_blank" rel="noopener">↗ 原站</a>
+  </div>
+  <h1 class="article-title">KP商周專欄(第2009，2010期)</h1>
+  <div class="toc"><div class="toc-title">本文目錄</div><ol>
+<li class="h1"><a href="#第十五期專欄-出刊日期-2026-05-14">第十五期專欄(出刊日期： 2026-05-14)</a>
+</li>
+<li class="h1"><a href="#Google-微軟-亞馬遜財報揭露-下個AI稀缺貨出現了">Google、微軟、亞馬遜財報揭露，下個AI稀缺貨出現了</a>
+</li>
+<li class="h1"><a href="#第十六期專欄-出刊日期-2026-05-21">第十六期專欄(出刊日期： 2026-05-21)</a>
+</li>
+<li class="h1"><a href="#GPU再強也要插在銅線上-從銅鋁鋰三兄弟看AI金屬戰爭">GPU再強也要插在銅線上！從銅鋁鋰三兄弟看AI金屬戰爭</a>
+</li>
+</ol></div>
+  <article class="body">
+<p>本來說好不會將這系列文章轟炸大家信箱的，但我昨天實在太大意了，忘了將投票放在深入研究中，所以麻煩各位會員在這裡投下下期主題的一票!</p><div class="poll-embed" data-attrs='{"id":650864}' data-component-name="PollToDOM"></div><p>歡迎來到 FOMO研究院的特別內容。這幾篇文章是我受邀於《商業周刊》發表的獨家專欄。</p><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!sV5Q!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7a27711d-94b4-4e82-a145-c1da94670666_700x933.jpeg 424w, https://substackcdn.com/image/fetch/$s_!sV5Q!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7a27711d-94b4-4e82-a145-c1da94670666_700x933.jpeg 848w, https://substackcdn.com/image/fetch/$s_!sV5Q!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7a27711d-94b4-4e82-a145-c1da94670666_700x933.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!sV5Q!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7a27711d-94b4-4e82-a145-c1da94670666_700x933.jpeg 1456w" type="image/webp"/><img alt="商業周刊" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/7a27711d-94b4-4e82-a145-c1da94670666_700x933.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":933,"width":700,"resizeWidth":null,"bytes":null,"alt":"商業周刊","title":"商業周刊","type":null,"href":null,"belowTheFold":false,"topImage":true,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' fetchpriority="high" height="933" loading="lazy" sizes="100vw" src="images/img_002_d3285430.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!sV5Q!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7a27711d-94b4-4e82-a145-c1da94670666_700x933.jpeg 424w, https://substackcdn.com/image/fetch/$s_!sV5Q!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7a27711d-94b4-4e82-a145-c1da94670666_700x933.jpeg 848w, https://substackcdn.com/image/fetch/$s_!sV5Q!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7a27711d-94b4-4e82-a145-c1da94670666_700x933.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!sV5Q!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7a27711d-94b4-4e82-a145-c1da94670666_700x933.jpeg 1456w" title="商業周刊" width="700"/></picture><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"><svg fill="none" height="20" role="img" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><title></title><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></figure></div><p>根據協議，專欄文章在刊登滿一個月後，我會將完整內容解禁，專屬分享給研究院的付費會員。</p><p><strong>?? 閱讀前的小提醒：</strong></p><ol><li><p><strong>原汁原味的「導演剪輯版」：</strong><span> 商周刊登的版本經過了編輯部的精簡與潤飾，而我發布在這裡的，是未經刪減的原始草稿。即使你已經看過雜誌版本，這篇原稿保留了更多我個人的推演過程，讀起來會有截然不同的風味。</span></p></li><li><p><strong>底層邏輯，不怕過時：</strong><span> 你可能會想，一個月前的文章現在看會不會太遲？熟悉我的老讀者都知道，我寫作的核心始終是拆解「底層的商業邏輯」，而非追逐短線新聞。因此，這份產業鏈的結構性分析，即使過了一個月，含金量依然不減。</span></p></li><li><p><strong><s>為何沒收到這篇的 Email 通知？</s></strong><s><span> 為了避免過度轟炸大家的信箱，這系列的解禁文章，我都會以「不發送 Email 與推播」的形式獨立上架。我會在週末的常規電子報中，再把連結整理給大家慢慢回顧。</span></s></p></li></ol><p>祝大家閱讀愉快！??</p><div class="paywall-jump" data-component-name="PaywallToDOM"></div><h1 class="chapter" id="第十五期專欄-出刊日期-2026-05-14"><strong>第十五期專欄(出刊日期： 2026-05-14)</strong></h1><h1 class="chapter" id="Google-微軟-亞馬遜財報揭露-下個AI稀缺貨出現了"><strong>Google、微軟、亞馬遜財報揭露，下個AI稀缺貨出現了</strong></h1><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!4mHU!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2dce6755-9abe-4cc4-aee4-8155733e695e_800x452.jpeg 424w, https://substackcdn.com/image/fetch/$s_!4mHU!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2dce6755-9abe-4cc4-aee4-8155733e695e_800x452.jpeg 848w, https://substackcdn.com/image/fetch/$s_!4mHU!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2dce6755-9abe-4cc4-aee4-8155733e695e_800x452.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!4mHU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2dce6755-9abe-4cc4-aee4-8155733e695e_800x452.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/2dce6755-9abe-4cc4-aee4-8155733e695e_800x452.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":452,"width":800,"resizeWidth":null,"bytes":null,"alt":null,"title":null,"type":null,"href":null,"belowTheFold":true,"topImage":false,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' height="452" loading="lazy" sizes="100vw" src="images/img_003_b552e1c2.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!4mHU!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2dce6755-9abe-4cc4-aee4-8155733e695e_800x452.jpeg 424w, https://substackcdn.com/image/fetch/$s_!4mHU!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2dce6755-9abe-4cc4-aee4-8155733e695e_800x452.jpeg 848w, https://substackcdn.com/image/fetch/$s_!4mHU!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2dce6755-9abe-4cc4-aee4-8155733e695e_800x452.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!4mHU!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2dce6755-9abe-4cc4-aee4-8155733e695e_800x452.jpeg 1456w" width="800"/></picture><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"><svg fill="none" height="20" role="img" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><title></title><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></figure></div><p><a href="https://www.businessweekly.com.tw/archive/Article?StrId=7014171">https://www.businessweekly.com.tw/archive/Article?StrId=7014171</a></p><p>過去兩年，科技圈最大的懸念是：這些公司砸幾千億美元蓋資料中心、買晶片、搶電力，到底會不會變成一場史詩級的浪費？</p><p>這季財報給了一個相當明確的答案：不會，至少目前看起來不會。</p><p><strong>AWS</strong> 成長 <strong>28%</strong>，是15個季度以來最快的一季。<strong>Google Cloud</strong> 成長 <strong>63%</strong>，是它有史以來最好的成績。<strong>Azure</strong> 維持 <strong>40%</strong> 的強勁成長。三家都超越華爾街預期，而且不只是營收在成長，利潤率也在擴張，這點後面會詳細講。</p><p>這跟一年前的氛圍截然不同。2025 年，市場的主旋律是擔憂：<strong>AWS</strong> 成長一度放緩到二十以下的百分比，<strong>Google Cloud</strong> 的利潤率停在 17-20% 左右，GPU 價格還一度下調。「<strong>AI</strong> 泡沫」是當時最常見的標題。</p><h2 class="section">不只是 <strong>AI</strong>，是整個雲端在加速</h2><p>「我們的營收本來可以更高，但我們供不應求」</p><p><strong>Google</strong> 執行長 <strong>Sundar Pichai</strong> 在財報電話會議上說了這句話，這句話十分重要。</p><p>過去的擔憂是：這些公司會不會蓋太多、建太快，結果容量閒置、資本浪費？</p><p>現在的狀況是：他們蓋得不夠快。需求已經超過供給，他們正在挑選客戶。</p><p>這是完全不同的處境。</p><blockquote><p>當你供不應求的時候，你有<strong>定價權</strong>。你可以選擇跟誰做生意。你的新產能一上線就會被用掉。這讓那些看起來瘋狂的資本支出突然變得合理。</p></blockquote><p>在另一方面，<strong>AWS</strong> 的財報揭示了一件很重要的事：<strong>AI</strong> 工作負載和核心雲端服務的消費之間，有很強的正相關。</p><p>這是什麼意思？當客戶開始跑 <strong>AI</strong> 模型，他們不只是用 GPU。他們也需要更多儲存空間來放訓練資料、更多資料庫來管理結果、更多網路頻寬來傳輸、更多一般運算來處理周邊任務。</p><p><strong>AI</strong> 的消費，拉動了整個雲端平台的消費。</p><p><strong>AWS</strong> 的 <strong>AI</strong> 服務跑不到三年，年化營收已經超過 <strong>150 億美元</strong>，而且在加速中。<strong>Bedrock</strong>（<strong>AWS</strong> 的 <strong>AI</strong> 平台）上一季的消費成長了 <strong>170%</strong>。光是這一季處理的 token 數量，就超過這個服務從 2023 年上線以來的總和。</p><div><hr/></div><h2 class="section"><strong>積壓訂單</strong>是大客戶帶動，但也是其他公司</h2><p><strong>Google Cloud</strong> 這季最驚人的數字是：積壓訂單（backlog）從上一季的 <strong>2400 億美元</strong>，暴增到 <strong>4620 億美元</strong>，幾乎翻倍。</p><p>這個數字大到讓人懷疑：這些承諾是真的嗎？還是只是紙上的意向，未來可能不會兌現？</p><p><strong>Anthropic</strong> 的營收軌跡回答了這個問題。</p><p>2025 年底，<strong>Anthropic</strong> 的年化營收是 <strong>90 億美元</strong>。今年二月漲到 <strong>140 億</strong>。三月漲到 <strong>190 億</strong>，四月超過 <strong>300 億</strong>，三個月內成長三倍多。</p><p>據報導，<strong>Anthropic</strong> 跟 <strong>Google Cloud</strong> 簽了一筆五年 <strong>2000 億美元</strong> 的承諾。這一筆就占了 <strong>Google</strong> 積壓訂單的四成以上。</p><p>當你最大的客戶之一正在以這種速度成長，而且已經有超過一千家企業客戶每年花超過一百萬美元在它的服務上，那些積壓訂單就不再只是數字。它們是會被消耗的真實需求。</p><p>更重要的是，這改變了資本支出的敘事框架。當下游客戶的營收成長速度比你的資本支出成長還快，那些投資就不是「投機性的產能擴張」，而是「對已驗證需求的回應」。</p><p>下一個疑問會是：這些巨額訂單會不會只是少數幾個大客戶撐起來的？如果 <strong>Anthropic</strong> 或 <strong>OpenAI</strong> 出了什麼問題，積壓會不會像紙牌屋一樣倒塌？</p><p>答案是：大客戶確實是主要推動力，但故事不只是大客戶。</p><p><strong>Google</strong> 這季揭露了一系列更廣泛的企業 <strong>AI</strong> 採用數據。這些數字各自都在回答一個關鍵問題：<strong>AI</strong> 需求到底是真的還是炒作？</p><p><strong>Gemini Enterprise</strong> 的付費月活躍用戶季增 <strong>40%</strong>，這代表願意掏錢使用 <strong>Google AI</strong> 工具的企業用戶數量，在短短一季內就增加了將近一半。這說明企業不只是「試試看」，而是真的在把 <strong>AI</strong> 整合進日常工作流程。</p><p>基於 <strong>Google</strong> 生成式 <strong>AI</strong> 模型的產品營收年增 <strong>800%</strong>。一年前花一塊錢，現在花八塊。這個數字的意義不在於絕對金額（基數可能不大），而在於增速。它顯示企業 <strong>AI</strong> 採用正處於指數成長的早期階段，而且這個曲線還在陡峭向上。</p><p>API 直接處理的 token 量達到每分鐘 <strong>160 億</strong>，上季是 <strong>100 億</strong>，這是最接近「使用量」的硬指標。Token 是 <strong>AI</strong> 模型處理資訊的基本單位，你可以把它想像成 <strong>AI</strong> 的「工作量」。每分鐘 <strong>160 億</strong> 個 token，意味著有海量的企業應用程式正在即時呼叫 <strong>Google</strong> 的 <strong>AI</strong> 模型，客服機器人在回答問題、程式碼助手在寫程式、文件系統在做摘要。</p><p><strong>330</strong> 個客戶在過去 12 個月內各自處理超過 <strong>1 兆</strong> 個 token。一兆是什麼概念？一兆個 token 大約等於處理 <strong>7500 億</strong> 個英文單字，或者把整個維基百科讀個幾百遍。這 <strong>330</strong> 個客戶不是在做 POC（概念驗證），他們在跑大規模、生產等級的 <strong>AI</strong> 工作負載。這是大規模部署的客戶群。</p><p>新客戶獲取量年增一倍，除了讓現有客戶用更多，<strong>Google Cloud</strong> 還在以翻倍的速度拉進新客戶。這意味著市場的滲透率還在快速擴張，不只是既有客戶加碼。</p><p>現有客戶的實際使用量超出當初承諾的 <strong>45%</strong>，這可能是最重要的一個數字。當企業簽雲端合約時，他們會估算自己需要多少用量。如果實際使用量遠低於承諾，那代表需求被高估了，合約裡有大量空氣。但如果實際使用量超出承諾，而且是超出 <strong>45%</strong>，那代表相反的事：當初的估算太保守了，真實需求比企業自己預期的還強。</p><div><hr/></div><blockquote><p>這些數據放在一起講的是同一個故事：<strong>AI</strong> 採用不再是幾個大模型公司在燒錢，而是正在以各種形式滲透進千萬家企業的日常營運。大客戶是引擎，但引擎正在帶動整台車。</p></blockquote><div><hr/></div><h2 class="section"><strong>GPU</strong> 租金在漲，舊晶片還在保值</h2><p>如果你還不確定 <strong>AI</strong> 基礎設施的稀缺性是不是真的，看看價格就知道了。</p><p>根據 <strong>SemiAnalysis</strong> 的追蹤，<strong>H100</strong> 的一年期租約價格在六個月內從每 GPU 每小時 <strong>1.70 美元</strong> 漲到 <strong>2.35 美元</strong>，漲幅將近 <strong>40%</strong>。</p><p>更有趣的是舊晶片的表現，<strong>H100</strong> 已經不是最新的了（<strong>Blackwell</strong> 系列才是），但它的二手價格幾乎沒有跌。有人形容：「它的折舊速度比汽車還慢。」</p><p>這代表什麼？代表需求太強，連舊產能都有人搶。代表雲端供應商有<strong>定價權</strong>，代表這個市場離供過於求還很遠。</p><p>一個反直覺的現象是：這季三大雲端供應商都在成長，而且都在從 <strong>AI</strong> 受益。這不是零和遊戲。</p><p><strong>OpenAI</strong> 最近重新談判了跟<strong>微軟</strong>的合約，放鬆了排他性條款。它的模型現在也可以在 <strong>AWS</strong> 的 <strong>Bedrock</strong> 上使用。<strong>Anthropic</strong> 同時跟 <strong>Google</strong> 和 <strong>AWS</strong> 都有深度合作。</p><p>企業客戶越來越傾向「<strong>多雲</strong>」策略，不把所有雞蛋放在一個籃子裡。這對整個雲端產業是好事。它讓競爭更健康，讓總體市場更大，讓雲端基礎設施層變得更不可或缺。</p><p>不管最後是哪家 <strong>AI</strong> 公司贏了，他們都需要在這三家的雲端上跑。這讓雲端供應商變成了 <strong>AI</strong> 時代的收費站。</p><div><hr/></div><h2 class="section"><strong>營運槓桿</strong>：一把雙面刃</h2><p><strong>這季財報的真正意義是：它把敘事從「AI 投資會不會回本？」翻轉成「AI 投資正在回本，現在的問題是能不能蓋得夠快。」</strong></p><p>這是一個很不一樣的框架。</p><p>在第一個框架裡，你擔心的是需求。在第二個框架裡，你關注的是執行。</p><p>雲端三巨頭目前的處境是：需求已經證明了，執行是下一步。他們有<strong>定價權</strong>、有積壓訂單、有利潤率擴張。短期內自由現金流承壓，但如果利用率如預期上升，營運槓桿會開始發揮作用。</p><p>這裡值得解釋一下什麼是「<strong>營運槓桿</strong>」，因為它正是市場情緒劇烈擺盪的核心原因。</p><p>雲端業務的成本結構很特殊：大部分成本是固定的。你蓋了資料中心、買了伺服器、拉了電力，不管有沒有客戶用，這些錢都花出去了。但一旦有客戶進來，每多賺一塊錢營收，成本幾乎不會增加多少。這就是高<strong>營運槓桿</strong>。</p><p>當需求強勁的時候，這是印鈔機。新產能一上線就被用滿，增量營收的大部分直接變成利潤。利潤率擴張，現金流飆升，估值跟著水漲船高。</p><p>但當市場擔心「<strong>AI</strong> 泡沫」的時候，同樣的槓桿會反過來變成負擔。如果需求不如預期，那些已經砸下去的幾千億資本支出就變成沉沒成本，產能閒置，折舊費用照樣吃掉利潤。高固定成本從資產變成負債。</p><p>這就是為什麼過去一年半，這些公司會一直被質疑。基本面沒有劇烈變化，變的是市場在兩種情境之間的搖擺：「需求是真的」還是「這是泡沫」。</p><p>一旦新產能上線並達到高使用率，增量營收的很大一部分會直接變成利潤。加上 <strong>Google</strong> 和<strong>亞馬遜</strong>都在推自家的 <strong>AI</strong> 晶片（<strong>TPU</strong>、<strong>Trainium</strong>），這些晶片比 <strong>Nvidia</strong> GPU 便宜很多，長期會改善單位經濟效益。</p><p>這季財報的意義，就是把天平推向了前者。當「需求是真的」這個敘事站穩腳跟，高<strong>營運槓桿</strong>就從風險變成優勢。同樣的商業模式、同樣的資本支出，但市場願意給的估值完全不同。</p><div><hr/></div><h2 class="section"><strong>敘事的翻轉</strong></h2><p>有一個常見的擔憂是：這些公司會不會為了追成長而犧牲利潤？畢竟資本支出這麼大，總得有人付出代價。</p><p>這季財報顯示的是相反的情況。</p><p><strong>Google Cloud</strong> 的營業利潤率從一年前的 <strong>17.8%</strong> 跳升到 <strong>32.9%</strong>，幾乎翻倍。營收成長 <strong>63%</strong>，營業利益成長三倍，達到 <strong>66 億美元</strong>。<strong>AWS</strong> 的營業利潤率維持在 <strong>35-38%</strong> 的高檔，同時成長重新加速到 <strong>28%</strong>。<strong>Azure</strong> 沒有單獨揭露利潤率，但<strong>微軟</strong>整體的智慧雲端部門利潤率也很健康。</p><p>高成長加上利潤率擴張，這個組合很少見。它代表<strong>營運槓桿</strong>正在發揮作用：固定成本攤在更多營收上，加上 <strong>AI</strong> 工作負載的單位經濟效益可能比傳統雲端服務更好。</p><p><strong>這直接回應了市場最大的擔憂。這些公司不是在「燒錢換成長」，他們是在高速成長的同時變得更賺錢，這是高品質成長的特徵。</strong></p><p>一年前，市場的問題是：「<strong>AI</strong> 會為雲端帶來回報嗎？」</p><p><strong>現在，問題變成了：「雲端要怎麼蓋得夠快來滿足 AI 需求？」</strong></p><p>當然，資本支出的規模依然驚人，折舊壓力會在未來幾年逐漸顯現，而競爭格局也可能改變。但在 2025 年驅動泡沫擔憂的幾個核心指標：成長軌跡、利潤率軌跡、需求驗證，數據已經明顯改善。</p><blockquote><p>雲端不只是在賺錢，它正在成為整個 <strong>AI</strong> 經濟的基礎設施層，稀缺的、有<strong>定價權</strong>的、不可或缺的。</p></blockquote><p>這才是這季財報真正在說的事。</p><div><hr/></div><h1 class="chapter" id="第十六期專欄-出刊日期-2026-05-21"><strong>第十六期專欄(出刊日期： 2026-05-21)</strong></h1><h1 class="chapter" id="GPU再強也要插在銅線上-從銅鋁鋰三兄弟看AI金屬戰爭"><strong>GPU再強也要插在銅線上！從銅鋁鋰三兄弟看AI金屬戰爭</strong></h1><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!szqX!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2c703233-ef0e-4330-b103-f73d07a6aa4a_800x452.jpeg 424w, https://substackcdn.com/image/fetch/$s_!szqX!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2c703233-ef0e-4330-b103-f73d07a6aa4a_800x452.jpeg 848w, https://substackcdn.com/image/fetch/$s_!szqX!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2c703233-ef0e-4330-b103-f73d07a6aa4a_800x452.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!szqX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2c703233-ef0e-4330-b103-f73d07a6aa4a_800x452.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/2c703233-ef0e-4330-b103-f73d07a6aa4a_800x452.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":452,"width":800,"resizeWidth":null,"bytes":null,"alt":null,"title":null,"type":null,"href":null,"belowTheFold":true,"topImage":false,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' height="452" loading="lazy" sizes="100vw" src="images/img_004_94dad8b7.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!szqX!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2c703233-ef0e-4330-b103-f73d07a6aa4a_800x452.jpeg 424w, https://substackcdn.com/image/fetch/$s_!szqX!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2c703233-ef0e-4330-b103-f73d07a6aa4a_800x452.jpeg 848w, https://substackcdn.com/image/fetch/$s_!szqX!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2c703233-ef0e-4330-b103-f73d07a6aa4a_800x452.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!szqX!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2c703233-ef0e-4330-b103-f73d07a6aa4a_800x452.jpeg 1456w" width="800"/></picture><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"><svg fill="none" height="20" role="img" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><title></title><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></figure></div><p><a href="https://www.businessweekly.com.tw/archive/Article?StrId=7014223">https://www.businessweekly.com.tw/archive/Article?StrId=7014223</a></p><p>今年是金屬大年，但市場大部份時間都在講黃金和白銀。黃金今年曾經屢創新高、白銀年初時候曾經成為散戶最愛。但另一群被冷落的金屬：基本金屬也在悄悄地不斷上漲。</p><p>當大家提及AI時，不外乎都是晶片、雲端、軟體、Agent這幾個層次。這些當然重要，但如果你把整個AI產業鏈一層一層往下拆，最後會撞到一堵牆：物理層。</p><p>不管多厲害的模型、多聰明的Agent、多猛的GPU，最後都要插在一個插座上，接在一條銅線上，被一塊鋁製的散熱片冷卻，靠一組鋰電池維持供電穩定。</p><p>AI再怎麼虛擬、再怎麼「認知革命」，它還是需要一個物質基礎：金屬、電力、和水。</p><p>我想跳出晶片的框架，從最底層的原物料來看這場AI泡沫之爭。你會發現一件很有意思的事：<strong>銅</strong>、<strong>鋁</strong>、<strong>鋰</strong>這三兄弟，各自都在演一齣完全不一樣的戲，但它們最後指向的結論是同一個，<strong>AI</strong>對實體世界的需求，遠比市場想像的還要厲害。</p><h2 class="section"><strong>AI</strong>，正在變成金屬世界的主宰</h2><p>先講一個比較宏觀的概念。</p><p>2000年代到2010年代，大宗商品市場有一個主導敘事叫做「<strong>中國超級週期</strong>」。中國的基礎建設、城鎮化、製造業崛起，吃掉了全世界一半以上的金屬需求。那個週期持續了大概15年，造就了礦業公司的黃金時代。</p><p>然後2015年之後，中國需求放緩，於是整個金屬市場進入了漫長的低迷期，礦商不投資、不勘探、不擴產，因為沒人相信下一個超級週期會來。</p><p>現在，我們正站在一個新週期的起點。而這次的主角，不再是中國，是<strong>AI</strong>。</p><p>這個對比不是隨便講講的。它有幾個結構性的相似點：</p><p>一、需求是「階梯式」的，不是線性的。 <strong>AI資料中心</strong>的單櫃功率密度，已經來到傳統資料中心的數倍乃至一個數量級之上。這不是「多一點」的問題，是「整個熱力學設計都要重來」的問題。</p><p>二、這是結構性的，不是週期性的。 <strong>Microsoft</strong>、<strong>Google</strong>、<strong>Amazon</strong>、<strong>Meta</strong>這些公司已經公開承諾了到2030年的資本開支，全部加起來是以兆美元計的。這跟一般的經濟週期完全不一樣。</p><p>三、供給完全來不及反應。 而這一點，才是真正決定價格走向的關鍵，我們等下會細講。</p><p>但這裡有一個比中國超級週期不同的地方。</p><p>當年中國的城鎮化和基礎建設，雖然需求很大，但它的決策週期和礦業的投資週期，大致上還在同一個時間尺度上。一座城市規劃要五年，一座礦開發要十年，兩邊雖然有落差，但不至於完全脫節。</p><p><strong>AI</strong>不一樣。</p><p><strong>Google</strong>上個月決定多蓋一座資料中心，今年就要上電、今年就要拉銅線、今年就要裝冷卻系統。但你要開一座新銅礦，是2026年拍板，至少十年後才看到第一塊銅。</p><p>這是兩條斜率完全不在同一個維度的曲線。</p><blockquote><p>AI的資本開支決策，是用「季」為單位在做的。礦業的開發決策，是用「數年」為單位在做的。需求以季度為單位加速，供給以十年為單位才能回應。這中間的缺口，就是價格要填補的空間。</p></blockquote><div><hr/></div><h2 class="section"><strong>銅</strong>：資料中心的血管</h2><p>銅的故事最簡單，也最暴力。</p><p>一座超大規模（hyperscale）<strong>AI資料中心</strong>的銅用量，可能是傳統資料中心的好幾倍，動輒以萬噸計。電力分配、母線槽、變壓器、配電單元、接地系統，整個資料中心基本上是「泡在銅裡面」的。</p><p>到2030年，光<strong>AI資料中心</strong>對銅的消耗，依照各家投行的估算，可能會從目前不到 1% 跳升到全球銅需求中個位數百分比的等級。聽起來好像不多？但你要知道，銅原本是一個年需求只成長個位數低位的成熟市場。<strong>AI</strong>多吃的，等於是市場好幾年的自然成長量被一個新需求源直接吞掉。</p><p>但需求不是最重點，最重點是供給那一端。</p><p>開發一座新銅礦從探勘到投產，平均需要十幾到二十幾年，在美國甚至接近三十年。而且全球銅礦的平均品位過去三十年明顯下降，意味著你需要挖更多的石頭才能得到同樣的銅。</p><p>更糟的是，大型礦場接連出事。<strong>Ivanhoe</strong>在剛果的Kakula礦地震加洪水，<strong>Freeport-McMoRan</strong> 在印尼的 <strong>Grasberg</strong>——全球最大的銅金礦之一——去年九月遭遇泥流災害，目前復產進度仍有爭議：印尼子公司一度表示要延到 2028 年初才能滿產，但母公司隨即出面澄清仍維持 2027 年底滿產的目標。不管哪個版本，2026 年的產量目標已經砍掉約三成，未來幾年產出累計減少數個百分點，對本來就緊的銅市場是雪上加霜。</p><blockquote><p>這代表著銅根本沒有「快速應對需求」這個選項。就算今天<strong>AI</strong>把銅價推到天上去，你也沒辦法在三五年內開出一個新的大礦來補。<strong>結構性赤字</strong>，至少會持續到2030年以後。</p></blockquote><div><hr/></div><h2 class="section"><strong>鋁</strong>：被低估的散熱英雄</h2><p>鋁的故事比銅更微妙，但同樣強勁。</p><p>市場一想到<strong>AI</strong>就想到銅，但沒多少人注意到：<strong>鋁</strong>才是這場<strong>AI</strong>熱裡，默默吃到最多結構紅利的金屬。</p><p>為什麼？三個原因：</p><p>第一，散熱。 <strong>AI</strong>晶片的熱密度已經高到傳統風冷完全無法應付的程度。新一代的液冷和浸沒式冷卻，核心材料不是別的，就是<strong>鋁</strong>。冷板、熱交換器、散熱器、管路，全都是<strong>鋁</strong>的主場。一座大型<strong>AI</strong>設施，光是散熱系統就可能吃掉相當可觀比例的<strong>鋁</strong>用量，是過去傳統資料中心完全不需要思考的成本項。</p><p>第二，<strong>替代效應</strong>。正因為銅太貴了，有部份基礎設施正在從銅換成<strong>鋁</strong>。母線槽、中低壓配電、架空輸電線，只要不是最極限的高電流應用，<strong>鋁</strong>都「夠用」，而且明顯便宜（相同載流量下的綜合成本一般可以低出兩三成），重量也輕得多。</p><p>這個<strong>替代效應</strong>，在2025-2026是明顯加速的。換句話說，<strong>銅漲越多，鋁越受惠</strong>。</p><p>第三，供給鎖死。</p><p>這一點更絕。全球60%的<strong>鋁</strong>在中國生產，而中國早就自己設了一個4,500萬噸的「年產能硬上限」。</p><p>而這個帽子在 2025 年其實就已經頂到了，中國年產量已經逼近政策上限。歐洲的煉<strong>鋁</strong>廠則因為高電價持續關閉或減產。</p><p>雖然印尼有新產能陸續投產，可以稍稍緩解，但新的煉<strong>鋁</strong>產能本來就需要好幾年才能建成，而且必須綁定大量廉價電力。</p><p>結果就是：未來一兩年全球<strong>鋁</strong>的淨供給成長極為有限，多家機構預估市場將從平衡轉向短缺。</p><div><hr/></div><h2 class="section"><strong>鋰</strong>：從地獄到天堂的180度大逆轉</h2><p><strong>鋰</strong>和 <strong>AI</strong> 的關聯不像銅那麼直接，但它可能是今年最有趣的故事。</p><p>2024年到2025年初，<strong>鋰</strong>基本上是金屬界的棄兒，嚴重過剩、價格崩盤、一堆高成本產能被迫停產。那時候跟你講<strong>鋰</strong>是<strong>AI</strong>概念股，你大概會笑出聲。</p><p>但2026年，事情完全不一樣了。鋰碳酸鹽從 2025 年低點到現在，依產區不同，已經出現約莫一倍上下的反彈，部分高成本產能甚至從接近現金成本線翻身回到合理毛利區間。</p><p>為什麼？</p><p>因為<strong>AI資料中心</strong>不只需要電，它需要「穩定、可控、可瞬間釋放」的電。</p><p><strong>AI</strong>訓練和推論的負載是極度不穩定的，瞬間峰值可以是平均負載的好幾倍。電網根本應付不了這種波動。解決方案是什麼？<strong>BESS</strong>（電池儲能系統），用的就是<strong>鋰</strong>電池。</p><p>2025 年，儲能用途的<strong>鋰</strong>需求出現了爆發式成長（不同口徑大約在 50-70% 之間），2026 年雖然各家投行對成長率分歧（樂觀派看 +50% 以上、保守派如<strong>高盛</strong>則認為儲能裝置量短期會降速），但中長期共識仍是：到 2030 年儲能可能會佔到全球<strong>鋰</strong>需求的三成以上，從邊緣應用變成主要驅動力之一。</p><p>這個增量是EV（電動車）增量之外的全新需求源。而<strong>鋰</strong>的供給雖然比銅靈活得多（一座硬岩礦從 FID 到投產通常以年計、而不是以十年計），但這個需求的加速度太快，加上 2023-2024 年的價格崩跌讓很多項目延後，短期供給仍然偏緊。</p><p>有趣的是，<strong>鋰</strong>是這三種金屬裡唯一一個剛從嚴重過剩中走出來的。2023 到 2025 年初，<strong>鋰</strong>價曾出現深度崩跌（高點到低點跌幅大致接近八成），因為澳洲、智利、阿根廷、中國的新產能上線速度比需求快太多。</p><p>全球最大的<strong>鋰</strong>廠<strong>Albemarle</strong>兩年前法說會還在講如何控制成本、保護毛利。但在剛剛5月的法說會中說到：需求成長比供給成長快，市場正在從過剩轉向緊俏。他們預測 2026 年全球<strong>鋰</strong>需求成長 15-40%，而庫存已經收緊。</p><blockquote><p><strong>鋰</strong>教會我們一件事：一個被判死刑的市場，可以在兩年內因為一個新的結構性需求（<strong>AI</strong>儲能）死而復生。</p></blockquote><p>但要注意的是，<strong>鋰</strong>這條敘事在華爾街中爭議是最大的。<strong>高盛</strong>等保守派認為，中國<strong>鋰</strong>礦企業海外擴張與增產，可能讓<strong>鋰</strong>市場在 2026 下半年重新走向過剩，並質疑 <strong>AI</strong> 儲能帶來的增量是否真有市場期待得那麼大。</p><p>換句話說，<strong>鋰</strong>的多空都有人講得通，它既是供給最有彈性的，也是價格波動最大的，這意味著<strong>鋰</strong>更像是「<strong>高 beta 的 AI 倉位</strong>」，而不是像銅那樣的「結構性鎖死」。</p><div><hr/></div><h2 class="section"><strong>政策</strong>：第四個推手</h2><p>講完需求、講完供給、講完時間錯配，還有一個角色我們沒提到：政府。</p><p>你把這三種金屬的供應鏈攤開來看，會發現一個很尷尬的事實：</p><p><strong>AI</strong>是美國主導的科技革命，但它所需要的金屬，絕大部分不在美國手裡。</p><p>銅的主要產地在智利、秘魯、剛果，這些都是政治風險不低的國家。<strong>鋁</strong>的產能高度集中在中國（接近全球六成）、<strong>鋰</strong>的加工環節（不是礦本身，而是中下游精煉）也是中國主導。美國自己在這三種金屬的供應鏈裡，佔比都極低。</p><p>這個矛盾會在接下來幾年催生一波政策動作。</p><p>你已經看到了：關稅、補貼、關鍵礦物法案。這些政策的本質是什麼？是政府在用行政手段，把供給曲線再往左推一把。</p><p>對投資人來說，這意味著：就算市場機制試圖讓價格回落，政策也會在旁邊補一腳，讓回落的幅度變小、時間變短。</p><div><hr/></div><h2 class="section">光纖取代<strong>銅</strong>？沒那麼簡單</h2><p>最後講一個我覺得應該要釐清的問題。</p><p>市場上常聽到一種說法：「<strong>AI資料中心</strong>不是在用光纖取代銅嗎？銅的故事是不是被誇大了？」</p><p>答案是：是的，但影響有限。</p><p>確實，高速資料傳輸正在從銅線轉向光纖和矽光子學。對於長距離、高頻寬的連接（機架之間、建築之間），光纖更有效率。</p><p>但這只影響資料傳輸，不影響電力傳輸。而電力傳輸才是資料中心裡銅的最大用途，佔比遠遠超過資料傳輸。</p><p>簡單說：光纖可以傳資料，但不能傳電。而 <strong>AI</strong> 資料中心需要的電力正在以驚人的速度成長。這個成長遠遠超過了光纖替代帶來的些微減少。</p><div><hr/></div><h2 class="section"><strong>物理世界的反撲</strong></h2><p><strong>AI</strong>是一場認知革命，但它的燃料、骨架、血管，全部都是物理的。 當所有人都在搶<strong>輝達</strong>、搶雲端、搶記憶體的時候，大家也要清楚，這整座帝國是建立在<strong>銅</strong>、<strong>鋁</strong>、<strong>鋰</strong>、水、電這些最傳統的資源上面。</p><p>而這些資源的供給，不是靠程式寫出來的，是要花十年挖一座礦的。</p><p>這就是為什麼我認為，把金屬當作<strong>AI</strong>組合的一部分，不是什麼另類思考，而是一個「同一個交易」的不同表達。</p>
+  </article>
+  <div class="footer-cta">
+    <p>本機離線版本 • 圖片與內文完整</p>
+    <a class="primary" href="../../index.html">← 回索引</a>
+    <a href="https://www.fomosoc.com/p/kp20092010" target="_blank" rel="noopener">在原站開啟 ↗</a>
+  </div>
+</div>
+</body>
+</html>

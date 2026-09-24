@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>暴漲原因是？拐點到來了？ - 財報解剖: Neoclouds雙雄 (CoreWeave VS Nebius) | 26年8月</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --line: #e9e3d6; --line-soft: #f0ebdf;
+  --text: #1f2533; --text-2: #3a4256; --muted: #7c7a72; --ink: #14171e;
+  --primary: #2f6f5e; --accent: #c97b3f;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(47,111,94,.04) 0%, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(201,123,63,.04) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 28px 96px; }
+
+.meta-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px;
+  font-feature-settings: 'tnum';
+}
+.meta-bar .tag {
+  padding: 3px 9px; border-radius: 4px; font-weight: 500;
+  background: var(--line-soft); color: var(--text-2);
+}
+.meta-bar .tag.free { background: #dde9f3; color: #4a7ba6; }
+.meta-bar .tag.paid { background: #f0dbdb; color: #b06367; }
+.meta-bar a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--line); }
+.meta-bar a:hover { color: var(--primary); border-color: var(--primary); }
+
+h1.article-title {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 36px; font-weight: 400; line-height: 1.25;
+  color: var(--ink); margin: 14px 0 24px; letter-spacing: -0.005em;
+}
+h1.chapter {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 28px; font-weight: 400; line-height: 1.3;
+  color: var(--ink); margin: 56px 0 18px; padding-top: 28px;
+  border-top: 1px solid var(--line);
+  letter-spacing: -0.005em;
+}
+h2.section {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  color: var(--text); margin: 36px 0 12px;
+  padding-left: 12px; border-left: 3px solid var(--primary);
+}
+h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+
+p {
+  font-size: 16.5px; line-height: 1.85; margin: 0 0 18px;
+  color: var(--text);
+  font-family: 'Outfit', 'Noto Serif TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  font-weight: 400;
+}
+p strong, strong { color: var(--ink); font-weight: 600; }
+
+ul, ol { margin: 0 0 18px; padding-left: 26px; }
+li { font-size: 16px; line-height: 1.8; margin-bottom: 6px; }
+
+a { color: var(--primary); text-decoration: underline; text-decoration-color: rgba(47,111,94,.3); text-underline-offset: 2px; }
+a:hover { text-decoration-color: var(--primary); }
+
+blockquote {
+  margin: 28px 0; padding: 18px 24px;
+  background: var(--line-soft); border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-2); font-style: normal;
+}
+blockquote p { margin: 0; color: var(--text-2); }
+blockquote p + p { margin-top: 12px; }
+
+hr {
+  border: 0; height: 1px; background: var(--line);
+  margin: 36px auto; width: 60%;
+}
+
+figure {
+  margin: 32px 0; text-align: center;
+}
+.image2-inset, .captioned-image-container .image2-inset {
+  margin: 0;
+}
+.image2-inset picture, .image2-inset img {
+  display: block; max-width: 100%; height: auto; margin: 0 auto;
+  border-radius: 8px;
+}
+figure img {
+  max-width: 100%; height: auto; border-radius: 8px;
+  display: block; margin: 0 auto;
+  box-shadow: 0 4px 18px -8px rgba(20,23,30,.15);
+}
+.image2-img, .image2-image {
+  max-width: 100%; height: auto;
+}
+.captioned-image-container {
+  margin: 32px -20px;
+}
+.image-link { display: block; text-decoration: none !important; }
+.figcaption {
+  font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5;
+  text-align: center; font-style: italic;
+}
+
+/* Buttons / interactive UI from Substack we want to hide */
+.button, .pencraft, .subscription-widget, .paywall,
+[class*="paywall"], [class*="subscribe"], [class*="Subscribe"],
+.embed, .digest-post-embed { display: none !important; }
+
+.footer-cta {
+  margin-top: 60px; padding: 28px 32px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; text-align: center;
+}
+.footer-cta p { font-size: 14px; color: var(--muted); margin: 0; }
+.footer-cta a {
+  display: inline-block; margin: 4px 6px;
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--line); text-decoration: none;
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+}
+.footer-cta a.primary {
+  background: var(--primary); color: white; border-color: var(--primary);
+}
+
+.toc {
+  margin: 0 0 36px; padding: 20px 24px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.toc-title {
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+.toc ol li { counter-increment: toc; padding: 4px 0; font-size: 14px; }
+.toc ol li::before { content: counters(toc, ".") " "; color: var(--muted); margin-right: 4px; }
+.toc ol li.h1 { font-weight: 600; color: var(--ink); margin-top: 8px; }
+.toc ol li.h2 { color: var(--text-2); padding-left: 18px; }
+.toc a { color: var(--text-2); text-decoration: none; }
+.toc a:hover { color: var(--primary); }
+
+@media (max-width: 768px) {
+  .wrap { padding: 28px 18px 60px; }
+  h1.article-title { font-size: 26px; }
+  h1.chapter { font-size: 22px; }
+  p { font-size: 16px; }
+  .captioned-image-container { margin: 24px -10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta-bar">
+    <a href="../../index.html">← 索引</a>
+    <span class="tag paid">💎 付費</span>
+    <span>2026-08-14</span>
+    <span>2674 字</span>
+    <a href="https://www.fomosoc.com/p/neoclouds-coreweave-vs-nebius-268" target="_blank" rel="noopener">↗ 原站</a>
+  </div>
+  <h1 class="article-title">暴漲原因是？拐點到來了？ - 財報解剖: Neoclouds雙雄 (CoreWeave VS Nebius) | 26年8月</h1>
+  
+  <article class="body">
+<div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!D6yH!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F36cae145-7744-4521-bfbe-6f29eaaf426a_1297x765.png 424w, https://substackcdn.com/image/fetch/$s_!D6yH!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F36cae145-7744-4521-bfbe-6f29eaaf426a_1297x765.png 848w, https://substackcdn.com/image/fetch/$s_!D6yH!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F36cae145-7744-4521-bfbe-6f29eaaf426a_1297x765.png 1272w, https://substackcdn.com/image/fetch/$s_!D6yH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F36cae145-7744-4521-bfbe-6f29eaaf426a_1297x765.png 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/36cae145-7744-4521-bfbe-6f29eaaf426a_1297x765.png","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":765,"width":1297,"resizeWidth":null,"bytes":null,"alt":null,"title":null,"type":null,"href":null,"belowTheFold":false,"topImage":true,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' fetchpriority="high" height="765" loading="lazy" sizes="100vw" src="images/img_002_279fb6be.png" srcset="https://substackcdn.com/image/fetch/$s_!D6yH!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F36cae145-7744-4521-bfbe-6f29eaaf426a_1297x765.png 424w, https://substackcdn.com/image/fetch/$s_!D6yH!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F36cae145-7744-4521-bfbe-6f29eaaf426a_1297x765.png 848w, https://substackcdn.com/image/fetch/$s_!D6yH!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F36cae145-7744-4521-bfbe-6f29eaaf426a_1297x765.png 1272w, https://substackcdn.com/image/fetch/$s_!D6yH!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F36cae145-7744-4521-bfbe-6f29eaaf426a_1297x765.png 1456w" width="1297"/></picture><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"><svg aria-hidden="true" fill="none" height="20" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></figure></div><p>這個星期，CoreWeave 和 Nebius 的股價同時狂飆。 </p><p>兩家公司大漲的根本原因是一樣的：<strong>AI 算力需求依然遠遠超過供給，兩份財報都證明了同一件事，現在的瓶頸在產能，而不在需求。</strong> </p><p>但老實說，需求強這點，其實也不能說是甚麼新聞，大家都清楚，因此我們需要深入一點去分析。</p><div><hr/></div><h2 class="section">CoreWeave：兩個拐點</h2><p>CoreWeave 這一季的財報，確實給了市場全面上調的理由。 </p><ul><li><p><strong>營收 25.8 億美元，同比增長 112%，全年指引上調至 124 到 132 億美元。</strong> </p></li><li><p>期末待履行訂單高達 1,040 億美元，同比暴增 246%。</p></li><li><p>第三季初又簽了超過 250 億美元的新客戶承諾，包括 Meta 追加的 210 億和 Anthropic 的多年期協議。近期產能基本售罄。 </p></li><li><p>此外，一個讓市場很安心的細節是客戶集中度改善了。<strong>最大客戶的營收占比從之前的 71% 降到了 36%。</strong> </p></li></ul><p>這些數字加在一起，解釋了為什麼股價會大漲。</p><p>但在這些亮眼數字背後，我最在意的其實不是營收增長，也不是訂單有多大。</p><p>我反而更注意兩件事：<strong>一是利潤率是不是真的迎來了拐點，二是 GPU 的經濟壽命到底有多長。</strong> </p><p>CoreWeave 兩者都給出了不錯的答案。</p><div class="paywall-jump" data-component-name="PaywallToDOM"></div><div><hr/></div><h3>第一個拐點：利潤率</h3><p>第一季的時候，管理層一直在跟市場解釋，說當時難看的利潤率只是暫時的谷底(1%的營業利潤率)。 </p><p>他們的理由很簡單：機房與設備要先花錢蓋好、把成本記在帳上，但客戶的租金收入要晚幾個月才會陸續進帳，所以這只是時間差的問題，絕非這門生意不賺錢。 </p><p>當時如果扣除這些時間差，實際上的扣除成本後獲利率大約落在百分之二十幾的中段。</p><p>說實話，那時候市場大多半信半疑，靜觀其變。</p><p>但到了第二季，這個「谷底」的說法被數字證實了(回升到5%)。</p><p><strong>更關鍵的是，新簽合約的預期邊際利潤，已經比前幾季高出 5 到 10 個百分點。</strong> 管理層明確用了一個詞：<strong>「重要拐點」。</strong></p><blockquote><p><strong>這意味著公司規模做大後，不再只是營收數字變好看，而是開始實實在在地把規模轉化成更高的純利，調整後的本業獲利有了極為顯著的改善。</strong></p></blockquote><p>這個拐點背後有三個驅動力。</p><p><strong>第一是提價。</strong> </p><p>CoreWeave 在 7 月份針對不同產品線全面提價約 25%。值得注意的是，第二季展現出來的利潤改善，甚至還沒把這次漲價的效果完全算進去，這說明早在漲價之前，公司的賺錢效率就已經在自我提升了。</p><p><strong>第二是供需關係帶來的定價權。</strong> </p><p>管理層認為，客戶拿他們的算力去賺到的商業價值，增長速度遠快於成本的漲幅，所以公司不僅可以把成本轉嫁給客戶，還能留下更高的利潤。</p><p>當然，我會對這種定價權打一點折扣。</p><p>這種溢價到底是因為 CoreWeave 自身的服務真的特別厲害，還是單純佔了「全行業都缺貨」的光，仍需要時間驗證。</p><p>但至少目前，它確實能把成本漲價轉嫁出去。</p><p><strong>第三是新一代晶片帶來更好的利潤。</strong> </p><p>管理層特別點名了下一代晶片 Vera Rubin，將會是未來拉高獲利的主力。這代表客戶非常願意為了更強大的算力支付更高昂的溢價，而且投資新硬體所能回收的報酬率，遠比舊硬體來得更好。</p><p>為什麼這個利潤率拐點如此重要？ </p><p>因為過去市場對 CoreWeave 最大的擔憂之一，是它會變成一個「永遠需要砸大錢買設備，但自己卻永遠賺不到錢」的生意。 </p><p><strong>但現在，利潤率開始往上走了，這說明 CoreWeave 正在產生運營槓桿。</strong></p><div><hr/></div><h3>第二個拐點：GPU 的經濟壽命</h3><p>管理層特別分享了一個案例：<strong>公司居然把早在 2020 年就推出的舊款 A100 晶片，又成功簽下了一份一路延伸到 2029 年的新合約。</strong></p><p><strong>更重要的是，這些舊世代晶片的出租單價，竟然還維持在一年前甚至更高的高位。</strong></p><p>這在財務上意義重大。當初這批晶片剛買進來時，第一份合約收到的租金就已經足夠還清當初借來買設備的貸款，並且還幫公司賺到了合理的利潤。</p><p>這代表這批晶片早就已經「回本」了，現在不論是續約還是轉租給新客戶，賺到的每一分錢幾乎都是純粹的額外淨賺。</p><blockquote><p><strong>無論是 Hopper 還是更早期的 Ampere 晶片，在第一批長約到期後，依然能在市場上以好價錢重新出租，甚至轉去執行比較輕量的「AI 推理」工作。</strong></p><p><strong>這說明這些昂貴硬體的真實使用壽命，遠比會計帳面上預設的折舊年限還要長得多。</strong></p></blockquote><p>除了舊晶片繼續發揮餘熱，公司最近剛推出的「託管推理服務」(Managed Inference)，也是一個不錯的爆發點。 </p><p>過去客戶租了晶片，得自己派工程師去維護、調校，才能讓 AI 進行日常的問答與運算。</p><p>現在 CoreWeave 直接幫客戶包辦了底層的所有技術細節，客戶只需要把開發好的 AI 模型傳上來，就能直接流暢運行。</p><p><strong>這種「幫客戶省心」的服務推出短短幾個月，預計每年能穩定收取的訂閱收入就從區區 100 萬美元，一路暴增到超過 1 億美元，管理層甚至預估年底能輕鬆突破 2.5 億美元。</strong> </p><p>這代表 CoreWeave 的業務模式正在轉變，從單純出租算力，走向疊加資料儲存、網路傳輸、軟體設定與技術維護的完整工作負載方案。 </p><p>最直接的好處是能在不增加額外硬體成本的情況下收取更高毛利的服務費，同時也在逐步提高客戶的轉換成本。</p><p> 如果這個趨勢持續，公司就有機會擺脫單純靠硬體削價競爭的困境。</p><div><hr/></div><h3>CoreWeave仍然存在的問題</h3><p>CoreWeave 這季證明了資產回報在改善，但有幾件事還未解決。</p><p><strong>第一，利息負擔。</strong> </p><p>公司雖然說過去一年加權平均債務成本已下降近 300 個基點，但第三季利息支出仍預估高達 8.6 到 9.4 億美元。</p><p>同時 2026 全年資本支出指引又升至 350 到 390 億美元，遠高於收入規模。高槓桿、巨額再投資、利息負擔，這些仍然存在。</p><p><strong>第二，融資模式的變化。</strong> </p><p>CoreWeave 最近開始更積極地爭取為期兩到三年的企業客戶合約，較短期的合約往往能談到更高的出租單價與獲利率，目標客戶群瞬間變大了許多。</p><p>但問題也跟著出來：GPU 是可以使用很多年的資產，客戶合約可能只有兩三年。</p><p>當第一份合約到期後，這批晶片到底還能不能順利找到下一個租客、還能維持多高的出租價格，都變成了未知數。</p><p>現在 GPU 還很缺，這個問題看起來沒那麼嚴重，但如果未來供給正常化，資本回收速度就會變得非常重要。</p><div><hr/></div><h2 class="section">Nebius：利潤率與空頭回補</h2><p>Nebius 的股價反應更劇烈，單日漲了 34%。但如果你仔細看數字，會發現引爆點其實不是營收。</p><p>第二季營收 5.82 億美元，同比增長 454%，看起來很嚇人，但其實只超市場預期大約 2%。</p><p><strong>我認為，今季的重點是「利潤率提前一整季達標」與「高達 27% 的空頭比例（Short Interest）」。</strong> </p><p>Nebius 的調整後核心獲利直接轉正，達到 2.36 億美元，利潤率約 40.6%。 </p><p>要知道，管理層在第一季時明確說過，因為大舉投資與設備進場的時間差，第二季的獲利率會暫時下滑，要等到下半年才會回升到四成的目標。 </p><p><strong>結果第二季直接做到約41%，等於提前達標，成為這次最大的正面驚喜。</strong> </p><p>再加上當時市場上有大約 27% 的做空比例，利潤率驚喜直接引發了空頭回補，成了股價的加速器(看的就是你，Michael Burry)。</p><div><hr/></div><h3>商業模式的進化</h3><p>但在我看來， Nebius 這一季真正重要的，不只是利潤率數字，而是它的合約結構。 </p><p>他們把合約分成三類：</p><ol><li><p><strong>一到三年的核心 AI 雲端合約</strong>，用來穩定基本盤；</p></li><li><p><strong>三到六個月的短期高價合約</strong>，趁供給緊張時拿溢價；</p></li><li><p><strong>與頂級大企業簽訂的超長合約</strong>，用來向金融機構證明未來的還款能力，好順利拿到更便宜的貸款。</p></li></ol><p>三種合約各管一件事：<strong>穩收入、賺利潤、降資金成本。</strong></p><p>另外，有一個細節值得注意，管理層說，<strong>目前有能力把 2027 年的產能全部賣完，但選擇保留一部分，等接近交付時再以更高價格出售。</strong> </p><p>這種保留產能的作法，在供不應求時確實能暴賺一筆，但同時也意味著，如果未來市場晶片供給增加或價格回落，這些沒預先簽約的產能就必須承擔降價求售的風險。</p><p>另外，這一季有一個比數字更重要的信號：<strong>四個大型客戶原本都有其他供應商，部分甚至在用Hyperscalers，最後是在做完概念驗證之後才選擇了 Nebius。</strong> </p><p>客戶看中的是大型連續 GB300 集群、穩定性、技術支援和擴張彈性。</p><blockquote><p><strong>這說明 Nebius 不是在接市場剩下的需求，而是憑藉技術與服務硬實力，直接從對手手中搶走了客戶的預算。</strong></p><p><strong>這與過去單純因為全市場缺貨、誰有晶片誰就能賺錢的粗放模式，已經是完全不同的商業故事了。</strong></p></blockquote><div><hr/></div><h3>Nebius仍然存在的問題</h3><p>有兩個細節，我們可能仍然要關注。</p><p><strong>第一，管理層提到每兆瓦 4,000 萬到 5,000 萬美元的短期價格，看起來十分天價，但實際上是三到六個月合約的年化價值。</strong> </p><p>這反映的是當下極度缺貨時的緊急搶購價，絕不能直接套用到公司未來的全部產能，更不能視為常態的長期平均售價。</p><p><strong>第二，Nebius 預計年底達到 800 兆瓦到 1 吉瓦的「已通電產能」，但管理層特別澄清，通電並不代表能立刻收錢。</strong> </p><p>中間還有數月的工程驗收與部署流程，預計要到隔年上半年才會陸續轉化為真正產生租金的有效產能。</p><p>所以我看完這一季之後，對 Nebius 的需求強度、定價能力及技術競爭力變得更正面，但對產能交付、資金需求與 2027 年收入質量的看法沒有同步上調。</p><div><hr/></div><h2 class="section">兩家公司的利潤，到底怎麼看？</h2><p>看到這裡，大家可能會對兩家的利潤數字感到困惑。</p><p>Nebius 說利潤率 40%，CoreWeave 說利潤率改善 5 到 10 個百分點，兩邊都在喊「拐點」。 </p><p>那到底誰賺錢能力更好？</p><p>這裡需要先釐清口徑：這些公司談論的「利潤率」，通常指的是調整後 EBITDA 利潤率，而不是 GAAP 營業利潤。 </p><p>如果看 GAAP，兩家第二季都還在虧錢。<strong>CoreWeave 虧了 4,900 萬美元（營業利潤率 -1.9%），Nebius 虧了 1.76 億美元（營業利潤率 -30%）。</strong> </p><p>但虧錢的原因不一樣，反映了不同的發展階段。</p><p><strong>CoreWeave 的虧損，主要是被巨額的硬件折舊和利息吃掉了。</strong> </p><p>它的「生意本身」已經開始賺錢了，第二季它的調整後營業利潤已經轉正，達到約 5%。</p><p>在重資產行業，這是一個重要的里程碑，意味著它的運營已經能產生正向現金流，剩下的只是償還債務和消化折舊。</p><p><strong>Nebius 的調整後 EBITDA 超過 40%，反映了出租算力的毛利極高，</strong> 但扣除擴張期的股票薪酬和研發費用後，調整後營業利潤其實還沒真正轉正。</p><p>它目前處於「毛利很高，但為了長大還在大量投入」的階段。</p><p><strong>如果問哪家目前的利潤質量更好、商業模式更成熟，答案是 CoreWeave。</strong></p><p>但兩家之間有一個更深層的差異，直接決定了股東最終能拿走多少價值，就是<strong>資本結構的不對稱</strong>。</p><blockquote><p><strong>CoreWeave 總債務超過 350 億美元，單季利息支出即將接近 9 億，擴張是債務驅動的。</strong></p><p><strong>Nebius 帳面債務約 85 億，但現金也有 80 億，淨債務接近零，擴張主要靠客戶預付款和股權融資。</strong></p></blockquote><p>CoreWeave 要證明的是利潤率提升的速度能不能跑贏龐大的利息和折舊；Nebius 要證明的是高增長能不能在不大幅稀釋股東的情況下持續支撐巨大的資本開支。</p><p><strong>如果未來 GPU 供給寬鬆，CoreWeave 的高槓桿會帶來更大的下行風險。</strong></p><div><hr/></div><h2 class="section">Neocloud 到底有沒有護城河？</h2><p>以上寫的都是短期的東西，現在來看點長線的。 </p><p>如果把 Neocloud 的商業模式簡單拆開，就是：買 Nvidia GPU、找電、蓋數據中心，再把算力租出去。</p><p>如果只是做到這裡，護城河其實不深。</p><p>GPU 不是它自己設計的，網絡設備也不是它壟斷的，電力更不是它獨有的。</p><p>而且最麻煩的是，它最大的客戶(Microsoft、Meta、Google、Amazon)本身就是全世界最有能力自己蓋 AI 基礎設施的公司。</p><p>所以 Neocloud 長期存在的理由，不可以只是「我手上有 GPU」。</p><p><strong>我現在覺得真正可能形成護城河的地方，大概有四個：</strong></p><p><strong>第一是速度。</strong> </p><p>AI 產業現在最貴的東西之一是時間，如果 Neocloud 可以一年內交付算力，但客戶自己蓋要兩三年，那就算貴一點，客戶還是願意付。</p><p><strong>第二是整套基礎設施的管理能力。</strong> </p><p>幾萬顆 GPU 放在一起，不代表就能有效率地跑。網絡、存儲、調度、故障處理、工作負載分配，這些運營經驗本身會慢慢變成優勢。</p><p><strong>第三是軟件層，這一點長期最重要。</strong> </p><p>如果客戶只是租 GPU，很容易換供應商。但如果客戶把模型部署、監控、優化、數據處理流程都建立在你的平台上，轉換成本就開始變高，那時候才真的會出現黏著度。</p><p>CoreWeave 的託管推理和非 GPU 服務，就是在往這個方向走。</p><p><strong>第四是使用率。</strong> </p><p>大型雲端公司蓋算力通常先滿足自己的需求，但 Neocloud 可以同時服務很多不同客戶，把不同時間、不同工作負載拼在一起，理論上有機會把設備使用率拉得更高。</p><div><hr/></div><h2 class="section">結論</h2><p>對兩家公司，我目前的判斷是一樣的：<strong>高增長，但護城河還沒有被完全證明。</strong></p><p>利潤率拐點是真的，運營槓桿是真的，定價權也是真的。</p><p><strong>但這些「真的」背後，幾乎全部指向同一個前提：GPU 仍然稀缺，算力仍然供不應求。</strong></p><blockquote><p><strong>這是一個好故事，但它是一個脆弱的故事，因為所有前提都建立在「短缺」兩個字上面。</strong></p><p><strong>短缺持續，利潤率就能繼續往上走，客戶就願意簽長約，舊晶片就能繼續租出好價錢。</strong></p><p><strong>但如果有一天供給追上了需求，這些看起來已經被證明的東西，有多少能留下來？</strong></p></blockquote><p>這就是為什麼護城河還沒有被完全證明。</p><p>它們的護城河還在形成中，而且不能建立在 GPU 稀缺這件事情本身，因為稀缺是會消失的。</p><p>如果五年後 CoreWeave 跟 Nebius 還是在比「同一張 GPU，我每小時比你便宜多少」，那最終很容易陷入價格競爭。</p><p>但如果它們能從單純出租 GPU，走到整個 AI 基礎設施平台，讓客戶依賴它的部署、管理、軟件和運營能力，那時候我才會比較願意給它真正的平台型估值。</p><p>接下來，有三個重點我會關注：</p><ul><li><p><strong>舊世代 GPU 的續約率和定價</strong></p></li><li><p><strong>調整後營業利潤率能不能在第四季真正站穩</strong></p></li><li><p><strong>當增長逐漸正常化後，自由現金流和增量資本回報率能不能追上投入資本</strong></p></li></ul><p>這三件事如果成立，我會明顯提高對 Neocloud 的長期價值判斷。</p><div class="digest-post-embed" data-attrs='{"nodeId":"45e28bf7-8234-445e-a006-6f00a910cc2d","caption":"2024 年，巨頭們（Hyperscalers）的資本支出大約是 2,410 億美元。","cta":null,"showBylines":true,"showDescription":true,"showImage":true,"size":"lg","isEditorNode":true,"title":"AI還是泡沬嗎？資本支出仍值得擔憂嗎？雲端反彈力度最強？-深入分析第44期：Oracle，CoreWeave，Nebius","publishedBylines":[{"id":350293993,"name":"KP@FOMOSoc","bio":"我是KP，在金融界打滾多年，負責投資。 分享對市場的深度想法，不一定對，但保證有邏輯。 免責聲明: 本人為香港證監會持牌人士。所有內容僅屬意見分享用途，並不構成投資建議。","photo_url":"https://substack-post-media.s3.amazonaws.com/public/images/3746d6c3-c559-4ac5-a329-c790619641d6_768x768.png","is_guest":false,"bestseller_tier":1000}],"post_date":"2026-04-22T10:03:21.487Z","cover_image":"https://substackcdn.com/image/fetch/$s_!uI6Y!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F78ede360-f100-45a6-85eb-e6fdbfb56263_1672x941.png","cover_image_alt":null,"canonical_url":"https://www.fomosoc.com/p/ai-44oraclecoreweavenebius","section_name":null,"video_upload_id":null,"id":194928099,"type":"newsletter","reaction_count":328,"comment_count":21,"publication_id":5208588,"publication_name":"FOMO研究院電子報","publication_logo_url":"https://substackcdn.com/image/fetch/$s_!JSpF!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fff13fa71-fd4f-4451-9c2a-54b4fb881555_768x768.png","belowTheFold":true,"youtube_url":null,"show_links":null,"feed_url":null}'></div>
+  </article>
+  <div class="footer-cta">
+    <p>本機離線版本 • 圖片與內文完整</p>
+    <a class="primary" href="../../index.html">← 回索引</a>
+    <a href="https://www.fomosoc.com/p/neoclouds-coreweave-vs-nebius-268" target="_blank" rel="noopener">在原站開啟 ↗</a>
+  </div>
+</div>
+</body>
+</html>

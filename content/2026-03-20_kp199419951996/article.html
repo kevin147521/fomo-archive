@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KP商周專欄(第1994，1995，1996期)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --line: #e9e3d6; --line-soft: #f0ebdf;
+  --text: #1f2533; --text-2: #3a4256; --muted: #7c7a72; --ink: #14171e;
+  --primary: #2f6f5e; --accent: #c97b3f;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(47,111,94,.04) 0%, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(201,123,63,.04) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 28px 96px; }
+
+.meta-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px;
+  font-feature-settings: 'tnum';
+}
+.meta-bar .tag {
+  padding: 3px 9px; border-radius: 4px; font-weight: 500;
+  background: var(--line-soft); color: var(--text-2);
+}
+.meta-bar .tag.free { background: #dde9f3; color: #4a7ba6; }
+.meta-bar .tag.paid { background: #f0dbdb; color: #b06367; }
+.meta-bar a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--line); }
+.meta-bar a:hover { color: var(--primary); border-color: var(--primary); }
+
+h1.article-title {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 36px; font-weight: 400; line-height: 1.25;
+  color: var(--ink); margin: 14px 0 24px; letter-spacing: -0.005em;
+}
+h1.chapter {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 28px; font-weight: 400; line-height: 1.3;
+  color: var(--ink); margin: 56px 0 18px; padding-top: 28px;
+  border-top: 1px solid var(--line);
+  letter-spacing: -0.005em;
+}
+h2.section {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  color: var(--text); margin: 36px 0 12px;
+  padding-left: 12px; border-left: 3px solid var(--primary);
+}
+h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+
+p {
+  font-size: 16.5px; line-height: 1.85; margin: 0 0 18px;
+  color: var(--text);
+  font-family: 'Outfit', 'Noto Serif TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  font-weight: 400;
+}
+p strong, strong { color: var(--ink); font-weight: 600; }
+
+ul, ol { margin: 0 0 18px; padding-left: 26px; }
+li { font-size: 16px; line-height: 1.8; margin-bottom: 6px; }
+
+a { color: var(--primary); text-decoration: underline; text-decoration-color: rgba(47,111,94,.3); text-underline-offset: 2px; }
+a:hover { text-decoration-color: var(--primary); }
+
+blockquote {
+  margin: 28px 0; padding: 18px 24px;
+  background: var(--line-soft); border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-2); font-style: normal;
+}
+blockquote p { margin: 0; color: var(--text-2); }
+blockquote p + p { margin-top: 12px; }
+
+hr {
+  border: 0; height: 1px; background: var(--line);
+  margin: 36px auto; width: 60%;
+}
+
+figure {
+  margin: 32px 0; text-align: center;
+}
+.image2-inset, .captioned-image-container .image2-inset {
+  margin: 0;
+}
+.image2-inset picture, .image2-inset img {
+  display: block; max-width: 100%; height: auto; margin: 0 auto;
+  border-radius: 8px;
+}
+figure img {
+  max-width: 100%; height: auto; border-radius: 8px;
+  display: block; margin: 0 auto;
+  box-shadow: 0 4px 18px -8px rgba(20,23,30,.15);
+}
+.image2-img, .image2-image {
+  max-width: 100%; height: auto;
+}
+.captioned-image-container {
+  margin: 32px -20px;
+}
+.image-link { display: block; text-decoration: none !important; }
+.figcaption {
+  font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5;
+  text-align: center; font-style: italic;
+}
+
+/* Buttons / interactive UI from Substack we want to hide */
+.button, .pencraft, .subscription-widget, .paywall,
+[class*="paywall"], [class*="subscribe"], [class*="Subscribe"],
+.embed, .digest-post-embed { display: none !important; }
+
+.footer-cta {
+  margin-top: 60px; padding: 28px 32px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; text-align: center;
+}
+.footer-cta p { font-size: 14px; color: var(--muted); margin: 0; }
+.footer-cta a {
+  display: inline-block; margin: 4px 6px;
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--line); text-decoration: none;
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+}
+.footer-cta a.primary {
+  background: var(--primary); color: white; border-color: var(--primary);
+}
+
+.toc {
+  margin: 0 0 36px; padding: 20px 24px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.toc-title {
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+.toc ol li { counter-increment: toc; padding: 4px 0; font-size: 14px; }
+.toc ol li::before { content: counters(toc, ".") " "; color: var(--muted); margin-right: 4px; }
+.toc ol li.h1 { font-weight: 600; color: var(--ink); margin-top: 8px; }
+.toc ol li.h2 { color: var(--text-2); padding-left: 18px; }
+.toc a { color: var(--text-2); text-decoration: none; }
+.toc a:hover { color: var(--primary); }
+
+@media (max-width: 768px) {
+  .wrap { padding: 28px 18px 60px; }
+  h1.article-title { font-size: 26px; }
+  h1.chapter { font-size: 22px; }
+  p { font-size: 16px; }
+  .captioned-image-container { margin: 24px -10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta-bar">
+    <a href="../../index.html">← 索引</a>
+    <span class="tag paid">💎 付費</span>
+    <span>2026-03-20</span>
+    <span>560 字</span>
+    <a href="https://www.fomosoc.com/p/kp199419951996" target="_blank" rel="noopener">↗ 原站</a>
+  </div>
+  <h1 class="article-title">KP商周專欄(第1994，1995，1996期)</h1>
+  <div class="toc"><div class="toc-title">本文目錄</div><ol>
+<li class="h1"><a href="#第一期專欄-出刊日期-2026-01-29">第一期專欄(出刊日期： 2026-01-29)</a>
+</li>
+<li class="h1"><a href="#台積電一千七百元股價續飆-兆級投資背後-雙引擎-底氣">台積電一千七百元股價續飆？兆級投資背後「雙引擎」底氣</a>
+</li>
+<li class="h1"><a href="#第二期專欄-出刊日期-2026-02-05">第二期專欄(出刊日期： 2026-02-05)</a>
+</li>
+<li class="h1"><a href="#AI變現-第一場超級壓力測試-ChatGPT賣廣告-懂你情緒決勝敗">「AI變現」第一場超級壓力測試！ChatGPT賣廣告，懂你情緒決勝敗</a>
+</li>
+<li class="h1"><a href="#第三期專欄-出刊日期-2026-02-12">第三期專欄(出刊日期： 2026-02-12)</a>
+</li>
+<li class="h1"><a href="#Anthropic外掛掀31兆市值大逃殺-平庸軟體的末日才剛開頭">Anthropic外掛掀31兆市值大逃殺，平庸軟體的末日才剛開頭</a>
+<ol>
+<li class="h2"><a href="#1-4-兆美元的-飢餓遊戲">1.4 兆美元的「飢餓遊戲」</a></li>
+</ol>
+</li>
+</ol></div>
+  <article class="body">
+<p>歡迎來到 FOMO研究院的特別內容。這幾篇文章是我受邀於《商業周刊》發表的獨家專欄。根據協議，專欄文章在刊登滿一個月後，我會將完整內容解禁，專屬分享給研究院的付費會員。</p><p><strong>?? 閱讀前的小提醒：</strong></p><ol><li><p><strong>原汁原味的「導演剪輯版」：</strong> 商周刊登的版本經過了編輯部的精簡與潤飾，而我發布在這裡的，是未經刪減的原始草稿。即使你已經看過雜誌版本，這篇原稿保留了更多我個人的推演過程，讀起來會有截然不同的風味。</p></li><li><p><strong>底層邏輯，不怕過時：</strong> 你可能會想，一個月前的文章現在看會不會太遲？熟悉我的老讀者都知道，我寫作的核心始終是拆解「底層的商業邏輯」，而非追逐短線新聞。因此，這份產業鏈的結構性分析，即使過了一個月，含金量依然不減。</p></li><li><p><strong>為何沒收到這篇的 Email 通知？</strong> 為了避免過度轟炸大家的信箱，這系列的解禁文章，我都會以「不發送 Email 與推播」的形式獨立上架。我會在週末的常規電子報中，再把連結整理給大家慢慢回顧。</p></li></ol><p>祝大家閱讀愉快！??</p><div class="paywall-jump" data-component-name="PaywallToDOM"></div><h1 class="chapter" id="第一期專欄-出刊日期-2026-01-29">第一期專欄(出刊日期： 2026-01-29)</h1><h1 class="chapter" id="台積電一千七百元股價續飆-兆級投資背後-雙引擎-底氣">台積電一千七百元股價續飆？兆級投資背後「雙引擎」底氣</h1><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!4cM5!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb126dde-1782-4d56-a010-a4d823db4f11_700x933.jpeg 424w, https://substackcdn.com/image/fetch/$s_!4cM5!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb126dde-1782-4d56-a010-a4d823db4f11_700x933.jpeg 848w, https://substackcdn.com/image/fetch/$s_!4cM5!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb126dde-1782-4d56-a010-a4d823db4f11_700x933.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!4cM5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb126dde-1782-4d56-a010-a4d823db4f11_700x933.jpeg 1456w" type="image/webp"/><img alt="黃仁勳迎擊王者的兩難- 商周store" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/db126dde-1782-4d56-a010-a4d823db4f11_700x933.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":933,"width":700,"resizeWidth":null,"bytes":null,"alt":"黃仁勳迎擊王者的兩難- 商周store","title":null,"type":null,"href":null,"belowTheFold":false,"topImage":true,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' fetchpriority="high" height="933" loading="lazy" sizes="100vw" src="images/img_002_4b95f72c.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!4cM5!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb126dde-1782-4d56-a010-a4d823db4f11_700x933.jpeg 424w, https://substackcdn.com/image/fetch/$s_!4cM5!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb126dde-1782-4d56-a010-a4d823db4f11_700x933.jpeg 848w, https://substackcdn.com/image/fetch/$s_!4cM5!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb126dde-1782-4d56-a010-a4d823db4f11_700x933.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!4cM5!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb126dde-1782-4d56-a010-a4d823db4f11_700x933.jpeg 1456w" title="黃仁勳迎擊王者的兩難- 商周store" width="700"/></picture><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"><svg fill="none" height="20" role="img" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><title></title><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></figure></div><p>https://www.businessweekly.com.tw/archive/Article?StrId=7013760</p><p>上週，台積電公布了再次震驚市場的財報。</p><p>破紀錄的利潤、高達62.3%的驚人毛利率，以及一項規模空前的資本支出展望：2026年，資本支出將飆升至520億至560億美元。</p><p>在整個法說會中，所有話題都圍繞著AI的狂熱與台積電的千億豪賭。</p><p>但究竟為什麼這家以謹慎著稱的公司，突然敢於下如此巨大的賭注？</p><blockquote><p>這個轉變，反映的是過去十五年蘋果、Nvidia 與台積電之間權力結構的演變。這筆巨額投資並非一次盲目的賭注，而是一場結構性轉變的必然結果。它宣告了「<strong>蘋果單支柱時代</strong>」的終結，以及「<strong>雙引擎模式</strong>」的開啟。</p></blockquote><p>而這，正是台積電敢於下此豪賭的底氣所在。</p><div><hr/></div><h2 class="section"><strong>蘋果的黃金十年（2014-2025）：帝國的首席贊助商</strong></h2><p>要理解這場逆轉，必須先回到故事的起點。2010年，當蘋果與三星從合作夥伴演變為智慧型手機市場的死敵時，Tim Cook做出了改變歷史的決定：必須擺脫對競爭對手的依賴。</p><p>當時如日中天的Intel拒絕了為蘋果度身訂造，於是蘋果選擇了當時仍處於追趕者地位的台積電。</p><p>而對當時的台積電來說，這也是一場豪賭，當時張忠謀承諾投入 100 億美元（這在當時是天文數字）去蓋新工廠，只為了服務一個客戶。如果蘋果的手機賣不好，台積電就會損失慘重。</p><p>結果是，賭注大獲成功。從2014年的A8晶片開始，蘋果不僅將訂單交給台積電，更是將自己的命運與其深度捆綁。</p><p>在接下來的十年裡，蘋果為台積電的每一次製程躍進（20nm, 16nm, 7nm, 5nm）提供了最關鍵的「<strong>風險資本</strong>」。</p><p>當良率不穩、成本高昂時，是蘋果每年2億多台iPhone的穩定訂單，為台積電的研發提供了現金流，並充當了第一個「<strong>技術驗證者</strong>」，承擔了最高的初期風險。其他客戶往往是等到蘋果將製程「跑順」之後才敢跟進。</p><p>台積電的整個研發和生產節奏，都與蘋果每年九月的iPhone發表會精準同步。蘋果不僅鎖定了先進製程超過50%的初期產能，更讓台積電的技術藍圖圍繞著自己的產品週期運轉。</p><blockquote><p>蘋果提前三年的產品路線圖，讓台積電在規劃數百億美元的資本支出時，擁有如公用事業般的確定性。</p></blockquote><p>在2020-2021年，蘋果對台積電的影響力達到頂峰，一度佔據其總營收的25%，幾乎形同「<strong>御用代工廠</strong>」。然而，權力的天平也在此時開始悄然傾斜。</p><div><hr/></div><h2 class="section"><strong>AI的逆襲（2022-2026）：從邊緣角色到新王登基</strong></h2><p>在蘋果主宰台積電的黃金十年裡，Nvidia長期只是一個「<strong>二線客戶</strong>」。</p><p>轉捩點發生在2022年11月30日，OpenAI發表了ChatGPT。</p><p>這個事件瞬間點燃了全球對AI基礎設施的瘋狂需求，Nvidia的GPU，從遊戲玩家的娛樂工具，一夜之間變成了驅動新一輪工業革命的引擎。</p><p>AI巨頭們（Google, Meta, Amazon）每年投入超過6000億美元建構AI數據中心，而Nvidia的GPU是這場軍備競賽中唯一的「<strong>軍火商</strong>」。其營收以每年超過100%的速度瘋狂增長。</p><p>相比之下，智慧型手機市場早已飽和，年增長率僅有個位數。蘋果對台積電的下單金額雖然仍然龐大，但已進入高原期。</p><p>台積電自己的財報數字，也顯示出這個明顯的變化。在2022年之前，智慧型手機業務是當之無愧的王者，佔據營收的四到五成。但到了2022年，權力反轉的序曲就已悄然奏響，包含AI晶片在內的<strong>高效能運算（HPC）業</strong>務，在營收佔比上首次超越了手機。</p><p>但真正的瘋狂加速發生在2024至2025年。兩者的差距被徹底拉開。到了2025年底，財報上的數字已經不容置疑：HPC業務佔比從過去的兩三成，一路狂飆至<strong>58%</strong>；而智慧型手機則從過去的半壁江山，萎縮至僅剩<strong>29%</strong>。</p><blockquote><p>這組數據直觀地反映了產能分配的現實：HPC 已經完全取代手機，成為台積電最核心的增長引擎。</p></blockquote><p>因此，儘管台積電官方並未證實單一客戶的排名，但營收結構的轉變已是不爭的事實。許多分析師相信，Nvidia在2025年底已首次超越蘋果，成為台積電的新任「<strong>最大客戶</strong>」。</p><div><hr/></div><h3><strong>節點之戰的真相</strong></h3><p>在台積電最新的2nm（N2）製程上，蘋果雖然依舊是首發客戶，但其拿到的初期產能份額已降至約50%以下。這是十年來，蘋果首次未能壟斷一個全新節點超過一半的產能。</p><p>而預計2026下半年推出的A16（1.6nm）製程，則進一步加速了這個過程。A16是台積電專為HPC應用量身打造的節點，它整合了「<strong>超級電軌</strong>」（Super Power Rail）技術，即「<strong>背面供電網路</strong>」（BSPDN）。這項技術能為高功耗的AI晶片提供15-20%的能效提升，但對功耗控制已達極致的手機晶片而言，其效益並不明顯。</p><p>結果是，根據供應鏈消息，Nvidia已獨家或近乎獨家地包攬了A16製程的全部產能，用於其2028年的次世代GPU架構。Nvidia打破了以往「製程追隨者」的習慣，取代蘋果成為 A16 的首發。同時，蘋果至今未就A16製程與台積電進行深入談判。這意味著，台積電的技術藍圖，首次不再完全圍繞蘋果的產品週期運轉。</p><p>這並非台積電厚此薄彼，而是在於<strong>晶片面積（Die Size）</strong>的不對稱性，在一片同樣大小的300mm晶圓上：</p><ul><li><p><strong>蘋果的A系列晶片</strong>： 面積小（約110mm²），一片晶圓可以切割出約600-700顆。</p></li><li><p><strong>Nvidia的AI GPU</strong>： 面積巨大（超過800mm²），一片晶圓只能切割出約75-85顆。</p></li></ul><p>這近8倍的面積差異，在產能極度稀缺的2nm時代，決定了兩者對台積電毛利率貢獻的本質不同。</p><p>在產能有限的現實下，台積電必須在利潤最大化與客戶關係間做出選擇。</p><p>更何況，Nvidia的客戶，也就是那些AI巨頭們，對價格極不敏感。對他們而言，GPU是印鈔機的入場券，只要能拿到貨，價格上漲30%-50%都可以接受。而蘋果的客戶是普通消費者，晶片成本的微小上漲都可能影響iPhone的最終售價和銷量。</p><p>當然，面對新舊兩大霸主，台積電並不可能拋棄蘋果，而是選擇了一種「<strong>平衡木藝術</strong>」：</p><ul><li><p><strong>對蘋果</strong>： 履行現有合約，保障其2nm初期產能的「基本盤」，維持其帝國運轉的穩定性。這是對過去貢獻的回報，也是分散風險的必要之舉。</p></li><li><p><strong>對Nvidia</strong>： 將所有新增的、增量的產能，以「拍賣」的形式優先供給Nvidia，最大化攫取AI熱潮帶來的超額利潤。</p></li></ul><h3><strong>晶圓之外的戰場：先進封裝的版圖分歧</strong></h3><p>這場權力遊戲還有另一個維度：先進封裝。蘋果和Nvidia購買的東西截然不同。</p><ul><li><p>蘋果需要的是<strong>InFO</strong>封裝，將晶片做得更薄，以塞進iPhone的狹小空間。</p></li><li><p>Nvidia則極度依賴<strong>CoWoS</strong>封裝，將GPU和高頻寬記憶體（HBM）並排整合，以實現AI運算所需的最大數據吞吐量。</p></li></ul><p>如今，Nvidia所依賴的CoWoS先進封裝，其營收規模已數倍於蘋果所使用的InFO技術。這導致台積電的資本支出出現了「<strong>分岔</strong>」：一部分資金繼續追逐摩爾定律，另一部分則投入到先進封裝密度的競賽中（為Nvidia擴產CoWoS）。</p><p>不過，隨著未來蘋果M系列晶片（如M5/M6 Ultra）開始採用<strong>SoIC</strong>（系統整合晶片）等更複雜的3D堆疊技術，它們也有可能開始與Nvidia爭奪同樣的先進3D封裝資源。</p><div><hr/></div><h2 class="section"><strong>蘋果的B計畫</strong></h2><p>面對權力天平的傾斜，蘋果並未坐以待斃，而是啟動了一套更為精妙、多線作戰的「<strong>B計畫</strong>」。其核心並非要將最尖端的A系列或M系列晶片移出台積電，而是透過在「非核心戰場」引入競爭者，來重建對整個供應鏈的權力槓桿。</p><h4><strong>戰線一：與三星的破冰和解</strong></h4><p>在2016年與三星分道揚鑣後，蘋果最近已悄然重啟合作。蘋果已與三星晶圓代工簽署戰略協議，由三星位於美國德州的工廠為其生產先進的CMOS影像感測器（CIS）。此舉一箭三鵰：</p><ul><li><p><strong>打破壟斷</strong>： 它打破了Sony在iPhone影像感測器領域長達十年的獨家供應地位。</p></li><li><p><strong>地緣對沖</strong>： 利用三星的美國工廠，有助於蘋果實現其「美國製造」的內部目標，而無需完全依賴進度相對落後的台積電亞利桑那廠。</p></li><li><p><strong>釋放信號</strong>： 這向台積電表明，蘋果擁有且願意使用其他頂級晶圓代工夥伴，即便是在非處理器晶片上。</p></li></ul><p>預計到2027年，三星將拿下蘋果CIS訂單的相當大一部分，為其帶來數十億美元的營收，同時也為蘋果的供應鏈安全提供了關鍵的備份。</p><h4><strong>戰線二：將Intel作為「鯰魚」</strong></h4><p>蘋果正積極評估Intel的18A製程，目標是在2027年用於部分M系列晶片的量產。這並非要取代台積電，而是要創造一個「備胎」來奪回談判桌上的主動權。Intel就像一條被放入池塘的「<strong>鯰魚</strong>」，它的存在本身就能迫使台積電這條「大魚」在定價上保持競爭力。</p><p>蘋果的真實策略，是將MacBook Air和iPad等對極致性能要求稍低、但銷量巨大的產品線，或是電源管理IC（PMIC）、顯示驅動、藍牙/WiFi等周邊晶片作為多元化的試點。這既能為Intel帶來亟需的訂單以證明自己，又能讓蘋果在不冒險核心產品的前提下，實現供應鏈的多元化。</p><div><hr/></div><h2 class="section"><strong>一場結構性的王朝更迭，與千億豪賭的底氣</strong></h2><p>現在，讓我們回到最初的問題：為何以謹慎著稱的台積電，敢於下此千億豪賭？</p><p>答案，就在於客戶結構的根本性轉變。台積電的賭注，不再是押在單一客戶的成敗，也不是押在一個充滿季節性與產品週期的消費電子市場上。</p><p>過去，台積電的命運與每年秋季發布會的iPhone銷量緊密相連，這是一種高回報但高風險的「<strong>單支柱</strong>」依賴。而現在，它演變為一個更為穩固的「<strong>雙引擎模式</strong>」：</p><ul><li><p><strong>引擎一，是蘋果</strong>。 它代表著穩定、巨大的基本盤，是可預測的現金流來源，為台積電的營運提供了地板。</p></li><li><p><strong>引擎二，是Nvidia</strong>。 它代表著AI超級週期（Super Cycle）的結構性需求。這是一個需求對價格彈性低、利潤率極高、且增長軌跡更為持久的市場，為台積電的營收提供了天花板。</p></li></ul><blockquote><p>當你的主要客戶從一個變成了兩個，且第二個客戶所處的賽道是一個結構性的超級週期時，鉅額的資本支出就不再是「賭注」，而是「<strong>必然的投資</strong>」。</p></blockquote><p>這也意味著，只要AI革命的火焰繼續燃燒，台積電這種天文數字般的資本支出，可能將成為未來數年的新常態。</p><p>這場長達十五年的大戲告訴我們：在科技產業的權力之巔，沒有永遠的王者。而對於台- 積電而言，它最大的信心，正是來自於不再將所有雞蛋放在同一個籃子裡。</p><blockquote><p>它所押注的，不是某一個王者的勝利，而是整個科技版圖結構性變革的未來。</p></blockquote><div><hr/></div><h1 class="chapter" id="第二期專欄-出刊日期-2026-02-05">第二期專欄(出刊日期： 2026-02-05)</h1><h1 class="chapter" id="AI變現-第一場超級壓力測試-ChatGPT賣廣告-懂你情緒決勝敗">「AI變現」第一場超級壓力測試！ChatGPT賣廣告，懂你情緒決勝敗</h1><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!wpc0!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb60fd714-6220-442c-aa76-e5c62cbec6b1_800x452.jpeg 424w, https://substackcdn.com/image/fetch/$s_!wpc0!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb60fd714-6220-442c-aa76-e5c62cbec6b1_800x452.jpeg 848w, https://substackcdn.com/image/fetch/$s_!wpc0!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb60fd714-6220-442c-aa76-e5c62cbec6b1_800x452.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!wpc0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb60fd714-6220-442c-aa76-e5c62cbec6b1_800x452.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/b60fd714-6220-442c-aa76-e5c62cbec6b1_800x452.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":452,"width":800,"resizeWidth":null,"bytes":null,"alt":null,"title":null,"type":null,"href":null,"belowTheFold":true,"topImage":false,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' height="452" loading="lazy" sizes="100vw" src="images/img_003_fcd2e88d.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!wpc0!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb60fd714-6220-442c-aa76-e5c62cbec6b1_800x452.jpeg 424w, https://substackcdn.com/image/fetch/$s_!wpc0!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb60fd714-6220-442c-aa76-e5c62cbec6b1_800x452.jpeg 848w, https://substackcdn.com/image/fetch/$s_!wpc0!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb60fd714-6220-442c-aa76-e5c62cbec6b1_800x452.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!wpc0!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb60fd714-6220-442c-aa76-e5c62cbec6b1_800x452.jpeg 1456w" width="800"/></picture><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"><svg fill="none" height="20" role="img" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><title></title><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></figure></div><p>https://www.businessweekly.com.tw/archive/Article?StrId=7013791</p><p>OpenAI終於要在 ChatGPT 中塞入廣告，根據報導，首批廣告預計於今年2月初上線。這是一個標誌性的轉折點：</p><blockquote><p>AI 的「蜜月期」正式結束，我們進入了「AI投資是否能夠獲得回報」的下半場。</p></blockquote><div><hr/></div><h2 class="section" id="1-4-兆美元的-飢餓遊戲"><strong>1.4 兆美元的「飢餓遊戲」</strong></h2><p>當 Sam Altman 喊出未來八年需要 1.4 兆美元的基礎設施投入時，廣告就已經不再是「選項」，而是「<strong>必然</strong>」。</p><p>數據會說話：OpenAI 目前每賺 1 美元，就要燒掉 3.3 美元。公司預計到 2028 年，營運虧損將高達 740 億美元。</p><p>這是什麼概念？這意味著 OpenAI唯一的出路，就是盡快找到能大規模變現的收入來源。</p><p>Sam Altman 曾在2024年時說，廣告是「<strong>最後的手段</strong>」。但現實是，當你的生存都成問題時，「最後的手段」就成了「<strong>唯一的手段</strong>」。</p><p>CFO Sarah Friar 嘗試辯護到：</p><blockquote><p>「我們的使命是讓 AGI 造福全人類，而不僅僅是造福付得起錢的人。」</p></blockquote><p>但實際上，這句話翻譯過來就是：為了讓窮人也能用上最強的 AI，我們必須讓廣告商來買單，用廣告收入來補貼那天文數字般的電費與晶片費。</p><div><hr/></div><h2 class="section"><strong>三種模式，三種未來</strong></h2><p>事實是，AI投資了這麼多，總需要找到方法變現，而不同的玩家則採取了不同的態度。</p><h3><strong>OpenAI（現實主義者）</strong></h3><p>既然要蓋 1.4 兆美元的基礎設施，那就沒什麼好清高的。廣告、訂閱、企業授權我全都要。</p><p>他們賭的是，龐大的用戶量可以轉化為可觀的廣告收入（有分析師預估 2030 年可達 250 億美元），足以支撐其高昂的 AGI 研發成本。這是一場與時間賽跑的豪賭。</p><h3><strong>Google（好整以暇的有錢人）</strong></h3><p>在被問到對廣告想法的時候，Google DeepMind 的 CEO Demis Hassabis 說得非常巧妙：</p><blockquote><p>「我們『沒有計劃』加入廣告……他們這麼早行動很有趣，也許是需要更多收入。」</p></blockquote><p>這番話的潛台詞是：我們不缺錢，可以好整以暇地看著你先去踩雷。Google 擁有無可匹敵的「<strong>生態系護城河</strong>」。憑藉 Android、Chrome 和龐大的廣告體系，他們有著戰略耐心，可以等市場驗證後再從容入場。</p><h3><strong>Anthropic（高舉道德大旗的挑戰者）</strong></h3><p>他們的 CEO Dario Amodei 最為激進，直接呼籲「<strong>禁止以廣告為基礎的 AI 商業模式</strong>」。</p><p>這聽起來充滿理想主義，但同樣是極其聰明的商業策略。</p><p>原因是，Anthropic 主攻高利潤的企業市場，其客戶更關心安全與可靠性，而非免費。透過公開拒絕廣告模式，他們不僅鞏固了自身「<strong>安全、可信</strong>」的品牌形象，也精準地與 OpenAI 做出了市場區隔。</p><div><hr/></div><h2 class="section"><strong>前車之鑑：Perplexity 廣告模式的迅速崩盤</strong></h2><p>對於 AI 廣告，我們已有一個最接近的真實世界判例，而它提供了一個十分值得研究的先例。</p><p>AI搜尋引擎 Perplexity 在 2024 年底推出了「贊助式後續問題」，一種偽裝成建議查詢的廣告。</p><p>然而，這個實驗迅速以失敗告終。Perplexity 在2024 年 11 月推出廣告；2025 年 8 月，公司廣告銷售主管僅任職 9 個月後突然離職；2025 年 10 月，公司宣布停止接受新廣告商。</p><p>失敗原因是，用戶和廣告商都認為，對話流中的廣告製造了偏見感。關鍵問題是：贊助問題感覺像是在引導用戶走向商業利益，而非提供客觀的下一步查詢。這徹底破壞了 Perplexity 作為「<strong>客觀資訊綜合者</strong>」的信任契約。</p><p>同時，廣告商無法衡量基本指標，如點擊率或廣告支出回報（ROAS）。在多輪對話的界面中，定義「曝光」或「互動」極其困難。</p><p>既然Perplexity無法成功變現，OpenAI 將需要一個從根本上更優秀的執行方案，或完全不同的廣告形式才能成功。</p><div><hr/></div><h2 class="section"><strong>信任的崩塌風險？</strong></h2><p>這場實驗最有趣的點在於：AI 助手與搜尋引擎的本質差異。</p><p>當你在 Google 搜尋「最好的慢跑鞋」，你預期會看到廣告，你會自己篩選。但當你問你的「私人 AI 助手」同樣的問題時，你期待的是一個中立的建議。</p><blockquote><p>如果這個「管家」在推薦鞋子時，是因為背後收了 Nike 的錢，這種「代理人衝突」會徹底摧毀 AI 的信任根基。</p></blockquote><p>OpenAI 承諾廣告會標註、不會影響回答質量，但這在技術審計上極其困難。當演算法的微調能帶來數十億美元的營收波動時，誰能保證那顆「大腦」依然中立？</p><p>根據數據，ChatGPT 的市佔率已從 2025 年初近9成，下滑至 2026 年初的不到7成，而 Google Gemini 同期則從 5% 升至近兩成。</p><p>這形成了一個戰略兩難：OpenAI 需要廣告收入來維持營運，但廣告本身卻可能加速用戶流向更「<strong>乾淨</strong>」、整合體驗更好的競爭對手，進而侵蝕其廣告收入的根基。</p><div><hr/></div><h2 class="section"><strong>為什麼 ChatGPT可以做到 Perplexity 做不到的事？</strong></h2><p>不過，雖然Perplexity失敗了，不代表OpenAI 就一定不行。</p><p>最大的差異在於<strong>絕對規模</strong>，ChatGPT和Perplexity的用戶數量完全不可比較。對於廣告商而言，在 Perplexity 上投放 50 萬美元的測試預算，就像把錢丟進大海，數據雜訊會淹沒信號，導致無法衡量 ROI。</p><p>但在 ChatGPT 這樣龐大的流量池中，同樣的預算能在幾天內產生具有統計意義的轉換數據。Perplexity 失敗是因為它從未達到讓廣告商建立信心的「<strong>規模門檻</strong>」。</p><p>Perplexity 的定位是「AI 優先的搜尋引擎」，用戶去那是為了寫論文、做市場調查、查證事實。在這種「<strong>學術</strong>」場景下插入廣告，會被視為污染資訊。</p><p>反觀 ChatGPT，用戶會問：「幫我規劃兩週的日本旅遊，預算 3000 美元」或「推薦適合窄腳掌的登山鞋」，這是標準的購物意圖。</p><p>數據顯示，來自 AI 聊天機器人的推薦流量，其轉換率是傳統搜尋引擎的 4.4 倍。當 ChatGPT 在你詢問「買什麼」時給出建議，那叫「<strong>幫手</strong>」；當 Perplexity 在你做研究時塞入廣告，那叫「<strong>干擾</strong>」和「<strong>不中立</strong>」。</p><div><hr/></div><h2 class="section"><strong>一場「AI 變現能力的終極壓力測試」</strong></h2><p>OpenAI 的這一舉動，實質上開啟了科技史上最大規模的 A/B 測試。</p><p>這場測試的結果將回答三個價值兆美元的問題：</p><ol><li><p>高昂的 AI 推理成本能否被廣告覆蓋？ 以及</p></li><li><p>搜尋廣告的霸權是否會被「對話式廣告」終結？</p></li><li><p>內容創作者還能如何變現？</p></li></ol><h3><strong>1. 單元經濟效益的測試</strong></h3><p>Google 搜尋的商業模式之所以暴利，是因為顯示 10 個藍色連結的邊際成本趨近於零（約 0.01 美分）。但 LLM 的推理成本極高，生成一個完整答案的成本可能是傳統搜尋的數十倍。</p><p>這意味著 OpenAI 無法像 Google 那樣依賴「薄利多銷」的長尾廣告。他們被迫只能走「<strong>高端精品路線</strong>」。OpenAI 必須證明，AI 廣告的轉化率高到足以讓廣告主願意支付比 Google 高出 10 倍的 CPM（千次曝光成本），才能證明廣告是LLM的變現良方。</p><h3><strong>2. 從「關鍵字」到「思維鏈」：廣告定位的維度升級</strong></h3><p>這將是對現有廣告巨頭（Google/Meta）最大的震盪。</p><p>Google 掌握你的「<strong>搜尋行為</strong>」，Meta 掌握你的「<strong>社交圖譜</strong>」，但 ChatGPT 掌握的是你的「<strong>思維過程</strong>」與「<strong>情緒狀態</strong>」。</p><p>傳統廣告是「因為你搜尋了嬰兒車，所以我推播尿布」。AI 廣告是「因為你正在詢問如何緩解產後焦慮，並在語氣中流露出對價格的敏感，所以我推播一款主打高 CP 值且強調社群支持的奶粉品牌」。</p><p>這種精準度一旦被驗證有效，廣告預算將會大規模從傳統搜尋引擎遷移至 AI 平台，這將是 Google 真正的挑戰。</p><h3><strong>3. 「零點擊」時代的生態重組</strong></h3><p>這場測試還將決定「開放網路（Open Web）」的命運。搜尋引擎的契約是「我引用你，但我給你流量」。</p><p>但AI不一樣，AI是「我消化你，我直接給出答案（<strong>Zero-Click</strong>），現在我還要拿走廣告費」。</p><p>如果 ChatGPT 的廣告模式成功，用戶將不再需要點擊進入原始網站（如測評網、新聞網）。這將導致內容創作者的流量枯竭。</p><p>這是一場危險的博弈：如果 OpenAI 吸乾了內容生態的養分，未來 AI 去哪裡學習新知識？這將迫使廣告業重新定義「流量」與「內容」的價值分配機制。</p><div><hr/></div><h2 class="section"><strong>重新估值：從「夢想」回歸「流量」</strong></h2><p>過去，OpenAI 的估值邏輯是建立在「<strong>夢想</strong>」上的。我們是在投資一個即將誕生的人造上帝（AGI）。在這種敘事下，虧損是榮耀，燒錢是為了人類未來。</p><p>但隨著廣告上線，公司準備上市，OpenAI 瞬間從神壇跌落凡間，變成了一家必須遵守地心引力的廣告平台。</p><blockquote><p>過去我們看 ChatGPT，看的是用戶數（MAU）增長多快，是否盈利並不是重點。但一旦被視為一家「廣告公司」，原本享受的「AI 科技溢價」可能會迅速縮水，而我們要看的卻變成了：（單次查詢的廣告收入）-（單次查詢的推理成本），簡單來說，就是每次廣告的毛利率。</p></blockquote><p>Google 的這個數字是極高的正數，而 OpenAI 目前可能是負數。OpenAI未來的估值高低，不只取決於誰的用戶多，而是取決於誰能把這個公式轉正。如果做不到，用戶越多，死得越快。</p><p>要讓這個公式轉正，OpenAI 必須證明它能跑通一種與 Google 截然不同的廣告邏輯。</p><p>傳統搜尋引擎（Google）本質上是「<strong>流量經濟</strong>」，它希望你「笨一點」，多搜尋幾次、多點擊幾個頁面，因為停留時間越長，廣告庫存就越多。</p><p>但在 AI 時代，核心價值是「<strong>一鍵解決</strong>」。如果 ChatGPT 太完美，一句話就解決了問題，用戶的停留時間將大幅縮短，傳統的展示型廣告空間會直接歸零。</p><p>因此，OpenAI 的估值將取決於它能否成功定義「<strong>行動經濟</strong>」：雖然 AI 的高效率減少了廣告展示的「次數」，但它必須證明自己能極大提升廣告的「轉化率」。也就是說，AI 給出的那個唯一建議，必須精準到讓用戶直接買單。如果做到了，它將重寫網路廣告的定價法則。</p><div><hr/></div><h2 class="section"><strong>AI 競賽的終局是「資源控制力」</strong></h2><p>OpenAI 這次轉向廣告，本質上是為了獲取更多的「燃料」（資金）來換取「算力」。</p><p>這是一場與時間的賽跑：在投資人的耐心耗盡之前，OpenAI 必須證明自己能跑通一個比 Google 更賺錢的商業模式。</p><p>對我們而言，重要的不是去預測誰會贏，而是去理解不同模式各自的優勢、風險以及它們所對應的市場。</p><blockquote><p>2026 年，我們將看到 AI 從「神壇」走下「商場」。我們需要密切關注的，不是誰的技術更酷炫，而是用戶最終願意為哪一種「AI 關係」買單。</p></blockquote><div><hr/></div><h1 class="chapter" id="第三期專欄-出刊日期-2026-02-12">第三期專欄(出刊日期： 2026-02-12)</h1><h1 class="chapter" id="Anthropic外掛掀31兆市值大逃殺-平庸軟體的末日才剛開頭">Anthropic外掛掀31兆市值大逃殺，平庸軟體的末日才剛開頭</h1><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!_wnP!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1b27fde2-fe09-426a-8837-bdceff83e6f4_800x452.jpeg 424w, https://substackcdn.com/image/fetch/$s_!_wnP!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1b27fde2-fe09-426a-8837-bdceff83e6f4_800x452.jpeg 848w, https://substackcdn.com/image/fetch/$s_!_wnP!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1b27fde2-fe09-426a-8837-bdceff83e6f4_800x452.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!_wnP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1b27fde2-fe09-426a-8837-bdceff83e6f4_800x452.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/1b27fde2-fe09-426a-8837-bdceff83e6f4_800x452.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":452,"width":800,"resizeWidth":null,"bytes":null,"alt":null,"title":null,"type":null,"href":null,"belowTheFold":true,"topImage":false,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' height="452" loading="lazy" sizes="100vw" src="images/img_004_1a2fe690.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!_wnP!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1b27fde2-fe09-426a-8837-bdceff83e6f4_800x452.jpeg 424w, https://substackcdn.com/image/fetch/$s_!_wnP!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1b27fde2-fe09-426a-8837-bdceff83e6f4_800x452.jpeg 848w, https://substackcdn.com/image/fetch/$s_!_wnP!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1b27fde2-fe09-426a-8837-bdceff83e6f4_800x452.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!_wnP!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1b27fde2-fe09-426a-8837-bdceff83e6f4_800x452.jpeg 1456w" width="800"/></picture><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"><svg fill="none" height="20" role="img" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><title></title><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></figure></div><p>https://www.businessweekly.com.tw/archive/Article?StrId=7013829</p><p>上星期，Anthropic為Claude Cowork推出的外掛（Plugins）功能，令SaaS的拋售潮席捲而來，在短短一兩天內，全球軟體與數據服務公司的市值蒸發了數千億美元。</p><p>這不僅僅是一次產品更新，它被市場解讀為一場可能顛覆整個企業軟體行業的典範轉移。</p><div><hr/></div><h2 class="section"><strong>從「聊天助理」到「工作代理人」的質變</strong></h2><p>要理解市場的恐慌，我們必須先弄清楚Anthropic這次發布的到底是什麼。這是一場三級跳：</p><ol><li><p><strong>第一階段：Claude</strong> - 一個強大的大型語言模型，以聊天機器人的形式存在，你能與它對話。這個我們都很熟悉。</p></li><li><p><strong>第二階段：Cowork</strong> - 於今年一月推出，它將Claude從一個「聊天顧問」升級為一個「通用工作者」。它不再僅僅是與你對話，而是能獲得你電腦上特定文件夾的權限，自主地閱讀、編輯、創建文件，執行你交辦的多步驟任務。這個我幾星期前詳細介紹過。</p></li><li><p><strong>第三階段：Cowork + Plugins</strong> - 這是引爆市場的關鍵一步。Anthropic發布了11個開源外掛，涵蓋銷售、財務、法律、行銷等多個領域。這些外掛將一個「通用工作者」轉變為一個個「<strong>專業領域代理人</strong>」（Specialist Agent）。</p></li></ol><h3><strong>為什麼Plugins才是真正的「殺手鐧」？</strong></h3><p>如果說 Cowork 本體 是給了 Claude 一副「<strong>強壯的身體</strong>」，那麼 插件系統 就是給了它「<strong>專業的靈魂</strong>」。</p><p>原本的 Cowork 是一個通才。你給它一個資料夾，它能幫你讀文件，但它不知道任何領域的專業知識。你得像教新人一樣，一步步指令它。</p><p>但有了插件，Claude 變成了專才。</p><p>插件裡封裝了：</p><ul><li><p><strong>領域知識</strong>：例如法律插件內建了合約審查的邏輯。</p></li><li><p><strong>工具鏈接</strong>：直接串接 CRM（如 Salesforce）或專門的數據庫。</p></li><li><p><strong>自定義指令</strong>（Slash Commands）：你不需要寫長長的提示詞，只要輸入 /review-contract，它就自動調用法律專家的工作流。</p></li></ul><p>原本的 Cowork 讓市場覺得它只是個「好用的助手」；但插件的出現，讓市場意識到它正在「<strong>打包工作流</strong>」。</p><p>在這堆插件中，法律插件最受關注。</p><p>以前，法律軟體商的護城河是「我們懂法律工作流，而大模型不懂」；現在，Anthropic 直接把這些工作流（如 NDA 篩選、合約紅線建議）做成了插件，而且還是開源的。</p><p>這意味著企業可以根據自己的 Playbook 快速自定義，完全不需要再購買昂貴的垂直領域軟體。</p><blockquote><p>這場質變的核心在於，AI不再僅僅是「輔助」你工作的工具，它開始直接「執行」工作本身。</p></blockquote><div><hr/></div><h2 class="section"><strong>「SaaS末日」的深層恐懼</strong></h2><p>近三千億美元的市值蒸發，絕非空穴來風。市場的恐懼主要源於以下三點，這也是對傳統SaaS（軟體即服務）商業模式的質疑：</p><h3><strong>1. 價值層的「釜底抽薪」</strong></h3><p>過去，企業需要為不同職能購買不同的SaaS產品：法律部門買合約審查工具，銷售部門買CRM，財務部門買分析軟體。</p><p>現在，Claude Cowork透過外掛，將這些分散的功能「<strong>捆綁</strong>」在一個單一的AI代理人身上。當一個AI就能完成五個軟體的工作時，客戶為什麼還要支付五份昂貴的訂閱費？</p><h3><strong>2. 從「底層水管」到「應用本身」的戰略上移</strong></h3><p>一直以來，市場普遍認為Anthropic、OpenAI這類基礎模型公司，扮演的是「水管工」的角色，為下游的SaaS廠商提供API（底層技術）。</p><p>但這次，Anthropic親自下場，從模型層直接跨越到「<strong>應用與工作流</strong>」層。這意味著，基礎模型公司不再甘於做基礎設施，它們開始與自己的客戶（SaaS廠商）直接競爭。</p><h3><strong>3. 使用者介面的主導權轉移</strong></h3><p>市場最深層的恐懼是，AI代理人將成為企業工作的「<strong>唯一入口</strong>」。員工不再需要登入Salesforce、Workday或各種法律軟體，他們只需要向Claude下達指令。</p><p>如此一來，昔日強大的SaaS應用，可能被降級為後端的「<strong>數據倉庫</strong>」，逐漸失去用戶黏性與定價權。</p><blockquote><p>簡單來說，過去的劇本是「AI作為<strong>Copilot</strong>，嵌入SaaS產品中，幫助軟體賣得更好」；現在的劇本變成了「AI作為<strong>Agentic Platform</strong>，成為所有軟體的上層入口，決定哪些軟體有存在的價值」。</p></blockquote><div><hr/></div><h2 class="section"><strong>黃仁勳的反駁</strong></h2><p>然而，就在華爾街瘋狂拋售軟體股之際，NVIDIA 執行長黃仁勳在舊金山的思科（Cisco）大會上，給出了一個截然不同的觀點。</p><p>面對「AI 將取代軟體」的論調，黃仁勳直言：</p><blockquote><p>「這是世界上最不合邏輯的事情，時間將會證明一切。」</p></blockquote><p>他的邏輯很簡單：AI 需要工具，而不是毀滅工具。</p><blockquote><p>「如果你是一個人類，或者是一個機器人、通用人工智慧機器人，你會使用工具，還是重新發明工具？」黃仁勳問道，「答案顯然是使用工具。」</p></blockquote><p>未來的 AI 代理人（Agents）確實會執行任務，但它們依然需要底層的軟體架構來運作。就像自動駕駛汽車雖然取代了司機，但它並沒有讓「汽車」這個工具消失，反而讓汽車變得更複雜、更重要。</p><p>他認為，軟體產業並非在衰退，而是在進化。我們將第一次創造出所謂的「<strong>增強型勞動力</strong>」。在這個新世界裡，軟體公司提供的不再只是給人類用的介面，而是給 AI 用的「<strong>數位螺絲起子與錘子</strong>」。</p><div><hr/></div><h2 class="section"><strong>軟體不會死，但「躺著賺」的日子結束了</strong></h2><p>黃仁勳是對的，軟體產業不會消失；但這並不代表軟體公司可以高枕無憂。因為答案很可能是：軟體不會死，但 SaaS 的「黃金商業模式」正在重構。</p><p>這場重構將體現在兩個維度：介面的質變與商業模式的翻轉。</p><h3><strong>1. 從「輸入介面」進化為「審核沙盒」</strong></h3><p>過去，軟體介面是設計給人類「<strong>輸入數據</strong>」的，我們花大量時間填寫表單、點擊按鈕。<br/>未來，軟體介面將發生根本性的變化，它是設計給人類「<strong>審核 AI 工作</strong>」的。</p><p>當 AI 代理人完成了 90% 的工作，軟體公司的新價值，在於提供一個安全的「<strong>沙盒</strong>」。在這裡，人類管理者能快速檢視 AI 生成的合約、代碼或財務報表，並按下那個最終的「<strong>確認鍵</strong>」。</p><p>這意味著，誰能把這個「審核、監管與修正」的體驗做到極致，誰就能保住「<strong>管理者介面</strong>」的地位，避免淪為單純的後端 API。</p><h3><strong>2. 從「賣人頭」轉向「賣結果」</strong></h3><p>更現實的挑戰在於收費模式。傳統 SaaS 喜歡按人頭收費。但當 AI 代理人開始取代初級員工，企業的「人類員工」數量勢必減少，軟體公司的營收基數將面臨崩塌。</p><p>這逼迫軟體公司必須轉型：從「<strong>賣帳號</strong>」轉向「<strong>賣結果</strong>」。以前你賣的是 CRM 帳號，以後你賣的可能是「成功轉化的銷售線索」。</p><p>軟體依然存在，但它再也不能靠著簡單的數位化流程「躺著賺錢」。它必須證明自己能幫助人類更高效地「<strong>管理</strong>」AI，或是直接對最終的商業結果負責。</p><div><hr/></div><h2 class="section"><strong>誰能活過這場寒冬？</strong></h2><p>那麼，究竟那些軟體公司能夠成功進化，在AI時代仍然保持競爭力？我認為要有三個條件。</p><h3><strong>1. 守住「記錄系統」：做數據的保險箱</strong></h3><p>AI 再聰明，也需要數據才能運作。那些掌握企業最核心數據的軟體，會擁有較高的防禦力。這不僅僅是因為數據量大，而是因為它們掌握了「<strong>權限</strong>」。企業不會允許外部的 Claude 隨意讀取薪資單或核心機密。誰擁有數據的「<strong>儲存權</strong>」，誰就擁有對 AI 的「<strong>發放入場券</strong>」。</p><h3><strong>2. 嵌入「執行系統」：做企業的肌肉記憶</strong></h3><p>光有數據不夠，你還得能「<strong>辦事</strong>」。雖然 AI 可以輕易搬運代碼，但它很難在短時間內複製一整套包含測試、部署、審核的複雜流程。對於企業來說，更換這類系統的「<strong>信任成本</strong>」極高。</p><h3><strong>3. 終極護城河：捕捉「為什麼」的能力</strong></h3><p>這是最重要，也最常被忽視的一點。</p><p>有數據的確就有護城河，但這種護城河並不牢固。因為數據是可以打包帶走的，客戶隨時可以把客戶名單、交易紀錄導出，餵給外部的 AI 去分析。如果軟體只是一個「存數據的倉庫」，雖然搬家很煩，但仍然隨時能被取代。</p><p>真正的護城河，不在於存了什麼結果，而在於是否看見了「<strong>過程</strong>」。</p><ul><li><p><strong>外部 AI 只能看到結果</strong>：它讀取數據庫，只知道「客戶 A 最後沒有買單」。</p></li><li><p><strong>軟體卻能看到過程</strong>：它「親眼看到」業務員在報價頁面停了 5 分鐘，修改了三次價格，最後卡在合約條款這一頁，然後客戶就已讀不回了。</p></li></ul><blockquote><p>外部 AI 看到的是冷冰冰的數字，只有你的軟體看到了「客戶的猶豫」。</p></blockquote><p>這些發生在軟體操作過程中的行為細節，是外部 AI 永遠拿不到的。它讓軟體不僅僅是「工具」，而是變成了「懂業務的夥伴」。</p><p>未來能脫穎而出的軟體，不再只是幫用戶省時間（簡化流程），而是要利用這些只有你看得見的細節，告訴用戶「<strong>為什麼</strong>」會發生這種結果，並給出建議。這才是別人抄不走、AI 搶不掉的真本事。</p><div><hr/></div><h2 class="section"><strong>從「如何做」到「做什麼」</strong></h2><p>客觀地說，Claude Legal外掛本身也只是剛剛推出，實際成效如何也未得知。Anthropic也一再強調，它不能提供法律建議，且必須由執業律師進行最終審核。它目前能做的，是將法務團隊從大量重複、標準化的工作中解放出來。</p><p>然而，這次市場震盪的真正意義，不在於這個V1.0產品有多麼神奇，而在於它所釋放的信號。</p><p>在 AI 時代，單純的「<strong>流程</strong>（Workflow）」不再值錢。</p><p>過去，SaaS 公司靠著「把專業流程數位化」賺取高額訂閱費。現在，Anthropic 證明了只要有強大的模型底座，加上輕量化的插件封裝，就能在幾週內複製出一個垂直領域的專業工具。</p><p>未來的贏家，不是那個「最能簡化流程」的 AI，而是那個「<strong>數據就在它家、流程就在它家完成、且擁有獨家行為洞察</strong>」的軟體。</p><blockquote><p>這不是軟體業的末日，而是「平庸軟體」的末日。對於那些習慣了舊時代高增長故事的 SaaS 公司來說，這場寒冬才剛剛開始；但對於那些真正掌握企業核心神經系統的公司來說，這正是進化的契機。</p></blockquote>
+  </article>
+  <div class="footer-cta">
+    <p>本機離線版本 • 圖片與內文完整</p>
+    <a class="primary" href="../../index.html">← 回索引</a>
+    <a href="https://www.fomosoc.com/p/kp199419951996" target="_blank" rel="noopener">在原站開啟 ↗</a>
+  </div>
+</div>
+</body>
+</html>

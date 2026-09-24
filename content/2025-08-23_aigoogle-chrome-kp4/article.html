@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI是泡沫？Google Chrome的重要性，國家隊的牌局 - KP思考筆記(第4期)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --line: #e9e3d6; --line-soft: #f0ebdf;
+  --text: #1f2533; --text-2: #3a4256; --muted: #7c7a72; --ink: #14171e;
+  --primary: #2f6f5e; --accent: #c97b3f;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(47,111,94,.04) 0%, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(201,123,63,.04) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 28px 96px; }
+
+.meta-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px;
+  font-feature-settings: 'tnum';
+}
+.meta-bar .tag {
+  padding: 3px 9px; border-radius: 4px; font-weight: 500;
+  background: var(--line-soft); color: var(--text-2);
+}
+.meta-bar .tag.free { background: #dde9f3; color: #4a7ba6; }
+.meta-bar .tag.paid { background: #f0dbdb; color: #b06367; }
+.meta-bar a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--line); }
+.meta-bar a:hover { color: var(--primary); border-color: var(--primary); }
+
+h1.article-title {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 36px; font-weight: 400; line-height: 1.25;
+  color: var(--ink); margin: 14px 0 24px; letter-spacing: -0.005em;
+}
+h1.chapter {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 28px; font-weight: 400; line-height: 1.3;
+  color: var(--ink); margin: 56px 0 18px; padding-top: 28px;
+  border-top: 1px solid var(--line);
+  letter-spacing: -0.005em;
+}
+h2.section {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  color: var(--text); margin: 36px 0 12px;
+  padding-left: 12px; border-left: 3px solid var(--primary);
+}
+h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+
+p {
+  font-size: 16.5px; line-height: 1.85; margin: 0 0 18px;
+  color: var(--text);
+  font-family: 'Outfit', 'Noto Serif TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  font-weight: 400;
+}
+p strong, strong { color: var(--ink); font-weight: 600; }
+
+ul, ol { margin: 0 0 18px; padding-left: 26px; }
+li { font-size: 16px; line-height: 1.8; margin-bottom: 6px; }
+
+a { color: var(--primary); text-decoration: underline; text-decoration-color: rgba(47,111,94,.3); text-underline-offset: 2px; }
+a:hover { text-decoration-color: var(--primary); }
+
+blockquote {
+  margin: 28px 0; padding: 18px 24px;
+  background: var(--line-soft); border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-2); font-style: normal;
+}
+blockquote p { margin: 0; color: var(--text-2); }
+blockquote p + p { margin-top: 12px; }
+
+hr {
+  border: 0; height: 1px; background: var(--line);
+  margin: 36px auto; width: 60%;
+}
+
+/* Figure & image */
+figure {
+  margin: 32px 0; text-align: center;
+}
+.image2-inset, .captioned-image-container .image2-inset {
+  margin: 0;
+}
+.image2-inset picture, .image2-inset img {
+  display: block; max-width: 100%; height: auto; margin: 0 auto;
+  border-radius: 8px;
+}
+figure img {
+  max-width: 100%; height: auto; border-radius: 8px;
+  display: block; margin: 0 auto;
+  box-shadow: 0 4px 18px -8px rgba(20,23,30,.15);
+}
+.image2-img, .image2-image {
+  max-width: 100%; height: auto;
+}
+.captioned-image-container {
+  margin: 32px -20px;
+}
+.image-link { display: block; text-decoration: none !important; }
+.figcaption {
+  font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5;
+  text-align: center; font-style: italic;
+}
+
+/* Buttons / interactive UI from Substack we want to hide */
+.button, .pencraft, .subscription-widget, .paywall,
+[class*="paywall"], [class*="subscribe"], [class*="Subscribe"],
+.embed, .digest-post-embed { display: none !important; }
+
+.footer-cta {
+  margin-top: 60px; padding: 28px 32px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; text-align: center;
+}
+.footer-cta p { font-size: 14px; color: var(--muted); margin: 0; }
+.footer-cta a {
+  display: inline-block; margin: 4px 6px;
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--line); text-decoration: none;
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+}
+.footer-cta a.primary {
+  background: var(--primary); color: white; border-color: var(--primary);
+}
+
+.toc {
+  margin: 0 0 36px; padding: 20px 24px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.toc-title {
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+.toc ol li { counter-increment: toc; padding: 4px 0; font-size: 14px; }
+.toc ol li::before { content: counters(toc, ".") " "; color: var(--muted); margin-right: 4px; }
+.toc ol li.h1 { font-weight: 600; color: var(--ink); margin-top: 8px; }
+.toc ol li.h2 { color: var(--text-2); padding-left: 18px; }
+.toc a { color: var(--text-2); text-decoration: none; }
+.toc a:hover { color: var(--primary); }
+
+@media (max-width: 768px) {
+  .wrap { padding: 28px 18px 60px; }
+  h1.article-title { font-size: 26px; }
+  h1.chapter { font-size: 22px; }
+  p { font-size: 16px; }
+  .captioned-image-container { margin: 24px -10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta-bar">
+    <a href="../../index.html">← 索引</a>
+    <span class="tag free">🆓 公開</span>
+    <span>2025-08-23</span>
+    <span>123 字</span>
+    <a href="https://www.fomosoc.com/p/aigoogle-chrome-kp4" target="_blank" rel="noopener">↗ 原站</a>
+  </div>
+  <h1 class="article-title">AI是泡沫？Google Chrome的重要性，國家隊的牌局 - KP思考筆記(第4期)</h1>
+  
+  <article class="body">
+<div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!fK8i!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8fd6337b-63b3-480f-9336-dfd1676ccb47_1024x1024.jpeg 424w, https://substackcdn.com/image/fetch/$s_!fK8i!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8fd6337b-63b3-480f-9336-dfd1676ccb47_1024x1024.jpeg 848w, https://substackcdn.com/image/fetch/$s_!fK8i!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8fd6337b-63b3-480f-9336-dfd1676ccb47_1024x1024.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!fK8i!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8fd6337b-63b3-480f-9336-dfd1676ccb47_1024x1024.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/8fd6337b-63b3-480f-9336-dfd1676ccb47_1024x1024.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":1024,"width":1024,"resizeWidth":null,"bytes":157435,"alt":null,"title":null,"type":"image/jpeg","href":null,"belowTheFold":false,"topImage":true,"internalRedirect":"https://fomosoc.substack.com/i/171540665?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8fd6337b-63b3-480f-9336-dfd1676ccb47_1024x1024.jpeg","isProcessing":false,"align":null,"offset":false}' fetchpriority="high" height="1024" loading="lazy" sizes="100vw" src="images/img_002_84b7ab17.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!fK8i!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8fd6337b-63b3-480f-9336-dfd1676ccb47_1024x1024.jpeg 424w, https://substackcdn.com/image/fetch/$s_!fK8i!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8fd6337b-63b3-480f-9336-dfd1676ccb47_1024x1024.jpeg 848w, https://substackcdn.com/image/fetch/$s_!fK8i!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8fd6337b-63b3-480f-9336-dfd1676ccb47_1024x1024.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!fK8i!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8fd6337b-63b3-480f-9336-dfd1676ccb47_1024x1024.jpeg 1456w" width="1024"/></picture><div class="image-link-expand"></div></div></figure></div><p>大家好，我是KP。歡迎來到我的第四期思考筆記。</p><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div><p>有趣的一星期，市場擔心了一整個星期，究竟Powell會否鷹派發言，令股市出現不少回調。</p><p>誰又會想到，他的發言會如此鴿派？結果一個週五就把之前的跌幅漲回大部份。</p><p>Substack開了三個星期，訂閱人數增速如預期般開始放緩，不過也增長到2700人左右，感謝大家的支持。</p><p>這其實也印證了投資的基本規律：沒有任何公司能永遠保持指數級增長，關鍵在於增長放緩後，能否找到新的、可持續的價值曲線。</p><p>這個星期的深度分析主題是英特爾（Intel），我認為這是一間極度有趣的<strong>「二元性」(</strong><em><strong>Binary</strong></em><strong>)公司</strong>，它的未來要不是巨大成功，就是極度沉淪。</p><p>不過這個主題似乎不算太受歡迎，在各個平台的觸及率都不高，不過我個人是覺得很值得一看的，未看的不妨一看。</p><p>對於新朋友，我想重申「思考筆記」的定位：它不是一份鉅細靡遺的萬字報告，而更像一本<strong>「散文集」</strong>，是我在一週的深度思考後，沉澱下來，認為最值得與你分享的精華。</p><p>這期筆記有三個主題：第一，剖析一份引爆市場的MIT報告；第二，從Perplexity的喊話看Google的軟肋；第三，再深入聊聊我對英特爾的看法。</p><div><hr/></div><h3><strong>主題一：一份引爆市場的研究，與一個反向的贏家</strong></h3><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!Pieh!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F56b0e335-1130-4c06-b954-3164bcc4049b_800x539.jpeg 424w, https://substackcdn.com/image/fetch/$s_!Pieh!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F56b0e335-1130-4c06-b954-3164bcc4049b_800x539.jpeg 848w, https://substackcdn.com/image/fetch/$s_!Pieh!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F56b0e335-1130-4c06-b954-3164bcc4049b_800x539.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!Pieh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F56b0e335-1130-4c06-b954-3164bcc4049b_800x539.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/56b0e335-1130-4c06-b954-3164bcc4049b_800x539.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":539,"width":800,"resizeWidth":null,"bytes":29041,"alt":null,"title":null,"type":"image/jpeg","href":null,"belowTheFold":true,"topImage":false,"internalRedirect":"https://fomosoc.substack.com/i/171540665?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F56b0e335-1130-4c06-b954-3164bcc4049b_800x539.jpeg","isProcessing":false,"align":null,"offset":false}' height="539" loading="lazy" sizes="100vw" src="images/img_003_9923d5bd.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!Pieh!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F56b0e335-1130-4c06-b954-3164bcc4049b_800x539.jpeg 424w, https://substackcdn.com/image/fetch/$s_!Pieh!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F56b0e335-1130-4c06-b954-3164bcc4049b_800x539.jpeg 848w, https://substackcdn.com/image/fetch/$s_!Pieh!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F56b0e335-1130-4c06-b954-3164bcc4049b_800x539.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!Pieh!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F56b0e335-1130-4c06-b954-3164bcc4049b_800x539.jpeg 1456w" width="800"/></picture><div class="image-link-expand"></div></div></figure></div><p>最近，MIT發表了一篇名為 <em>The GenAI Divide</em> 的報告，大概結論是：</p><blockquote><p><strong>儘管企業界已豪擲數百億美元，但高達95%的生成式AI試點項目，未能產生任何可被量化的財務回報。</strong></p></blockquote><p>市場立刻被嚇壞了，科技股應聲下跌，晶片股的估值開始被重新審視。媒體標題和社群討論，瞬間被「AI泡沫」、「AI無用論」的論調所佔據。</p><p>這份報告指出，AI在企業中無法轉化為盈利，並非模型本身不夠強大，而是源於企業層面的<strong>「學習鴻溝」(</strong><em><strong>learning gap</strong></em><strong>)</strong> 和拙劣的整合策略。</p><p>簡單來說，大多數公司犯了幾個致命錯誤：</p><ol><li><p><strong>錯把玩具當工具：</strong> 他們引入ChatGPT這類通用模型，最多只是提升了員工寫電郵、做簡報的個人效率，卻沒有觸及能真正創造收入或節省成本的核心業務流程。</p></li><li><p><strong>缺乏業務場景 ：</strong> 這些通用AI無法理解特定公司的內部運作邏輯，導致工作流程脆弱、與日常營運脫節。</p></li><li><p><strong>資源錯配：</strong> 超過一半的AI預算被投進了銷售和市場行銷，但報告發現，真正回報率最高的，其實是營運效率、供應鏈管理等後勤部門的自動化。</p></li></ol><p>如果你只看標題，很容易得出結論：「看吧，連MIT都這樣說，AI果然都是炒作。」</p><p>但我反而在想一個更深層的問題：<strong>「那成功的5%做對了什麼？」</strong></p><p>當我讀完這些失敗的原因，腦中浮現的，是這份報告簡直就是Palantir長達二十年的創業宣言。它用95%的失敗案例，從反面完美地論證了Palantir存在的全部意義。</p><p><strong>這一切，難道不正是對Palantir最大的利好嗎？</strong></p><p>報告中提到的每一個痛點，都恰好是Palantir產品線致力於解決的問題。Palantir從創立之初就堅信，單純的AI模型無法解決複雜的現實問題，必須依靠「人機協同」的增強智能 (<em>Augmented Intelligence</em>)。</p><ul><li><p><strong>對抗「玩具化」：</strong> 當市場上充斥著各種AI「功能展示」時，Palantir提供的是一個能將所有AI模型（無論是OpenAI的、Google的還是開源的）轉化為實際業務行動的<strong>指揮中心</strong>。它不參與模型本身的軍備競賽，而是成為那個「調度千軍萬馬」的平台。</p></li><li><p><strong>解決「場景缺乏」：</strong> Palantir的核心是<strong>本體論 (</strong><em><strong>Ontology</strong></em><strong>)</strong>。它不是一個空泛的聊天機器人，而是為每個企業打造一個獨一無二的「數位大腦」，讓AI能理解「這個貨櫃屬於哪個訂單」、「那位客戶的付款紀錄如何」等充滿業務場景的語言。</p></li><li><p><strong>糾正「資源錯配」：</strong> Palantir的AIP平台（Artificial Intelligence Platform），從來就不是一個外掛的「功能」，而是一個嵌入式的「作業系統」。它的目標不是讓員工寫報告快一點，而是像幫助空中巴士（Airbus）打造Skywise平台，整合全球數千架飛機的數據，從而優化供應鏈、預測故障，大幅減少飛機停飛造成的昂貴損失；或是在Tampa General Hospital那樣，直接優化病床分配、縮短病人等待時間，將敗血症患者的平均住院天數降低了30%。這些都是能直接反映在財報上的價值。</p></li></ul><p>所以，<strong>這份MIT報告從來不是AI的「利空」，而是市場的「過濾器」</strong>。它迫使我們反思，究竟誰是跟著炒作的AI概念股，誰才是真正能從AI浪潮中獲益的實力玩家。</p><p>當然，正如我在日前的筆記所說，Palantir就算再跌個三成，估值依然不便宜，所以這並非建議大家無腦買入。</p><p>但至少，在市場恐慌時，我們具備了分辨噪音與信號的能力。</p><div><hr/></div><h3><strong>主題二：Perplexity的喊話，與Google的圍城</strong></h3><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!wHww!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F80ece4de-cd5a-4350-8ef7-7b599e436d27_640x427.jpeg 424w, https://substackcdn.com/image/fetch/$s_!wHww!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F80ece4de-cd5a-4350-8ef7-7b599e436d27_640x427.jpeg 848w, https://substackcdn.com/image/fetch/$s_!wHww!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F80ece4de-cd5a-4350-8ef7-7b599e436d27_640x427.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!wHww!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F80ece4de-cd5a-4350-8ef7-7b599e436d27_640x427.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/80ece4de-cd5a-4350-8ef7-7b599e436d27_640x427.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":427,"width":640,"resizeWidth":null,"bytes":36551,"alt":null,"title":null,"type":"image/jpeg","href":null,"belowTheFold":true,"topImage":false,"internalRedirect":"https://fomosoc.substack.com/i/171540665?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F80ece4de-cd5a-4350-8ef7-7b599e436d27_640x427.jpeg","isProcessing":false,"align":null,"offset":false}' height="427" loading="lazy" sizes="100vw" src="images/img_004_b8226a91.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!wHww!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F80ece4de-cd5a-4350-8ef7-7b599e436d27_640x427.jpeg 424w, https://substackcdn.com/image/fetch/$s_!wHww!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F80ece4de-cd5a-4350-8ef7-7b599e436d27_640x427.jpeg 848w, https://substackcdn.com/image/fetch/$s_!wHww!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F80ece4de-cd5a-4350-8ef7-7b599e436d27_640x427.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!wHww!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F80ece4de-cd5a-4350-8ef7-7b599e436d27_640x427.jpeg 1456w" width="640"/></picture><div class="image-link-expand"></div></div></figure></div><p>上週，AI新創公司Perplexity向Google提出收購，希望買下Chrome瀏覽器。</p><p>當然，Google沒有理會他們，市場也基本上反應不大。畢竟，如非必要，Google絕無可能出售Chrome。</p><p>Perplexity此舉，很大程度上是為了品牌曝光，畢竟，不花一分錢就能登上全球頭條，是一次絕佳的市場行銷。</p><p>但這場看似公關鬧劇的喊話，卻精準地刺中了Google當前最脆弱的神經。</p><p>因為，一個讓Google「必要」出售Chrome的場景，正真實地在華盛頓的法庭上演。這場風暴，就是Google面臨的世紀反壟斷裁決，其結果可能徹底改寫全球的網路版圖。</p><p>這一切源於2024年的一項裁決。美國司法部已正式要求法庭強制Google出售其核心資產——Chrome瀏覽器，這將是自1984年電信巨頭AT&amp;T被分拆以來，美國最大規模的企業強制分拆案。</p><p>案件的核心，在於金錢與權力的交換。司法部指控，控制著全球近90%線上搜尋的Google，是透過支付數百億美元的「保護費」，來維持其市場壟斷地位。</p><p>具體來說，Google與蘋果、三星等科技巨頭簽訂了利潤豐厚的協議，作為交換，這些公司同意將Google設為其瀏覽器和行動裝置上的「預設」搜尋引擎。</p><p>這就像一家飲料公司付錢給全國所有超市，讓結帳櫃檯只能擺放自家產品，其他品牌連被看到的機會都沒有。久而久之，消費者自然只會選擇這個品牌。法官最終認定，Google每年支付高達260億美元以確保其預設地位，這種行為已構成非法壟斷。</p><p>司法部之所以開出「出售Chrome」這劑猛藥，正是因為Chrome不僅僅是一個瀏覽器，它是Google搜尋帝國最重要的<strong>「護城河」與「門戶」</strong>。全球超過六成的電腦用戶透過Chrome進入網路世界，控制了它，就等於控制了資訊的主要入口。</p><p>這也解釋了為何像Perplexity這樣的新創，即使明知會被拒絕，也要高調喊話收購Chrome。他們的興趣揭示了一個重要的趨勢：</p><p><strong>網路的未來戰場在於AI，而瀏覽器，正是這場未來戰爭的「諾曼第」。</strong></p><p>傳統搜尋是給用戶一堆連結，讓用戶自己找答案；而AI搜尋則是直接生成答案。</p><p>如果OpenAI或Perplexity這樣的AI公司能夠收購Chrome，他們就掌握了直接向數十億用戶推送其AI服務的黃金管道，這將對Google構成致命威脅。這不再是關於誰的連結排在前面，而是關於誰能定義下一代人與資訊互動的方式。</p><p>面對可能被「肢解」的命運，Google已表明將會上訴，這意味著法律戰很可能會進入漫長的「延長賽」。</p><p>根據美國的司法程序，整個過程預計將持續18到24個月，在最壞的情況下，甚至可能拖延長達3年，最終結果可能要到2027年或更晚才會塵埃落定。</p><p>無論最終結果如何，Perplexity的這場「行銷秀」，都巧妙地揭示了這起世紀大案的核心：<strong>在AI浪潮之下，網路的入口控制權，已成為一場誰也輸不起的戰爭。</strong></p><div><hr/></div><h3><strong>主題三：美國政府入股英特爾，是好事還是壞事？</strong></h3><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!nZEO!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0378b2f7-9aef-4199-814a-dbc1230edb22_905x613.webp 424w, https://substackcdn.com/image/fetch/$s_!nZEO!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0378b2f7-9aef-4199-814a-dbc1230edb22_905x613.webp 848w, https://substackcdn.com/image/fetch/$s_!nZEO!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0378b2f7-9aef-4199-814a-dbc1230edb22_905x613.webp 1272w, https://substackcdn.com/image/fetch/$s_!nZEO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0378b2f7-9aef-4199-814a-dbc1230edb22_905x613.webp 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/0378b2f7-9aef-4199-814a-dbc1230edb22_905x613.webp","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":613,"width":905,"resizeWidth":null,"bytes":35568,"alt":null,"title":null,"type":"image/webp","href":null,"belowTheFold":true,"topImage":false,"internalRedirect":"https://fomosoc.substack.com/i/171540665?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0378b2f7-9aef-4199-814a-dbc1230edb22_905x613.webp","isProcessing":false,"align":null,"offset":false}' height="613" loading="lazy" sizes="100vw" src="images/img_005_6ac3e79f.webp" srcset="https://substackcdn.com/image/fetch/$s_!nZEO!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0378b2f7-9aef-4199-814a-dbc1230edb22_905x613.webp 424w, https://substackcdn.com/image/fetch/$s_!nZEO!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0378b2f7-9aef-4199-814a-dbc1230edb22_905x613.webp 848w, https://substackcdn.com/image/fetch/$s_!nZEO!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0378b2f7-9aef-4199-814a-dbc1230edb22_905x613.webp 1272w, https://substackcdn.com/image/fetch/$s_!nZEO!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0378b2f7-9aef-4199-814a-dbc1230edb22_905x613.webp 1456w" width="905"/></picture><div class="image-link-expand"></div></div></figure></div><p>很有趣，英特爾的股價在美國政府商討入股後，先是大漲了幾天，但忽然又大跌回來。</p><p>原因之一，是有些投資者開始擔心，所謂「入股」，其實是將之前的無償援助，轉化為股權，這變相稀釋了原有股東的權益。同時，公司未來仍需增發更多股本，來應付龐大的資金需求。</p><p>這些擔憂我個人都認為十分合理，但問題是，有比這更好的選擇嗎？</p><p>有人認為，將晶圓廠分拆開來不就行了嗎？反正設計部份還是賺錢的。</p><p>問題是，<strong>晶圓代工（</strong><em><strong>Foundry</strong></em><strong>）的部份，才是英特爾最有戰略價值的部份。</strong>在晶片設計領域，它已沒有絕對優勢；但在代工領域，它幾乎是美國本土唯一擁有先進製程能力的希望。</p><p>一旦分拆，獨立出來的晶圓廠將立刻失去英特爾自身這個最穩定、最龐大的「錨定客戶」。在沒有穩定訂單預期的情況下，沒有任何資本敢為它那龐大的建廠計畫買單。</p><p>同時，英特爾的設計部門，也將失去與自家製造工藝深度協同的優勢，淪為一個在市場上與NVIDIA、AMD、博通正面肉搏的普通設計公司，它憑什麼贏？</p><p>事實上，Intel的設計與製造，必須是一體的兩面，互為支撐。</p><p>我認為，當美國政府從一個單純的「補貼者」，轉變為一個「股東」時，這筆交易的性質就徹底改變了。</p><p>華爾街有個說法叫<strong>「Fed Put」（聯準會看跌期權），而這，就像是為英特爾提供了一張「Trump Put」。這等於是為這艘正在風雨中重建的航空母艦，提供了一張國家級的「安全網」</strong>。</p><p>有了政府這個終極股東，英特爾破產的機率，在未來幾年基本上趨近於零。因為它不再只是一間公司，它是一個國家戰略資產。沒有任何一屆美國政府，能承擔得起讓本土唯一的先進晶圓廠倒下的政治後果。</p><p>而且，這種「補助轉股」式的援助，其實非常符合Trump的商人思維。這不是無償的施捨，而是一筆交易。</p><p>政府用納稅人的錢去支持，但同時也拿到了股權，未來如果英特爾成功，納稅人也能分享到成果。這至少是一筆「公平」的交易，而不是單純的利益輸送。</p><p>所以，這就形成了一個非常有趣的投資格局：</p><p><strong>下檔風險已被國策鎖定，上檔潛力則取決於商業執行。</strong></p><p>下檔被鎖定，是因為「國家隊」已經入場，確保了公司的存續。市場可以因為財報難看、現金流為負而拋售股票，但它很難再跌到一個會導致公司倒閉的水平。</p><p>上檔充滿未知，則是因為政府的資金，買來的只是「時間」和「機會」，而不是「成功」。英特爾能否在技術上追上台積電？能否贏得像NVIDIA這樣的外部大客戶？</p><p>這一切依然是巨大的問號，考驗的是陳立武和他團隊的執行力。</p><p>因此，<strong>現在投資英特爾，與其說是在賭一家公司的復興，不如說是在賭美國動用國家力量，扶持自家科技冠軍的決心，最終能否轉化為實實在在的股東回報。</strong></p><div><hr/></div><p>這就是這個星期和大家分享的三個主題，我們下週再見。下週我有四天出差，再看看如何抽出時間，寫下週中的長文分析，謝謝大家。</p><p>最後，宣傳一下自己，我在Threads，Facebook和IG都有定期發文，另外Telegram有頻道，每天早上我會發當天重要新聞摘要，有興趣可以追蹤一下我，鏈結是:</p><p><a href="https://linktr.ee/fomo_soc">https://linktr.ee/fomo_soc</a></p><ul><li><p>KP</p></li></ul><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div>
+  </article>
+  <div class="footer-cta">
+    <p>本機離線版本 • 圖片與內文完整</p>
+    <a class="primary" href="../../index.html">← 回索引</a>
+    <a href="https://www.fomosoc.com/p/aigoogle-chrome-kp4" target="_blank" rel="noopener">在原站開啟 ↗</a>
+  </div>
+</div>
+</body>
+</html>

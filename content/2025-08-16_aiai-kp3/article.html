@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一個AI夢的破滅，另一個AI夢的燃料 - KP思考筆記(第3期)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --line: #e9e3d6; --line-soft: #f0ebdf;
+  --text: #1f2533; --text-2: #3a4256; --muted: #7c7a72; --ink: #14171e;
+  --primary: #2f6f5e; --accent: #c97b3f;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(47,111,94,.04) 0%, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(201,123,63,.04) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 28px 96px; }
+
+.meta-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px;
+  font-feature-settings: 'tnum';
+}
+.meta-bar .tag {
+  padding: 3px 9px; border-radius: 4px; font-weight: 500;
+  background: var(--line-soft); color: var(--text-2);
+}
+.meta-bar .tag.free { background: #dde9f3; color: #4a7ba6; }
+.meta-bar .tag.paid { background: #f0dbdb; color: #b06367; }
+.meta-bar a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--line); }
+.meta-bar a:hover { color: var(--primary); border-color: var(--primary); }
+
+h1.article-title {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 36px; font-weight: 400; line-height: 1.25;
+  color: var(--ink); margin: 14px 0 24px; letter-spacing: -0.005em;
+}
+h1.chapter {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 28px; font-weight: 400; line-height: 1.3;
+  color: var(--ink); margin: 56px 0 18px; padding-top: 28px;
+  border-top: 1px solid var(--line);
+  letter-spacing: -0.005em;
+}
+h2.section {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  color: var(--text); margin: 36px 0 12px;
+  padding-left: 12px; border-left: 3px solid var(--primary);
+}
+h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+
+p {
+  font-size: 16.5px; line-height: 1.85; margin: 0 0 18px;
+  color: var(--text);
+  font-family: 'Outfit', 'Noto Serif TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  font-weight: 400;
+}
+p strong, strong { color: var(--ink); font-weight: 600; }
+
+ul, ol { margin: 0 0 18px; padding-left: 26px; }
+li { font-size: 16px; line-height: 1.8; margin-bottom: 6px; }
+
+a { color: var(--primary); text-decoration: underline; text-decoration-color: rgba(47,111,94,.3); text-underline-offset: 2px; }
+a:hover { text-decoration-color: var(--primary); }
+
+blockquote {
+  margin: 28px 0; padding: 18px 24px;
+  background: var(--line-soft); border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-2); font-style: normal;
+}
+blockquote p { margin: 0; color: var(--text-2); }
+blockquote p + p { margin-top: 12px; }
+
+hr {
+  border: 0; height: 1px; background: var(--line);
+  margin: 36px auto; width: 60%;
+}
+
+/* Figure & image */
+figure {
+  margin: 32px 0; text-align: center;
+}
+.image2-inset, .captioned-image-container .image2-inset {
+  margin: 0;
+}
+.image2-inset picture, .image2-inset img {
+  display: block; max-width: 100%; height: auto; margin: 0 auto;
+  border-radius: 8px;
+}
+figure img {
+  max-width: 100%; height: auto; border-radius: 8px;
+  display: block; margin: 0 auto;
+  box-shadow: 0 4px 18px -8px rgba(20,23,30,.15);
+}
+.image2-img, .image2-image {
+  max-width: 100%; height: auto;
+}
+.captioned-image-container {
+  margin: 32px -20px;
+}
+.image-link { display: block; text-decoration: none !important; }
+.figcaption {
+  font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5;
+  text-align: center; font-style: italic;
+}
+
+/* Buttons / interactive UI from Substack we want to hide */
+.button, .pencraft, .subscription-widget, .paywall,
+[class*="paywall"], [class*="subscribe"], [class*="Subscribe"],
+.embed, .digest-post-embed { display: none !important; }
+
+.footer-cta {
+  margin-top: 60px; padding: 28px 32px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; text-align: center;
+}
+.footer-cta p { font-size: 14px; color: var(--muted); margin: 0; }
+.footer-cta a {
+  display: inline-block; margin: 4px 6px;
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--line); text-decoration: none;
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+}
+.footer-cta a.primary {
+  background: var(--primary); color: white; border-color: var(--primary);
+}
+
+.toc {
+  margin: 0 0 36px; padding: 20px 24px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.toc-title {
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+.toc ol li { counter-increment: toc; padding: 4px 0; font-size: 14px; }
+.toc ol li::before { content: counters(toc, ".") " "; color: var(--muted); margin-right: 4px; }
+.toc ol li.h1 { font-weight: 600; color: var(--ink); margin-top: 8px; }
+.toc ol li.h2 { color: var(--text-2); padding-left: 18px; }
+.toc a { color: var(--text-2); text-decoration: none; }
+.toc a:hover { color: var(--primary); }
+
+@media (max-width: 768px) {
+  .wrap { padding: 28px 18px 60px; }
+  h1.article-title { font-size: 26px; }
+  h1.chapter { font-size: 22px; }
+  p { font-size: 16px; }
+  .captioned-image-container { margin: 24px -10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta-bar">
+    <a href="../../index.html">← 索引</a>
+    <span class="tag free">🆓 公開</span>
+    <span>2025-08-16</span>
+    <span>254 字</span>
+    <a href="https://www.fomosoc.com/p/aiai-kp3" target="_blank" rel="noopener">↗ 原站</a>
+  </div>
+  <h1 class="article-title">一個AI夢的破滅，另一個AI夢的燃料 - KP思考筆記(第3期)</h1>
+  
+  <article class="body">
+<div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!w9JF!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc6d73bd4-19c2-4bd4-a9dd-ea91656e1923_1024x1024.jpeg 424w, https://substackcdn.com/image/fetch/$s_!w9JF!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc6d73bd4-19c2-4bd4-a9dd-ea91656e1923_1024x1024.jpeg 848w, https://substackcdn.com/image/fetch/$s_!w9JF!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc6d73bd4-19c2-4bd4-a9dd-ea91656e1923_1024x1024.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!w9JF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc6d73bd4-19c2-4bd4-a9dd-ea91656e1923_1024x1024.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/c6d73bd4-19c2-4bd4-a9dd-ea91656e1923_1024x1024.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":1024,"width":1024,"resizeWidth":null,"bytes":103544,"alt":null,"title":null,"type":"image/jpeg","href":null,"belowTheFold":false,"topImage":true,"internalRedirect":"https://fomosoc.substack.com/i/170973678?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc6d73bd4-19c2-4bd4-a9dd-ea91656e1923_1024x1024.jpeg","isProcessing":false,"align":null,"offset":false}' fetchpriority="high" height="1024" loading="lazy" sizes="100vw" src="images/img_002_138a7088.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!w9JF!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc6d73bd4-19c2-4bd4-a9dd-ea91656e1923_1024x1024.jpeg 424w, https://substackcdn.com/image/fetch/$s_!w9JF!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc6d73bd4-19c2-4bd4-a9dd-ea91656e1923_1024x1024.jpeg 848w, https://substackcdn.com/image/fetch/$s_!w9JF!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc6d73bd4-19c2-4bd4-a9dd-ea91656e1923_1024x1024.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!w9JF!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc6d73bd4-19c2-4bd4-a9dd-ea91656e1923_1024x1024.jpeg 1456w" width="1024"/></picture><div class="image-link-expand"></div></div></figure></div><p>大家好，我是KP。歡迎來到我的第三期思考筆記。</p><p>通常在面試時，面試官會問你，你有甚麼「缺點」。</p><p>這個時候，你就要想辦法說一個，聽起來是「缺點」，但實際上是「優點」的東西。</p><p>而我的「缺點」就是：<strong>一旦開始研究，就停不下來。</strong></p><p>原定每週一篇的「研究報告」越寫越長，這週的核能主題尤其失控，不知不覺就寫成了萬字長文。</p><p>我深知，在資訊爆炸的時代，萬字長文會令不少人卻步，我也擔心浪費了大家的時間。</p><p>但研究過程中，有太多環環相扣的細節和值得分享的洞見，實在難以割捨。</p><p>我會持續尋找深度與閱讀體驗之間的最佳平衡點，也期待大家給我回饋，究竟怎樣會看得舒服一點，可能之後也要考慮減少一點字數。</p><p>對於新朋友，我想重申「思考筆記」的定位，它是一篇「散文集」，沒有萬字報告這麼誇張，但是我一週以來深度思考後，認為最值得與你分享的精華。</p><p>這個星期有兩個主題：一個是特斯拉造芯夢的破滅，另一個是究竟核能公司如何增長。</p><p>本來還有第三個的，不過怕字數太多了，週末大家輕鬆點也好，盡量保持在五千字左右好一點。</p><div><hr/></div><h3><strong>主題一：Dojo的黃粱一夢</strong></h3><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!DXHd!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff5d53e80-2169-458d-8461-517f7d0236a4_1200x675.jpeg 424w, https://substackcdn.com/image/fetch/$s_!DXHd!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff5d53e80-2169-458d-8461-517f7d0236a4_1200x675.jpeg 848w, https://substackcdn.com/image/fetch/$s_!DXHd!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff5d53e80-2169-458d-8461-517f7d0236a4_1200x675.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!DXHd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff5d53e80-2169-458d-8461-517f7d0236a4_1200x675.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/f5d53e80-2169-458d-8461-517f7d0236a4_1200x675.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":675,"width":1200,"resizeWidth":null,"bytes":59270,"alt":null,"title":null,"type":"image/jpeg","href":null,"belowTheFold":true,"topImage":false,"internalRedirect":"https://fomosoc.substack.com/i/170973678?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff5d53e80-2169-458d-8461-517f7d0236a4_1200x675.jpeg","isProcessing":false,"align":null,"offset":false}' height="675" loading="lazy" sizes="100vw" src="images/img_003_a83cbca9.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!DXHd!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff5d53e80-2169-458d-8461-517f7d0236a4_1200x675.jpeg 424w, https://substackcdn.com/image/fetch/$s_!DXHd!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff5d53e80-2169-458d-8461-517f7d0236a4_1200x675.jpeg 848w, https://substackcdn.com/image/fetch/$s_!DXHd!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff5d53e80-2169-458d-8461-517f7d0236a4_1200x675.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!DXHd!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff5d53e80-2169-458d-8461-517f7d0236a4_1200x675.jpeg 1456w" width="1200"/></picture><div class="image-link-expand"></div></div></figure></div><p>上週，有特斯拉內部員工在社群平台預告將有「大事發生」，吊足了市場胃口。</p><p>結果，等來的卻是Dojo的解散令。</p><p>有趣的地方在於，當業內人士認為這是個「大新聞」時，市場的反應卻是出奇地冷淡，彷彿什麼也沒發生。</p><p>股價「馬照跑，舞照跳」，甚至還反彈了不少。</p><blockquote><p><strong>這恰恰證明了一個道理：有時我們看得太近，會被事件的表象所迷惑；但拉遠來看，資本市場用腳投票，早已有了自己的判斷。</strong></p></blockquote><p>然而，市場不在乎，不代表這件事不值得我們深思。Dojo從萬眾期待到黯然落幕，背後折射出的，是關於技術路線、人才戰爭與商業現實的殘酷教訓。</p><div><hr/></div><h3><strong>主題二：核能公司的成長密碼</strong></h3><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!dbfm!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4d03b0ac-1693-4b97-8405-6d8d7013d596_1000x563.webp 424w, https://substackcdn.com/image/fetch/$s_!dbfm!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4d03b0ac-1693-4b97-8405-6d8d7013d596_1000x563.webp 848w, https://substackcdn.com/image/fetch/$s_!dbfm!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4d03b0ac-1693-4b97-8405-6d8d7013d596_1000x563.webp 1272w, https://substackcdn.com/image/fetch/$s_!dbfm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4d03b0ac-1693-4b97-8405-6d8d7013d596_1000x563.webp 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/4d03b0ac-1693-4b97-8405-6d8d7013d596_1000x563.webp","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":563,"width":1000,"resizeWidth":null,"bytes":62430,"alt":null,"title":null,"type":"image/webp","href":null,"belowTheFold":true,"topImage":false,"internalRedirect":"https://fomosoc.substack.com/i/170973678?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4d03b0ac-1693-4b97-8405-6d8d7013d596_1000x563.webp","isProcessing":false,"align":null,"offset":false}' height="563" loading="lazy" sizes="100vw" src="images/img_004_5002b244.webp" srcset="https://substackcdn.com/image/fetch/$s_!dbfm!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4d03b0ac-1693-4b97-8405-6d8d7013d596_1000x563.webp 424w, https://substackcdn.com/image/fetch/$s_!dbfm!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4d03b0ac-1693-4b97-8405-6d8d7013d596_1000x563.webp 848w, https://substackcdn.com/image/fetch/$s_!dbfm!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4d03b0ac-1693-4b97-8405-6d8d7013d596_1000x563.webp 1272w, https://substackcdn.com/image/fetch/$s_!dbfm!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4d03b0ac-1693-4b97-8405-6d8d7013d596_1000x563.webp 1456w" width="1000"/></picture><div class="image-link-expand"></div></div></figure></div><p>這自然是我週中「研究報告」的延伸。</p><p>當我們看好核能復興這個宏大敘事時，有一個最根本的商業問題卻鮮少被深入探討：</p><p><strong>一家核能公司，到底要如何「成長」？</strong></p><p>它們的增長路徑與科技公司截然不同。在這篇文章中，我們將深入拆解核電巨頭與新創公司截然不同的成長劇本，探討它們如何在這場能源變革中，找到自己的星辰大海。</p><div><hr/></div><h3><strong>Dojo的黃粱一夢：一場造芯豪賭的戰略轉向</strong></h3><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!Q8VB!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb93471e-1484-41d6-8c1e-1e43a03e2c1e_1024x571.png 424w, https://substackcdn.com/image/fetch/$s_!Q8VB!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb93471e-1484-41d6-8c1e-1e43a03e2c1e_1024x571.png 848w, https://substackcdn.com/image/fetch/$s_!Q8VB!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb93471e-1484-41d6-8c1e-1e43a03e2c1e_1024x571.png 1272w, https://substackcdn.com/image/fetch/$s_!Q8VB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb93471e-1484-41d6-8c1e-1e43a03e2c1e_1024x571.png 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/db93471e-1484-41d6-8c1e-1e43a03e2c1e_1024x571.png","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":571,"width":1024,"resizeWidth":null,"bytes":392585,"alt":null,"title":null,"type":"image/png","href":null,"belowTheFold":true,"topImage":false,"internalRedirect":"https://fomosoc.substack.com/i/170973678?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb93471e-1484-41d6-8c1e-1e43a03e2c1e_1024x571.png","isProcessing":false,"align":null,"offset":false}' height="571" loading="lazy" sizes="100vw" src="images/img_005_b8825f21.png" srcset="https://substackcdn.com/image/fetch/$s_!Q8VB!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb93471e-1484-41d6-8c1e-1e43a03e2c1e_1024x571.png 424w, https://substackcdn.com/image/fetch/$s_!Q8VB!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb93471e-1484-41d6-8c1e-1e43a03e2c1e_1024x571.png 848w, https://substackcdn.com/image/fetch/$s_!Q8VB!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb93471e-1484-41d6-8c1e-1e43a03e2c1e_1024x571.png 1272w, https://substackcdn.com/image/fetch/$s_!Q8VB!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb93471e-1484-41d6-8c1e-1e43a03e2c1e_1024x571.png 1456w" width="1024"/></picture><div class="image-link-expand"></div></div></figure></div><p>在Dojo專案迎來重大戰略轉向的今天，我們有必要先迅速回顧一個最根本的問題：</p><p><strong>當Nvidia的GPU已是AI軍火庫的標準配備時，特斯拉為何要自尋煩惱，投入巨資去打造一顆專屬於自己的AI晶片？</strong></p><p>這並非一時的頭腦發熱，而是一場深思熟慮的豪賭。Dojo的誕生，從不是為了與Nvidia或AMD在公開市場上競爭，它的使命「純粹對內」，只為解決特斯拉自身的兩個核心痛點：為FSD訓練神經網路，以及為Optimus人形機器人奠定算力基礎。</p><blockquote><p><strong>這就像一支頂級F1車隊，他們傾盡全力打造一顆完美適配自己賽車的專屬引擎，唯一的目標就是贏得冠軍，而不是拿來販售。</strong></p></blockquote><p>特斯拉的動機，可以濃縮為四點：</p><ol><li><p><strong>從「瑞士軍刀」到「手術刀」：</strong> 拋棄通用GPU的冗餘功能，為處理海量影片數據這一單一任務，打造極致效率。</p></li><li><p><strong>成本與效能的極致追求：</strong> 在Exaflop等級的算力競賽中，擺脫Nvidia高昂的「算力稅」，將每一分錢都花在刀刃上。</p></li><li><p><strong>軟硬體同源的「蘋果式」哲學：</strong> 透過垂直整合，讓晶片與演算法同步進化，創造出通用硬體無法比擬的優化。</p></li><li><p><strong>擺脫依賴的「戰略獨立」：</strong> 將AI發展的命運，從Nvidia的產品路線圖中，牢牢掌握在自己手裡。</p></li></ol><p>這場野心勃勃的「垂直整合」大戲，特斯拉選擇了繞開所有傳統ASIC巨頭，直接與台積電合作，試圖從晶片設計到資料中心營運，親手打造一個完整的閉環生態。</p><p>然而，夢想有多豐滿，現實就有多骨感。這座被寄予厚望的AI聖殿，最終並未以最初的形態走下去，而是迎來了一次深刻的戰略轉向。</p><p>神話為何未能照進現實？這場豪賭的轉向，又給我們帶來了什麼啟示？</p><h4><strong>壓垮Dojo的四座大山</strong></h4><p><strong>1. 技術的阿喀琉斯之踵：紙上談兵的效能差距</strong></p><p>儘管Dojo的紙面規格驚人，但在現實世界中，它始終未能跨越與頂級GPU叢集之間的鴻溝。</p><ul><li><p><strong>記憶體的致命短板：</strong> Dojo激進地採用了純SRAM架構，雖然內部頻寬極高，但總容量嚴重不足。<strong>這就像給一輛擁有千匹馬力的超級跑車，卻只配了一個摩托車的油箱</strong>，根本無法支撐大規模AI模型訓練這種「長途奔襲」。相比之下，Nvidia的GPU早已將HBM高頻寬記憶體與成熟的快取體系結合，遊刃有餘。</p></li><li><p><strong>散熱與功耗的詛咒：</strong> 將25顆高功率的D1晶片硬塞進一個狹小的「訓練瓦片」（Training Tile）中，帶來了巨大的散熱與功耗挑戰。這直接導致了專案延期，並推高了實際的營運成本。</p></li><li><p><strong>軟體生態的荒漠：</strong> 特斯拉的自研編譯器和軟體堆疊，相比Nvidia經營了十幾年、擁有無數開發者和工具支持的CUDA生態，<strong>就像一片需要從零開墾的荒漠</strong>。軟體的成熟度，最終成為了硬體效能發揮的巨大瓶頸。</p></li></ul><p><strong>2. 人才的失血與管理的失焦：將帥離心，軍心動搖</strong></p><p>一場偉大的戰役，離不開頂尖的將帥。Dojo專案的波折，與其核心人才的持續流失密不可分。</p><ul><li><p><strong>將帥的接連出走：</strong> 從<strong>短暫效力卻影響深遠的晶片大神Jim Keller（在2018年任職不到一年後離去）</strong>，到專案負責人<strong>Ganesh Venkataramanan（2023年末離職，並於2024年初創立DensityAI）</strong>，再到最後的掌舵者Peter Bannon（2025年），核心領導層的相繼離開，讓專案的技術路線和管理連續性遭受重創。</p></li><li><p><strong>戰略優先級的轉移：</strong> 隨著特斯拉將更多資源投入到提升汽車交付量和FSD軟體功能上，Dojo這個需要長期「燒錢」卻短期不見回報的專案，在公司內部的戰略優先級被不斷調低，資源和關注度自然大不如前。</p></li></ul><p><strong>3. 經濟的殘酷現實：燒錢的無底洞與無法擺脫的依賴</strong></p><p>自研晶片是一場極其昂貴的賭局，特斯拉顯然也未能倖免於經濟規律的束縛。</p><ul><li><p><strong>天文數字般的投入：</strong> 從零開始打造一個Exaflop級別的超級電腦，需要投入數十億美元的研發和資本支出，而其商業回報的路徑卻遙遠而不確定。</p></li><li><p><strong>無法實現的完全獨立：</strong> 儘管Dojo的目標是「自給自足」，但它依然深度依賴台積電的先進製程。這使得其「獨立自主」的目標大打折扣，並未真正擺脫供應鏈的束縛。</p></li><li><p><strong>來自Nvidia的降維打擊：</strong> 當Dojo還在艱難爬坡時，Nvidia的H100、Blackwell等新一代GPU卻以驚人的速度迭代。<strong>Nvidia的「摩爾定律」式進步，讓Dojo原本設想的成本效能優勢，在面世之前就已蕩然無存。</strong></p></li></ul><p><strong>4. 戰略的傲慢：低估了垂直整合的煉獄難度</strong></p><p>垂直整合的願景固然美好，但特斯拉顯然低估了同時在多個高難度領域作戰的複雜性。</p><blockquote><p><strong>這就像一家公司不僅要蓋出全世界最頂尖的摩天大樓，還堅持要自己燒磚、自己煉鋼、自己生產玻璃和電纜。</strong></p></blockquote><p>這種挑戰需要極其深厚的工程底蘊和組織能力，對於一家核心業務是汽車製造的公司而言，這幾乎是一個不可能完成的任務。</p><h4><strong>Dojo轉向的深遠啟示</strong></h4><p><strong>A. 重新審視「垂直整合」的魔咒</strong></p><p>Dojo的戰略轉向給所有科技公司上了一堂昂貴的課：端到端的硬體垂直整合，在帶來美好願景的同時，也可能是一個巨大的陷阱。公司必須冷靜評估：</p><ul><li><p><strong>核心優勢在哪裡？</strong> 自己的長處究竟是打造獨一無二的硬體，還是利用市面上最頂尖的平台來發揮自己的軟體和數據優勢？</p></li><li><p><strong>生態系統的價值：</strong> 一個成熟的軟硬體生態（如CUDA），其價值遠超單純的硬體效能指標。</p></li></ul><p><strong>B. AI算力的戰略轉向</strong></p><p>特斯拉迅速轉向，<strong>重新擁抱Nvidia的GPU作為訓練主力，同時加強與三星（晶圓代工）和AMD（GPU供應）等外部夥伴的合作</strong>，這反映了一個更廣泛的行業趨勢：</p><ul><li><p><strong>混合模式才是王道：</strong> 將自研的「推論晶片」（Inference Chip）與市面上最強的「訓練晶片」（Training Chip）結合，或許是兼顧創新與實用性的最佳路徑。</p></li><li><p><strong>專業分工的再確認：</strong> 垂直整合在能效上帶來的好處，可能遠遠無法彌補其在研發成本、時間延誤和生態缺失上的巨大代價。</p></li></ul><p><strong>C. 市場的鐵律</strong></p><p>Dojo專案的重組，再次印證了AI晶片市場的殘酷鐵律：</p><ul><li><p><strong>極高的進入壁壘：</strong> 這是一個由數百億美元資本、數十年IP積累和龐大生態系統構成的戰場，新玩家挑戰巨頭的難度極高。</p></li><li><p><strong>Nvidia霸權的再確認：</strong> 至少在AI訓練領域，市場將繼續由少數幾家GPU和加速器巨頭主導，Nvidia的護城河因此變得更加深厚。</p></li></ul><h4><strong>結語</strong></h4><p>Dojo的軌跡，從萬眾期待的橫空出世，到如今的戰略重整，生動地展示了在瞬息萬變的AI時代，開拓全新硬體所面臨的巨大挑戰。</p><p><strong>這並非一次徹底的失敗，而是一次昂貴的試錯與及時的糾偏。</strong></p><p>它深刻地劃定了戰略雄心與組織能力、生態價值與閉門造車之間的界線。</p><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div><div><hr/></div><div><hr/></div><h3><strong>核能公司的成長密碼：從榨乾存量到星辰大海</strong></h3><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!oU1H!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc924a08a-8494-4eee-bc31-2d60e1aa5a91_698x508.png 424w, https://substackcdn.com/image/fetch/$s_!oU1H!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc924a08a-8494-4eee-bc31-2d60e1aa5a91_698x508.png 848w, https://substackcdn.com/image/fetch/$s_!oU1H!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc924a08a-8494-4eee-bc31-2d60e1aa5a91_698x508.png 1272w, https://substackcdn.com/image/fetch/$s_!oU1H!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc924a08a-8494-4eee-bc31-2d60e1aa5a91_698x508.png 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/c924a08a-8494-4eee-bc31-2d60e1aa5a91_698x508.png","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":508,"width":698,"resizeWidth":null,"bytes":279966,"alt":null,"title":null,"type":"image/png","href":null,"belowTheFold":true,"topImage":false,"internalRedirect":"https://fomosoc.substack.com/i/170973678?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc924a08a-8494-4eee-bc31-2d60e1aa5a91_698x508.png","isProcessing":false,"align":null,"offset":false}' height="508" loading="lazy" sizes="100vw" src="images/img_006_1a5321f2.png" srcset="https://substackcdn.com/image/fetch/$s_!oU1H!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc924a08a-8494-4eee-bc31-2d60e1aa5a91_698x508.png 424w, https://substackcdn.com/image/fetch/$s_!oU1H!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc924a08a-8494-4eee-bc31-2d60e1aa5a91_698x508.png 848w, https://substackcdn.com/image/fetch/$s_!oU1H!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc924a08a-8494-4eee-bc31-2d60e1aa5a91_698x508.png 1272w, https://substackcdn.com/image/fetch/$s_!oU1H!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc924a08a-8494-4eee-bc31-2d60e1aa5a91_698x508.png 1456w" width="698"/></picture><div class="image-link-expand"></div></div></figure></div><p>一家核能公司，到底要如何「成長」？</p><p>這不像科技公司推新軟體，也不像消費品牌拓新市場。核能的成長，遵循一套獨特且厚重的邏輯。</p><p>其劇本萬變不離其宗，都可歸結為三個核心目標：</p><ol><li><p><strong>榨出更多價值：</strong> 讓現有核電站產生更多電力。</p></li><li><p><strong>鎖定更高利潤：</strong> 用更好的價格賣出電力。</p></li><li><p><strong>開疆拓土：</strong> 建造全新的核電站。</p></li></ol><p>在這三條路上，傳統巨頭和新創公司的玩法，截然不同。</p><h4><strong>第一招：榨出更多價值 —— 讓老樹開新花</strong></h4><p>對傳統巨頭而言，最快的成長方式，就是讓運轉了幾十年的「老樹」開出「新花」。</p><ul><li><p><strong>引擎升級 (Power Uprates)：</strong> 就像給汽車引擎做一次專業調校。通過優化儀器與燃料，一座核電站的發電量可以安全地提升 <strong>2%到20%</strong>，成本遠低於新建。</p></li><li><p><strong>延長壽命 (License Extensions)：</strong> 就像讓保養得當的經典老爺車，合法上路的年限再延長20年。將運營許可從60年推向 <strong>80年</strong>，意味著數百億美元的穩定收入得以延續。</p></li></ul><h4><strong>第二招：鎖定更高利潤 —— 用更聰明的價格賣電</strong></h4><p>發更多電只是第一步，如何「賣個好價錢」同樣重要。</p><ul><li><p><strong>核心武器：長期「鎖價」合約 (PPA)</strong></p></li></ul><blockquote><p><strong>這就像傳統在菜市場賣菜（價格波動），變成了直接跟大型連鎖超市簽訂20年供貨合約（價格鎖定）。</strong></p></blockquote><p>核能公司直接與 <strong>AI巨頭（微軟、谷歌等）</strong> 簽訂長達數十年的電力採購協議（PPA），鎖定一個遠高於市場的穩定電價。</p><p>AI巨頭們願意支付溢價，因為他們需要的是太陽能和風能給不了的 <strong>100%可靠、24小時不中斷的零碳電力</strong>。這份溢價，就是核能公司最穩定的利潤來源。</p><h4><strong>第三招：開疆拓土 —— 建造新一代核電站</strong></h4><p>在這條最具想像空間的路上，兩派策略出現了根本分歧。</p><ul><li><p><strong>傳統巨頭：複製並升級「地鐵系統」</strong><br/>他們憑藉雄厚資本，計劃建造大型反應爐。但動輒上百億的投資與漫長周期，使其極度依賴政府的低息貸款擔保與長期合約。</p></li><li><p><strong>新創公司：打造「樂高式」的私人高鐵</strong><br/>像Oklo這樣的公司，採用「工廠製造」模式，生產模塊化的「核能電池」。它們的目標不是為城市供電，而是為單個高價值客戶提供「專屬電力服務」，旨在顛覆傳統，使其更快、更便宜。</p></li></ul><p><strong>總結來說，傳統巨頭的成長是一場穩健的馬拉松，核心是「優化存量」。而新創公司的成長，則是一場高風險的衝刺賽，核心是「技術驗證」與「模式顛覆」。</strong></p><div><hr/></div><p>那麼，這兩種路徑在具體的增長藍圖上，有何不同？</p><h4><strong>傳統巨頭的「馬拉松式」增長藍圖</strong></h4><p>以行業領導者 <strong>Constellation Energy (CEG)</strong> 為例，其增長藍圖初看之下相當穩健：公司預計營收每年增長約 <strong>3-4%</strong>。</p><p>然而，這份看似平緩的營收增長背後，卻是公司對市場作出的承諾：<strong>到2030年，其基礎每股盈餘（Base EPS）的年複合成長率將超過 13%。</strong></p><p>3%的營收增長，如何支撐起13%的盈利增長？答案不僅在於運營槓桿，更關鍵的是，<strong>其營運成本正在顯著下降</strong>。這並非理論，而是已經發生在財報上的事實。</p><p>這個「穩健的馬拉松」策略，主要由四大核心驅動力構成，它們共同作用，實現了成本的降低和利潤的擴張：</p><p><strong>1. 極致的運營槓桿</strong><br/>核電站的成本結構具有「高固定成本，低可變成本」的特點。<strong>約70-80%的成本是固定的建造成本與運維開支</strong>，而燃料等變動成本佔比較小。</p><p><strong>2. 關鍵的政策支持：生產稅收抵免 (PTC) 作為成本抵銷</strong><br/>美國《通膨削減法案》中的核能生產稅收抵免（PTC）是一個改變遊戲規則的政策工具。它不僅提供了一個不斷上漲的「保底價」，更重要的是，<strong>它直接作為成本的抵銷項，有效降低了淨生產成本</strong>。</p><ul><li><p><strong>Constellation預計每年可從PTC中獲得超過1億美元的收益，並且隨著通膨調整，到2028年，這項政策預計將帶來5億美元的增量效益。</strong></p></li></ul><p><strong>3. 卓越的運營效率，帶來實質的成本下降 </strong><br/>Constellation的運營效率並非口號，而是直接轉化為更低的成本。</p><ul><li><p><strong>燃料成本持續探低：</strong> <strong>根據核能研究所（NEI）的數據，自2012年以來，整個行業的核燃料成本已下降43.7%，僅在2023年就下降了4.4%。</strong> </p></li><li><p><strong>運維成本顯著優化：</strong> <strong>同樣得益於運營效率的提升，自2012年以來，全行業的核電運營成本已下降了33%。</strong> Constellation <strong>高達94.4%的容量因數</strong>（比行業平均水平高出4%），意味著能用同樣的固定成本發出更多的電，從而攤薄了每度電的成本。</p></li></ul><p><strong>4. 抓住AI時代的電力高價值定位</strong><br/>最後，Constellation成功地將其電力產品定位於高價值市場。通過與微軟等AI巨頭簽訂長期購電協議（PPA），他們鎖定了遠高於市場平均的電價。</p><ul><li><p><strong>例如，與微軟的協議價格據估計在$110-115/MWh的區間，這在沒有顯著增加成本的情況下，大幅提升了收入的質量。</strong></p></li></ul><p>其他傳統核電巨頭，也正遵循著這套高度相似且行之有效的增長劇本。這是一條看似平穩，實則極為精明和高效的增長路徑。</p><h4><strong>新創公司的「指數級」豪賭藍圖</strong></h4><p>新創公司的故事，則是從0到1的指數級豪賭。</p><p>以 <strong>Oklo</strong> 為例，其故事並非短期內的大規模擴張，而是從一個極小的起點，挑戰一個巨大市場的豪賭。</p><ul><li><p><strong>目標：</strong> 其首座「Aurora」微型反應爐僅為<strong>1.5兆瓦（MWe）級別</strong>，目標是先在利基市場（如偏遠資料中心或工業設施）驗證其「核能電池」商業模式，再尋求規模化複製。</p></li><li><p><strong>核心戰略：</strong> 依靠「工廠製造」模式，將建設週期縮短至2-3年，並搭配與大客戶鎖定的長期高價電力合約（PPA）。</p></li></ul><p>另一家由比爾蓋茲創立的 <strong>TerraPower</strong>，則先與政府合作，在2030年建成一座 <strong>345兆瓦（MWe，電功率）</strong> 的示範性反應爐，再以此為藍本進行規模化部署。</p><h4><strong>結論與啟示：兩種路徑，一個終局 —— 投資核能的深層思考</strong></h4><p>表面上看，這似乎是兩種截然不同的投資哲學：是選擇一個確定的現在，還是一個充滿想像空間的未來？</p><p>但如果我們看得更深，會發現這場「馬拉松」與「衝刺賽」之間，隱藏著更值得思考的啟示。</p><p><strong>啟示一：這不是零和遊戲，而是生態系統</strong></p><p>傳統巨頭與新創公司，並非純粹的競爭關係，而是一個正在形成的共生生態。</p><p>傳統巨頭需要新創公司的「鯰魚效應」來保持活力，探索新技術邊界，它們的風險投資部門也正在成為SMR公司的重要金主。</p><p>反過來，新創公司極度需要巨頭數十年積累的運營經驗、政治影響力和客戶關係作為「壓艙石」，來抵禦技術商業化初期的巨大風浪。</p><blockquote><p><strong>投資者需要思考的是： 在這個生態中，誰能更好地利用對方，誰的定位更具戰略優勢？是開始投資SMR的傳統巨頭，還是與科技巨頭深度綁定的新創公司？</strong></p></blockquote><p><strong>啟示二：真正的「客戶」已經改變</strong></p><p>AI巨頭對電力的需求，正在從根本上重塑核能的商業模式。</p><p>電力，正從一種隨市場波動的大宗商品，<strong>轉變為一種為特定客戶量身定製的、「全天候零碳」的高級訂閱服務。</strong></p><p>這意味著，未來核能公司的核心競爭力，可能不再是單純的發電成本，而是<strong>能否提供極致可靠、可快速部署、且規模可靈活擴展的「電力解決方案」</strong>。</p><p>在這個新賽道上，傳統巨頭的規模優勢和新創公司的靈活性優勢，誰更勝一籌？</p><p><strong>啟示三：看清風險的本質</strong></p><p>兩條路徑的風險截然不同。</p><ul><li><p>投資傳統巨頭，你賭的是<strong>政策的延續性</strong>和<strong>運營的卓越性</strong>。最大的風險來自於監管政策的突然轉向（如延壽許可被否決）或意想不到的安全事故。</p></li><li><p>投資新創公司，你賭的是<strong>技術的可行性</strong>和<strong>商業模式的顛覆性</strong>。最大的風險在於其「工廠製造」的承諾能否兌現，以及首個商業反應爐能否在預算內按時建成。</p></li></ul><p>這不僅是兩種成長曲線的選擇，更是對未來能源基礎設施兩種不同形態的押注。</p><p><strong>是選擇一個更強大、更持久的「中心化電網」，還是一個更靈活、更分散的「分布式能源網路」？</strong></p><p>你的答案，將決定你看待這兩類公司的最終視角。</p><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div><p>最後，宣傳一下自己，我在Threads，Facebook和IG都有定期發文，另外Telegram有頻道，每天早上我會發當天重要新聞摘要，有興趣可以追蹤一下我，鏈結是:</p><p><a href="https://linktr.ee/fomo_soc">https://linktr.ee/fomo_soc</a></p><ul><li><p>KP</p></li></ul>
+  </article>
+  <div class="footer-cta">
+    <p>本機離線版本 • 圖片與內文完整</p>
+    <a class="primary" href="../../index.html">← 回索引</a>
+    <a href="https://www.fomosoc.com/p/aiai-kp3" target="_blank" rel="noopener">在原站開啟 ↗</a>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>口服減重藥時代正式開啟？Nvidia不搞雲端了？- KP思考筆記(第22期)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --line: #e9e3d6; --line-soft: #f0ebdf;
+  --text: #1f2533; --text-2: #3a4256; --muted: #7c7a72; --ink: #14171e;
+  --primary: #2f6f5e; --accent: #c97b3f;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(47,111,94,.04) 0%, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(201,123,63,.04) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 28px 96px; }
+
+.meta-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px;
+  font-feature-settings: 'tnum';
+}
+.meta-bar .tag {
+  padding: 3px 9px; border-radius: 4px; font-weight: 500;
+  background: var(--line-soft); color: var(--text-2);
+}
+.meta-bar .tag.free { background: #dde9f3; color: #4a7ba6; }
+.meta-bar .tag.paid { background: #f0dbdb; color: #b06367; }
+.meta-bar a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--line); }
+.meta-bar a:hover { color: var(--primary); border-color: var(--primary); }
+
+h1.article-title {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 36px; font-weight: 400; line-height: 1.25;
+  color: var(--ink); margin: 14px 0 24px; letter-spacing: -0.005em;
+}
+h1.chapter {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 28px; font-weight: 400; line-height: 1.3;
+  color: var(--ink); margin: 56px 0 18px; padding-top: 28px;
+  border-top: 1px solid var(--line);
+  letter-spacing: -0.005em;
+}
+h2.section {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  color: var(--text); margin: 36px 0 12px;
+  padding-left: 12px; border-left: 3px solid var(--primary);
+}
+h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+
+p {
+  font-size: 16.5px; line-height: 1.85; margin: 0 0 18px;
+  color: var(--text);
+  font-family: 'Outfit', 'Noto Serif TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  font-weight: 400;
+}
+p strong, strong { color: var(--ink); font-weight: 600; }
+
+ul, ol { margin: 0 0 18px; padding-left: 26px; }
+li { font-size: 16px; line-height: 1.8; margin-bottom: 6px; }
+
+a { color: var(--primary); text-decoration: underline; text-decoration-color: rgba(47,111,94,.3); text-underline-offset: 2px; }
+a:hover { text-decoration-color: var(--primary); }
+
+blockquote {
+  margin: 28px 0; padding: 18px 24px;
+  background: var(--line-soft); border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-2); font-style: normal;
+}
+blockquote p { margin: 0; color: var(--text-2); }
+blockquote p + p { margin-top: 12px; }
+
+hr {
+  border: 0; height: 1px; background: var(--line);
+  margin: 36px auto; width: 60%;
+}
+
+/* Figure & image */
+figure {
+  margin: 32px 0; text-align: center;
+}
+.image2-inset, .captioned-image-container .image2-inset {
+  margin: 0;
+}
+.image2-inset picture, .image2-inset img {
+  display: block; max-width: 100%; height: auto; margin: 0 auto;
+  border-radius: 8px;
+}
+figure img {
+  max-width: 100%; height: auto; border-radius: 8px;
+  display: block; margin: 0 auto;
+  box-shadow: 0 4px 18px -8px rgba(20,23,30,.15);
+}
+.image2-img, .image2-image {
+  max-width: 100%; height: auto;
+}
+.captioned-image-container {
+  margin: 32px -20px;
+}
+.image-link { display: block; text-decoration: none !important; }
+.figcaption {
+  font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5;
+  text-align: center; font-style: italic;
+}
+
+/* Buttons / interactive UI from Substack we want to hide */
+.button, .pencraft, .subscription-widget, .paywall,
+[class*="paywall"], [class*="subscribe"], [class*="Subscribe"],
+.embed, .digest-post-embed { display: none !important; }
+
+.footer-cta {
+  margin-top: 60px; padding: 28px 32px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; text-align: center;
+}
+.footer-cta p { font-size: 14px; color: var(--muted); margin: 0; }
+.footer-cta a {
+  display: inline-block; margin: 4px 6px;
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--line); text-decoration: none;
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+}
+.footer-cta a.primary {
+  background: var(--primary); color: white; border-color: var(--primary);
+}
+
+.toc {
+  margin: 0 0 36px; padding: 20px 24px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.toc-title {
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+.toc ol li { counter-increment: toc; padding: 4px 0; font-size: 14px; }
+.toc ol li::before { content: counters(toc, ".") " "; color: var(--muted); margin-right: 4px; }
+.toc ol li.h1 { font-weight: 600; color: var(--ink); margin-top: 8px; }
+.toc ol li.h2 { color: var(--text-2); padding-left: 18px; }
+.toc a { color: var(--text-2); text-decoration: none; }
+.toc a:hover { color: var(--primary); }
+
+@media (max-width: 768px) {
+  .wrap { padding: 28px 18px 60px; }
+  h1.article-title { font-size: 26px; }
+  h1.chapter { font-size: 22px; }
+  p { font-size: 16px; }
+  .captioned-image-container { margin: 24px -10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta-bar">
+    <a href="../../index.html">← 索引</a>
+    <span class="tag free">🆓 公開</span>
+    <span>2025-12-27</span>
+    <span>333 字</span>
+    <a href="https://www.fomosoc.com/p/nvidia-kp22" target="_blank" rel="noopener">↗ 原站</a>
+  </div>
+  <h1 class="article-title">口服減重藥時代正式開啟？Nvidia不搞雲端了？- KP思考筆記(第22期)</h1>
+  <div class="toc"><div class="toc-title">本文目錄</div><ol>
+<li class="h1"><a href="#主題一-Nvidia的-雲端-撤退-是戰略轉進-還是向客戶妥協">主題一：Nvidia的「雲端」撤退，是戰略轉進，還是向客戶妥協？</a></li>
+<li class="h1"><a href="#主題二-我們是全能的上帝-還是偏科的猴子-圖靈獎與諾貝爾獎得主的巔峰對決">主題二：我們是全能的上帝，還是偏科的猴子？圖靈獎與諾貝爾獎得主的巔峰對決</a></li>
+<li class="h1"><a href="#主題三-別了-針頭-口服減重藥時代正式開啟-諾和諾德如何發動閃電戰">主題三：別了，針頭！口服減重藥時代正式開啟，諾和諾德如何發動閃電戰？</a></li>
+<li class="h1"><a href="#主題四-Google-如何靠收購-Intersect-跳過-7-年的電網排隊">主題四：Google 如何靠收購 Intersect ，跳過 7 年的電網排隊？</a></li>
+<li class="h2"><a href="#DGX-Cloud-一場華麗卻-寄人籬下-的實驗">DGX Cloud：一場華麗卻「寄人籬下」的實驗</a></li>
+<li class="h2"><a href="#從-球員-到-聯盟主席-的野望">從「球員」到「聯盟主席」的野望</a></li>
+<li class="h2"><a href="#當-聯盟主席-動了所有人的-奶酪">當「聯盟主席」動了所有人的「奶酪」</a></li>
+<li class="h2"><a href="#通用-是一種幻覺-智慧的本質是-特化">「通用」是一種幻覺，智慧的本質是「特化」</a></li>
+<li class="h2"><a href="#別把-通用-與-全能-混為一談">別把「通用」與「全能」混為一談</a></li>
+<li class="h2"><a href="#詞彙之爭背後-AI發展的路線分歧">詞彙之爭背後：AI發展的路線分歧</a></li>
+<li class="h2"><a href="#理想與現實的十字路口">理想與現實的十字路口</a></li>
+<li class="h2"><a href="#當-神藥-不再需要針頭">當「神藥」不再需要針頭</a></li>
+<li class="h2"><a href="#價格戰的本質-用-體量-換-時間">價格戰的本質：用「體量」換「時間」</a></li>
+<li class="h2"><a href="#諾和諾德的-阿基里斯之踵">諾和諾德的「阿基里斯之踵」</a></li>
+<li class="h2"><a href="#風暴前夕-禮來的後發制人">風暴前夕，禮來的後發制人</a></li>
+<li class="h2"><a href="#商業邊界的重新劃分-從-奢侈品-到-必需品">商業邊界的重新劃分：從「奢侈品」到「必需品」</a></li>
+<li class="h2"><a href="#Google買的究竟是誰">Google買的究竟是誰？</a></li>
+</ol></div>
+  <article class="body">
+<div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!4IAu!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9add2c9d-61a9-4c36-83b8-6a1c1b130e51_1536x1024.png 424w, https://substackcdn.com/image/fetch/$s_!4IAu!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9add2c9d-61a9-4c36-83b8-6a1c1b130e51_1536x1024.png 848w, https://substackcdn.com/image/fetch/$s_!4IAu!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9add2c9d-61a9-4c36-83b8-6a1c1b130e51_1536x1024.png 1272w, https://substackcdn.com/image/fetch/$s_!4IAu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9add2c9d-61a9-4c36-83b8-6a1c1b130e51_1536x1024.png 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/9add2c9d-61a9-4c36-83b8-6a1c1b130e51_1536x1024.png","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":971,"width":1456,"resizeWidth":null,"bytes":2542368,"alt":null,"title":null,"type":"image/png","href":null,"belowTheFold":false,"topImage":true,"internalRedirect":"https://fomosoc.substack.com/i/182617302?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9add2c9d-61a9-4c36-83b8-6a1c1b130e51_1536x1024.png","isProcessing":false,"align":null,"offset":false}' fetchpriority="high" height="971" loading="lazy" sizes="100vw" src="images/img_002_38c2d0b7.png" srcset="https://substackcdn.com/image/fetch/$s_!4IAu!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9add2c9d-61a9-4c36-83b8-6a1c1b130e51_1536x1024.png 424w, https://substackcdn.com/image/fetch/$s_!4IAu!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9add2c9d-61a9-4c36-83b8-6a1c1b130e51_1536x1024.png 848w, https://substackcdn.com/image/fetch/$s_!4IAu!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9add2c9d-61a9-4c36-83b8-6a1c1b130e51_1536x1024.png 1272w, https://substackcdn.com/image/fetch/$s_!4IAu!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9add2c9d-61a9-4c36-83b8-6a1c1b130e51_1536x1024.png 1456w" width="1456"/></picture><div class="image-link-expand"></div></div></figure></div><p>大家好，我是 KP，歡迎來到第 22 期的《週末思考筆記》。</p><p>在開始之前，先祝大家聖誕快樂，身體健康。希望各位都能在這個難得的假期裡，與心愛的人一起度過溫暖的時光。</p><p>今年的聖誕節剛好落在週四與週五，加上原本就沒什麼上班氣氛的 24 號，湊成了一個完美的長週末。</p><p>如果換作往常的我，現在應該已經進入了徹底放空的悠長假期模式。</p><p>不過，自從開設了「FOMO 研究院」後，「假期」這兩個字似乎就從我的字典裡消失了。</p><p>只要市場一有風吹草動，我就會忍不住想鑽進去研究，非得把背後的邏輯理順、寫下來不可。</p><p>也沒想到，明明是聖誕假期，Nvidia 竟然也沒打算讓人休息。</p><p>那一則與 Groq 的「合作」消息，背後的戰略意義實在太過重大。我本來打算寫篇短文簡單帶過，但動筆後發現，一兩千字的篇幅根本無法寫完這筆交易對未來格局的深遠影響。</p><p>於是，在聖誕節當天，我把自己關在書房裡不斷地做研究、瘋狂輸出，務求在最短時間內將這份思考分享給每一位讀者。</p><p>既然是聖誕節，那就普天同慶一下：</p><blockquote><p>這篇萬餘字的深度研究將會「限時免費」開放，還沒讀過的朋友，請務必抓緊時間去看看。</p></blockquote><p>另外，本週還有一篇我也非常喜歡的「深度研究」。我們終於暫時放下 AI，聊聊我最熟悉的本行：銀行業，以及當前的美國國債市場。</p><p>既然週中已經為大家準備了兩盤「硬菜」，週末這篇筆記我們就稍微輕鬆一點。本週我想與大家分享四個觀察重點：</p><ul><li><p><strong>主題一：Nvidia 的「雲端」撤退，是戰略轉進，還是巨人陰影下的妥協？</strong></p></li><li><p><strong>主題二：我們是全能的上帝，還是偏科的猴子？圖靈獎與諾貝爾獎得主的巔峰對決</strong></p></li><li><p><strong>主題三：別了，針頭！口服減重藥時代正式開啟，諾和諾德如何發動閃電戰？</strong></p></li><li><p><strong>主題四：Google 如何靠收購 Intersect Power，直接跳過 7 年的電網排隊？</strong></p></li></ul><p>話不多說，我們進入正文!</p><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div><h1 class="chapter" id="主題一-Nvidia的-雲端-撤退-是戰略轉進-還是向客戶妥協"><strong>主題一：Nvidia的「雲端」撤退，是戰略轉進，還是向客戶妥協？</strong></h1><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!2Dfs!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F047da221-6f56-471b-a2a4-49aaf29c8ae6_502x432.jpeg 424w, https://substackcdn.com/image/fetch/$s_!2Dfs!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F047da221-6f56-471b-a2a4-49aaf29c8ae6_502x432.jpeg 848w, https://substackcdn.com/image/fetch/$s_!2Dfs!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F047da221-6f56-471b-a2a4-49aaf29c8ae6_502x432.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!2Dfs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F047da221-6f56-471b-a2a4-49aaf29c8ae6_502x432.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/047da221-6f56-471b-a2a4-49aaf29c8ae6_502x432.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":432,"width":502,"resizeWidth":null,"bytes":95003,"alt":null,"title":null,"type":"image/jpeg","href":null,"belowTheFold":true,"topImage":false,"internalRedirect":"https://fomosoc.substack.com/i/182617302?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F047da221-6f56-471b-a2a4-49aaf29c8ae6_502x432.jpeg","isProcessing":false,"align":null,"offset":false}' height="432" loading="lazy" sizes="100vw" src="images/img_003_74f82ad8.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!2Dfs!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F047da221-6f56-471b-a2a4-49aaf29c8ae6_502x432.jpeg 424w, https://substackcdn.com/image/fetch/$s_!2Dfs!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F047da221-6f56-471b-a2a4-49aaf29c8ae6_502x432.jpeg 848w, https://substackcdn.com/image/fetch/$s_!2Dfs!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F047da221-6f56-471b-a2a4-49aaf29c8ae6_502x432.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!2Dfs!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F047da221-6f56-471b-a2a4-49aaf29c8ae6_502x432.jpeg 1456w" width="502"/></picture><div class="image-link-expand"></div></div></figure></div><p>本週，<strong>科技媒體《The Information》報導：Nvidia正在悄悄地重組其雲端運算部門（DGX Cloud），從與亞馬遜AWS、微軟Azure</strong>等雲端巨頭直接競爭的賽道上，策略性地後撤。</p><p>時間拉回兩年多前，<strong>黃仁勳</strong>意氣風發地揭示了他的願景：打造一個能與<strong>AWS</strong>分庭抗禮的<strong>Nvidia自有雲端服務</strong>。</p><div><hr/></div><h2 class="section" id="DGX-Cloud-一場華麗卻-寄人籬下-的實驗"><strong>DGX Cloud：一場華麗卻「寄人籬下」的實驗</strong></h2><p><strong>Nvidia</strong>的<strong>DGX Cloud</strong>是一個<strong>「雲中雲」的實驗：它向AWS等巨頭租用伺服器，再鋪上自家軟硬體，試圖向開發者提供「原廠調校」的極致GPU性能</strong>。</p><p>此舉的戰略意圖很明顯：在雲端巨頭紛紛<strong>自研AI晶片</strong>時，建立一個不被<strong>「釜底抽薪」的B計畫</strong>。</p><div><hr/></div><h3><strong>夢醒時分：難以逾越的障礙</strong></h3><p>然而，這個計畫很快撞上了兩堵無法逾越的高牆：</p><ol><li><p><strong>營運的惡夢</strong>：<br/>由於<strong>DGX Cloud</strong>並非自己從零建立資料中心，而是<strong>「租用」AWS、Google</strong>等雲端夥伴的伺服器，再進行客製化後轉租出去。</p><p>這帶來了一個災難性的後果：<strong>技術支援變得極其複雜</strong>。</p></li></ol><blockquote><p><strong>這就像你開了一家連鎖餐廳，但廚房卻分別設在麥當勞、肯德基和漢堡王裡面。每個廚房的規矩、設備、流程都不同，當客人投訴餐點有問題時，你根本不知道該找誰負責，也無法用一套標準流程解決問題。</strong></p></blockquote><ol start="2"><li><p><strong>戰略上的兩難：不要與你的大客戶搶生意</strong>：<br/>這或許是最根本的原因。<strong>AWS</strong>、<strong>Google</strong>、<strong>Microsoft</strong>不僅是<strong>Nvidia</strong>雲端業務的潛在競爭對手，更是其<strong>晶片業務最大的客戶</strong>。<strong>黃仁勳</strong>顯然不願為了<strong>DGX Cloud</strong>這個尚在襁褓中的業務，去激怒這些每年採購數百億美元晶片的<strong>「金主」</strong>。</p></li></ol><p>這種<strong>「既是裁判，又是球員」的尷尬身份，讓Nvidia無法全力以赴地去拓展DGX Cloud</strong>的外部客戶。</p><p>最終，在<strong>2025年12月</strong>，<strong>Nvidia</strong>選擇了重整架構。</p><p>根據報導，原<strong>DGX Cloud</strong>負責人<strong>Alexis Black Bjorlin</strong>（2023年從<strong>Meta</strong>跳槽而來）被重新指派職務，數百人的團隊被整體併入由資深副總裁<strong>Dwight Diercks</strong>領導的工程與營運部門，直接向<strong>黃仁勳</strong>匯報。</p><p>這標誌著<strong>DGX Cloud</strong>從一個對外的商業產品，正式轉變為服務<strong>Nvidia內部晶片研發、模型測試的專屬工具</strong>。</p><p>而<strong>Nvidia</strong>官方的說法表示，<strong>「這始終是一個試點項目，旨在學習如何為生態夥伴更好地建構系統」</strong>。</p><div><hr/></div><h2 class="section" id="從-球員-到-聯盟主席-的野望"><strong>從「球員」到「聯盟主席」的野望</strong></h2><p>意識到在「租來的土地」上永遠無法挑戰「地主」後，Nvidia並未認輸，而是選擇了另一套更為高明的劇本。至少，理論上如此。</p><p>這次轉變的核心，是其在2025年中推出的DGX Cloud Lepton平台。</p><p>Lepton的登場，標誌著Nvidia試圖將自己的角色，從下場比賽的「球員」，徹底轉變為運營整個聯賽的「聯盟主席」。</p><p>Nvidia的新策略是：</p><ul><li><p><strong>扶植「新貴」，而非親自參戰：</strong> 大力投資CoreWeave、Lambda等新創雲端公司，一方面創造了新的晶片買家，打破了巨頭的壟斷；另一方面，也巧妙地將建立資料中心的巨大資本開銷和運營風險轉嫁出去。</p></li><li><p><strong>成為「總閘口」，而非單一通路：</strong> Lepton的目標是成為一個GPU算力的「聚合器」。開發者只需一個Nvidia帳戶，就能在統一介面上，自由地向AWS、Azure、CoreWeave等數十家供應商詢價、購買算力。Nvidia則從中抽取軟體服務費，將重資產、低利潤的「二房東」模式，轉變為輕資產、高利潤的平台模式。</p></li></ul><div><hr/></div><h2 class="section" id="當-聯盟主席-動了所有人的-奶酪">當「聯盟主席」動了所有人的「奶酪」</h2><p>然而，這一步看似精妙的棋，卻很快踢到了鐵板。Nvidia發現，要當好這個「聯盟主席」，遠比想像中困難，因為這個角色觸動了市場上所有玩家最敏感的神經。</p><p>Lepton平台的核心邏輯，是試圖將GPU算力<strong>「商品化」（Commoditize）</strong>。</p><p>這就像Nvidia開了一個算力界的「比價網站」，讓一小時來自CoreWeave的H100算力，和一小時來自Lambda的H100算力，在價格上被直接比較。</p><p>這對於那些依靠差異化服務、高附加價值來獲取利潤的新創雲服務商（Neoclouds）而言，無疑是動了他們的「奶酪」。</p><p>他們向Nvidia抱怨，這種做法會將他們拖入殘酷的價格戰，侵蝕他們的利潤空間。他們需要Nvidia的晶片來生存，但他們不希望自己的核心業務被Nvidia的平台所「格式化」。</p><p>更深層次的問題在於，Nvidia再次陷入了那個無法擺脫的戰略悖論：<strong>它的主要客戶，正是它試圖去「管理」和「干預」的雲端運營商。</strong></p><p>無論是雲端巨頭還是新創公司，它們都不希望上游的晶片供應商，過度介入下游的市場定價和客戶關係。</p><div><hr/></div><h3><strong>在鋼索上跳舞</strong></h3><p>DGX Cloud的收兵，無疑是一次明智的戰術修正。它讓Nvidia從一場勝算不大的正面衝突中抽身，也讓它深刻體會了雲端服務這門生意的複雜與殘酷。</p><p>但這也證明了，Nvidia必須在「維繫大客戶關係」與「扶植新生力量」之間走鋼索；必須在「維持晶片高定價」與「確保下游生態繁榮」之間尋找平衡；更必須在「推動平台標準化」與「避免激怒合作夥伴」之間做出艱難的取捨。</p><p>這場遊戲，遠未結束。黃仁勳的挑戰，才剛剛開始。</p><div><hr/></div><h1 class="chapter" id="主題二-我們是全能的上帝-還是偏科的猴子-圖靈獎與諾貝爾獎得主的巔峰對決"><strong>主題二：我們是全能的上帝，還是偏科的猴子？圖靈獎與諾貝爾獎得主的巔峰對決</strong></h1><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!EOJO!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffae92a6c-4662-45cc-838b-4c419285ffac_421x757.png 424w, https://substackcdn.com/image/fetch/$s_!EOJO!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffae92a6c-4662-45cc-838b-4c419285ffac_421x757.png 848w, https://substackcdn.com/image/fetch/$s_!EOJO!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffae92a6c-4662-45cc-838b-4c419285ffac_421x757.png 1272w, https://substackcdn.com/image/fetch/$s_!EOJO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffae92a6c-4662-45cc-838b-4c419285ffac_421x757.png 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/fae92a6c-4662-45cc-838b-4c419285ffac_421x757.png","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":757,"width":421,"resizeWidth":null,"bytes":111689,"alt":"","title":null,"type":"image/png","href":null,"belowTheFold":true,"topImage":false,"internalRedirect":"https://fomosoc.substack.com/i/182617302?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffae92a6c-4662-45cc-838b-4c419285ffac_421x757.png","isProcessing":false,"align":null,"offset":false}' height="757" loading="lazy" sizes="100vw" src="images/img_004_e0435ea6.png" srcset="https://substackcdn.com/image/fetch/$s_!EOJO!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffae92a6c-4662-45cc-838b-4c419285ffac_421x757.png 424w, https://substackcdn.com/image/fetch/$s_!EOJO!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffae92a6c-4662-45cc-838b-4c419285ffac_421x757.png 848w, https://substackcdn.com/image/fetch/$s_!EOJO!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffae92a6c-4662-45cc-838b-4c419285ffac_421x757.png 1272w, https://substackcdn.com/image/fetch/$s_!EOJO!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffae92a6c-4662-45cc-838b-4c419285ffac_421x757.png 1456w" title="" width="421"/></picture><div class="image-link-expand"></div></div></figure></div><p>來，我們一起來看看<strong>「神仙打架」</strong>。</p><p>在人工智慧的發展浪潮中，我們時常聽到<strong>「通用人工智慧」（AGI）</strong>這個詞，它指向一個如人類般、甚至超越人類的終極目標。</p><p>不過最近，<strong>Yann LeCun</strong>和<strong>Demis Hassabis</strong>就在<strong>X</strong>上，對<strong>AGI</strong>這個詞來了一次<strong>激烈交鋒</strong>。</p><h2 class="section" id="通用-是一種幻覺-智慧的本質是-特化"><strong>「通用」是一種幻覺，智慧的本質是「特化」</strong></h2><p><strong>Yann LeCun</strong>（前<strong>Meta</strong>首席<strong>AI</strong>科學家，<strong>圖靈獎</strong>得主）在一個<strong>Podcast</strong>中說到：</p><blockquote><p><strong>「通用智慧（General Intelligence）根本不存在，這概念簡直是胡扯（Complete BS）。」</strong></p></blockquote><p><strong>LeCun</strong>指出，我們常常高估了自己。人類的智慧其實非常<strong>「偏科」</strong>，我們極度擅長在物理世界中生存和進行社交，這是數百萬年演化帶來的結果。</p><p>但在其他無數領域，我們的表現堪稱糟糕。他舉例說，人類在<strong>棋類</strong>、<strong>數學運算</strong>等領域與專門的<strong>AI</strong>相比早已望塵莫及。</p><p><strong>LeCun</strong>認為，我們之所以覺得自己<strong>「通用」，是因為我們陷入了一個思維的閉環：「我們只能構想出我們恰好能夠理解的問題。」</strong></p><p>換句話說，我們在自己熟悉的、能夠思考的範圍內，顯得無所不能。但這並不能證明我們在所有可能的問題空間裡都是通用的。</p><p>這就像一個只會用錘子的人，看什麼都像釘子，並因此認為自己是個<strong>「通用工具專家」</strong>。</p><p>簡單來說，宇宙中<strong>「可能存在的問題」</strong>的總量是一個天文數字，遠遠超乎想像。</p><p>而人類大腦的結構，儘管極其複雜，但它能夠有效處理的問題類型，只佔所有可能問題總量的極小一部分，小到幾乎可以忽略不計。</p><p>從數學角度看，人類的智慧根本就不是<strong>「通用」，而是「特化」</strong>。</p><p>所謂的 <strong>AGI</strong>，不過是人類試圖複製<strong>「人類水平智慧」</strong>的一個代名詞罷了。</p><h2 class="section" id="別把-通用-與-全能-混為一談"><strong>別把「通用」與「全能」混為一談</strong></h2><p>面對<strong>LeCun</strong>的挑戰，<strong>Demis Hassabis</strong>（<strong>Google DeepMind CEO</strong>，<strong>諾貝爾獎</strong>得主）提出了反駁。</p><p>他認為 <strong>LeCun</strong> 混淆了兩個概念：<strong>通用性（General）與普遍性（Universal）</strong>。</p><p><strong>Hassabis</strong> 指出，人類大腦本質上是一個<strong>「近似的圖靈機」</strong>。雖然我們在某些任務上效率低下（比如心算），但只要給我們足夠的時間、紙筆和數據，人類大腦在理論上可以學習任何可計算的函數。</p><p>人類大腦最初是為了<strong>「採集與狩獵」演化出來的，但我們卻發明了西洋棋</strong>、<strong>微積分</strong>、<strong>波音 747</strong> 和<strong>量子力學</strong>。</p><p>這種<strong>「跨越演化初衷」的能力，就是最純粹的通用智慧</strong>。</p><p>我們下棋不如<strong>AI</strong>，不是因為我們的大腦架構有缺陷，而是因為我們在有限的時間和記憶體下，效率不如為特定任務優化的機器。</p><p>這就像一台個人電腦，理論上可以運行任何軟體，但你不會期望它在沒有安裝特定程式的情況下，就能直接完成專業的影片剪輯。</p><h2 class="section" id="詞彙之爭背後-AI發展的路線分歧"><strong>詞彙之爭背後：AI發展的路線分歧</strong></h2><p>表面上看，這是一場<strong>關於「通用」一詞定義的學術討論。但深入探究，你會發現這背後代表了兩種截然不同的AI發展哲學和技術路線</strong>。</p><h3><strong>LeCun的路線——「世界模型」之路：</strong></h3><p>當<strong>LeCun</strong>否定<strong>「通用智慧」時，他真正批判的是當前過度依賴大型語言模型（LLM）</strong>的趨勢。</p><p>他認為，僅僅處理文本數據的<strong>LLM</strong>，由於缺乏對真實物理世界的感知和因果理解，永遠無法達到真正的智慧。</p><p>他倡導的路線是建立<strong>「世界模型」（World Models），讓AI</strong>像嬰兒學習物理定律一樣，通過與環境互動來理解世界的因果關係，從而具備真正的預測和規劃能力。</p><p>這是一條更根本、更艱難的道路。</p><h3><strong>Hassabis支持的路線——「規模化」之路：</strong></h3><p><strong>Hassabis</strong>的觀點則為當前的主流方法提供了強有力的理論支持。</p><p>如果智慧的核心在於一個通用的學習架構，那麼持續<strong>擴大模型規模（Scaling）</strong>、增加數據量，讓模型學會更多樣化的任務，就是一條通往更高智慧的可行路徑。</p><p>這條路徑相信，當模型足夠大、數據足夠豐富時，更高級的智慧能力便會<strong>「湧現」</strong>。</p><h2 class="section" id="理想與現實的十字路口"><strong>理想與現實的十字路口</strong></h2><p>那麼，誰是對的？</p><p>坦白說，連這些巨頭都有分歧時，我又有甚麼資格去斷定誰對誰錯。也許他們兩人都是對的，只是站在了不同的時間維度上。</p><p>然而，這場哲學分歧卻有著殘酷的現實後果。在當前這場分秒必爭的<strong>AI軍備競賽</strong>中，<strong>耐心</strong>是一種極其昂貴的奢侈品。</p><p><strong>LeCun</strong>對<strong>「世界模型」的堅持，是一條需要十年甚至更長時間才能看到成果的漫漫長路，這使他與Meta</strong>面臨的即時競爭壓力產生了衝突。正是這種對長遠理想的執著，最終導致了雙方的分道揚鑣。</p><p>但一位遠見者的離去，往往也標誌著一個新篇章的開始。我們只能期望，<strong>LeCun</strong>在未來的道路上能專注於他的宏大願景，並最終為人類世界帶來顛覆性的突破。</p><blockquote><p><strong>也許，AI的未來並不在於兩條路線的單選。當「規模化」帶來的快速進步，與「世界模型」帶來的深度理解最終交匯時，那或許才是真正推動人類文明躍遷的奇點。</strong></p></blockquote><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div><div><hr/></div><h1 class="chapter" id="主題三-別了-針頭-口服減重藥時代正式開啟-諾和諾德如何發動閃電戰"><strong>主題三：別了，針頭！口服減重藥時代正式開啟，諾和諾德如何發動閃電戰？</strong></h1><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!ugLL!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8c640903-884f-41e6-bb6b-02018464131d_1200x900.jpeg 424w, https://substackcdn.com/image/fetch/$s_!ugLL!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8c640903-884f-41e6-bb6b-02018464131d_1200x900.jpeg 848w, https://substackcdn.com/image/fetch/$s_!ugLL!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8c640903-884f-41e6-bb6b-02018464131d_1200x900.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!ugLL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8c640903-884f-41e6-bb6b-02018464131d_1200x900.jpeg 1456w" type="image/webp"/><img alt="?? Big News! FDA just approved the #Wegovy® pill – the first oral #GLP-1  for chronic weight loss! ??✨ ??️Once-daily oral #Semaglutide 25 mg ??️For  adults with #obesity or #overweight + weight-related" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/8c640903-884f-41e6-bb6b-02018464131d_1200x900.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":900,"width":1200,"resizeWidth":null,"bytes":null,"alt":"?? Big News! FDA just approved the #Wegovy® pill – the first oral #GLP-1  for chronic weight loss! ??✨ ??️Once-daily oral #Semaglutide 25 mg ??️For  adults with #obesity or #overweight + weight-related","title":"?? Big News! FDA just approved the #Wegovy® pill – the first oral #GLP-1  for chronic weight loss! ??✨ ??️Once-daily oral #Semaglutide 25 mg ??️For  adults with #obesity or #overweight + weight-related","type":null,"href":null,"belowTheFold":true,"topImage":false,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' height="900" loading="lazy" sizes="100vw" src="images/img_005_01d51499.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!ugLL!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8c640903-884f-41e6-bb6b-02018464131d_1200x900.jpeg 424w, https://substackcdn.com/image/fetch/$s_!ugLL!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8c640903-884f-41e6-bb6b-02018464131d_1200x900.jpeg 848w, https://substackcdn.com/image/fetch/$s_!ugLL!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8c640903-884f-41e6-bb6b-02018464131d_1200x900.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!ugLL!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8c640903-884f-41e6-bb6b-02018464131d_1200x900.jpeg 1456w" title="?? Big News! FDA just approved the #Wegovy® pill – the first oral #GLP-1  for chronic weight loss! ??✨ ??️Once-daily oral #Semaglutide 25 mg ??️For  adults with #obesity or #overweight + weight-related" width="1200"/></picture><div class="image-link-expand"></div></div></figure></div><p>在經歷了被競爭對手<strong>禮來</strong>（<strong>Eli Lilly</strong>）的強勢產品<strong>Zepbound</strong>壓制近一年後，減重藥巨頭<strong>諾和諾德</strong>（<strong>Novo Nordisk</strong>）終於在<strong>12月22日</strong>，收到了一張決定性的王牌：</p><p><strong>口服版Wegovy獲批</strong>。</p><h2 class="section" id="當-神藥-不再需要針頭"><strong>當「神藥」不再需要針頭</strong></h2><p>首先，我們必須理解這顆藥丸的<strong>劃時代意義</strong>。</p><p><strong>諾和諾德</strong>成功地將其王牌產品<strong>Wegovy</strong>的強大效力，塞進了一顆<strong>每日一次</strong>的藥丸裡。</p><p>臨床數據顯示，口服版在<strong>64週</strong>內能帶來高達<strong>13.6%的平均體重下降（在嚴格服藥者中更是達到16.6%</strong>），這幾乎完美複製了注射版<strong>Wegovy</strong>（約<strong>15-17%</strong>）的神奇效果。</p><p>這意味著什麼？這意味著醫學界長久以來的<strong>「口服魔咒」</strong>被打破了。</p><p>過去，從注射劑轉為口服劑，往往伴隨著效果的大幅折損。但<strong>諾和諾德</strong>做到了<strong>「效力平價」，這本身就是一項技術奇蹟。它正式宣告了「高效口服減重藥」</strong>時代的來臨。</p><p>然而，這場戲的真正重點，並不在於技術，而在於價格。</p><h2 class="section" id="價格戰的本質-用-體量-換-時間"><strong>價格戰的本質：用「體量」換「時間」</strong></h2><p>這次最讓人意外的不是過審，而是價格。<strong>149美元</strong>的月費，對比過去動輒上千美元的注射劑，簡直是<strong>「自殺式降價」</strong>。</p><p>為什麼<strong>諾和諾德</strong>要主動砍掉毛利？</p><p><strong>諾和諾德</strong>算得很精：禮來的口服藥 <strong>Orforglipron</strong> 預計在 <strong>2026年</strong>中才會上市。這中間有<strong>六個月的真空期</strong>。</p><p><strong>Novo</strong> 透過極低的價格門檻，試圖在半年內迅速吞下那 <strong>1億</strong>名美國肥胖人口中的<strong>「非保險覆蓋群體」</strong>。</p><p>一旦這些用戶進入了 <strong>Novo</strong> 的生態系，產生了品牌慣性與數據依賴，即便半年後禮來的藥上市了，用戶<strong>「轉台」</strong>的成本也會變得極高。</p><h2 class="section" id="諾和諾德的-阿基里斯之踵"><strong>諾和諾德的「阿基里斯之踵」</strong></h2><p>然而，這場看似完美的突襲，卻隱藏著兩個致命的弱點，這也是<strong>諾和諾德</strong>在這場豪賭中最大的風險。</p><ol><li><p><strong>服藥的「黃金手銬」</strong>：</p></li></ol><p>口服<strong>Wegovy</strong>的吸收效率極低，患者必須在每天清晨<strong>空腹狀態</strong>下服用，並在服藥後至少等待<strong>30分鐘</strong>才能進食飲水。</p><p>這種嚴苛的<strong>「儀式感」，對真實世界中的用戶依從性構成了巨大挑戰。它就像一副「黃金手銬」</strong>，雖然有效，卻極不方便。</p><ol start="2"><li><p><strong>原料藥的「黑洞」</strong>：</p></li></ol><p>這或許是<strong>諾和諾德</strong>最大的隱憂。由於口服吸收率<strong>不足1%</strong>，一顆<strong>25毫克</strong>的藥丸，其活性藥物成分（<strong>API</strong>）用量，遠超一週僅需<strong>2.4毫克</strong>的注射劑。</p><p>這意味著，口服藥的放量，將會像一個<strong>「黑洞」般吞噬諾和諾德的API產能</strong>。如果<strong>API</strong>的生產速度跟不上藥丸的銷售速度，那麼<strong>149美元</strong>的宏偉藍圖將因斷供而崩塌。</p><h2 class="section" id="風暴前夕-禮來的後發制人"><strong>風暴前夕，禮來的後發制人</strong></h2><p><strong>諾和諾德</strong>的窗口期非常短暫，大約只有<strong>6個月</strong>。因為禮來的王牌口服藥<strong>Orforglipron</strong>預計將在<strong>2026年</strong>年中獲批上市。</p><p><strong>Orforglipron</strong>在兩個關鍵點上會有優勢：</p><p><strong>類型不同</strong>： 它是<strong>「小分子」藥物，而非「胜肽」</strong>。這意味著它可以像普通藥片一樣隨餐服用，沒有任何飲食限制，便利性完勝。</p><p><strong>成本更低</strong>： 化學合成的<strong>小分子藥物</strong>，其生產成本和規模化難度，遠低於生物合成的<strong>胜肽藥物</strong>。</p><p>雖然失了先機，但禮來可以用一款體驗更好、成本更低的產品，來收割那些無法忍受<strong>諾和諾德</strong>嚴苛服藥規則的用戶。</p><h2 class="section" id="商業邊界的重新劃分-從-奢侈品-到-必需品"><strong>商業邊界的重新劃分：從「奢侈品」到「必需品」</strong></h2><p>這次批准標誌著減肥藥市場正式從<strong>「高溢價、低滲透」的奢侈品階段，進入了「低利潤、高覆蓋」</strong>的階段。</p><p><strong>諾和諾德</strong>嘗試把減肥藥變成像降血壓藥一樣的<strong>基礎代謝藥物</strong>。這意味著利潤率的壓縮，但對公司來說，這同時也是在構建更大的用戶基礎。</p><p><strong>諾和諾德</strong>放棄了在單一維度（藥效）上與禮來死磕，轉而利用<strong>先發優勢</strong>，在價格、渠道和用戶習慣等多個維度上，構築起一個複雜的<strong>防禦矩陣</strong>。</p><blockquote><p><strong>它賭的不是一顆藥丸能否打敗另一顆藥丸，而是能否在對手抵達戰場之前，就將整個戰場的規則徹底改寫。</strong></p></blockquote><p><strong>諾和諾德</strong>能否贏回失地，未來六個月的<strong>執行力</strong>將決定一切。</p><div><hr/></div><h1 class="chapter" id="主題四-Google-如何靠收購-Intersect-跳過-7-年的電網排隊"><strong>主題四：Google 如何靠收購 Intersect ，跳過 7 年的電網排隊？</strong></h1><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!VyK-!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8a089d8d-e674-460c-8dc2-3f3562555756_691x390.png 424w, https://substackcdn.com/image/fetch/$s_!VyK-!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8a089d8d-e674-460c-8dc2-3f3562555756_691x390.png 848w, https://substackcdn.com/image/fetch/$s_!VyK-!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8a089d8d-e674-460c-8dc2-3f3562555756_691x390.png 1272w, https://substackcdn.com/image/fetch/$s_!VyK-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8a089d8d-e674-460c-8dc2-3f3562555756_691x390.png 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/8a089d8d-e674-460c-8dc2-3f3562555756_691x390.png","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":390,"width":691,"resizeWidth":null,"bytes":49561,"alt":null,"title":null,"type":"image/png","href":null,"belowTheFold":true,"topImage":false,"internalRedirect":"https://fomosoc.substack.com/i/182617302?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8a089d8d-e674-460c-8dc2-3f3562555756_691x390.png","isProcessing":false,"align":null,"offset":false}' height="390" loading="lazy" sizes="100vw" src="images/img_006_14cb66ed.png" srcset="https://substackcdn.com/image/fetch/$s_!VyK-!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8a089d8d-e674-460c-8dc2-3f3562555756_691x390.png 424w, https://substackcdn.com/image/fetch/$s_!VyK-!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8a089d8d-e674-460c-8dc2-3f3562555756_691x390.png 848w, https://substackcdn.com/image/fetch/$s_!VyK-!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8a089d8d-e674-460c-8dc2-3f3562555756_691x390.png 1272w, https://substackcdn.com/image/fetch/$s_!VyK-!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8a089d8d-e674-460c-8dc2-3f3562555756_691x390.png 1456w" width="691"/></picture><div class="image-link-expand"></div></div></figure></div><p>這是一筆極其有趣的收購：<strong>Google</strong>花了<strong>47.5 億美元</strong>，收購清潔能源開發商<strong>Intersect Power</strong>。卻明確表示不要對方正在賺錢的電廠，只要對方手裡的<strong>開發團隊</strong>和一疊<strong>許可文件</strong>。</p><p>大家都知道，<strong>AI</strong>的算力再強，電網的建設速度跟不上的話，也是徒然。</p><p>在美國，當一個全新的<strong>AI數據中心</strong>拔地而起，它需要接入公共電網。而這個<strong>「排隊接電」的過程，在監管審批和基礎設施的重重關卡下，平均需要等待5到7年</strong>。</p><p><strong>Google</strong>的這筆收購，正是為了獲得一個繞過這道長城的<strong>「作弊碼」。</strong></p><p>Intersect Power這家公司，其真正的「護城河」並非太陽能板或電池本身，而是一種顛覆性的商業模式：<strong>「在地發電，就地使用」（Behind-the-Meter）</strong>。</p><p>它的核心理念極其簡單粗暴：與其排隊等著接入那條擁堵不堪的公共高速公路，不如在自家目的地旁邊，直接蓋一條私家高速公路。</p><h2 class="section" id="Google買的究竟是誰"><strong>Google買的究竟是誰？</strong></h2><p><strong>Intersect Power</strong>的真正「<strong>產品」，不是太陽能板，而是那一疊疊已經蓋好章、可以立即動工的「許可文件」</strong>。</p><p><strong>Intersect Power</strong>並沒有發明什麼革命性的太陽能電池或電池技術。他們購買的是<strong>First Solar</strong>的面板和特斯拉的<strong>Megapack</strong>電池。</p><p>但他們的工作，在第一鏟土落下之前就已開始。</p><p><strong>Intersect</strong>的團隊是美國各州電力系統（<strong>ISO/RTO</strong>）的專家。他們知道如何在規則的縫隙中，找到最快獲得許可的路徑。這是<strong>Google</strong>完全陌生的領域。</p><p>他們像外交官一樣，花費數年時間與數十位農場主談判，簽下<strong>30年</strong>的土地租約；他們更像律師，在迷宮般的法規中穿梭，搞定從縣、州到聯邦環保署的所有許可。</p><p>而現在，<strong>Google</strong>直接買下了<strong>Intersect Power</strong>手中那個裝滿了<strong>「萬事俱備，只欠動工」</strong>項目的公事包。</p><p>這<strong>10.8吉瓦</strong>（<strong>GW</strong>）的未來能源，其土地、許可、併網權都已鎖定。</p><p>這就是<strong>47.5億美元</strong>的溢價所在：<strong>Google</strong>為跳過那漫長而痛苦的<strong>5年文書工作</strong>付了費。</p><p>一個有趣的細節是，<strong>Google</strong>只買下了<strong>Intersect</strong>的<strong>「未來」</strong>——即其開發中的項目管線和開發團隊。</p><p>這筆 <strong>47.5 億美元</strong>的交易中，<strong>Google</strong> 並沒有買下 <strong>Intersect</strong> 目前已經在運作、賣電給別人的老電廠（那些資產被剝離出去了）。<strong>Google</strong> 買下的是：</p><ol><li><p><strong>10.8 GW</strong> 的未來開發管線： 這些是已經搞定土地和許可、隨時可以動工的<strong>「熟地」</strong>。</p></li><li><p><strong>CEO Sheldon Kimber</strong> 的大腦： 這群人知道如何在美國複雜的監管迷宮中，精準找出最適合蓋 <strong>AI 能源島</strong>的座標。</p></li></ol><h3><strong>解決「太陽下山」的演算法</strong></h3><p>太陽能最大的問題是：晚上沒電，但 <strong>AI 伺服器</strong> 24 小時都要吃電。</p><p><strong>Intersect</strong> 的另一個「秘密武器」是其<strong>調度優化軟體</strong>（<strong>Dispatch Optimization</strong>）。</p><p>它能即時計算：現在陽光充足但電價負數，趕快充進 <strong>Tesla Megapacks</strong>；現在傍晚七點，電價飆漲，立刻放電給數據中心。</p><p><strong>Google</strong> 買下這個團隊，是為了實現<strong>「能源與算力的同步」</strong>。當 <strong>Google</strong> 擁有了自己的開發團隊，它就能在倒下第一桶水泥蓋伺服器機房的同時，讓 <strong>Intersect</strong> 在隔壁安裝太陽能板。</p><h3><strong>當「電」成為核心資產</strong></h3><p>過去，科技巨頭的核心支柱是三個：<strong>算力</strong>（晶片）、<strong>數據</strong>（用戶資料）、<strong>人才</strong>（科學家）。</p><p>今天，<strong>能源</strong>，已經成為了第四根，也是最基礎的一根支柱。</p><p>因為如果沒有這一步投資，<strong>Google</strong>未來可能會陷入<strong>「有晶片卻無處點亮」的窘境。</strong></p><p>不過同時，這47.5億美元的投資，將永久性地推高Google的資本支出，讓它從一家輕資產的軟體公司，越來越像一家重資產的公用事業公司。</p><blockquote><p><strong>在通往通用人工智慧（AGI）的道路上，等待，本身就是最大的風險。</strong></p></blockquote><p><strong>Google</strong>能否贏下這場能源競賽，就看這47.5億美元買下的「時間」能否轉化為AI領域的領先。</p><div><hr/></div><p><em><strong>謝謝你閱讀到這裡，如果你覺得這份筆記為你帶來了價值，請不吝按下一個讚，這是我持續分享的最大動力。</strong></em></p><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div><blockquote><p><em><strong>另外我在Telegram有頻道，每天早上我會發當天重要新聞摘要。</strong></em></p><p><em><strong>同時，如果想開戶的話，可以考慮用我的富途/口袋證券獨家推薦碼，會有更多優惠。</strong></em></p><p><em><strong>全部資訊在以下鏈結：</strong></em></p><p><em><strong><a href="https://linktr.ee/fomo_soc">https://linktr.ee/fomo_soc</a></strong></em></p><p><em><strong>另外，如果你已經加入付費會員，不要浪費了群組的功能，進入我們Substack的Chat功能一起討論市場!</strong></em></p><p>· KP</p></blockquote>
+  </article>
+  <div class="footer-cta">
+    <p>本機離線版本 • 圖片與內文完整</p>
+    <a class="primary" href="../../index.html">← 回索引</a>
+    <a href="https://www.fomosoc.com/p/nvidia-kp22" target="_blank" rel="noopener">在原站開啟 ↗</a>
+  </div>
+</div>
+</body>
+</html>

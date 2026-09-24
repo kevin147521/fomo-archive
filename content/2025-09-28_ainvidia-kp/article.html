@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黃仁勳的AI作戰藍圖：為何Nvidia增長不會停？為何對手免費也贏不了？ - KP思考筆記(特別篇)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --line: #e9e3d6; --line-soft: #f0ebdf;
+  --text: #1f2533; --text-2: #3a4256; --muted: #7c7a72; --ink: #14171e;
+  --primary: #2f6f5e; --accent: #c97b3f;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(47,111,94,.04) 0%, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(201,123,63,.04) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 28px 96px; }
+
+.meta-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px;
+  font-feature-settings: 'tnum';
+}
+.meta-bar .tag {
+  padding: 3px 9px; border-radius: 4px; font-weight: 500;
+  background: var(--line-soft); color: var(--text-2);
+}
+.meta-bar .tag.free { background: #dde9f3; color: #4a7ba6; }
+.meta-bar .tag.paid { background: #f0dbdb; color: #b06367; }
+.meta-bar a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--line); }
+.meta-bar a:hover { color: var(--primary); border-color: var(--primary); }
+
+h1.article-title {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 36px; font-weight: 400; line-height: 1.25;
+  color: var(--ink); margin: 14px 0 24px; letter-spacing: -0.005em;
+}
+h1.chapter {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 28px; font-weight: 400; line-height: 1.3;
+  color: var(--ink); margin: 56px 0 18px; padding-top: 28px;
+  border-top: 1px solid var(--line);
+  letter-spacing: -0.005em;
+}
+h2.section {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  color: var(--text); margin: 36px 0 12px;
+  padding-left: 12px; border-left: 3px solid var(--primary);
+}
+h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+
+p {
+  font-size: 16.5px; line-height: 1.85; margin: 0 0 18px;
+  color: var(--text);
+  font-family: 'Outfit', 'Noto Serif TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  font-weight: 400;
+}
+p strong, strong { color: var(--ink); font-weight: 600; }
+
+ul, ol { margin: 0 0 18px; padding-left: 26px; }
+li { font-size: 16px; line-height: 1.8; margin-bottom: 6px; }
+
+a { color: var(--primary); text-decoration: underline; text-decoration-color: rgba(47,111,94,.3); text-underline-offset: 2px; }
+a:hover { text-decoration-color: var(--primary); }
+
+blockquote {
+  margin: 28px 0; padding: 18px 24px;
+  background: var(--line-soft); border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-2); font-style: normal;
+}
+blockquote p { margin: 0; color: var(--text-2); }
+blockquote p + p { margin-top: 12px; }
+
+hr {
+  border: 0; height: 1px; background: var(--line);
+  margin: 36px auto; width: 60%;
+}
+
+/* Figure & image */
+figure {
+  margin: 32px 0; text-align: center;
+}
+.image2-inset, .captioned-image-container .image2-inset {
+  margin: 0;
+}
+.image2-inset picture, .image2-inset img {
+  display: block; max-width: 100%; height: auto; margin: 0 auto;
+  border-radius: 8px;
+}
+figure img {
+  max-width: 100%; height: auto; border-radius: 8px;
+  display: block; margin: 0 auto;
+  box-shadow: 0 4px 18px -8px rgba(20,23,30,.15);
+}
+.image2-img, .image2-image {
+  max-width: 100%; height: auto;
+}
+.captioned-image-container {
+  margin: 32px -20px;
+}
+.image-link { display: block; text-decoration: none !important; }
+.figcaption {
+  font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5;
+  text-align: center; font-style: italic;
+}
+
+/* Buttons / interactive UI from Substack we want to hide */
+.button, .pencraft, .subscription-widget, .paywall,
+[class*="paywall"], [class*="subscribe"], [class*="Subscribe"],
+.embed, .digest-post-embed { display: none !important; }
+
+.footer-cta {
+  margin-top: 60px; padding: 28px 32px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; text-align: center;
+}
+.footer-cta p { font-size: 14px; color: var(--muted); margin: 0; }
+.footer-cta a {
+  display: inline-block; margin: 4px 6px;
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--line); text-decoration: none;
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+}
+.footer-cta a.primary {
+  background: var(--primary); color: white; border-color: var(--primary);
+}
+
+.toc {
+  margin: 0 0 36px; padding: 20px 24px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.toc-title {
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+.toc ol li { counter-increment: toc; padding: 4px 0; font-size: 14px; }
+.toc ol li::before { content: counters(toc, ".") " "; color: var(--muted); margin-right: 4px; }
+.toc ol li.h1 { font-weight: 600; color: var(--ink); margin-top: 8px; }
+.toc ol li.h2 { color: var(--text-2); padding-left: 18px; }
+.toc a { color: var(--text-2); text-decoration: none; }
+.toc a:hover { color: var(--primary); }
+
+@media (max-width: 768px) {
+  .wrap { padding: 28px 18px 60px; }
+  h1.article-title { font-size: 26px; }
+  h1.chapter { font-size: 22px; }
+  p { font-size: 16px; }
+  .captioned-image-container { margin: 24px -10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta-bar">
+    <a href="../../index.html">← 索引</a>
+    <span class="tag free">🆓 公開</span>
+    <span>2025-09-28</span>
+    <span>776 字</span>
+    <a href="https://www.fomosoc.com/p/ainvidia-kp" target="_blank" rel="noopener">↗ 原站</a>
+  </div>
+  <h1 class="article-title">黃仁勳的AI作戰藍圖：為何Nvidia增長不會停？為何對手免費也贏不了？ - KP思考筆記(特別篇)</h1>
+  
+  <article class="body">
+<div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!2XUG!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa4d0dd38-987c-404a-8cb5-cdf563c1b811_1905x1072.png 424w, https://substackcdn.com/image/fetch/$s_!2XUG!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa4d0dd38-987c-404a-8cb5-cdf563c1b811_1905x1072.png 848w, https://substackcdn.com/image/fetch/$s_!2XUG!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa4d0dd38-987c-404a-8cb5-cdf563c1b811_1905x1072.png 1272w, https://substackcdn.com/image/fetch/$s_!2XUG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa4d0dd38-987c-404a-8cb5-cdf563c1b811_1905x1072.png 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/a4d0dd38-987c-404a-8cb5-cdf563c1b811_1905x1072.png","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":819,"width":1456,"resizeWidth":null,"bytes":1402488,"alt":null,"title":null,"type":"image/png","href":null,"belowTheFold":false,"topImage":true,"internalRedirect":"https://fomosoc.substack.com/i/174677825?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa4d0dd38-987c-404a-8cb5-cdf563c1b811_1905x1072.png","isProcessing":false,"align":null,"offset":false}' fetchpriority="high" height="819" loading="lazy" sizes="100vw" src="images/img_002_1c3a392f.png" srcset="https://substackcdn.com/image/fetch/$s_!2XUG!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa4d0dd38-987c-404a-8cb5-cdf563c1b811_1905x1072.png 424w, https://substackcdn.com/image/fetch/$s_!2XUG!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa4d0dd38-987c-404a-8cb5-cdf563c1b811_1905x1072.png 848w, https://substackcdn.com/image/fetch/$s_!2XUG!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa4d0dd38-987c-404a-8cb5-cdf563c1b811_1905x1072.png 1272w, https://substackcdn.com/image/fetch/$s_!2XUG!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa4d0dd38-987c-404a-8cb5-cdf563c1b811_1905x1072.png 1456w" width="1456"/></picture><div class="image-link-expand"></div></div></figure></div><p>昨晚，Nvidia CEO黃仁勳到訪Bg2 Podcast，進行了接近兩個小時的訪談。</p><p>這是一次資訊量很高的對話，可以視為一份黃仁勳向世界闡述的「AI未來發展藍圖」。</p><p>他不僅回應了市場上一些尖銳的質疑，更以前所未有的清晰度，描繪了Nvidia在這場變革中的定位，以及為何他認為，我們現在只不過是處於AI時代的開端。</p><p>我花了數個小時，消化並提煉了這次訪談的內容。</p><p>我最初的目標，只是為大家寫一篇千字的重點摘要。然而，當我越是深入，就越是發現，黃仁勳的每一個論點都環環相扣，構成了一幅涵蓋技術、商業與地緣政治的完整藍圖。簡單的總結會流失太多關鍵的細節。</p><p>因此，這篇「短文」最終演變成了一份更為詳細的分析。我決定將它作為一份「特別版」的「思考筆記」，分享給各位。希望這份長文，能為你帶來真正的價值。</p><div><hr/></div><p><strong>文章主題概覽：</strong></p><ul><li><p><strong>主題一：</strong> 華爾街的預測 vs. 黃仁勳的看法</p></li><li><p><strong>主題二：</strong> 回應市場質疑：OpenAI合作案與「循環收入」的指控</p></li><li><p><strong>主題三：</strong> 驅動需求的引擎：AI需求的「三大規模定律」</p></li><li><p><strong>主題四：</strong> Nvidia的核心護城河：為何客戶不可能不用NVDA的晶片？</p></li><li><p><strong>主題五：</strong> AI地緣政治：黃仁勳眼中的主權AI與中國市場</p></li><li><p><strong>主題六：</strong> 超越技術的願景：AI與社會的未來</p></li></ul><div><hr/></div><p>話不多說，讓我們一同看看這位AI時代的關鍵人物，到底說了些什麼。</p><h3><strong>主題一：華爾街的預測 vs. 黃仁勳的看法</strong></h3><p>首先，讓我們來看一個有趣的矛盾。</p><p>當你去看華爾街分析師的預測，他們普遍認為Nvidia的增長將在2027年後「平緩化」，年增長率降至8%。然而，當黃仁勳被問及此事時，他卻輕鬆地說：</p><blockquote><p>「我們對此感到很舒服。你知道，我們在定期超越這些數字方面沒有任何問題。」<br/>(Look, we’re comfortable with that. Okay, we have no trouble beating the numbers on a regular basis, right?)</p></blockquote><p>這份自信從何而來？黃仁勳接著給出了他思考未來市場的三個基本點，這三個論點層層遞進，構成了他對未來龐大市場機遇的判斷基礎：</p><p><strong>第一點：根本轉變 ---- 通用計算的時代結束</strong></p><p>黃仁勳指出，一個時代已經結束。</p><blockquote><p>「這是最重要的一點：通用計算的時代已經結束，未來屬於加速計算和AI計算… 你可以想想，世界上有多少萬億美元的計算基礎設施需要被更新換代。而當它被更新時，它將會是加速計算。」<br/>(This is the most important point that general purpose computing is over and the future is accelerated computing and AI computing... there’s how much how many trillions of dollars of computing infrastructures in the world that has to be refreshed. Right. And when it gets refreshed it’s going to be accelerated computing.)</p></blockquote><p>我們必須先理解兩個核心概念：<strong>通用計算 (General-Purpose Computing)</strong> vs. <strong>加速計算 (Accelerated Computing)</strong>。</p><ul><li><p><strong>通用計算：</strong> 你可以把它想像成一把「瑞士軍刀」，也就是我們電腦裡的CPU。它非常靈活，能處理各種任務，但沒有一項能做到極致。過去幾十年，我們依賴「摩爾定律」，但它的性能提升已接近物理極限。</p></li><li><p><strong>加速計算：</strong> 這是一種全新的思維。它承認「瑞士軍刀」有其極限，於是為它配備了一支「專家團隊」。CPU繼續擔任總指揮，但對於那些極度耗費資源的特定任務，就交給一個「專家」——也就是GPU——來處理。GPU擁有數千個核心，可以同時進行大量運算，讓整個系統的效率呈指數級提升。</p></li></ul><p>而<strong>AI計算</strong>，就是「加速計算」中最重要的一種應用。在黃仁勳眼中，全世界現存數萬億美元的數據中心，全都是基於過時的「瑞士軍刀」架構。Nvidia的市場，正是對這龐大的存量基礎設施，進行一場全面的升級換代。</p><p>這場替代的規模，才是他眼中真正的機遇所在。</p><p><strong>第二點：存量市場的AI化 ---- 一場必要的升級競賽</strong></p><p>在幻想AI能創造什麼全新應用之前，黃仁勳認為，AI首先正在徹底改造現有的互聯網世界。</p><p>過去的互聯網服務，像一個巨大的<strong>「靜態目錄」</strong>。無論是推薦引擎還是搜尋引擎，都是在現有的內容中進行「選擇」或「匹配」。</p><p>但現在，AI將這一切變成了<strong>「動態生成」</strong>。新的AI服務不再是從目錄中挑選，而是即時為你「生成」獨一無二的資訊流或答案。從「選擇」到「生成」，這一步之遙，對算力的需求卻是天壤之別。</p><blockquote><p>「僅僅是將傳統的超大規模計算方式，轉變為AI方式，這就是數千億美元的市場… 因為這可能關係到地球上40億人，他們已經在要求由加速計算驅動的工作負載。」<br/>(that’s hundreds of billions of dollars and and because that may be four billion people on the planet today... who are already demanding workloads that are driven by accelerated computing.)</p></blockquote><p>這對Meta、Google等巨頭來說，升級到AI不是一個「選項」，而是一場<strong>「生存之戰」</strong>。如果你的演算法讓用戶停留時間比對手少10%，你就輸了。</p><p>在這場爭奪用戶時間的殘酷遊戲中，沒有人敢在算力上落後。</p><p><strong>第三點：長期願景 ---- 增強人類智能</strong></p><p>這是黃仁勳眼中更宏大的藍圖。他將AI工廠生成的「Token」（可以理解為智慧的原子單位），視為增強人類智力的工具。</p><p>在AI時代，「智慧」第一次可以被量化、被定價，成為一種像水和電一樣可以被生產和消費的商品。他認為：</p><blockquote><p>「人類智力代表了世界GDP的55%到65%，我們就當它是50萬億美元好了。而這50萬億美元將被繼續倍大… 假設我花1萬美元的AI，讓我10萬美元年薪的員工生產力提高兩倍、三倍，我會不會做？我會毫不猶豫地做。」<br/>(human intelligence represents what 55, 65% of the world’s GDP. Let’s call it $50 trillion. And that $50 trillion is going to get augmented by something... Suppose I were to hire a $100,000 employee. And I augmented that $100,000 employee with a $10,000 AI... made that $100,000 employee twice more productive, three times more productive. Would I do it? Heartbeat.)</p></blockquote><p>這個簡單的ROI（投資回報率）計算，是驅動未來需求的關鍵。</p><p>當全球數以億計的知識工作者都配備上AI「副駕」時，將會產生天文數字的「Token」需求，這就需要大量的「AI工廠」（數據中心）來建設，從而帶動對Nvidia全套解決方案的需求。</p><p>黃仁勳看到的不是一家晶片公司的增長，而是一場堪比電力革命的基礎設施全面換代。</p><blockquote><p><strong>我的想法：華爾街的「線性思維」 vs. 黃仁勳的「指數級思維」</strong></p><p>這裡完美解釋了為何市場分析師與黃仁勳之間存在巨大鴻溝。華爾街的財務模型，本質上是基於歷史數據進行線性外推，很難去量化一場「典範轉移」的價值。</p><p>分析師看到的是一家硬體公司在景氣週期中的增長放緩，而黃仁勳看到的，是一個舊時代基礎設施被新時代徹底顛覆所釋放的、一次性的結構性紅利。</p><p>這本質上是一場「數字」與「敘事」的較量。黃仁勳正在要求投資者，不僅要看懂財報，更要相信他所描繪的「指數級未來」。</p><p>所以，重點是，究竟你相信AI的發展會是「線性」的，還是如他所說，「幾何級上升」的。</p></blockquote><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div><h3><strong>主題二：回應市場質疑：OpenAI合作案與「循環收入」的指控</strong></h3><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!MiBS!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7cf3d68b-f3e6-47c4-9798-b97f30ed0981_3000x2000.jpeg 424w, https://substackcdn.com/image/fetch/$s_!MiBS!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7cf3d68b-f3e6-47c4-9798-b97f30ed0981_3000x2000.jpeg 848w, https://substackcdn.com/image/fetch/$s_!MiBS!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7cf3d68b-f3e6-47c4-9798-b97f30ed0981_3000x2000.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!MiBS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7cf3d68b-f3e6-47c4-9798-b97f30ed0981_3000x2000.jpeg 1456w" type="image/webp"/><img alt="Nvidia's $100 billion OpenAI play raises big antitrust issues | Reuters" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/7cf3d68b-f3e6-47c4-9798-b97f30ed0981_3000x2000.jpeg&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:971,&quot;width&quot;:1456,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:null,&quot;alt&quot;:&quot;Nvidia's $100 billion OpenAI play raises big antitrust issues | Reuters&quot;,&quot;title&quot;:null,&quot;type&quot;:null,&quot;href&quot;:null,&quot;belowTheFold&quot;:true,&quot;topImage&quot;:false,&quot;internalRedirect&quot;:null,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" height="971" loading="lazy" sizes="100vw" src="images/img_003_fa1a5238.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!MiBS!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7cf3d68b-f3e6-47c4-9798-b97f30ed0981_3000x2000.jpeg 424w, https://substackcdn.com/image/fetch/$s_!MiBS!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7cf3d68b-f3e6-47c4-9798-b97f30ed0981_3000x2000.jpeg 848w, https://substackcdn.com/image/fetch/$s_!MiBS!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7cf3d68b-f3e6-47c4-9798-b97f30ed0981_3000x2000.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!MiBS!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7cf3d68b-f3e6-47c4-9798-b97f30ed0981_3000x2000.jpeg 1456w" title="Nvidia's $100 billion OpenAI play raises big antitrust issues | Reuters" width="1456"/></picture><div class="image-link-expand"></div></div><figcaption class="figcaption">Nvidia's $100 billion OpenAI play raises big antitrust issues | Reuters</figcaption></figure></div><p>在訪談中，黃仁勳也正面回應了近期市場上的一些熱點疑問。</p><p><strong>第一，與OpenAI的直接合作</strong></p><p>近期最受關注的新聞之一，便是Nvidia與OpenAI在「Stargate」超級電腦項目上的合作。黃仁勳對此進行了詳細說明。</p><p>他將OpenAI稱為「下一個萬億美元級別的超大規模公司」(the next multi-trillion dollar hyperscale company)，並解釋Nvidia的角色正在發生轉變。</p><p>過去，Nvidia主要通過微軟Azure來支持OpenAI。但現在，Nvidia正在直接與OpenAI合作。</p><blockquote><p>「這是我們首次在晶片層級、軟體層級、系統層級、AI工廠層級上，直接與OpenAI合作，幫助他們建立自己的AI基礎設施，成為一個全面運營的超大規模公司。」<br/>(This is us working directly with OpenAI at the chip level, at the software level, at the systems level, at the AI factory level... to help them become a fully operated hyperscale company.)</p></blockquote><p>這標誌著Nvidia的戰略升級：從單純的晶片供應商，轉變為AI原生公司的直接基礎設施合作夥伴。</p><p><strong>第二，關於「循環收入」的指控</strong></p><p>針對Nvidia投資其客戶（如OpenAI），而客戶又反過來購買Nvidia晶片，從而引發「循環收入」(Roundtripping)的質疑，黃仁勳也給出了他的解釋。</p><p>他指出，一個像Stargate這樣耗資數千億美元的項目，其資金來源主要有三：客戶自身的營收、股權融資和債務。Nvidia的投資只是其中微不足道的一小部分。他將這筆投資定性為一次純粹的財務機會。</p><blockquote><p>「投資這部分與任何事情都無關。這是一個投資他們的機會… 這很可能會是下一個萬億美元級別的超大規模公司，誰不想成為它的投資者呢？」<br/>(The investment side of it is not tied to anything. It’s an opportunity to invest in them... this is likely going to be the next multi-trillion dollar hyperscale company. And who doesn’t want to be an investor in that?)</p><p><strong>我的想法：不用再說太多，已經說了很多遍。</strong></p></blockquote><h3><strong>主題三：驅動需求的引擎：AI需求的「三大規模定律」</strong></h3><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!He4m!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F310aed6a-d01b-48dc-a482-1d817732b6e7_1400x407.png 424w, https://substackcdn.com/image/fetch/$s_!He4m!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F310aed6a-d01b-48dc-a482-1d817732b6e7_1400x407.png 848w, https://substackcdn.com/image/fetch/$s_!He4m!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F310aed6a-d01b-48dc-a482-1d817732b6e7_1400x407.png 1272w, https://substackcdn.com/image/fetch/$s_!He4m!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F310aed6a-d01b-48dc-a482-1d817732b6e7_1400x407.png 1456w" type="image/webp"/><img alt="Why Inference Is Taking Over the Share of Compute In LLMs | by Berto Mill |  Medium" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/310aed6a-d01b-48dc-a482-1d817732b6e7_1400x407.png","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":407,"width":1400,"resizeWidth":null,"bytes":null,"alt":"Why Inference Is Taking Over the Share of Compute In LLMs | by Berto Mill |  Medium","title":null,"type":null,"href":null,"belowTheFold":true,"topImage":false,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' height="407" loading="lazy" sizes="100vw" src="images/img_004_8a53b51d.png" srcset="https://substackcdn.com/image/fetch/$s_!He4m!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F310aed6a-d01b-48dc-a482-1d817732b6e7_1400x407.png 424w, https://substackcdn.com/image/fetch/$s_!He4m!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F310aed6a-d01b-48dc-a482-1d817732b6e7_1400x407.png 848w, https://substackcdn.com/image/fetch/$s_!He4m!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F310aed6a-d01b-48dc-a482-1d817732b6e7_1400x407.png 1272w, https://substackcdn.com/image/fetch/$s_!He4m!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F310aed6a-d01b-48dc-a482-1d817732b6e7_1400x407.png 1456w" title="Why Inference Is Taking Over the Share of Compute In LLMs | by Berto Mill |  Medium" width="1400"/></picture><div class="image-link-expand"></div></div><figcaption class="figcaption">Why Inference Is Taking Over the Share of Compute In LLMs | by Berto Mill |  Medium</figcaption></figure></div><p>一年前，黃仁勳預言AI推理（Inference）的需求將增長十億倍。在這次訪談中，他不僅沒有修正這個數字，反而表示：</p><blockquote><p>「我承認我低估了… 我們現在有三個規模定律（Scaling Laws），而不是一個。」<br/>(I underestimated... we we now have three scaling laws, right? not one.)</p></blockquote><p>這「三大規模定律」，構成了一個三級的需求引擎，共同將AI的計算需求推向新高。</p><ul><li><p><strong>第一級：預訓練 (Pre-training) - 通識教育：</strong> 這是AI閱讀人類所有知識，建立世界基本認知的過程。成本巨大，但主要是一次性投入。</p></li><li><p><strong>第二級：後訓練 (Post-training) - 專項訓練：</strong> 讓AI學會如何「好好說話」，遵循人類價值觀。這是一個通過強化學習（RLHF）反覆迭代的過程，黃仁勳將其比喻為「AI練習一項技能，直到它做對為止」。</p></li><li><p><strong>第三級：推理 (Inference) - 從「背誦」到「思考」：</strong> 這是最關鍵的增長點。過去的AI是「一次性背誦」，你問問題，它從記憶中提取答案。而新的AI，在回答複雜問題前需要「思考」：分解問題、調用工具、邏輯推理、生成答案、反思修正。</p></li></ul><blockquote><p>「過去的推理方式是一次性的… 但新的方式，我們稱之為『思考』。所以在你回答之前，先思考… 你思考得越久，你得到的答案品質就越好。」<br/>(The old way of doing inference was one shot... But the new way of doing inference, which we appreciate, is thinking. So think before you answer... The the longer you think, the better the quality answer you get.)</p></blockquote><p>從回答「法國首都」到「規劃法國行程」，一個查詢的計算成本可能暴增數千倍。</p><p><strong>雙重指數效應的疊加</strong></p><p>黃仁勳指出，我們正在經歷「兩個指數級增長」的疊加：</p><ol><li><p><strong>需求的深度（Depth）：</strong> 由於AI從「背誦」進化到「思考」，每一次查詢消耗的計算量呈指數級增長。</p></li><li><p><strong>需求的廣度（Breadth）：</strong> 使用AI的用戶數量和頻率，也呈指數級增長。</p></li></ol><p><strong>（用戶數量的指數增長） X （單次使用成本的指數增-長） = 總計算需求的指數級爆炸</strong></p><p>這就是黃仁勳眼中「十億倍」增長的數學基礎，也是支撐Nvidia估值的核心邏輯。</p><blockquote><p><strong>我的想法：算力成本，將定義AI時代的權力格局</strong></p><p>黃仁勳的「三級引擎」理論，在描繪巨大需求的同時，也揭示了一個現實：</p><p>AI的「思考」能力，是靠高昂的算力堆砌出來的。</p><p>這意味著，未來AI能力的強弱，將直接與算力成本掛鉤。這可能會導致權力的進一步集中，能夠負擔得起頂級算力成本的，只會是少數幾個科技巨頭和國家主體。</p><p>黃仁勳描繪的巨大需求，同時也可能是一條加深權力集中的護城河。</p><p>這也是為甚麼我認為，AI時代只會強者恒強。</p></blockquote><h3><strong>主題四：Nvidia的核心護城河：</strong>為何客戶不可能不用NVDA的晶片？</h3><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!j5vR!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc40543a6-ed62-4fb8-91ae-8aec882e615a_1524x960.png 424w, https://substackcdn.com/image/fetch/$s_!j5vR!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc40543a6-ed62-4fb8-91ae-8aec882e615a_1524x960.png 848w, https://substackcdn.com/image/fetch/$s_!j5vR!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc40543a6-ed62-4fb8-91ae-8aec882e615a_1524x960.png 1272w, https://substackcdn.com/image/fetch/$s_!j5vR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc40543a6-ed62-4fb8-91ae-8aec882e615a_1524x960.png 1456w" type="image/webp"/><img alt="Nvidia's Moat - by Aakash Gupta - Product Growth" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/c40543a6-ed62-4fb8-91ae-8aec882e615a_1524x960.png&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:917,&quot;width&quot;:1456,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:null,&quot;alt&quot;:&quot;Nvidia's Moat - by Aakash Gupta - Product Growth&quot;,&quot;title&quot;:null,&quot;type&quot;:null,&quot;href&quot;:null,&quot;belowTheFold&quot;:true,&quot;topImage&quot;:false,&quot;internalRedirect&quot;:null,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" height="917" loading="lazy" sizes="100vw" src="images/img_005_234730c6.png" srcset="https://substackcdn.com/image/fetch/$s_!j5vR!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc40543a6-ed62-4fb8-91ae-8aec882e615a_1524x960.png 424w, https://substackcdn.com/image/fetch/$s_!j5vR!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc40543a6-ed62-4fb8-91ae-8aec882e615a_1524x960.png 848w, https://substackcdn.com/image/fetch/$s_!j5vR!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc40543a6-ed62-4fb8-91ae-8aec882e615a_1524x960.png 1272w, https://substackcdn.com/image/fetch/$s_!j5vR!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc40543a6-ed62-4fb8-91ae-8aec882e615a_1524x960.png 1456w" title="Nvidia's Moat - by Aakash Gupta - Product Growth" width="1456"/></picture><div class="image-link-expand"></div></div><figcaption class="figcaption">Nvidia's Moat - by Aakash Gupta - Product Growth</figcaption></figure></div><p>面對Google、Amazon等巨頭自研晶片（ASIC）的挑戰，Nvidia的霸主地位能持續多久？</p><p>對此，黃仁勳認為，競爭者們從一開始就搞錯了戰場。這場戰爭的核心，從來都不是關於「哪塊晶片更便宜」，而是關於<strong>「哪座AI工廠更賺錢」</strong>。</p><p><strong>第一層壁壘：從「造零件」到「建工廠」的思維</strong></p><p>黃仁勳指出，許多競爭者還停留在「造一顆更好的晶片」的思維裡。但Nvidia在做的，是設計和建造一整座「AI工廠」。</p><blockquote><p>「這不是關於建造一顆ASIC，而是關於建造一個AI工廠系統。」<br/>(it’s not about building an ASIC, it’s about building an AI factory system)</p></blockquote><p>這座「AI工廠」不僅僅包含GPU，還包括了CPU、NVLink（高速互連）、Spectrum-X（網路技術）和CUDA（軟體平台）。</p><p>Nvidia的「極致協同設計」(Extreme Co-design)策略，是每年同時升級這座工廠的所有部分，以追求整體效率最大化。</p><p>正是這種「整體作戰」的能力，讓Blackwell系統相較於上一代Hopper，性能實現了30倍的躍升。</p><p><strong>第二層壁壘：總擁有成本（TCO）----免費的，可能才是最貴的</strong></p><p>黃仁勳提出了一個有趣的觀點：即使競爭對手的晶片完全免費，客戶也可能無法承受使用它的代價。</p><p>這背後的邏輯是，數據中心最大的瓶頸，不是採購晶片的資金，而是<strong>電力</strong>和<strong>土地</strong>。</p><p>讓我們想像一個場景：你是微軟CEO，你有一塊土地和2吉瓦的電力預算。你的目標是，如何利用這有限的資源，實現最大的商業回報？</p><p>你可以用一部分電力運行成本較低的自研晶片，處理常規任務。但對於最關鍵、利潤最高的頂級AI服務，你必須做出選擇。</p><ul><li><p><strong>方案A (Nvidia)：</strong> 使用Nvidia的系統。它的採購價高，但「性能功耗比」（Tokens per Watt）極高。在0.4吉瓦的電力下，它能產生 <code>X</code> 數量的頂級算力。</p></li><li><p><strong>方案B (其他方案)：</strong> 使用更便宜的方案。由於性能功耗比只有Nvidia的一半，它只能產生 <code>0.5X</code> 的頂級算力。</p></li></ul><p>選擇方案B，意味著你能服務的頂級客戶數量減半，直接損失最高利潤的收入，並且在技術競賽中落後。</p><blockquote><p>「他們就算把晶片定價為零，你仍然會購買Nvidia的系統… 想像一下，你有2吉瓦的電力預算，如果我的性能（每瓦產生的Token）是別人的兩倍，我的客戶就能從他們的數據中心獲得兩倍的收入。誰不想要兩倍的收入呢？」<br/>(they could literally price them at zero and you would still buy an Nvidia system... your performance or tokens per watt was twice as high as somebody else’s... then my customer can produce twice as much revenues from their data center. And who doesn’t want twice as much revenues?)</p></blockquote><p>在一個電力和土地成為最稀缺資源的時代，數據中心的遊戲規則不再是「省下多少採購費」，而是<strong>「在有限的資源下，能產生多少收入」</strong>。這就是Nvidia最核心的競爭優勢。</p><blockquote><p><strong>我的想法：一個需要不斷捍衛的價值壁壘</strong></p><p>Nvidia的護城河並非永恆不變。</p><p>它的地位建立在一個前提之上：必須通過其「極致協同設計」，持續確保其系統的整體性能功耗比，顯著優於任何對手。</p><p>只要這個價值差距足夠大，客戶在進行冷靜的TCO計算後，就不得不為其最核心的業務，選擇最昂貴、也最賺錢的Nvidia。</p></blockquote><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div><h3><strong>主題五：AI地緣政治：黃仁勳眼中的主權AI與中國市場</strong></h3><p>當一家公司的CEO成為各國元首的座上賓時，他的話語就成為了影響全球格局的風向標。</p><p><strong>第一部分：主權AI ---- 21世紀的必需品</strong></p><p>近年來，「主權AI」（Sovereign AI）成為熱門詞彙，指每個國家都應建立由自己掌控的AI基礎設施。黃仁勳對此完全贊同，並給出了一個有力的比喻：</p><blockquote><p>「沒有人需要原子彈。但每個人都需要AI。」<br/>(Nobody needs atomic bombs. Everybody needs AI.)</p></blockquote><p>他認為，放棄AI，就等於放棄了本國的經濟自主權、文化解釋權和產業未來。建立主權AI，不僅是為了語言模型，更是為了將本國的工業數據、文化價值觀融入其中，解決最切身的發展問題。</p><p><strong>第二部分：中國市場 ---- 一場「單方面解除武裝」的風險</strong></p><p>在談到美國對華的晶片出口管制政策時，黃仁勳表達了深切的憂慮。他首先反駁了「中國已遠遠落後」的論調：</p><blockquote><p>「說他們（中國）落後我們兩年、三年？拜託。他們只落後我們幾奈秒（nanoseconds）。」<br/>(Is it two years, three years? Come on. They’re nanoseconds behind us.)</p></blockquote><p>在他看來，中美在基礎人才和科研能力上差距微乎其微。他認為，美國的管制政策，在現實中可能產生與初衷完全相反的效果，他將其形容為一場<strong>「單方面解除武裝」</strong>。</p><p>將Nvidia這樣的美國公司排除在中國市場之外，不僅讓Nvidia損失了巨大收入，更關鍵的是，<strong>它為中國本土的競爭對手（如華為）創造了一個沒有外部競爭的、巨大的、受保護的練兵場。</strong></p><p>他堅信，一個更聰明的策略，是讓美國最優秀的科技公司在中國市場上正面競爭：</p><blockquote><p>「我相信，讓Nvidia能夠服務那個市場並在其中競爭，最符合中國的利益。當然，這也極度符合美國的利益… 這兩個真理可以共存。」<br/>(I believe that is in the best interest of China that Nvidia is able to serve that market and compete in that market. It is of course... fantastic in the fantastic interest of the United States... those two truths can coexist.)</p><p><strong>我的想法：商業利益與國家戰略的交匯點</strong></p><p>黃仁勳這一年來，展現了高超的商業智慧和政治現實主義。</p><p>他對「主權AI」的倡導，表面上看是為各國發展提供建議，實質上是為Nvidia創造了一個全球性的、永續的增量市場——每個國家都需要建立自己的「智慧發電廠」，而Nvidia正是賣「發電廠全套設備」的唯一供應商。</p><p>早前，他到中東遊說，令中東各國開始建立自己的「主權AI」。又不斷到訪中國和白宮，最終令Trump鬆口，讓他們出口芯片到中國。</p><p>究竟這只是為了其商業上的私心（誰也不想放棄巨大市場），還是真的對美國是最好的方案？Only time will tell.</p></blockquote><h3><strong>主題六：超越技術的願景：AI與社會的未來</strong></h3><p>在訪談的最後，話題延伸到了AI對整個社會的影響，特別是關於就業和機會均等的問題。</p><p>黃仁勳反對「AI將導致大規模失業」的悲觀論調。他認為，AI消除的是「任務」，而不是「工作」。</p><blockquote><p>「那種認為AI出現了，因此將會大規模毀滅工作的觀念，始於一個前提：我們已經沒有更多的想法了。」<br/>(The concept that that AI comes along and therefore there’s going to be a mass destruction of jobs starts with the premise that we have no more ideas.)</p></blockquote><p>他相信，當生產力被AI提高後，人類會有更多的想法和資源去追求新的目標，從而創造出新的工作。他更將AI視為<strong>「最偉大的均衡器」(the greatest equalizer)</strong>。</p><blockquote><p>「我們已經用科技彌合了科技鴻溝。過去，人們想從事電腦相關工作，必須學習C++或Python。現在，他們只需要學會人類語言。」<br/>(We’ve now closed the technology divide with technology... Now they just have to learn human.)</p></blockquote><p>此外，他還對「投資美國」(Invest America)法案表示讚賞。該法案將為每個新生兒設立一個投資帳戶。</p><p>他認為這是讓每個人都能分享國家發展紅利、參與資本主義「上升權利」的好方法，有助於緩解社會因技術變革而產生的焦慮。</p><blockquote><p><strong>我的想法：認同，沒有補充。</strong></p></blockquote><div><hr/></div><h3><strong>結論：你該如何看待這場AI盛宴？</strong></h3><p>若僅將這次訪談視為Nvidia的前景分析，那就錯失了其真正的價值。黃仁勳描述的，是他眼中AI時代的完整樣貌。</p><p>我建議大家可以在閱讀完這篇文章之後，再去找整個訪談來聽，或至少找你有興趣的片段來聽，你會了解得更多。</p><p>他最後用一個生動的比喻，給出了他對這個時代的行動建議：</p><blockquote><p>「如果你面對一列即將不斷加速、呈指數級前進的火車，你唯一真正需要做的事，就是跳上車。一旦你上車了，你就能在沿途搞清楚其他所有事情。」<br/>(If you if you have a train that’s about to get faster and faster and go exponential, the only thing that you really need to do is get on it. And once you get on it, you’ll figure everything else out along the way.)</p></blockquote><p>這句話，可能是對當下最好的總結。</p><p>讀完黃仁勳的藍圖，你更傾向於相信華爾街的謹慎，還是這位AI領軍人物的願景？這場由AI驅動的變革，你認為我們正處於哪個階段？</p><p>歡迎留下你的想法。</p><p>最後，宣傳一下自己，我在Threads，Facebook和IG都有定期發文，另外Telegram有頻道，每天早上我會發當天重要新聞摘要，有興趣可以追蹤一下我，鏈結是:</p><p><a href="https://linktr.ee/fomo_soc">https://linktr.ee/fomo_soc</a></p><p>另外，如果你已經加入付費會員，不要浪費了群組的功能，進入我們Substack的Chat功能一起討論市場!</p><ul><li><p>KP</p></li></ul><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div>
+  </article>
+  <div class="footer-cta">
+    <p>本機離線版本 • 圖片與內文完整</p>
+    <a class="primary" href="../../index.html">← 回索引</a>
+    <a href="https://www.fomosoc.com/p/ainvidia-kp" target="_blank" rel="noopener">在原站開啟 ↗</a>
+  </div>
+</div>
+</body>
+</html>

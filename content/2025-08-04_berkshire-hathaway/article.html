@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Berkshire Hathaway究竟應該如何估值？</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --line: #e9e3d6; --line-soft: #f0ebdf;
+  --text: #1f2533; --text-2: #3a4256; --muted: #7c7a72; --ink: #14171e;
+  --primary: #2f6f5e; --accent: #c97b3f;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(47,111,94,.04) 0%, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(201,123,63,.04) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 28px 96px; }
+
+.meta-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px;
+  font-feature-settings: 'tnum';
+}
+.meta-bar .tag {
+  padding: 3px 9px; border-radius: 4px; font-weight: 500;
+  background: var(--line-soft); color: var(--text-2);
+}
+.meta-bar .tag.free { background: #dde9f3; color: #4a7ba6; }
+.meta-bar .tag.paid { background: #f0dbdb; color: #b06367; }
+.meta-bar a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--line); }
+.meta-bar a:hover { color: var(--primary); border-color: var(--primary); }
+
+h1.article-title {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 36px; font-weight: 400; line-height: 1.25;
+  color: var(--ink); margin: 14px 0 24px; letter-spacing: -0.005em;
+}
+h1.chapter {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 28px; font-weight: 400; line-height: 1.3;
+  color: var(--ink); margin: 56px 0 18px; padding-top: 28px;
+  border-top: 1px solid var(--line);
+  letter-spacing: -0.005em;
+}
+h2.section {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  color: var(--text); margin: 36px 0 12px;
+  padding-left: 12px; border-left: 3px solid var(--primary);
+}
+h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+
+p {
+  font-size: 16.5px; line-height: 1.85; margin: 0 0 18px;
+  color: var(--text);
+  font-family: 'Outfit', 'Noto Serif TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  font-weight: 400;
+}
+p strong, strong { color: var(--ink); font-weight: 600; }
+
+ul, ol { margin: 0 0 18px; padding-left: 26px; }
+li { font-size: 16px; line-height: 1.8; margin-bottom: 6px; }
+
+a { color: var(--primary); text-decoration: underline; text-decoration-color: rgba(47,111,94,.3); text-underline-offset: 2px; }
+a:hover { text-decoration-color: var(--primary); }
+
+blockquote {
+  margin: 28px 0; padding: 18px 24px;
+  background: var(--line-soft); border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-2); font-style: normal;
+}
+blockquote p { margin: 0; color: var(--text-2); }
+blockquote p + p { margin-top: 12px; }
+
+hr {
+  border: 0; height: 1px; background: var(--line);
+  margin: 36px auto; width: 60%;
+}
+
+/* Figure & image */
+figure {
+  margin: 32px 0; text-align: center;
+}
+.image2-inset, .captioned-image-container .image2-inset {
+  margin: 0;
+}
+.image2-inset picture, .image2-inset img {
+  display: block; max-width: 100%; height: auto; margin: 0 auto;
+  border-radius: 8px;
+}
+figure img {
+  max-width: 100%; height: auto; border-radius: 8px;
+  display: block; margin: 0 auto;
+  box-shadow: 0 4px 18px -8px rgba(20,23,30,.15);
+}
+.image2-img, .image2-image {
+  max-width: 100%; height: auto;
+}
+.captioned-image-container {
+  margin: 32px -20px;
+}
+.image-link { display: block; text-decoration: none !important; }
+.figcaption {
+  font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5;
+  text-align: center; font-style: italic;
+}
+
+/* Buttons / interactive UI from Substack we want to hide */
+.button, .pencraft, .subscription-widget, .paywall,
+[class*="paywall"], [class*="subscribe"], [class*="Subscribe"],
+.embed, .digest-post-embed { display: none !important; }
+
+.footer-cta {
+  margin-top: 60px; padding: 28px 32px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; text-align: center;
+}
+.footer-cta p { font-size: 14px; color: var(--muted); margin: 0; }
+.footer-cta a {
+  display: inline-block; margin: 4px 6px;
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--line); text-decoration: none;
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+}
+.footer-cta a.primary {
+  background: var(--primary); color: white; border-color: var(--primary);
+}
+
+.toc {
+  margin: 0 0 36px; padding: 20px 24px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.toc-title {
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+.toc ol li { counter-increment: toc; padding: 4px 0; font-size: 14px; }
+.toc ol li::before { content: counters(toc, ".") " "; color: var(--muted); margin-right: 4px; }
+.toc ol li.h1 { font-weight: 600; color: var(--ink); margin-top: 8px; }
+.toc ol li.h2 { color: var(--text-2); padding-left: 18px; }
+.toc a { color: var(--text-2); text-decoration: none; }
+.toc a:hover { color: var(--primary); }
+
+@media (max-width: 768px) {
+  .wrap { padding: 28px 18px 60px; }
+  h1.article-title { font-size: 26px; }
+  h1.chapter { font-size: 22px; }
+  p { font-size: 16px; }
+  .captioned-image-container { margin: 24px -10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta-bar">
+    <a href="../../index.html">← 索引</a>
+    <span class="tag free">🆓 公開</span>
+    <span>2025-08-04</span>
+    <span>80 字</span>
+    <a href="https://www.fomosoc.com/p/berkshire-hathaway" target="_blank" rel="noopener">↗ 原站</a>
+  </div>
+  <h1 class="article-title">Berkshire Hathaway究竟應該如何估值？</h1>
+  
+  <article class="body">
+<p>當市場屢創新高，通常大家就會看不起Berkshire Hathaway這支股票。</p><p>​</p><p>這很正常。當大家都覺得自己是股神，每天都在賺快錢的時候，往往就是這種穩如泰山的巨象，表現最差、跑輸大市的日子。</p><p>​</p><p>當然，總有 contrarian (反向投資者) 會在此刻思考：既然市場先生冷落了它，股價也從高位回落不少，這是否意味著機會正在浮現？</p><p>​</p><p>日前，他們公佈了業績。但我們今天不談那些冰冷的數字，反而想聊一個更根本的問題：</p><p>​</p><p>在Buffett眼中，他自己的這家公司，到底應該如何估值？</p><p>​</p><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!8vSE!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d712784-1e07-47f5-8154-6b725094adaa_2000x1125.jpeg 424w, https://substackcdn.com/image/fetch/$s_!8vSE!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d712784-1e07-47f5-8154-6b725094adaa_2000x1125.jpeg 848w, https://substackcdn.com/image/fetch/$s_!8vSE!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d712784-1e07-47f5-8154-6b725094adaa_2000x1125.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!8vSE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d712784-1e07-47f5-8154-6b725094adaa_2000x1125.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/5d712784-1e07-47f5-8154-6b725094adaa_2000x1125.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":"normal","height":1125,"width":2000,"resizeWidth":null,"bytes":254028,"alt":null,"title":null,"type":"image/jpeg","href":null,"belowTheFold":true,"topImage":false,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' height="1125" loading="lazy" sizes="100vw" src="images/img_002_d058c4e7.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!8vSE!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d712784-1e07-47f5-8154-6b725094adaa_2000x1125.jpeg 424w, https://substackcdn.com/image/fetch/$s_!8vSE!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d712784-1e07-47f5-8154-6b725094adaa_2000x1125.jpeg 848w, https://substackcdn.com/image/fetch/$s_!8vSE!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d712784-1e07-47f5-8154-6b725094adaa_2000x1125.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!8vSE!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d712784-1e07-47f5-8154-6b725094adaa_2000x1125.jpeg 1456w" width="2000"/></picture><div class="image-link-expand"></div></div></figure></div><p>其實，Buffett曾經分享過這點。我嘗試將BRK比喻成農場，令大家看得更明白。</p><p>​</p><p>第一點：農場的「家底」值多少錢？ (股票與現金)</p><p>​</p><p>這部分最簡單，簡直是送分題。</p><p>​</p><p>BRK手上握有海量的蘋果，美國運通，可口可樂等公司的股票，外加一筆多到嚇死人的現金和美國國債。這就像農場的保險箱和倉庫，裡面有多少錢、多少存貨，是實實在在的。</p><p>​</p><p>怎麼估值？ 沒什麼技巧，就是「點算」。直接上網查查這些股票今天值多少錢，再加上現金和國債的數目，加總起來就是BRK的第一部分價值。</p><p>​</p><p>第二點：農場的「賺錢機器」值多少錢？ (實體業務)</p><p>​</p><p>這部分，是BRK真正的心臟。</p><p>​</p><p>它包含了所有BRK自己經營的生意，像是 BNSF 鐵路、GEICO 保險、See's Candies 糖果等等。這些就是農場裡那些不需要你操心，就會自己耕田、自己下蛋的金牛。</p><p>​</p><p>怎麼估值？ Buffett表示，別管複雜的會計帳，直接問一個最根本的問題：「這些生意，一年下來，到底能賺多少錢？」</p><p>​</p><p>他特別喜歡看這些業務的「稅前利潤」，因為這個數字最能反映它們最原始的賺錢能力。</p><p>​</p><p>把這台「賺錢機器」的年收入，乘上一個合理的倍數，就能估算出它的價值。</p><p>​</p><p>第三點：「複利引擎」有多強？ (再投資能力)</p><p>​</p><p>如果說前兩點是評估BRK的「現在」，那這第三點，就是評估它的「未來」。</p><p>​</p><p>BRK是出了名從不派息，它把從「家底」（投資）和「賺錢機器」（業務）賺到的每一分錢都留下來，繼續投資。</p><p>​</p><p>所以，真正畫龍點睛的問題是：管理層拿著這些錢，去滾出更多錢的能力，到底有多強？</p><p>​</p><p>這就像一個優秀的農夫，他不會把今年賣牛奶賺的錢全部花掉，而是會用它去買下隔壁村更多、更肥沃的土地，讓明年的收成翻倍。</p><p>​</p><p>這就是BRK模式真正的「複利引擎」，也是它幾十年來不斷壯大的秘密。</p><p>​</p><p>這部分沒法用公式計算，它考驗的是你對管理層的信任和判斷。</p><p>​</p><p>當然，現在股神退休了，這部份的確是值得打上一個大問號。</p><p>​</p><p>所以，下次當你打量BRK時，腦中的問題清單應該清晰地分成三項：</p><p>​</p><p>1. 它的「家底」值多少錢？ (可計算)</p><p>​</p><p>2. 它的「賺錢機器」值多少錢？ (可估算)</p><p>​</p><p>3. 最重要的，它的「複利引擎」還夠不夠力？ (需判斷)</p><p>​</p><p>如果你還在思考是否可以買入的話，不妨自己來用Buffett的方法來粗略算一算這筆帳。</p><p>​</p><p>- KP</p>
+  </article>
+  <div class="footer-cta">
+    <p>本機離線版本 • 圖片與內文完整</p>
+    <a class="primary" href="../../index.html">← 回索引</a>
+    <a href="https://www.fomosoc.com/p/berkshire-hathaway" target="_blank" rel="noopener">在原站開啟 ↗</a>
+  </div>
+</div>
+</body>
+</html>

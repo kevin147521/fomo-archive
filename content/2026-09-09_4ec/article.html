@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我離職了</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --line: #e9e3d6; --line-soft: #f0ebdf;
+  --text: #1f2533; --text-2: #3a4256; --muted: #7c7a72; --ink: #14171e;
+  --primary: #2f6f5e; --accent: #c97b3f;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(47,111,94,.04) 0%, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(201,123,63,.04) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 28px 96px; }
+
+.meta-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px;
+  font-feature-settings: 'tnum';
+}
+.meta-bar .tag {
+  padding: 3px 9px; border-radius: 4px; font-weight: 500;
+  background: var(--line-soft); color: var(--text-2);
+}
+.meta-bar .tag.free { background: #dde9f3; color: #4a7ba6; }
+.meta-bar .tag.paid { background: #f0dbdb; color: #b06367; }
+.meta-bar a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--line); }
+.meta-bar a:hover { color: var(--primary); border-color: var(--primary); }
+
+h1.article-title {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 36px; font-weight: 400; line-height: 1.25;
+  color: var(--ink); margin: 14px 0 24px; letter-spacing: -0.005em;
+}
+h1.chapter {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 28px; font-weight: 400; line-height: 1.3;
+  color: var(--ink); margin: 56px 0 18px; padding-top: 28px;
+  border-top: 1px solid var(--line);
+  letter-spacing: -0.005em;
+}
+h2.section {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  color: var(--text); margin: 36px 0 12px;
+  padding-left: 12px; border-left: 3px solid var(--primary);
+}
+h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+
+p {
+  font-size: 16.5px; line-height: 1.85; margin: 0 0 18px;
+  color: var(--text);
+  font-family: 'Outfit', 'Noto Serif TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  font-weight: 400;
+}
+p strong, strong { color: var(--ink); font-weight: 600; }
+
+ul, ol { margin: 0 0 18px; padding-left: 26px; }
+li { font-size: 16px; line-height: 1.8; margin-bottom: 6px; }
+
+a { color: var(--primary); text-decoration: underline; text-decoration-color: rgba(47,111,94,.3); text-underline-offset: 2px; }
+a:hover { text-decoration-color: var(--primary); }
+
+blockquote {
+  margin: 28px 0; padding: 18px 24px;
+  background: var(--line-soft); border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-2); font-style: normal;
+}
+blockquote p { margin: 0; color: var(--text-2); }
+blockquote p + p { margin-top: 12px; }
+
+hr {
+  border: 0; height: 1px; background: var(--line);
+  margin: 36px auto; width: 60%;
+}
+
+figure {
+  margin: 32px 0; text-align: center;
+}
+.image2-inset, .captioned-image-container .image2-inset {
+  margin: 0;
+}
+.image2-inset picture, .image2-inset img {
+  display: block; max-width: 100%; height: auto; margin: 0 auto;
+  border-radius: 8px;
+}
+figure img {
+  max-width: 100%; height: auto; border-radius: 8px;
+  display: block; margin: 0 auto;
+  box-shadow: 0 4px 18px -8px rgba(20,23,30,.15);
+}
+.image2-img, .image2-image {
+  max-width: 100%; height: auto;
+}
+.captioned-image-container {
+  margin: 32px -20px;
+}
+.image-link { display: block; text-decoration: none !important; }
+.figcaption {
+  font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5;
+  text-align: center; font-style: italic;
+}
+
+/* Buttons / interactive UI from Substack we want to hide */
+.button, .pencraft, .subscription-widget, .paywall,
+[class*="paywall"], [class*="subscribe"], [class*="Subscribe"],
+.embed, .digest-post-embed { display: none !important; }
+
+.footer-cta {
+  margin-top: 60px; padding: 28px 32px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; text-align: center;
+}
+.footer-cta p { font-size: 14px; color: var(--muted); margin: 0; }
+.footer-cta a {
+  display: inline-block; margin: 4px 6px;
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--line); text-decoration: none;
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+}
+.footer-cta a.primary {
+  background: var(--primary); color: white; border-color: var(--primary);
+}
+
+.toc {
+  margin: 0 0 36px; padding: 20px 24px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.toc-title {
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+.toc ol li { counter-increment: toc; padding: 4px 0; font-size: 14px; }
+.toc ol li::before { content: counters(toc, ".") " "; color: var(--muted); margin-right: 4px; }
+.toc ol li.h1 { font-weight: 600; color: var(--ink); margin-top: 8px; }
+.toc ol li.h2 { color: var(--text-2); padding-left: 18px; }
+.toc a { color: var(--text-2); text-decoration: none; }
+.toc a:hover { color: var(--primary); }
+
+@media (max-width: 768px) {
+  .wrap { padding: 28px 18px 60px; }
+  h1.article-title { font-size: 26px; }
+  h1.chapter { font-size: 22px; }
+  p { font-size: 16px; }
+  .captioned-image-container { margin: 24px -10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta-bar">
+    <a href="../../index.html">← 索引</a>
+    <span class="tag free">🆓 公開</span>
+    <span>2026-09-09</span>
+    <span>1345 字</span>
+    <a href="https://www.fomosoc.com/p/4ec" target="_blank" rel="noopener">↗ 原站</a>
+  </div>
+  <h1 class="article-title">我離職了</h1>
+  
+  <article class="body">
+<div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!AfDg!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e97497d-ebe5-4392-95cd-972476986908_1376x768.jpeg 424w, https://substackcdn.com/image/fetch/$s_!AfDg!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e97497d-ebe5-4392-95cd-972476986908_1376x768.jpeg 848w, https://substackcdn.com/image/fetch/$s_!AfDg!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e97497d-ebe5-4392-95cd-972476986908_1376x768.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!AfDg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e97497d-ebe5-4392-95cd-972476986908_1376x768.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/3e97497d-ebe5-4392-95cd-972476986908_1376x768.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":768,"width":1376,"resizeWidth":null,"bytes":675003,"alt":null,"title":null,"type":"image/jpeg","href":null,"belowTheFold":false,"topImage":true,"internalRedirect":"https://www.fomosoc.com/i/214758857?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e97497d-ebe5-4392-95cd-972476986908_1376x768.jpeg","isProcessing":false,"align":null,"offset":false}' fetchpriority="high" height="768" loading="lazy" sizes="100vw" src="images/img_002_60ac2fb9.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!AfDg!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e97497d-ebe5-4392-95cd-972476986908_1376x768.jpeg 424w, https://substackcdn.com/image/fetch/$s_!AfDg!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e97497d-ebe5-4392-95cd-972476986908_1376x768.jpeg 848w, https://substackcdn.com/image/fetch/$s_!AfDg!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e97497d-ebe5-4392-95cd-972476986908_1376x768.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!AfDg!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e97497d-ebe5-4392-95cd-972476986908_1376x768.jpeg 1456w" width="1376"/></picture><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"><svg aria-hidden="true" fill="none" height="20" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></figure></div><p>有件事情，想告訴你們。</p><p><strong>上個星期，我離開了本來的工作，正式全職投入FOMO研究院。</strong></p><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"><div class="subscription-widget show-subscribe"><div class="preamble"><p class="cta-caption">FOMO研究院電子報 is a reader-supported publication. To receive new posts and support my work, consider becoming a free or paid subscriber.</p></div><form class="subscription-widget-subscribe"><input class="email-input" name="email" placeholder="Type your email…" tabindex="-1" type="email"/><input class="button primary" type="submit" value="Subscribe"/><div class="fake-input-wrapper"><div class="fake-input"></div><div class="fake-button"></div></div></form></div></div><p>還記得一年前，我宣佈推出付費會員計畫。</p><p>那時的我，下班後在深夜電腦前摸黑寫作，充滿了對未來的猶豫。我不確定自己的產出能走多遠，也不確定大家是否真的願意為深度內容買單。</p><p>一年過去了。</p><p>過去這 52 個星期，我堅持每週產出萬多字的深度分析與週末的思考筆記。</p><p>FOMO研究院從一個小小的個人試驗，長成了現在跨平台十幾萬讀者的社群，更有一群核心的付費讀者，默默支持著我寫下去。</p><p>我一直告訴自己：等哪天時機夠對，我就 all-in。</p><p>那一天，其實已經到了，只是我拖了很久才承認。</p><p><strong>所以，從現在開始，這件事就是我的全職工作了。</strong></p><p>這陣子很多人問我：「放棄原本高薪且穩定的正職，出來全職做這個，風險不會太大嗎？」</p><p><strong>風險真的很大，但我內心非常清楚，這是對的決定。</strong></p><p>我真心熱愛做研究，也熱愛把複雜的市場邏輯拆解清楚。我更深信，我們需要把研究做得更好、更精準、更有深度。</p><p>這是我願意投入全部熱情去打造的事業。</p><div><hr/></div><h3>這對你意味著什麼？</h3><p>答案其實很簡單，主要是兩件事：極致的專注，以及更深度的資訊獲取能力。</p><p><strong>第一，100% 的精力與專注</strong></p><p>過去兼職寫作，我只能利用下班後、深夜與週末的碎片時間。</p><p>現在全職投入，我可以把全部的大腦頻寬與時間，完全砸在調研數據、建構模型與拆解產業上。</p><p>在每天精力最充沛的時段做研究，文章的深度、精準度與產出品質，自然能再上一個台階。</p><p><strong>第二，走到螢光幕前，獲取過去無法觸及的一手資訊</strong></p><p>過去兩年多，我幾乎是個「隱形作者」，能運用的資料大部分來自公開數據與個人研究。</p><p>沒有露臉、沒有真名、沒有 Podcast、沒有影片。</p><p>這樣的好處是我可以專心寫；壞處是FOMO研究院永遠只能是「一個匿名的聲音」，走不遠。</p><p>接下來幾個月，你會慢慢看到： 一個真實的我，出現在媒體訪談裡、Podcast 上、可能還有一些實體活動。</p><p>這對相對內向的我並不輕鬆，但唯有站出來，我才能真正與產業內部的專業人士、創辦人以及機構投資者面對面交流。</p><blockquote><p>這些建立在真實信任上的連結，能幫大家帶回過去光靠公開資料抓不到的產業脈絡與一手資訊，讓 FOMO 研究院的內容具備更高的獨家價值。</p></blockquote><div><hr/></div><h3><strong>關於現有訂閱者：內容升級，承諾永遠不變</strong></h3><p>最近我也為大家新增了「財報解剖」這個全新系列，投入更多精力去深入拆解企業的真實營運與財務細節。</p><p>內容變多、品質提升，有讀者問到，「是不是要加收費用」？</p><blockquote><p>請大家放心，完全不需要。</p></blockquote><p>對於過去一年已經付費支持我的讀者，你不需要多付一毛錢，就能直接享有這些持續升級的品質與全新內容。</p><p><strong>接下來的任何價格調整，都跟你完全無關。</strong></p><p><strong>重要的事，我想講三次：</strong> </p><ul><li><p><strong>現有訂閱者的價格，永遠不變。</strong> 無論你付的是月費還是年費。 </p></li><li><p><strong>只要你不主動取消，你會一直以你當初加入的價格續訂下去。</strong> </p></li><li><p><strong>這不是一年內不變，也不是暫時不變，是永久鎖定。</strong></p></li></ul><p>你們是在我還在正職、在我還沒露臉、在我最忐忑不安的時候，就決定付費支持我的人。</p><blockquote><p>這份信任，我一輩子都不會忘。這是我的承諾，也是我最能表達感謝的方式。</p></blockquote><p>坦白說，相較於我們在投資市場裡獲得的認知提升、避開的巨大風險，甚至是一次正確決策帶來的實際收益，這筆訂閱費用其實非常微小。</p><p>在投資的世界裡，一次衝動做錯決策的代價，絕對遠遠高過一整年的訂閱費。</p><p><strong>我希望這裡提供給你的，是一份能幫你省下無數研究時間、並在市場中建立長期優勢的頂級工具。</strong></p><p>現在，可以放心讀下去了。</p><div><hr/></div><h3><strong>邀請你，一起以長期主義者的心態走這條路</strong></h3><p>我已經確信我會長期走下去，而我也希望 FOMO 研究院的讀者社群，是一群真的把「建立長期投資框架」放進生活裡、願意跟我一起走長路的人。</p><p>隨著研究深度的進一步升級，從 <strong>9月18日 00:01</strong> 起，我會對新加入的訂閱方案做出以下調整<strong>（美元計價）</strong>：</p><ul><li><p><strong>月費：$20 → $29 / 月</strong></p></li><li><p><strong>年費：$200 / 年（完全不變）</strong></p></li></ul><p>我想坦白地跟大家聊聊這個定價策略：</p><p>在華語地區，$29 美元的月費確實不便宜。</p><p>但我對自己的研究品質有充分的信心，相較於大家在股市裡衝動做錯一次決策的昂貴代價，這筆費用絕對物超所值。</p><blockquote><p><strong>但是，我要重申一次，$200 美元的年費並沒有任何的調整。</strong></p></blockquote><p>折算下來每個月只需要約 $16.6 美元，相當於新月費的接近半價。以一整年獲得的深度框架與機構級拆解來說，這絕對是一個非常親民且值得的價格。</p><p>我保留月費，是給還在觀望的新讀者一個低門檻的試吃期，你可以先讀一兩個月，確定這裡的分析符合你的需求。</p><p><strong>但如果你已經決定長期跟著走，年費才是我留給核心讀者的位置，我想把最實惠的價格留給願意一次性做明智決策、跟我走一整年的長期主義者。</strong></p><p>再次提醒，如果你現在已經是付費訂閱者，無論是月費 $20 還是年費，<strong>你的價格鎖定是永久有效的，請完全放心。</strong></p><div><hr/></div><h3><strong>給不同階段讀者的具體建議</strong></h3><p><strong>1. 如果你現在已經是月費 $20 的老訂閱者：</strong></p><p>你手上這個 $20 的價格，是我之後永遠不會再開放給任何新讀者的。</p><p>只要你不取消，它永遠是 $20。但如果哪天你不小心取消了、之後想回來，那時候的月費就會是新價格。</p><p><em>順便補充：如果你有考慮過升級年費，現在也是最好的時機。</em></p><p><em>升級年費能直接鎖定一整年最划算的平均單月成本，也不用每個月被扣款一次。</em></p><p><strong>2. 如果你還沒訂閱，但已經觀望了一陣子：</strong> </p><p>在 <strong>9月18日 00:01 前</strong>，月費依然維持$20。之後新加入的讀者，月費就會調升至 $29。</p><p>如果你心裡一直在想「要不要付費試試看」，這一週是最後一個以 $20/月 門檻加入的機會。</p><p>只要在這個期限前加入，未來只要你不主動取消，你的 $20 月費就永遠不會變，與最早期支持我的老讀者享有一模一樣的永久權益。</p><p>兩年多前開始寫分析的時候，我從沒想過會有這麼一天，可以認真地說「這是我的全職工作」。</p><p>一年前推出付費時，我滿心忐忑；而今天，我帶著滿滿的確信，準備走得更遠。</p><p>這一切都是你們給的。接下來的路，我會拿出最高的專注與專業，走得更加認真。</p><p>– KP</p><blockquote><p>P.S. 這幾天在台灣出差，行程非常滿，未來一兩個星期可能會看到我不同的影音與訪談片段。</p><p>這週的深度研究，內容已經寫好了一大半，但因為行程緊湊、精力有點不足，總覺得想調整得更完美一些再呈獻給大家。</p><p>因此發文時間會晚一到兩天發出，謝謝大家的體諒與體貼！</p></blockquote><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"><div class="subscription-widget show-subscribe"><div class="preamble"><p class="cta-caption">FOMO研究院電子報 is a reader-supported publication. To receive new posts and support my work, consider becoming a free or paid subscriber.</p></div><form class="subscription-widget-subscribe"><input class="email-input" name="email" placeholder="Type your email…" tabindex="-1" type="email"/><input class="button primary" type="submit" value="Subscribe"/><div class="fake-input-wrapper"><div class="fake-input"></div><div class="fake-button"></div></div></form></div></div>
+  </article>
+  <div class="footer-cta">
+    <p>本機離線版本 • 圖片與內文完整</p>
+    <a class="primary" href="../../index.html">← 回索引</a>
+    <a href="https://www.fomosoc.com/p/4ec" target="_blank" rel="noopener">在原站開啟 ↗</a>
+  </div>
+</div>
+</body>
+</html>

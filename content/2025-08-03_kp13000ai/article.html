@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一場3000億美元的AI賭局，與諾和諾德的投資看法 - KP思考筆記(第2期)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --line: #e9e3d6; --line-soft: #f0ebdf;
+  --text: #1f2533; --text-2: #3a4256; --muted: #7c7a72; --ink: #14171e;
+  --primary: #2f6f5e; --accent: #c97b3f;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(47,111,94,.04) 0%, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(201,123,63,.04) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 28px 96px; }
+
+.meta-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px;
+  font-feature-settings: 'tnum';
+}
+.meta-bar .tag {
+  padding: 3px 9px; border-radius: 4px; font-weight: 500;
+  background: var(--line-soft); color: var(--text-2);
+}
+.meta-bar .tag.free { background: #dde9f3; color: #4a7ba6; }
+.meta-bar .tag.paid { background: #f0dbdb; color: #b06367; }
+.meta-bar a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--line); }
+.meta-bar a:hover { color: var(--primary); border-color: var(--primary); }
+
+h1.article-title {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 36px; font-weight: 400; line-height: 1.25;
+  color: var(--ink); margin: 14px 0 24px; letter-spacing: -0.005em;
+}
+h1.chapter {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 28px; font-weight: 400; line-height: 1.3;
+  color: var(--ink); margin: 56px 0 18px; padding-top: 28px;
+  border-top: 1px solid var(--line);
+  letter-spacing: -0.005em;
+}
+h2.section {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  color: var(--text); margin: 36px 0 12px;
+  padding-left: 12px; border-left: 3px solid var(--primary);
+}
+h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+
+p {
+  font-size: 16.5px; line-height: 1.85; margin: 0 0 18px;
+  color: var(--text);
+  font-family: 'Outfit', 'Noto Serif TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  font-weight: 400;
+}
+p strong, strong { color: var(--ink); font-weight: 600; }
+
+ul, ol { margin: 0 0 18px; padding-left: 26px; }
+li { font-size: 16px; line-height: 1.8; margin-bottom: 6px; }
+
+a { color: var(--primary); text-decoration: underline; text-decoration-color: rgba(47,111,94,.3); text-underline-offset: 2px; }
+a:hover { text-decoration-color: var(--primary); }
+
+blockquote {
+  margin: 28px 0; padding: 18px 24px;
+  background: var(--line-soft); border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-2); font-style: normal;
+}
+blockquote p { margin: 0; color: var(--text-2); }
+blockquote p + p { margin-top: 12px; }
+
+hr {
+  border: 0; height: 1px; background: var(--line);
+  margin: 36px auto; width: 60%;
+}
+
+/* Figure & image */
+figure {
+  margin: 32px 0; text-align: center;
+}
+.image2-inset, .captioned-image-container .image2-inset {
+  margin: 0;
+}
+.image2-inset picture, .image2-inset img {
+  display: block; max-width: 100%; height: auto; margin: 0 auto;
+  border-radius: 8px;
+}
+figure img {
+  max-width: 100%; height: auto; border-radius: 8px;
+  display: block; margin: 0 auto;
+  box-shadow: 0 4px 18px -8px rgba(20,23,30,.15);
+}
+.image2-img, .image2-image {
+  max-width: 100%; height: auto;
+}
+.captioned-image-container {
+  margin: 32px -20px;
+}
+.image-link { display: block; text-decoration: none !important; }
+.figcaption {
+  font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5;
+  text-align: center; font-style: italic;
+}
+
+/* Buttons / interactive UI from Substack we want to hide */
+.button, .pencraft, .subscription-widget, .paywall,
+[class*="paywall"], [class*="subscribe"], [class*="Subscribe"],
+.embed, .digest-post-embed { display: none !important; }
+
+.footer-cta {
+  margin-top: 60px; padding: 28px 32px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; text-align: center;
+}
+.footer-cta p { font-size: 14px; color: var(--muted); margin: 0; }
+.footer-cta a {
+  display: inline-block; margin: 4px 6px;
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--line); text-decoration: none;
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+}
+.footer-cta a.primary {
+  background: var(--primary); color: white; border-color: var(--primary);
+}
+
+.toc {
+  margin: 0 0 36px; padding: 20px 24px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.toc-title {
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+.toc ol li { counter-increment: toc; padding: 4px 0; font-size: 14px; }
+.toc ol li::before { content: counters(toc, ".") " "; color: var(--muted); margin-right: 4px; }
+.toc ol li.h1 { font-weight: 600; color: var(--ink); margin-top: 8px; }
+.toc ol li.h2 { color: var(--text-2); padding-left: 18px; }
+.toc a { color: var(--text-2); text-decoration: none; }
+.toc a:hover { color: var(--primary); }
+
+@media (max-width: 768px) {
+  .wrap { padding: 28px 18px 60px; }
+  h1.article-title { font-size: 26px; }
+  h1.chapter { font-size: 22px; }
+  p { font-size: 16px; }
+  .captioned-image-container { margin: 24px -10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta-bar">
+    <a href="../../index.html">← 索引</a>
+    <span class="tag free">🆓 公開</span>
+    <span>2025-08-03</span>
+    <span>132 字</span>
+    <a href="https://www.fomosoc.com/p/kp13000ai" target="_blank" rel="noopener">↗ 原站</a>
+  </div>
+  <h1 class="article-title">一場3000億美元的AI賭局，與諾和諾德的投資看法 - KP思考筆記(第2期)</h1>
+  <div class="toc"><div class="toc-title">本文目錄</div><ol>
+<li class="h1"><a href="#Zoom-Out-雲端戰爭-規模-增長與利潤的終極博弈">【Zoom Out】雲端戰爭：規模、增長與利潤的終極博弈</a></li>
+<li class="h1"><a href="#Zoom-In-諾和諾德-當增長故事遭遇信任危機">【Zoom In】諾和諾德：當增長故事遭遇信任危機</a></li>
+<li class="h1"><a href="#本週結語">本週結語</a></li>
+</ol></div>
+  <article class="body">
+<div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!DqGn!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d208bc4-a940-4fda-b72d-9f8e40f71959_1024x1024.jpeg 424w, https://substackcdn.com/image/fetch/$s_!DqGn!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d208bc4-a940-4fda-b72d-9f8e40f71959_1024x1024.jpeg 848w, https://substackcdn.com/image/fetch/$s_!DqGn!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d208bc4-a940-4fda-b72d-9f8e40f71959_1024x1024.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!DqGn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d208bc4-a940-4fda-b72d-9f8e40f71959_1024x1024.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/5d208bc4-a940-4fda-b72d-9f8e40f71959_1024x1024.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":1024,"width":1024,"resizeWidth":null,"bytes":93833,"alt":null,"title":null,"type":"image/jpeg","href":null,"belowTheFold":false,"topImage":true,"internalRedirect":"https://fomosoc.substack.com/i/169931981?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d208bc4-a940-4fda-b72d-9f8e40f71959_1024x1024.jpeg","isProcessing":false,"align":null,"offset":false}' fetchpriority="high" height="1024" loading="lazy" sizes="100vw" src="images/img_002_a39cfdc6.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!DqGn!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d208bc4-a940-4fda-b72d-9f8e40f71959_1024x1024.jpeg 424w, https://substackcdn.com/image/fetch/$s_!DqGn!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d208bc4-a940-4fda-b72d-9f8e40f71959_1024x1024.jpeg 848w, https://substackcdn.com/image/fetch/$s_!DqGn!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d208bc4-a940-4fda-b72d-9f8e40f71959_1024x1024.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!DqGn!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d208bc4-a940-4fda-b72d-9f8e40f71959_1024x1024.jpeg 1456w" width="1024"/></picture><div class="image-link-expand"></div></div></figure></div><p>歡迎來到我的第一期思考筆記，也謝謝你成為我的首批忠實讀者。願意在一開始就訂閱，實在感激。</p><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div><p>這個星期對我來說極為瘋狂。我不僅在台北出差，從早忙到晚，還要緊盯 Mag 7 的密集財報轟炸。老實說，有好幾個瞬間，我確實感到身心俱疲。</p><p>然而，寫作和交流市場看法的熱情，總能戰勝疲勞。</p><p>尤其是在深夜，當我把微軟、蘋果、Meta 和亞馬遜的財報線索拼湊起來時，當我將諾和諾德的消息抽絲剝繭的時候，那種興奮感的確是無可比擬的。</p><p>這正是我選擇將戰場開拓到Substack的初衷：</p><p><strong>在紛亂的市場噪音中，將一個更私密的地方，和你分享那些我認為最重要的東西。</strong></p><p>在本期思考筆記中，我想帶你從兩個視角看市場。這兩件事看似無關，但其核心都是關於「巨額投資的未來不確定性」。</p><p><em>鏡頭拉遠 (Zoom Out):</em> 我們先看一場價值近3000億美元的豪賭——科技巨頭們財報背後，那場正在上演的「AI 軍備競賽」，它將決定下個十年的科技版圖。</p><p><em>鏡頭拉近 (Zoom In):</em> 接著，我們回到昨天發布的諾和諾德深度分析，做一些關鍵的投資觀點補充。</p><p>Substack對我來說是個全新的嘗試，我很期待能和你一起完善它。所以任何想法或建議，都歡迎隨時告訴我。</p><p>讓我們開始吧。</p><h1 class="chapter" id="Zoom-Out-雲端戰爭-規模-增長與利潤的終極博弈"><strong>【Zoom Out】雲端戰爭：規模、增長與利潤的終極博弈</strong></h1><p>2025年第二季的雲端業務財報，不僅僅是一份商業報告，它更像是一份來自科技界最高風險賽局的戰情報告。亞馬遜（Amazon）、微軟（Microsoft）和Google這三大巨頭，正透過數千億美元的投資，上演一場決定未來十年科技基礎設施版圖的對決。</p><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!rxB9!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F50146570-3778-4920-920b-4cc23742cb4b_1024x1024.jpeg 424w, https://substackcdn.com/image/fetch/$s_!rxB9!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F50146570-3778-4920-920b-4cc23742cb4b_1024x1024.jpeg 848w, https://substackcdn.com/image/fetch/$s_!rxB9!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F50146570-3778-4920-920b-4cc23742cb4b_1024x1024.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!rxB9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F50146570-3778-4920-920b-4cc23742cb4b_1024x1024.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/50146570-3778-4920-920b-4cc23742cb4b_1024x1024.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":1024,"width":1024,"resizeWidth":null,"bytes":118969,"alt":null,"title":null,"type":"image/jpeg","href":null,"belowTheFold":true,"topImage":false,"internalRedirect":"https://fomosoc.substack.com/i/169931981?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F50146570-3778-4920-920b-4cc23742cb4b_1024x1024.jpeg","isProcessing":false,"align":null,"offset":false}' height="1024" loading="lazy" sizes="100vw" src="images/img_003_6d440f82.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!rxB9!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F50146570-3778-4920-920b-4cc23742cb4b_1024x1024.jpeg 424w, https://substackcdn.com/image/fetch/$s_!rxB9!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F50146570-3778-4920-920b-4cc23742cb4b_1024x1024.jpeg 848w, https://substackcdn.com/image/fetch/$s_!rxB9!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F50146570-3778-4920-920b-4cc23742cb4b_1024x1024.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!rxB9!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F50146570-3778-4920-920b-4cc23742cb4b_1024x1024.jpeg 1456w" width="1024"/></picture><div class="image-link-expand"></div></div></figure></div><p><strong>一個有趣的結論：規模越大，增長越慢？</strong></p><p>亞馬遜 AWS: 市場領袖，營收 $30.9B，增長率 17.5%。這是典型的「創新者的兩難」，當你已如此龐大，高速增長自然更具挑戰。</p><p>微軟 Azure: 爆炸性增長 39%，展現追趕者的強大動能。</p><p>Google Cloud: 強勁增長 32%，鞏固其創新領導者的地位。</p><p><strong>三巨頭的攻防戰略</strong></p><p>微軟的巧妙進攻： 微軟首次揭露Azure年營收已突破750億美元，卻巧妙地未單獨公布其利潤率。這個「利潤之謎」讓它得以採取更靈活的定價策略搶佔市場，這是一個為長期霸權進行的策略性佈局。</p><p>Google的驚人逆襲： Google Cloud是本季的效率冠軍，營運利潤率從11.3%幾乎翻倍至20.7%。這證明Google找到了將高階AI服務轉化為高利潤的成功方程式，達到了關鍵的「規模效益拐點」。</p><p>亞馬遜的防衛戰： 身為龍頭，AWS本季利潤率有所下滑。這並非失敗，而是一場策略性的犧牲。面對Azure的追擊，AWS選擇犧牲短期利潤來鞏固其市場領導地位，為保住王冠付出代價。</p><p><strong>核心戰場：一場2700億美元的AI軍備競賽</strong></p><p>這場競爭的核心，是一場前所未有的AI基礎設施軍備競賽。三大巨頭在2025年的相關資本支出合計將高達 2700億美元。他們共同的信念是：未來的雲端世界將由AI主宰。誰能打造最優越的AI基礎設施，誰就能建立起難以逾越的護城河。</p><p>市場普遍認為2026年將是一個關鍵的轉折點。屆時，這些天文數字般的AI投資必須開始展現出清晰的商業回報。這場高風險的賽局將決定未來AI經濟的基礎設施由誰掌控，值得我們密切關注。</p><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div><h1 class="chapter" id="Zoom-In-諾和諾德-當增長故事遭遇信任危機">【Zoom In】諾和諾德：當增長故事遭遇信任危機</h1><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!mM7z!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0e5025cf-0792-46d0-b803-52c1739f396e_1024x1024.jpeg 424w, https://substackcdn.com/image/fetch/$s_!mM7z!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0e5025cf-0792-46d0-b803-52c1739f396e_1024x1024.jpeg 848w, https://substackcdn.com/image/fetch/$s_!mM7z!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0e5025cf-0792-46d0-b803-52c1739f396e_1024x1024.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!mM7z!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0e5025cf-0792-46d0-b803-52c1739f396e_1024x1024.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/0e5025cf-0792-46d0-b803-52c1739f396e_1024x1024.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":1024,"width":1024,"resizeWidth":null,"bytes":103164,"alt":null,"title":null,"type":"image/jpeg","href":null,"belowTheFold":true,"topImage":false,"internalRedirect":"https://fomosoc.substack.com/i/169931981?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0e5025cf-0792-46d0-b803-52c1739f396e_1024x1024.jpeg","isProcessing":false,"align":null,"offset":false}' height="1024" loading="lazy" sizes="100vw" src="images/img_004_c289290b.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!mM7z!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0e5025cf-0792-46d0-b803-52c1739f396e_1024x1024.jpeg 424w, https://substackcdn.com/image/fetch/$s_!mM7z!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0e5025cf-0792-46d0-b803-52c1739f396e_1024x1024.jpeg 848w, https://substackcdn.com/image/fetch/$s_!mM7z!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0e5025cf-0792-46d0-b803-52c1739f396e_1024x1024.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!mM7z!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0e5025cf-0792-46d0-b803-52c1739f396e_1024x1024.jpeg 1456w" width="1024"/></picture><div class="image-link-expand"></div></div></figure></div><p>這場關於AI基礎設施的千億賭局，與我們昨天分析的諾和諾德，其實有著驚人的相似之處：都是在為一個不確定的未來，下達重注。</p><p>在閱讀完長文分析後，我想在此補充更具體的投資觀點。作為投資者，我們最關心的問題是：現在的諾和諾德是「價值窪地」還是「估值陷阱」？</p><p><strong>核心矛盾：優於同行的增長 vs. 平庸的估值</strong></p><p>諾和諾德 EPS 年複合增長率 (24-27e): 10% (vs. 同行 7.5%)</p><p>諾和諾德遠期市盈率 (P/E FY2): 12倍 (vs. 同行 11.6倍)</p><p>一個增長速度高出同業近30%的公司，估值卻幾乎完全相同。這清晰地反映出市場的極度謹慎。</p><p>市場給予如此巨大的估值折價，原因只有一個：<strong>在看到管理層能夠穩定兌現新目標的證據之前，投資者拒絕為其過去的光環支付溢價。</strong></p><p>我認為，一個合理的價格，可能會落在15-15.5倍的遠期市盈率左右，因為這既符合歐洲製藥業的十年均值，也給予了諾和諾德自身歷史估值約30%的折價，以反映當前的執行風險。</p><p><em>我的個人看法：</em></p><p>當前的諾和諾德，是一個典型的「增長故事」遭遇「信任危機」的案例。</p><p>對於價值投資者而言，這或許是一個左側佈局的機會；但對於大多數投資者來說，製藥行業的研發路徑太過複雜。除非你十分內行，否則幾乎不可能預測諾和諾德能否憑藉下一代藥物（如CagriSema）成功反超。</p><p><strong>因此，等待戰局明朗，等它們真的證明反超成功再出手，或許才是更穩妥的選擇。</strong></p><h1 class="chapter" id="本週結語">本週結語</h1><p>感謝你讀完我的第一期週報。希望這個「Zoom Out / Zoom In」的視角，能幫助你在噪音中找到信號。</p><p>我們下週六的深度分析再會。</p><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div>
+  </article>
+  <div class="footer-cta">
+    <p>本機離線版本 • 圖片與內文完整</p>
+    <a class="primary" href="../../index.html">← 回索引</a>
+    <a href="https://www.fomosoc.com/p/kp13000ai" target="_blank" rel="noopener">在原站開啟 ↗</a>
+  </div>
+</div>
+</body>
+</html>
