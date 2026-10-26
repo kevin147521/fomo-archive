@@ -48,6 +48,40 @@ header.hero p { color: var(--text-2); margin: 4px 0; font-size: 14px; }
 .stat .v { font-size: 22px; font-weight: 600; color: var(--ink); font-feature-settings: 'tnum'; }
 .stat .l { font-size: 12px; color: var(--muted); margin-top: 2px; }
 
+
+/* ===== 量化平台入口 (v2) ===== */
+.quant-entry {
+  display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+  background: linear-gradient(135deg, #1f2937 0%, #2f6f5e 100%);
+  border-radius: 16px; padding: 20px 24px; margin-bottom: 24px;
+  color: #fff; box-shadow: 0 8px 28px -14px rgba(31,41,55,.55);
+}
+.quant-entry .icon { font-size: 34px; line-height: 1; }
+.quant-entry .body { flex: 1; min-width: 260px; }
+.quant-entry .body h3 {
+  margin: 0 0 4px; font-size: 18px; font-weight: 600; color: #fff;
+  letter-spacing: -0.01em;
+}
+.quant-entry .body p {
+  margin: 0; font-size: 13px; color: rgba(255,255,255,.82); line-height: 1.5;
+}
+.quant-entry .body .tags { margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; }
+.quant-entry .body .tags span {
+  background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.2);
+  border-radius: 999px; padding: 2px 9px; font-size: 11px; color: rgba(255,255,255,.94);
+}
+.quant-entry a.btn {
+  display: inline-block; background: #fff; color: #1f2937;
+  text-decoration: none; font-weight: 600; font-size: 14px;
+  padding: 11px 22px; border-radius: 10px; white-space: nowrap;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.quant-entry a.btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px -8px rgba(0,0,0,.4); }
+@media (max-width: 640px) {
+  .quant-entry { padding: 16px 18px; }
+  .quant-entry a.btn { width: 100%; text-align: center; }
+}
+
 .toolbar {
   display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
   background: var(--panel); border: 1px solid var(--line);
@@ -260,6 +294,62 @@ body.locked #gate { display: flex; }
       <div class="stat"><div class="v" id="statRange">—</div><div class="l">📅 期間</div></div>
     </div>
   </header>
+
+  <div class="quant-entry">
+    <div class="icon">🚀</div>
+    <div class="body">
+      <h3>專案入口總覽</h3>
+      <p>三個工具的統一入口：台股量化分析平台、集保大戶持股查詢、FOMO 文章庫。需帳號密碼。</p>
+      <div class="tags">
+        <span>📈 台股分析平台</span><span>🏦 集保大戶持股</span><span>📚 文章索引</span>
+      </div>
+    </div>
+    <a class="btn" href="https://all.kevin14752.com" target="_blank" rel="noopener">開啟入口 →</a>
+  </div>
+  <div class="quant-entry" style="background:linear-gradient(135deg,#2f6f5e 0%,#4a7ba6 100%)">
+    <div class="icon">📈</div>
+    <div class="body">
+      <h3>台股量化分析平台</h3>
+      <p>FinLab 資料驅動的 12 個分析工具：均線預測、市值漲跌地圖、ETF 持股追蹤、主力訊號、金包銀掃描、恐懼貪婪指數儀表板，並支援港股查詢。</p>
+      <div class="tags">
+        <span>均線預測</span><span>市值地圖</span><span>主力訊號</span>
+        <span>金包銀掃描</span><span>😱 恐懼貪婪指數</span><span>🇭🇰 港股</span>
+      </div>
+    </div>
+    <a class="btn" href="https://ma.kevin14752.com" target="_blank" rel="noopener">開啟平台 →</a>
+  </div>
+  <div class="quant-entry" style="background:linear-gradient(135deg,#c97b3f 0%,#b06367 100%)">
+    <div class="icon">🏦</div>
+    <div class="body">
+      <h3>集保大戶持股查詢</h3>
+      <p>集保大戶持股資料庫：法人持股變化、持股集中度、歷史追蹤與回測分析，協助掌握籌碼面轉折點。</p>
+      <div class="tags">
+        <span>集保持股</span><span>大戶追蹤</span><span>歷史回測</span><span>籌碼分析</span>
+      </div>
+  <div class="quant-entry" style="background:linear-gradient(135deg,#b06367 0%,#7d3c98 100%)">
+    <div class="icon">🎬</div>
+    <div class="body">
+      <h3>馬臉姐影片庫</h3>
+      <p>YouTube 頻道 @malianjie 的影片備份：56 部會員限定 + 415 部公開影片，繞過廣告離線觀看，支援進度條拖曳。</p>
+      <div class="tags">
+        <span>會員影片</span><span>離線播放</span><span>搜尋</span><span>縮圖瀏覽</span>
+      </div>
+    </div>
+    <a class="btn" href="https://malianjie.kevin14752.com" target="_blank" rel="noopener">開啟影片庫 →</a>
+  </div>
+    </div>
+    <a class="btn" href="https://collect.kevin14752.com" target="_blank" rel="noopener">開啟查詢 →</a>
+  </div>
+    <div class="body">
+      <h3>台股量化分析平台</h3>
+      <p>FinLab 資料驅動的 12 個分析工具：均線預測、ETF 追蹤、主力訊號、金包銀掃描、恐懼貪婪指數儀表板。</p>
+      <div class="tags">
+        <span>均線預測</span><span>市值地圖</span><span>主力訊號</span>
+        <span>金包銀掃描</span><span>😱 恐懼貪婪指數</span><span>🇭🇰 港股</span>
+      </div>
+    </div>
+    <a class="btn" href="https://ma.kevin14752.com" target="_blank" rel="noopener">開啟平台 →</a>
+  </div>
 
   <div class="toolbar">
     <input type="text" class="search" id="search" placeholder="搜尋標題、描述、標籤...">
