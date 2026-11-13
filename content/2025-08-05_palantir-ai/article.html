@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palantir: AI第一股和瘋狂估值的矛盾</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --line: #e9e3d6; --line-soft: #f0ebdf;
+  --text: #1f2533; --text-2: #3a4256; --muted: #7c7a72; --ink: #14171e;
+  --primary: #2f6f5e; --accent: #c97b3f;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(47,111,94,.04) 0%, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(201,123,63,.04) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 28px 96px; }
+
+.meta-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px;
+  font-feature-settings: 'tnum';
+}
+.meta-bar .tag {
+  padding: 3px 9px; border-radius: 4px; font-weight: 500;
+  background: var(--line-soft); color: var(--text-2);
+}
+.meta-bar .tag.free { background: #dde9f3; color: #4a7ba6; }
+.meta-bar .tag.paid { background: #f0dbdb; color: #b06367; }
+.meta-bar a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--line); }
+.meta-bar a:hover { color: var(--primary); border-color: var(--primary); }
+
+h1.article-title {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 36px; font-weight: 400; line-height: 1.25;
+  color: var(--ink); margin: 14px 0 24px; letter-spacing: -0.005em;
+}
+h1.chapter {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 28px; font-weight: 400; line-height: 1.3;
+  color: var(--ink); margin: 56px 0 18px; padding-top: 28px;
+  border-top: 1px solid var(--line);
+  letter-spacing: -0.005em;
+}
+h2.section {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  color: var(--text); margin: 36px 0 12px;
+  padding-left: 12px; border-left: 3px solid var(--primary);
+}
+h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+
+p {
+  font-size: 16.5px; line-height: 1.85; margin: 0 0 18px;
+  color: var(--text);
+  font-family: 'Outfit', 'Noto Serif TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  font-weight: 400;
+}
+p strong, strong { color: var(--ink); font-weight: 600; }
+
+ul, ol { margin: 0 0 18px; padding-left: 26px; }
+li { font-size: 16px; line-height: 1.8; margin-bottom: 6px; }
+
+a { color: var(--primary); text-decoration: underline; text-decoration-color: rgba(47,111,94,.3); text-underline-offset: 2px; }
+a:hover { text-decoration-color: var(--primary); }
+
+blockquote {
+  margin: 28px 0; padding: 18px 24px;
+  background: var(--line-soft); border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-2); font-style: normal;
+}
+blockquote p { margin: 0; color: var(--text-2); }
+blockquote p + p { margin-top: 12px; }
+
+hr {
+  border: 0; height: 1px; background: var(--line);
+  margin: 36px auto; width: 60%;
+}
+
+/* Figure & image */
+figure {
+  margin: 32px 0; text-align: center;
+}
+.image2-inset, .captioned-image-container .image2-inset {
+  margin: 0;
+}
+.image2-inset picture, .image2-inset img {
+  display: block; max-width: 100%; height: auto; margin: 0 auto;
+  border-radius: 8px;
+}
+figure img {
+  max-width: 100%; height: auto; border-radius: 8px;
+  display: block; margin: 0 auto;
+  box-shadow: 0 4px 18px -8px rgba(20,23,30,.15);
+}
+.image2-img, .image2-image {
+  max-width: 100%; height: auto;
+}
+.captioned-image-container {
+  margin: 32px -20px;
+}
+.image-link { display: block; text-decoration: none !important; }
+.figcaption {
+  font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5;
+  text-align: center; font-style: italic;
+}
+
+/* Buttons / interactive UI from Substack we want to hide */
+.button, .pencraft, .subscription-widget, .paywall,
+[class*="paywall"], [class*="subscribe"], [class*="Subscribe"],
+.embed, .digest-post-embed { display: none !important; }
+
+.footer-cta {
+  margin-top: 60px; padding: 28px 32px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; text-align: center;
+}
+.footer-cta p { font-size: 14px; color: var(--muted); margin: 0; }
+.footer-cta a {
+  display: inline-block; margin: 4px 6px;
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--line); text-decoration: none;
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+}
+.footer-cta a.primary {
+  background: var(--primary); color: white; border-color: var(--primary);
+}
+
+.toc {
+  margin: 0 0 36px; padding: 20px 24px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.toc-title {
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+.toc ol li { counter-increment: toc; padding: 4px 0; font-size: 14px; }
+.toc ol li::before { content: counters(toc, ".") " "; color: var(--muted); margin-right: 4px; }
+.toc ol li.h1 { font-weight: 600; color: var(--ink); margin-top: 8px; }
+.toc ol li.h2 { color: var(--text-2); padding-left: 18px; }
+.toc a { color: var(--text-2); text-decoration: none; }
+.toc a:hover { color: var(--primary); }
+
+@media (max-width: 768px) {
+  .wrap { padding: 28px 18px 60px; }
+  h1.article-title { font-size: 26px; }
+  h1.chapter { font-size: 22px; }
+  p { font-size: 16px; }
+  .captioned-image-container { margin: 24px -10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta-bar">
+    <a href="../../index.html">← 索引</a>
+    <span class="tag free">🆓 公開</span>
+    <span>2025-08-05</span>
+    <span>244 字</span>
+    <a href="https://www.fomosoc.com/p/palantir-ai" target="_blank" rel="noopener">↗ 原站</a>
+  </div>
+  <h1 class="article-title">Palantir: AI第一股和瘋狂估值的矛盾</h1>
+  <div class="toc"><div class="toc-title">本文目錄</div><ol>
+<li class="h1"><a href="#先來政府的案例">先來政府的案例。</a></li>
+<li class="h1"><a href="#然後-我們又看看企業端的例子">然後，我們又看看企業端的例子。</a></li>
+<li class="h1"><a href="#最後-我們又來看看Palantir是怎麼幫助軍方的">最後，我們又來看看Palantir是怎麼幫助軍方的。</a></li>
+</ol></div>
+  <article class="body">
+<p>Palantir又交出一份完美的答卷了。</p><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!kbzX!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa17ddf88-2bd7-4c1a-a3e8-f85a42b3a80c_1400x933.webp 424w, https://substackcdn.com/image/fetch/$s_!kbzX!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa17ddf88-2bd7-4c1a-a3e8-f85a42b3a80c_1400x933.webp 848w, https://substackcdn.com/image/fetch/$s_!kbzX!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa17ddf88-2bd7-4c1a-a3e8-f85a42b3a80c_1400x933.webp 1272w, https://substackcdn.com/image/fetch/$s_!kbzX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa17ddf88-2bd7-4c1a-a3e8-f85a42b3a80c_1400x933.webp 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/a17ddf88-2bd7-4c1a-a3e8-f85a42b3a80c_1400x933.webp","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":933,"width":1400,"resizeWidth":null,"bytes":31962,"alt":null,"title":null,"type":"image/webp","href":null,"belowTheFold":false,"topImage":true,"internalRedirect":"https://fomosoc.substack.com/i/170142479?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa17ddf88-2bd7-4c1a-a3e8-f85a42b3a80c_1400x933.webp","isProcessing":false,"align":null,"offset":false}' fetchpriority="high" height="933" loading="lazy" sizes="100vw" src="images/img_002_24b54380.webp" srcset="https://substackcdn.com/image/fetch/$s_!kbzX!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa17ddf88-2bd7-4c1a-a3e8-f85a42b3a80c_1400x933.webp 424w, https://substackcdn.com/image/fetch/$s_!kbzX!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa17ddf88-2bd7-4c1a-a3e8-f85a42b3a80c_1400x933.webp 848w, https://substackcdn.com/image/fetch/$s_!kbzX!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa17ddf88-2bd7-4c1a-a3e8-f85a42b3a80c_1400x933.webp 1272w, https://substackcdn.com/image/fetch/$s_!kbzX!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa17ddf88-2bd7-4c1a-a3e8-f85a42b3a80c_1400x933.webp 1456w" width="1400"/></picture><div class="image-link-expand"></div></div></figure></div><p>​</p><p>對我來說，Palantir 這支股票，一直有個難解的困境。</p><p>​</p><p>研究越深，越覺得它很強；但同時，也越覺得它貴得離譜。</p><p>​</p><p>稱它為「AI 應用第一股」並非過譽，它的平台，就是一個能讓數據真正「活起來」的作業系統。</p><p>​</p><p>然而，那 500 多倍的 PE，接近300倍的Forward PE，就像一道高牆，就算股價腰斬，也讓人下不了手。</p><p>​</p><p>投資這類股票，早已超越估值，變成一場對「敘事」的信仰考驗。</p><p>​</p><p>而我，顯然信仰不足。</p><p>​</p><p>最終只能當個純粹的欣賞者，當不了它的收藏家。</p><p>​</p><p>幾個月前其實在不同地方寫了很多關於Palantir的分析和介紹，有興趣可以重溫。</p><p>​</p><p>我將其中一篇重新分享一次如下：</p><p>​</p><p>這幾天，不止一個客戶，甚至是同事和客戶走來和我說，「我研究了好一陣子，但都不太明白究竟Palantir這家公司是做甚麼的。」</p><p>​</p><p>原來「我買了PLTR，但其實我不太清楚他們是做甚麼的」，這個時常出現的Reddit評論是真的。</p><p>​</p><p>為了向客戶解釋清楚，我決定嘗試將這家公司的業務，用簡單的文字寫出來，好讓自己有個清晰的脈絡，順便在這裡和大家分享一下。</p><p>​</p><p>裡面不包含任何投資建議，純粹介紹。如果想看投資方面的話，可以翻看這幾天寫的。</p><p>​</p><p>先來點High level一點的。</p><p>​</p><p><strong>Palantir是一家專門幫助政府和企業，搞清楚「亂七八糟數據」的軟體公司。</strong></p><p>​</p><p>現代社會每天都會產生大量的數據，這些數據有的來自人類的行為，有的來自機器設備，甚至有的來自衛星。</p><p>​</p><p>數據雖然多，但散落在不同的地方，由不同部門控制，彼此之間看起來沒有任何關聯。</p><p>​</p><p><strong>Palantir 的工作，就是幫助這些機構，把「數據碎片」拼湊成「一幅完整的圖畫」。讓人們能從中找到規律，做出更好的決策。</strong></p><p>​</p><p>接下來，我會介紹他們的客戶，產品，以及用一些真實事例來說明。</p><p>​</p><p>為甚麼這麼多人不太清楚Palantir的業務？</p><p>​</p><p>原因很簡單，因為暫時來說，只有大型機構才用得上他們。</p><p>​</p><p>我們普通人，在日常生活中根本不會有機會接觸到他們的東西。</p><p>​</p><p>Palantir一開始主要和美國軍方合作，然後和政府的不同部門也有生意，而近年亦越來越多大型企業客戶。</p><p>​</p><p>這些機構通常有極多不同的部門，而他們都有一個共同痛點(Pain point)。</p><p>​</p><p><strong>1. 數據太多，太亂。</strong></p><p>​</p><p>每天都在產生大量數據，但這些數據分散在不同系統裡，根本無法快速看清全貌。 </p><p>​</p><p><strong>2. 問題複雜，決策困難</strong></p><p>​</p><p>比如要追蹤恐怖分子行蹤，或是管理全球供應鏈，這些挑戰涉及到數據之間的千絲萬縷的關係，人腦和傳統工具根本無法處理。 </p><p>​</p><p><strong>3. 需要快速行動</strong></p><p>​</p><p>很多時候，數據分析的結果必須在短時間內得出，否則就會錯過最佳行動時機。</p><p>​</p><p>那麼，Palantir是怎樣幫助到這些機構的呢？</p><p>​</p><p>Palantir 的軟體就像一個「數據拼圖專家」，它的工作分成以下幾步：</p><p>​</p><p><strong>1.	數據整合：把一堆亂七八糟的數據放在一起</strong></p><p>​</p><p>首先，Palantir 的軟體會把來自不同來源的數據拉到一個平台上。</p><p>​</p><p>這些數據可能來自文件、圖片、數據庫，甚至是人手寫的報告。而這些數據的格式可能完全不同。</p><p>​</p><p>但 Palantir 能夠做到的是，它能把所有這些數據無縫整合在一起，變成一套完整的信息庫。</p><p>​</p><p><strong>2.	發現規律：數據之間的「關聯」</strong></p><p>​</p><p>接下來，Palantir會分析所有數據，找出它們之間的聯繫和規律。比如，它能告訴你哪個人和哪個地方有關聯，或者哪段時間的行為最可疑。</p><p>​</p><p><strong>3.	可視化：把數據結果畫出來，讓你一眼看懂</strong></p><p>​</p><p>最後一步，Palantir 還會把分析後的結果用圖表、地圖、時間線等方式呈現給用戶。這樣，即使你不懂數據分析，也能一眼就看懂結果，快速採取行動。</p><p>​</p><p>Palantir主要有3款產品，Foundry，Gotham，Apollo。</p><p>​</p><p>Foundry更多是企業市場，Gotham主要應用在軍事和反恐，Apollo則是管理這些系統的產品。</p><p>​</p><p>接下來，我會用三個真事例子，說明Palantir如何在政府，企業，軍事方面合作。</p><p>​</p><h1 class="chapter" id="先來政府的案例">先來政府的案例。</h1><p>​</p><p>幾年前，疫情大流行的時候，COVID-19 疫苗剛剛成功推出。</p><p>​</p><p>但美國政府亦立刻面對另一個難題，就是如何運輸和分發疫苗，尤其需要確保疫苗公平分配並避免浪費。</p><p>​</p><p>政府的痛點：</p><p>​</p><p>1.	數據分散：生產商、物流公司、各州政府的數據無法統一。</p><p>2.	分配公平：如何優先保障高風險人群？</p><p>3.	確保效率：疫苗有保質期，分配延誤會導致浪費。</p><p>​</p><p><strong>Palantir 的解決方案：</strong></p><p>​</p><p>美國政府使用了 Palantir Foundry，建立了一套名為 Tiberius的系統。</p><p>​</p><p>他們整合疫苗生產、運輸和需求數據，動態追蹤疫苗的狀況。</p><p>​</p><p>1.	數據整合：將生產商、物流公司和醫療機構的數據集中在一起，實時監控疫苗去向。</p><p>2.	優化分配：按需求計算優先供應地區，動態調整分配計劃。</p><p>3.	降低浪費：標註即將過期的疫苗，提醒管理人員優先使用。</p><p>​</p><p><strong>成果：</strong></p><p>​</p><p>- 疫苗分發效率大幅提高，幾個月內完成了上億劑接種。</p><p>- 減少浪費，保證疫苗供應透明。</p><p>​</p><h1 class="chapter" id="然後-我們又看看企業端的例子">然後，我們又看看企業端的例子。</h1><p>​</p><p>在2015年的時候，空中巴士(Airbus)面臨一個問題。A350的需求激增。他們需要大幅提升生產速度的同時，但不能犠牲品質。</p><p>​</p><p>問題是，A350 是一架極其複雜的飛機，由超過 500 萬個零件構成。</p><p>​</p><p>這些零件分散在四個國家、八個生產工廠中，由數百個團隊共同協作完成。只要有一部份零件出現問題，整個生產計劃就會受影響。</p><p>​</p><p><strong>企業的痛點：</strong></p><p>​</p><p>1.	供應鏈複雜：全球供應商數據分散，缺乏透明度。</p><p>2.	生產瓶頸：零件延誤導致生產計劃停擺。</p><p>3.	監控不及時：難以快速發現問題並調整計劃。</p><p>​</p><p><strong>Palantir 的解決方案：</strong></p><p>​</p><p>Airbus 使用 Palantir Foundry 將供應鏈數據整合到一個平台中，幫助優化生產過程。</p><p>​</p><p>1.	數據整合：實時查看每個零件的交付狀態，提前發出延誤預警。</p><p>2.	分析瓶頸：提前預測高風險供應商，提前採取行動避免停工。</p><p>3.	即時可視化：用直觀的儀表板展示生產進度和風險。</p><p>​</p><p><strong>成果：</strong></p><p>​</p><p>- A350 的交付速度提升了 33%</p><p>- 供應鏈風險降低，突發情況能快速應對。</p><p>​</p><p>​</p><h1 class="chapter" id="最後-我們又來看看Palantir是怎麼幫助軍方的">最後，我們又來看看Palantir是怎麼幫助軍方的。</h1><p>​</p><p>在阿富汗和伊拉克，路邊炸彈（IED）對美軍構成重大威脅。IED 的設置方式隱秘，軍方難以預測威脅。</p><p>​</p><p><strong>軍方的痛點：</strong></p><p>​</p><p>1.	信息分散：軍方有大量數據，例如巡邏報告、衛星圖像和通訊記錄等，但他們並無法快速整合。</p><p>2.	難以預測：IED 的埋設時間和地點看似隨機。</p><p>3.	決策緩慢：戰場上需要立刻下決定，他們需要更快的數據分析支持行動。</p><p>​</p><p><strong>Palantir 的解決方案：</strong></p><p>​</p><p>軍方使用 Palantir Gotham 分析與 IED 相關的數據，幫助找到炸彈威脅的規律。</p><p>​</p><p>1.	整合數據：將巡邏報告、衛星圖像和通訊記錄集中到一個平台，標註高風險地區。</p><p>2.	發現規律：平台使用 AI 模型分析數據中的模式，比如哪些地方的 IED 活動頻繁、哪些人可能是製造炸彈的嫌疑人。</p><p>3.	快速行動：用地圖標註威脅地點，協助軍方規劃安全路線或清除行動。</p><p>​</p><p><strong>成果：</strong></p><p>​</p><p>- 士兵傷亡顯著減少，軍方能夠提前避開高風險地區。</p><p>- 成功追蹤並打擊炸彈製造者，減少炸彈活動。</p><p>- 數據分析和行動規劃的時間大大縮短</p><p>​</p><p>以上就是大概內容了，可能對某些人來說有High level，不夠深入。但我相信對於不少人來說，應該足夠讓大家理解個大概。</p><p>​</p><p>- KP</p>
+  </article>
+  <div class="footer-cta">
+    <p>本機離線版本 • 圖片與內文完整</p>
+    <a class="primary" href="../../index.html">← 回索引</a>
+    <a href="https://www.fomosoc.com/p/palantir-ai" target="_blank" rel="noopener">在原站開啟 ↗</a>
+  </div>
+</div>
+</body>
+</html>

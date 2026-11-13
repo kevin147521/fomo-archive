@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一個重要的決定，想與你分享 - 關於「FOMO研究院」的下一步</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --line: #e9e3d6; --line-soft: #f0ebdf;
+  --text: #1f2533; --text-2: #3a4256; --muted: #7c7a72; --ink: #14171e;
+  --primary: #2f6f5e; --accent: #c97b3f;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(47,111,94,.04) 0%, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(201,123,63,.04) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 28px 96px; }
+
+.meta-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px;
+  font-feature-settings: 'tnum';
+}
+.meta-bar .tag {
+  padding: 3px 9px; border-radius: 4px; font-weight: 500;
+  background: var(--line-soft); color: var(--text-2);
+}
+.meta-bar .tag.free { background: #dde9f3; color: #4a7ba6; }
+.meta-bar .tag.paid { background: #f0dbdb; color: #b06367; }
+.meta-bar a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--line); }
+.meta-bar a:hover { color: var(--primary); border-color: var(--primary); }
+
+h1.article-title {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 36px; font-weight: 400; line-height: 1.25;
+  color: var(--ink); margin: 14px 0 24px; letter-spacing: -0.005em;
+}
+h1.chapter {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 28px; font-weight: 400; line-height: 1.3;
+  color: var(--ink); margin: 56px 0 18px; padding-top: 28px;
+  border-top: 1px solid var(--line);
+  letter-spacing: -0.005em;
+}
+h2.section {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  color: var(--text); margin: 36px 0 12px;
+  padding-left: 12px; border-left: 3px solid var(--primary);
+}
+h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+
+p {
+  font-size: 16.5px; line-height: 1.85; margin: 0 0 18px;
+  color: var(--text);
+  font-family: 'Outfit', 'Noto Serif TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  font-weight: 400;
+}
+p strong, strong { color: var(--ink); font-weight: 600; }
+
+ul, ol { margin: 0 0 18px; padding-left: 26px; }
+li { font-size: 16px; line-height: 1.8; margin-bottom: 6px; }
+
+a { color: var(--primary); text-decoration: underline; text-decoration-color: rgba(47,111,94,.3); text-underline-offset: 2px; }
+a:hover { text-decoration-color: var(--primary); }
+
+blockquote {
+  margin: 28px 0; padding: 18px 24px;
+  background: var(--line-soft); border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-2); font-style: normal;
+}
+blockquote p { margin: 0; color: var(--text-2); }
+blockquote p + p { margin-top: 12px; }
+
+hr {
+  border: 0; height: 1px; background: var(--line);
+  margin: 36px auto; width: 60%;
+}
+
+/* Figure & image */
+figure {
+  margin: 32px 0; text-align: center;
+}
+.image2-inset, .captioned-image-container .image2-inset {
+  margin: 0;
+}
+.image2-inset picture, .image2-inset img {
+  display: block; max-width: 100%; height: auto; margin: 0 auto;
+  border-radius: 8px;
+}
+figure img {
+  max-width: 100%; height: auto; border-radius: 8px;
+  display: block; margin: 0 auto;
+  box-shadow: 0 4px 18px -8px rgba(20,23,30,.15);
+}
+.image2-img, .image2-image {
+  max-width: 100%; height: auto;
+}
+.captioned-image-container {
+  margin: 32px -20px;
+}
+.image-link { display: block; text-decoration: none !important; }
+.figcaption {
+  font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5;
+  text-align: center; font-style: italic;
+}
+
+/* Buttons / interactive UI from Substack we want to hide */
+.button, .pencraft, .subscription-widget, .paywall,
+[class*="paywall"], [class*="subscribe"], [class*="Subscribe"],
+.embed, .digest-post-embed { display: none !important; }
+
+.footer-cta {
+  margin-top: 60px; padding: 28px 32px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; text-align: center;
+}
+.footer-cta p { font-size: 14px; color: var(--muted); margin: 0; }
+.footer-cta a {
+  display: inline-block; margin: 4px 6px;
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--line); text-decoration: none;
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+}
+.footer-cta a.primary {
+  background: var(--primary); color: white; border-color: var(--primary);
+}
+
+.toc {
+  margin: 0 0 36px; padding: 20px 24px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.toc-title {
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+.toc ol li { counter-increment: toc; padding: 4px 0; font-size: 14px; }
+.toc ol li::before { content: counters(toc, ".") " "; color: var(--muted); margin-right: 4px; }
+.toc ol li.h1 { font-weight: 600; color: var(--ink); margin-top: 8px; }
+.toc ol li.h2 { color: var(--text-2); padding-left: 18px; }
+.toc a { color: var(--text-2); text-decoration: none; }
+.toc a:hover { color: var(--primary); }
+
+@media (max-width: 768px) {
+  .wrap { padding: 28px 18px 60px; }
+  h1.article-title { font-size: 26px; }
+  h1.chapter { font-size: 22px; }
+  p { font-size: 16px; }
+  .captioned-image-container { margin: 24px -10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta-bar">
+    <a href="../../index.html">← 索引</a>
+    <span class="tag free">🆓 公開</span>
+    <span>2025-09-12</span>
+    <span>214 字</span>
+    <a href="https://www.fomosoc.com/p/fomo" target="_blank" rel="noopener">↗ 原站</a>
+  </div>
+  <h1 class="article-title">一個重要的決定，想與你分享 - 關於「FOMO研究院」的下一步</h1>
+  
+  <article class="body">
+<div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!h79o!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc9465934-771e-4ca4-abb5-b9a84504aa35_1024x1024.jpeg 424w, https://substackcdn.com/image/fetch/$s_!h79o!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc9465934-771e-4ca4-abb5-b9a84504aa35_1024x1024.jpeg 848w, https://substackcdn.com/image/fetch/$s_!h79o!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc9465934-771e-4ca4-abb5-b9a84504aa35_1024x1024.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!h79o!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc9465934-771e-4ca4-abb5-b9a84504aa35_1024x1024.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/c9465934-771e-4ca4-abb5-b9a84504aa35_1024x1024.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":1024,"width":1024,"resizeWidth":null,"bytes":110392,"alt":"","title":null,"type":"image/jpeg","href":null,"belowTheFold":false,"topImage":true,"internalRedirect":"https://fomosoc.substack.com/i/172931714?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc9465934-771e-4ca4-abb5-b9a84504aa35_1024x1024.jpeg","isProcessing":false,"align":null,"offset":false}' fetchpriority="high" height="1024" loading="lazy" sizes="100vw" src="images/img_002_67d6e6c3.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!h79o!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc9465934-771e-4ca4-abb5-b9a84504aa35_1024x1024.jpeg 424w, https://substackcdn.com/image/fetch/$s_!h79o!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc9465934-771e-4ca4-abb5-b9a84504aa35_1024x1024.jpeg 848w, https://substackcdn.com/image/fetch/$s_!h79o!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc9465934-771e-4ca4-abb5-b9a84504aa35_1024x1024.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!h79o!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc9465934-771e-4ca4-abb5-b9a84504aa35_1024x1024.jpeg 1456w" title="" width="1024"/></picture><div class="image-link-expand"></div></div></figure></div><p>大家好，我是KP。<br/></p><p>OK，這封信，是我寫過最忐忑不安的一封。過去一個多星期，自從我下了這個決定，就一直在擔憂大家的反應會是怎樣。<br/></p><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div><p>在說明一切之前，我想先對你，以及每一位訂閱者，致上最深的感謝。<br/></p><p>從一年多前在 Threads/FB 等社交媒體上分享市場觀察，到後來挑戰自己，每週產出一篇萬字長文的深度分析。這段旅程的每一步，都因為有你們的閱讀和討論，才變得意義非凡。<br/></p><p>讀者們超乎預期的熱烈迴響，給了我繼續前行的勇氣，也讓我決定轉戰到 Substack 這個更專業的平台。只為了提供更清晰的排版、更易於保存的內容，並在深度分析之外，額外加上一篇週末的思考筆記。<br/></p><p>原本只是記錄個人思考的園地，卻沒想到能聚集到這麼多聰明、熱情的讀者。我們一起探討、學習，這個社群的成長，早已超乎我的想像。<br/></p><p>現在，為了讓這個園地能永續經營，也為了讓我能投入更多時間與資源，為大家帶來更深入、更具價值的獨家分析，我決定邁出這最關鍵的一步。<br/></p><p><strong>今天，我正式宣佈推出「FOMO研究院」的付費會員計畫。<br/></strong></p><p>我想坦誠地與你分享，我設立這個計畫的四個核心初衷：<br/></p><h4><strong>第一，為了讓這份分享「走得更遠」。<br/></strong></h4><p>我很熱愛寫作，金融也是我的本業。但要維持如此高強度的產出，確實需要巨大的心力。下班後的晚上，週末的時光，我都很多時候在電腦面前工作。<br/><br/>說實話，在每晚陪伴家人後，深夜打開電腦繼續工作時，總會有時有力不從心的倦怠感。<br/></p><p>設立付費計畫，是我為自己設定的一個「雙向承諾機制」。<br/></p><blockquote><p>一方面，你的支持，會讓我知道這份付出確確實實地幫助到了真實的讀者。這份支持，能讓我無後顧之憂地投入更多精力，將熱情轉化為一份可持續的事業，確保我能穩定地為你提供最高品質的內容，而不是曇花一現。</p></blockquote><p><br/>另一方面，當我向你收費時，我就把自己的信譽放在了賭桌上。我必須、也必定會拿出最好的表現，因為我承擔了你的信任。</p><p><br/>一個題外話，我今天中午剛剛設立好後台的付費系統，然後半小時不到，忽然系統彈出一個訊息，說已經有一個付費用戶了。<br/></p><p>在這封信都還未寄出的時候，你已經選擇無條件支持。我不認識你，但我想告訴你，我真的十分感動，整個下午都非常高興。<br/></p><h4><strong>第二，為了建立一個「高品質的核心社群」。<br/></strong></h4><p>我希望聚集一群真正熱愛深度思考、重視優質分析的同好。一道小小的付費門檻，就像一個篩選器，能幫助我們吸引到真正志同道合的朋友。<br/></p><blockquote><p>我的目標，從來不只是給你一個會漲的股票代碼，而是分享我背後一整套的「思考框架」。<br/></p><p>你訂閱的，不只是一篇篇分析報告，更是一個可複製的、看待市場和公司的思維模式。</p></blockquote><p><br/>最好的投資，是我將局勢分析給你聽，你將資訊內化後，自己做出決定，因為這種決定才是最堅實的。<br/></p><p><strong>授人以魚，不如授人以漁。</strong> 我追求的不是社群的人數，而是討論的含金量。<br/></p><p>因此，這不只是一份訂閱，更是一份誠摯的邀請。<br/></p><p>我邀請你，成為這個社群的「創始成員」(Founding Member)。讓我們一起參與這段令人興奮的旅程，共同將「FOMO研究院」打造成華文世界最頂尖的投資社群之一。<br/></p><p>在這裡，你將不只是一位讀者，而是一位共建者。我們不只分享觀點，更要一同成長，在投資的道路上，一起變得更強。<br/></p><h4><strong>第三，為了在「資訊的汪洋」中，為你成為一座「信號塔」。<br/></strong></h4><p>在投資領域，資訊過載比沒有資訊更危險。<br/></p><p>網路上有太多免費的觀點和噪音，大家每天在看FB/Threads/新聞，都可以看到很多不同人，說着不同的似是而非的觀點。<br/></p><p>真正的挑戰，是在無盡的噪音中找到清晰、可靠的信號。<br/></p><p>而我的工作，就是為你節省最寶貴的資產----<strong>你的時間與注意力</strong>。<br/></p><p>如果大家有一直追看我寫的東西，都會知道我文章的質素，思考邏輯的嚴謹。<br/></p><p>這份質素從何而來？<br/></p><ul><li><p><strong>來自業內的真實洞察：</strong> 我在金融業多年的經驗，不只是履歷上的一行字，它意味著我清楚市場不同玩家的實際操作與動機，能夠從機構投資者的角度出發看待投資。</p></li><li><p><strong>來自嚴謹的理論框架：</strong> CFA的資格認證，代表我擁有扎實的財務分析與估值理論基礎，能確保我的分析邏輯嚴謹，經得起推敲。</p></li><li><p><strong>來自將複雜化為簡單的能力：</strong> 而我長期的寫作練習，則磨練出如何將複雜的金融概念，轉化為你不但看得懂、更能看得高興，並從中有所收穫的文字。<br/></p></li></ul><blockquote><p>簡單來說，我的內容，擁有投資銀行報告的深度，卻沒有投行報告的枯燥。 我敢說，在華文世界裡，能將這兩者完美結合的內容極為罕見。</p></blockquote><p><br/>這，就是我敢於向你承諾的獨特價值。<br/></p><h4><strong>第四，為了擁有「創作的自由」，專注於「真正的價值」。<br/></strong></h4><p>在公開的社群媒體上寫作，創作者無可避免地會面臨一個困境：追逐「流量」。</p><p><br/>為了獲得更多的按讚和分享，我有時會不自覺地去寫那些市場上最熱門、最多人討論的話題。</p><p><br/>但有時候有些真正重要、但相對冷門的議題，或是剛浮現的潛在機會，我會因為擔心「沒人看」而猶豫，甚至不敢下筆。<br/></p><p>這是我作為創作者，最不想陷入的窘境。<br/></p><p>但在一個有圍牆的、由核心成員組成的空間裡，這一切都改變了。<br/></p><blockquote><p>付費訂閱，給予了我最大的創作自由。它允許我能完全忽略流量的誘惑，百分之百專注於一個標準：<strong>「這件事，是否真的重要？它是否能為我的核心讀者帶來真正的認知優勢？」</strong></p></blockquote><p><br/>這意味著，你將會讀到一些我「絕不會」在公開平台發表的、更深入、更獨特的思考。這些內容可能不是當下最熱門的，但它們很可能才是真正能幫助你建立長期優勢的關鍵。<br/></p><p>你的訂閱，就是賦予我這種自由的鑰匙。<br/></p><p class="button-wrapper" data-attrs='{"url":"https://fomosoc.substack.com/publish/settings/https://www.fomosoc.com/subscribe?","text":"立即升級成「創始會員」!","action":null,"class":null}' data-component-name="ButtonCreateButton"><a class="button primary" href="https://fomosoc.substack.com/publish/settings/https://www.fomosoc.com/subscribe?"><span>立即升級成「創始會員」!</span></a></p><div><hr/></div><h3><strong>成為付費會員，你將獲得什麼？<br/></strong></h3><p>好了，說完初衷，究竟成為付費會員，你將獲得什麼？<br/></p><p>你的訂閱將解鎖三個核心的專屬權益，這是我對你的價值承諾：<br/></p><ol><li><p><strong>更頻密、更深入的獨家分析</strong></p><ul><li><p><strong>價值：</strong> 每月 4-5 篇專屬於你的萬字長文，直搗別人看不到的投資機會。</p></li></ul></li><li><p><strong>付費會員專屬的私密社群</strong></p><ul><li><p><strong>價值：</strong> 一個由我親自引導、沒有噪音的高含金量討論區，與頂尖同好一同成長。</p></li></ul></li><li><p><strong>共同決定研究方向的權利</strong></p><ul><li><p><strong>價值：</strong> 你將能直接提議並投票，決定未來部分的深度分析主題，讓內容更貼近你的需求。</p></li></ul></li></ol><div><hr/></div><h4><strong>1. 更深入的獨家分析<br/></strong></h4><p>每個週末「思考筆記」將永遠免費，作為我與所有讀者交流的公共空間，這部份的內容質素是否足夠，相信大家心裡有數。<br/></p><p>而付費會員的核心價值，在於獲得那些需要投入巨大心力研究的數萬字深度分析。為了將最大的價值回饋給支持我的核心會員，未來絕大部分的深度分析，都將轉為付費會員專屬內容。<br/></p><blockquote><p><strong>另外，在頭兩星期加入的朋友，將會獲得訂閱折扣，詳情會在之後補充。</strong></p></blockquote><h4><strong><br/>2. 一個真正高含金量的私密社群<br/></strong></h4><p>除了文章，我最想打造的，是一個真正能激發思考的討論空間。為此，我會為付費會員開設一個專屬的私密討論區。在這個空間裡：<br/></p><ul><li><p>我們的目標不是報明牌、抄作業，而是深入探討投資背後的邏輯、延伸思考、甚至質疑挑戰，從而鞏固我們每個人的思考框架。</p></li><li><p>我會親自參與並引導討論，確保社群的品質與深度。這不是一個放任自流的論壇，而是一個由我親自維護的核心圈子。</p></li><li><p>我相信，你身邊的「同路人」質素，決定了你能走多遠。這個社群，將會聚集華文世界裡最熱愛深度思考的投資者。</p></li></ul><h4><strong><br/>3. 你，不只是讀者，更是共建者<br/></strong></h4><p>我希望這不只是一個單向輸出的地方。作為回饋早期支持者的核心權益，付費會員將可以定期提議，並投票決定一部分文章的主題。<br/></p><p>當市場出現你最關心的議題，或你發現了一個值得深挖的潛在機會，你可以直接提出，讓它有機會成為我們下一次深度研究的主角。<br/></p><p>我也會定期向付費讀者收集意見，去調整FOMO研究院的方向，甚至希望在規模更大的時候，可以增加更多的內容給大家。<br/></p><p>你的每一次投票，都在塑造「FOMO研究院」的未來。我們將一起，把這個地方打造成最貼近我們真實需求的投資智庫。</p><p class="button-wrapper" data-attrs='{"url":"https://fomosoc.substack.com/publish/settings/https://www.fomosoc.com/subscribe?","text":"立即升級成「創始會員」!","action":null,"class":"button-wrapper"}' data-component-name="ButtonCreateButton"><a class="button primary button-wrapper" href="https://fomosoc.substack.com/publish/settings/https://www.fomosoc.com/subscribe?"><span>立即升級成「創始會員」!</span></a></p><div><hr/></div><h3><strong>價錢：你的創始會員專屬選項<br/></strong></h3><p>好，然後就到最骨感的部份了：價錢。<br/></p><p>為了讓「FOMO研究院」能長久地為你提供最高品質的內容，我設立了以下的會員方案。未來的公開常規價格將是 <strong>$20 美元 / 月</strong>。<br/></p><p>我相信，相較於你將獲得的獨家洞見與高品質社群，這已是一個極具競爭力的價格。<br/></p><p>但對於從一開始就相信我、支持我的你，我不會讓你用這個價格加入。<br/></p><blockquote><p><strong>我為你準備了僅限首兩週的「創始會員」專屬優惠。</strong></p></blockquote><div><hr/></div><h4><strong>選項一：創始會員 (月費方案)<br/></strong></h4><ul><li><p><strong>$14 美元 / 月</strong> (約 110 港元 / 420 台幣)</p></li><li><p>(原價 $20，<strong>永久享受七折優惠</strong>)</p></li><li><p><strong>承諾：</strong> 只要你保持訂閱不斷，未來即使「FOMO研究院」的公開價格上調，你的創始會員費率也將<strong>永久鎖定</strong>，絕不改變。</p></li></ul><div><hr/></div><h4><strong>選項二：創始會員 (年費方案) -- (最划算 &amp; 我最推薦的選擇)<br/></strong></h4><ul><li><p><strong>$140 美元 / 年</strong> (約 1100 港元 / 4200 台幣)</p></li><li><p>這相當於在「創始會員七折優惠」的基礎上，再享<strong>額外兩個月免費</strong>。</p></li><li><p>折算下來，每月僅需約 <strong>$11.6 美元</strong>。</p></li><li><p><strong>承諾：</strong> 你將以「FOMO研究院」<strong>史上最低的價格</strong>，鎖定一整年的會員資格。</p></li></ul><div><hr/></div><h3><strong>為什麼我強烈推薦你選擇「創始年費方案」？<br/></strong></h3><p>這不僅僅是為了省錢。選擇年費，本身就是一個更聰明的「投資決策」。<br/></p><ol><li><p><strong>這是一次性的明智決策，讓你專注於成長：<br/></strong><br/>你今天只需做一次決定，就能換來一整年不間斷的深度分析與市場洞見。<br/><br/>你鎖定了史上最低的價格，更省下了每個月重新考慮的心力。這是一次性為自己未來一年的投資認知成長，所做的最直接、最專注的承諾。<br/></p></li><li><p><strong>這是你能買到最便宜的「投資保險」：<br/></strong><br/>坦白說，這筆年費，可能還不及你投資組合單日正常波動的金額。<br/><br/>但它真正的價值，是幫助你在充滿陷阱的市場中，避開一個代價高昂的錯誤。在投資的世界裡，避開一次重大虧損所省下的，遠遠超過抓住一次巨大收益所賺到的。<br/><br/>這筆訂閱費，可能是你能為自己的投資組合買到最有效、也最便宜的認知保險。<br/></p></li><li><p><strong>這是對這份事業「最有力的支持」：<br/></strong><br/>最後，我想坦誠地說，選擇年費方案，也是對我個人以及這份事業最直接、最有力的支持。<br/><br/>你的年度訂閱，能為我提供最需要的穩定性與前期資源，讓我能無後顧之憂地全心投入研究，為你帶來最高品質的內容。<br/><br/>如果你認同「FOMO研究院」的理念與價值，這是最能表達你支持的方式。</p></li></ol><div><hr/></div><h3><strong>旅程，現在才正要開始<br/></strong></h3><p>寫這封信的開頭時，我感到忐忑不安。但寫到這裡，我的心中充滿了興奮與期待。<br/></p><p>我期待的，是能與一群真正志同道合的夥伴，擺脫流量的喧囂，專注於創造與分享真正的價值。我期待的，是在私密社群中，與你進行更深入、更坦誠的交流。<br/></p><p>這不僅僅是一份訂閱，這是我們共同開啟一段新旅程的船票。<br/></p><p>如果你準備好了，我誠摯地邀請你，選擇最適合你的方案，成為「FOMO研究院」的「創始院友」。<br/></p><p class="button-wrapper" data-attrs='{"url":"https://fomosoc.substack.com/publish/settings/https://www.fomosoc.com/subscribe?","text":"立即升級成「創始會員」!","action":null,"class":"button-wrapper"}' data-component-name="ButtonCreateButton"><a class="button primary button-wrapper" href="https://fomosoc.substack.com/publish/settings/https://www.fomosoc.com/subscribe?"><span>立即升級成「創始會員」!</span></a></p><p><br/><strong>P.S. 重要的付款提醒：<br/></strong></p><ol><li><p><strong>請盡量使用「網頁版」進行訂閱。</strong> Substack 的手機 App 目前尚不支援直接付款，你可以用手機的「網頁端」進行訂閱。</p></li><li><p><strong>iOS 用戶請注意：</strong> 若透過 iPhone 內建的訂閱機制，Apple 會加收約 30% 的費用。使用瀏覽器在網頁版訂閱，可避免這筆額外支出。<br/></p></li></ol><p><strong>P.P.S.</strong> 你的信任至關重要。Substack 是全球最大的獨立電子報平台，支付與資料安全皆有最高規格的保障，這也是我花費大量時間研究後，最終選擇它的原因。期待在核心社群裡見到你。<br/><br/>- KP</p><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div>
+  </article>
+  <div class="footer-cta">
+    <p>本機離線版本 • 圖片與內文完整</p>
+    <a class="primary" href="../../index.html">← 回索引</a>
+    <a href="https://www.fomosoc.com/p/fomo" target="_blank" rel="noopener">在原站開啟 ↗</a>
+  </div>
+</div>
+</body>
+</html>

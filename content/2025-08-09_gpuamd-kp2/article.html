@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>當市場只看GPU，AMD憑什麼值這個價? - KP思考筆記(第2期)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --line: #e9e3d6; --line-soft: #f0ebdf;
+  --text: #1f2533; --text-2: #3a4256; --muted: #7c7a72; --ink: #14171e;
+  --primary: #2f6f5e; --accent: #c97b3f;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(47,111,94,.04) 0%, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(201,123,63,.04) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 28px 96px; }
+
+.meta-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px;
+  font-feature-settings: 'tnum';
+}
+.meta-bar .tag {
+  padding: 3px 9px; border-radius: 4px; font-weight: 500;
+  background: var(--line-soft); color: var(--text-2);
+}
+.meta-bar .tag.free { background: #dde9f3; color: #4a7ba6; }
+.meta-bar .tag.paid { background: #f0dbdb; color: #b06367; }
+.meta-bar a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--line); }
+.meta-bar a:hover { color: var(--primary); border-color: var(--primary); }
+
+h1.article-title {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 36px; font-weight: 400; line-height: 1.25;
+  color: var(--ink); margin: 14px 0 24px; letter-spacing: -0.005em;
+}
+h1.chapter {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 28px; font-weight: 400; line-height: 1.3;
+  color: var(--ink); margin: 56px 0 18px; padding-top: 28px;
+  border-top: 1px solid var(--line);
+  letter-spacing: -0.005em;
+}
+h2.section {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  color: var(--text); margin: 36px 0 12px;
+  padding-left: 12px; border-left: 3px solid var(--primary);
+}
+h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+
+p {
+  font-size: 16.5px; line-height: 1.85; margin: 0 0 18px;
+  color: var(--text);
+  font-family: 'Outfit', 'Noto Serif TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  font-weight: 400;
+}
+p strong, strong { color: var(--ink); font-weight: 600; }
+
+ul, ol { margin: 0 0 18px; padding-left: 26px; }
+li { font-size: 16px; line-height: 1.8; margin-bottom: 6px; }
+
+a { color: var(--primary); text-decoration: underline; text-decoration-color: rgba(47,111,94,.3); text-underline-offset: 2px; }
+a:hover { text-decoration-color: var(--primary); }
+
+blockquote {
+  margin: 28px 0; padding: 18px 24px;
+  background: var(--line-soft); border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-2); font-style: normal;
+}
+blockquote p { margin: 0; color: var(--text-2); }
+blockquote p + p { margin-top: 12px; }
+
+hr {
+  border: 0; height: 1px; background: var(--line);
+  margin: 36px auto; width: 60%;
+}
+
+/* Figure & image */
+figure {
+  margin: 32px 0; text-align: center;
+}
+.image2-inset, .captioned-image-container .image2-inset {
+  margin: 0;
+}
+.image2-inset picture, .image2-inset img {
+  display: block; max-width: 100%; height: auto; margin: 0 auto;
+  border-radius: 8px;
+}
+figure img {
+  max-width: 100%; height: auto; border-radius: 8px;
+  display: block; margin: 0 auto;
+  box-shadow: 0 4px 18px -8px rgba(20,23,30,.15);
+}
+.image2-img, .image2-image {
+  max-width: 100%; height: auto;
+}
+.captioned-image-container {
+  margin: 32px -20px;
+}
+.image-link { display: block; text-decoration: none !important; }
+.figcaption {
+  font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5;
+  text-align: center; font-style: italic;
+}
+
+/* Buttons / interactive UI from Substack we want to hide */
+.button, .pencraft, .subscription-widget, .paywall,
+[class*="paywall"], [class*="subscribe"], [class*="Subscribe"],
+.embed, .digest-post-embed { display: none !important; }
+
+.footer-cta {
+  margin-top: 60px; padding: 28px 32px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; text-align: center;
+}
+.footer-cta p { font-size: 14px; color: var(--muted); margin: 0; }
+.footer-cta a {
+  display: inline-block; margin: 4px 6px;
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--line); text-decoration: none;
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+}
+.footer-cta a.primary {
+  background: var(--primary); color: white; border-color: var(--primary);
+}
+
+.toc {
+  margin: 0 0 36px; padding: 20px 24px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.toc-title {
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+.toc ol li { counter-increment: toc; padding: 4px 0; font-size: 14px; }
+.toc ol li::before { content: counters(toc, ".") " "; color: var(--muted); margin-right: 4px; }
+.toc ol li.h1 { font-weight: 600; color: var(--ink); margin-top: 8px; }
+.toc ol li.h2 { color: var(--text-2); padding-left: 18px; }
+.toc a { color: var(--text-2); text-decoration: none; }
+.toc a:hover { color: var(--primary); }
+
+@media (max-width: 768px) {
+  .wrap { padding: 28px 18px 60px; }
+  h1.article-title { font-size: 26px; }
+  h1.chapter { font-size: 22px; }
+  p { font-size: 16px; }
+  .captioned-image-container { margin: 24px -10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta-bar">
+    <a href="../../index.html">← 索引</a>
+    <span class="tag free">🆓 公開</span>
+    <span>2025-08-09</span>
+    <span>209 字</span>
+    <a href="https://www.fomosoc.com/p/gpuamd-kp2" target="_blank" rel="noopener">↗ 原站</a>
+  </div>
+  <h1 class="article-title">當市場只看GPU，AMD憑什麼值這個價? - KP思考筆記(第2期)</h1>
+  <div class="toc"><div class="toc-title">本文目錄</div><ol>
+<li class="h1"><a href="#CPU的重要性-AI戰場上-誰是真正被忽略的關鍵角色">CPU的重要性：AI戰場上，誰是真正被忽略的關鍵角色？</a></li>
+<li class="h1"><a href="#聚光燈之外的戰爭-為何AMD的CPU業務-其實也應該被關注">聚光燈之外的戰爭：為何AMD的CPU業務，其實也應該被關注？</a></li>
+<li class="h1"><a href="#最終章-我對AMD的看法">最終章：我對AMD的看法</a></li>
+<li class="h2"><a href="#訓練階段的CPU-機場的總設計師與建造總監">訓練階段的CPU：機場的總設計師與建造總監</a></li>
+<li class="h2"><a href="#推論階段的CPU-繁忙國際機場的空中交通管制員">推論階段的CPU：繁忙國際機場的空中交通管制員</a></li>
+<li class="h2"><a href="#結論-為何理解這個區別至關重要">結論：為何理解這個區別至關重要？</a></li>
+<li class="h2"><a href="#第一章-揭開財報的面紗-CPU的真實份量">第一章：揭開財報的面紗，CPU的真實份量</a></li>
+<li class="h2"><a href="#第二章-更廣闊的戰場-一場正在逆轉的權力遊戲">第二章：更廣闊的戰場，一場正在逆轉的權力遊戲</a></li>
+<li class="h2"><a href="#第三章-AI系統中的角色-為何CPU是-被低估的關鍵先生">第三章：AI系統中的角色，為何CPU是「被低估的關鍵先生」？</a></li>
+<li class="h2"><a href="#結論-喧囂與沉靜下的雙重敘事">結論：喧囂與沉靜下的雙重敘事</a></li>
+<li class="h2"><a href="#估值框架-超越被扭曲的歷史數據">估值框架：超越被扭曲的歷史數據</a></li>
+<li class="h2"><a href="#核心問題-估值溢價的合理性">核心問題：估值溢價的合理性</a></li>
+<li class="h2"><a href="#市場動能-不可忽視的強勁力量">市場動能：不可忽視的強勁力量</a></li>
+</ol></div>
+  <article class="body">
+<div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!MrCO!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5a8c3d0d-688f-4d38-9fe4-d096637d09d1_1024x1024.jpeg 424w, https://substackcdn.com/image/fetch/$s_!MrCO!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5a8c3d0d-688f-4d38-9fe4-d096637d09d1_1024x1024.jpeg 848w, https://substackcdn.com/image/fetch/$s_!MrCO!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5a8c3d0d-688f-4d38-9fe4-d096637d09d1_1024x1024.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!MrCO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5a8c3d0d-688f-4d38-9fe4-d096637d09d1_1024x1024.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/5a8c3d0d-688f-4d38-9fe4-d096637d09d1_1024x1024.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":1024,"width":1024,"resizeWidth":null,"bytes":109859,"alt":null,"title":null,"type":"image/jpeg","href":null,"belowTheFold":false,"topImage":true,"internalRedirect":"https://fomosoc.substack.com/i/170419463?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5a8c3d0d-688f-4d38-9fe4-d096637d09d1_1024x1024.jpeg","isProcessing":false,"align":null,"offset":false}' fetchpriority="high" height="1024" loading="lazy" sizes="100vw" src="images/img_002_16299094.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!MrCO!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5a8c3d0d-688f-4d38-9fe4-d096637d09d1_1024x1024.jpeg 424w, https://substackcdn.com/image/fetch/$s_!MrCO!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5a8c3d0d-688f-4d38-9fe4-d096637d09d1_1024x1024.jpeg 848w, https://substackcdn.com/image/fetch/$s_!MrCO!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5a8c3d0d-688f-4d38-9fe4-d096637d09d1_1024x1024.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!MrCO!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5a8c3d0d-688f-4d38-9fe4-d096637d09d1_1024x1024.jpeg 1456w" width="1024"/></picture><div class="image-link-expand"></div></div></figure></div><p>大家好，我是 KP，歡迎來到本週的思考筆記。</p><p>電子報開設僅一週，就迎來了超過一千七百位訂閱者，這份信任讓我萬分感激，也更堅定了分享深度內容的決心。</p><p>我對電子報的定位是這樣的：</p><p>每週一篇<strong>極度深入的「研究報告」</strong>(本週主角是AMD，上週是Novo Nordisk，再之前其他公司的深度報告，歡迎在我的Threads/FB上重溫。)，搭配一篇<strong>充滿洞見的「思考筆記」</strong>。</p><p><strong>什麼是「思考筆記」？</strong></p><p>如果說研究報告是針對單一公司的「深度解剖」，那思考筆記就是我在投資世界裡的「雷達掃描圖」。</p><p>我會將一週內觀察到的市場動態，或是那些尚未構成萬字報告、卻極具啟發性的思考碎片，濃縮在這裡與你分享。</p><p><strong>你可以把它看作是投資中的「散文集」，但每一篇都經過精心打磨，確保有趣、有料、有用。</strong></p><p>此外，我也會在這裡補充我對當週研究報告主角（例如 Novo Nordisk，AMD）的<strong>具體觀點</strong>。</p><p>研究報告中，我力求客觀，以事實為基礎；但在這裡，我會分享更多個人的判斷與看法，將「研究」與「觀點」明確分開。</p><p>本來想將研究報告和思考筆記的主題完全分開的，但本週在研究 AMD 的過程中，延伸出了太多精彩的「副線故事」。</p><p>報告主體已達八千多字，為了不影響閱讀節奏，我決定將這些延伸思考，全部收錄在本期的筆記中。</p><p>所以，本期的思考筆記，將是 <strong>AMD 深度報告的「導演剪輯版 (Director's Cut)」</strong>，帶你探索報告之外的精彩世界。</p><p>如果你渴望的，不只是標準答案，而是探索答案背後的思考路徑，那麼，<strong>現在就訂閱吧。</strong></p><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div><h1 class="chapter" id="CPU的重要性-AI戰場上-誰是真正被忽略的關鍵角色">CPU的重要性：AI戰場上，誰是真正被忽略的關鍵角色？</h1><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!1ymG!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1d23727f-f1c9-40d8-ad60-6d022db969cb_1122x652.png 424w, https://substackcdn.com/image/fetch/$s_!1ymG!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1d23727f-f1c9-40d8-ad60-6d022db969cb_1122x652.png 848w, https://substackcdn.com/image/fetch/$s_!1ymG!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1d23727f-f1c9-40d8-ad60-6d022db969cb_1122x652.png 1272w, https://substackcdn.com/image/fetch/$s_!1ymG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1d23727f-f1c9-40d8-ad60-6d022db969cb_1122x652.png 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/1d23727f-f1c9-40d8-ad60-6d022db969cb_1122x652.png","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":652,"width":1122,"resizeWidth":null,"bytes":56109,"alt":null,"title":null,"type":"image/png","href":null,"belowTheFold":true,"topImage":false,"internalRedirect":"https://fomosoc.substack.com/i/170419463?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1d23727f-f1c9-40d8-ad60-6d022db969cb_1122x652.png","isProcessing":false,"align":null,"offset":false}' height="652" loading="lazy" sizes="100vw" src="images/img_003_cfdcf86f.png" srcset="https://substackcdn.com/image/fetch/$s_!1ymG!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1d23727f-f1c9-40d8-ad60-6d022db969cb_1122x652.png 424w, https://substackcdn.com/image/fetch/$s_!1ymG!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1d23727f-f1c9-40d8-ad60-6d022db969cb_1122x652.png 848w, https://substackcdn.com/image/fetch/$s_!1ymG!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1d23727f-f1c9-40d8-ad60-6d022db969cb_1122x652.png 1272w, https://substackcdn.com/image/fetch/$s_!1ymG!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1d23727f-f1c9-40d8-ad60-6d022db969cb_1122x652.png 1456w" width="1122"/></picture><div class="image-link-expand"></div></div></figure></div><p>在AI這個宏大的舞台上，GPU（圖形處理器）無疑是鎂光燈下最耀眼的明星。我們所有的討論，幾乎都圍繞著它的算力、架構與性能。</p><p>然而，一場精彩的演出，除了明星演員，更需要一位運籌帷幄、確保一切流暢運行的舞台總監。</p><p>在AI的世界裡，這個角色，就是經常被忽略的CPU（中央處理器）。</p><p>許多人簡單地認為CPU在AI中不那麼重要，但這是一個危險的誤解。</p><p>事實上，CPU的角色會根據戰場的不同：「訓練」（Training）或「推論」（Inference），而發生根本性的轉變。</p><p>而理解這個轉變，對於建構一個高效、不浪費資源的AI系統至關重要。</p><h2 class="section" id="訓練階段的CPU-機場的總設計師與建造總監">訓練階段的CPU：機場的總設計師與建造總監</h2><p>你可以把AI模型的「訓練」過程，想像成一項從零開始、規模宏大的基礎建設工程：<strong>建造一座全新的國際機場</strong>。</p><p>這是一個一次性的、目標明確的龐大專案，旨在打造一個能處理巨量流量的基礎設施。</p><p>在這個建案中：</p><p><strong>GPU是核心施工團隊</strong>：</p><p>它們是那些擁有巨型起重機、鋪路機、航站樓鋼結構團隊的重型機具與專業人員。它們負責實際的跑道鋪設、航廈興建等核心建造工作。</p><p><strong>機場多久能建成啟用，根本上取決於這些施工團隊的效率和力量。</strong></p><p><strong>CPU則是建造總監</strong>：</p><p>它的工作不是親自去鋪跑道，而是作為整個專案的大腦，確保數千個環節無縫銜接。它負責：</p><p><strong>- 物料調度</strong>：確保源源不絕的建材（數據）經過預處理後，能準時送達施工現場（GPU），避免工班因缺料而停擺。</p><p><strong>- 進度管理</strong>：在每個關鍵施工階段（如地基完成、主體封頂）設立「里程碑」（檢查點），詳細記錄工程進度，以防意外導致前功盡棄。</p><p><strong>- 跨團隊協作</strong>：如果這是一個涉及多個工區（多節點訓練）的超大型機場，CPU就負責確保電力、水利、通訊等不同施工隊之間的工作能完美協調。</p><p>在這個階段，如果建造總監（CPU）的調度能力不足，確實會造成混亂，拖慢整個工程的進度。但最終決定這座機場能否快速完工的，仍然是核心施工團隊（GPU）的硬實力。</p><p>因此，在訓練階段，CPU很重要，但它是一個<strong>支援型的總指揮角色</strong>。</p><h2 class="section" id="推論階段的CPU-繁忙國際機場的空中交通管制員">推論階段的CPU：繁忙國際機場的空中交通管制員</h2><p>當機場（模型）終於落成啟用後，戰場就完全改變了。我們進入了「推論」階段，也就是機場要開始<strong>7x24小時不間斷地處理來自全球的航班起降</strong>。</p><p>這時，CPU的角色從建造總監，搖身一變，成為了塔台裡那位壓力極大的<strong>空中交通管制員</strong>。</p><p>在這個繁忙的機場裡：</p><p>- 每一個用戶請求，都是一架準備降落的飛機。</p><p>- GPU是機場的跑道，擁有極高的處理能力，可以快速讓飛機安全著陸。</p><p>- CPU則是塔台裡的空中交通管制員，它的工作極其關鍵且分秒必爭：</p><ul><li><p><strong>管理進場航班</strong>：接收所有傳來的降落請求，並進行排序和排程。</p></li><li><p><strong>動態批次處理 (Batching)</strong>：為了讓跑道（GPU）使用效率最大化，管制員會聰明地將幾架小型飛機（小的請求）組合成一個批次，讓它們緊湊地一起降落。</p></li><li><p><strong>檢查與引導</strong>：快速處理每架飛機的資訊（例如Tokenization），並指揮它們到正確的跑道上。</p></li></ul><p>在這裡，CPU的性能成為了整個系統的瓶頸。如果空中交通管制員（CPU）反應太慢，會發生什麼事？</p><p><strong>跑道會閒置。</strong> </p><p>即使跑道再寬再長（GPU性能再強），飛機也只能在天上不斷盤旋，等待塔台指令。這直接導致了GPU利用率低下，以及用戶體驗的災難性延遲。</p><p>根據AMD的白皮書數據，僅僅是將主機CPU換成更高頻率的型號，就能讓整個推論系統的平均延遲降低<strong>8%到9%</strong>。</p><p>這多出來的效率，幾乎完全來自於「空中交通管制員」工作速度的提升，從而確保了GPU這條昂貴的跑道，能夠時刻保持在最大負載狀態。</p><h2 class="section" id="結論-為何理解這個區別至關重要">結論：為何理解這個區別至關重要？</h2><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!jLyY!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0135db3a-36d8-439e-a842-79038f0e5626_960x540.png 424w, https://substackcdn.com/image/fetch/$s_!jLyY!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0135db3a-36d8-439e-a842-79038f0e5626_960x540.png 848w, https://substackcdn.com/image/fetch/$s_!jLyY!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0135db3a-36d8-439e-a842-79038f0e5626_960x540.png 1272w, https://substackcdn.com/image/fetch/$s_!jLyY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0135db3a-36d8-439e-a842-79038f0e5626_960x540.png 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/0135db3a-36d8-439e-a842-79038f0e5626_960x540.png","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":540,"width":960,"resizeWidth":null,"bytes":282022,"alt":null,"title":null,"type":"image/png","href":null,"belowTheFold":true,"topImage":false,"internalRedirect":"https://fomosoc.substack.com/i/170419463?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0135db3a-36d8-439e-a842-79038f0e5626_960x540.png","isProcessing":false,"align":null,"offset":false}' height="540" loading="lazy" sizes="100vw" src="images/img_004_0968b98a.png" srcset="https://substackcdn.com/image/fetch/$s_!jLyY!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0135db3a-36d8-439e-a842-79038f0e5626_960x540.png 424w, https://substackcdn.com/image/fetch/$s_!jLyY!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0135db3a-36d8-439e-a842-79038f0e5626_960x540.png 848w, https://substackcdn.com/image/fetch/$s_!jLyY!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0135db3a-36d8-439e-a842-79038f0e5626_960x540.png 1272w, https://substackcdn.com/image/fetch/$s_!jLyY!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0135db3a-36d8-439e-a842-79038f0e5626_960x540.png 1456w" width="960"/></picture><div class="image-link-expand"></div></div></figure></div><p>簡單總結兩者的區別：</p><p>- 在<strong>訓練</strong>時，CPU的工作是確保GPU<strong>有事可做</strong>。</p><p>- 在<strong>推論</strong>時，CPU的表現決定了GPU的工作<strong>效率有多高</strong>。</p><p>這個看似細微的差別，對系統設計和成本效益有著深遠的影響。</p><p>在設計一個推論系統時，如果只迷信地堆疊頂級GPU，卻搭配了一顆性能不足的CPU，就像是為一座擁有八條跑道的超級機場，卻只配備了一個反應遲緩的塔台。</p><p>儘管硬體再強大，整體表現依然會令人失望。</p><p>因此，當AI全面進入「推論(Inference)」決勝的年代，我們的視角也必須從單純的GPU崇拜，擴展到對整個運算系統的審視，特別是CPU。</p><p><strong>而這，就自然地將我們的焦點，引向了本週深度分析的主角：AMD。</strong></p><p>如果你還未閱讀之前的AMD分析，可以先看:</p><h1 class="chapter" id="聚光燈之外的戰爭-為何AMD的CPU業務-其實也應該被關注">聚光燈之外的戰爭：為何AMD的CPU業務，其實也應該被關注？</h1><p>在當今由AI主導的市場敘事中，所有的目光幾乎都聚焦在一場華麗的軍備競賽上：NVIDIA的GPU如何主宰世界，而AMD的Instinct加速器又如何奮起直追。</p><p>這場關於算力的對決固然精彩，但如果你的目光只停留於此，你可能會錯過AMD故事中，一個更為深刻、也更為穩固的篇章。</p><p>這就是AMD的伺服器CPU業務：EPYC處理器。</p><p>它不像AI GPU那樣充滿了戲劇性的股價波動，但它卻是AMD能夠在資料中心這場終極戰役中站穩腳跟，並持續蠶食對手領土的「沉默主力」。</p><h2 class="section" id="第一章-揭開財報的面紗-CPU的真實份量">第一章：揭開財報的面紗，CPU的真實份量</h2><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!8eZT!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe7eedb59-0670-4442-b185-8e4ab10de947_1920x1080.webp 424w, https://substackcdn.com/image/fetch/$s_!8eZT!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe7eedb59-0670-4442-b185-8e4ab10de947_1920x1080.webp 848w, https://substackcdn.com/image/fetch/$s_!8eZT!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe7eedb59-0670-4442-b185-8e4ab10de947_1920x1080.webp 1272w, https://substackcdn.com/image/fetch/$s_!8eZT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe7eedb59-0670-4442-b185-8e4ab10de947_1920x1080.webp 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/e7eedb59-0670-4442-b185-8e4ab10de947_1920x1080.webp","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":819,"width":1456,"resizeWidth":null,"bytes":376088,"alt":null,"title":null,"type":"image/webp","href":null,"belowTheFold":true,"topImage":false,"internalRedirect":"https://fomosoc.substack.com/i/170419463?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe7eedb59-0670-4442-b185-8e4ab10de947_1920x1080.webp","isProcessing":false,"align":null,"offset":false}' height="819" loading="lazy" sizes="100vw" src="images/img_005_ef81ee6f.webp" srcset="https://substackcdn.com/image/fetch/$s_!8eZT!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe7eedb59-0670-4442-b185-8e4ab10de947_1920x1080.webp 424w, https://substackcdn.com/image/fetch/$s_!8eZT!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe7eedb59-0670-4442-b185-8e4ab10de947_1920x1080.webp 848w, https://substackcdn.com/image/fetch/$s_!8eZT!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe7eedb59-0670-4442-b185-8e4ab10de947_1920x1080.webp 1272w, https://substackcdn.com/image/fetch/$s_!8eZT!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe7eedb59-0670-4442-b185-8e4ab10de947_1920x1080.webp 1456w" width="1456"/></picture><div class="image-link-expand"></div></div></figure></div><p>要回答「CPU業務對AMD有多重要」這個問題，我們需要像偵探一樣，從其公開的財報中尋找線索。</p><p>因為AMD並未直接公布一個純粹的「CPU營收」數字，這需要我們進行一番巧妙的解剖。</p><p>首先，我們必須理解，AMD的CPU收入主要來自兩個部門：</p><p><strong>1. 客戶端 (Client)</strong>：這部分相對單純，幾乎完全由Ryzen桌上型及筆記型電腦處理器構成。</p><p><strong>2. 資料中心 (Data Center)</strong>：這是一個「混合體」，裡面同時包含了EPYC伺服器CPU和Instinct AI GPU。</p><p>讓我們以2024年中的某個季度為例，來進行一場合理的推算：</p><p>在2023年，當AI GPU尚未大規模出貨時，分析師普遍認為CPU佔據了資料中心營收的絕大部分(可能高達70%-90%）。</p><p>進入2024年，隨著Instinct MI300加速器的強勁增長，GPU的份量顯著提升。然而，EPYC作為一個成熟且營收龐大的產品線，依然是中流砥柱。</p><p>因此，一個相對保守且合理的估計是，在2024年中期，<strong>CPU在資料中心營收中的佔比大致落在55%至65%的區間</strong>。</p><p><strong>為了避免陷入繁瑣的公式，並讓結論更清晰，這裡我將直接呈現基於模型的推算結果：</strong></p><p>即便在AI浪潮最洶湧的時刻，AMD在數據中心超過一半、甚至接近三分之二的收入，依然來自其堅如磐石的CPU業務。</p><p>這不僅是公司的利潤基石，也是支撐其在AI領域進行高強度研發和市場擴張的穩定後盾。</p><h2 class="section" id="第二章-更廣闊的戰場-一場正在逆轉的權力遊戲">第二章：更廣闊的戰場，一場正在逆轉的權力遊戲</h2><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!RDHg!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1a7a9d3e-f069-40c1-8632-8594b553a55a_1920x1440.jpeg 424w, https://substackcdn.com/image/fetch/$s_!RDHg!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1a7a9d3e-f069-40c1-8632-8594b553a55a_1920x1440.jpeg 848w, https://substackcdn.com/image/fetch/$s_!RDHg!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1a7a9d3e-f069-40c1-8632-8594b553a55a_1920x1440.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!RDHg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1a7a9d3e-f069-40c1-8632-8594b553a55a_1920x1440.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/1a7a9d3e-f069-40c1-8632-8594b553a55a_1920x1440.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":1092,"width":1456,"resizeWidth":null,"bytes":1142686,"alt":null,"title":null,"type":"image/jpeg","href":null,"belowTheFold":true,"topImage":false,"internalRedirect":"https://fomosoc.substack.com/i/170419463?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1a7a9d3e-f069-40c1-8632-8594b553a55a_1920x1440.jpeg","isProcessing":false,"align":null,"offset":false}' height="1092" loading="lazy" sizes="100vw" src="images/img_006_87cfdaa9.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!RDHg!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1a7a9d3e-f069-40c1-8632-8594b553a55a_1920x1440.jpeg 424w, https://substackcdn.com/image/fetch/$s_!RDHg!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1a7a9d3e-f069-40c1-8632-8594b553a55a_1920x1440.jpeg 848w, https://substackcdn.com/image/fetch/$s_!RDHg!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1a7a9d3e-f069-40c1-8632-8594b553a55a_1920x1440.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!RDHg!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1a7a9d3e-f069-40c1-8632-8594b553a55a_1920x1440.jpeg 1456w" width="1456"/></picture><div class="image-link-expand"></div></div></figure></div><p>讓我們將視野從AMD內部，擴展到整個價值約<strong>220億美元</strong>的全球伺服器CPU市場。這是一個長期由英特爾（Intel）憑藉其Xeon處理器，統治了數十年的帝國。</p><p>然而，這場權力遊戲的格局正在被<strong>加速</strong>改寫。</p><p>根據市場研究機構PassMark的最新數據，截至2025年第二季，AMD的EPYC處理器，已經佔據了x86伺服器CPU市場驚人的<strong>50%份額</strong>，首次與英特爾達成了均勢。</p><p><strong>這個轉變的速度是驚人的。</strong></p><p><strong>回看2024年，AMD的市佔率還在30%左右徘徊。</strong> 這意味著在短短一年多的時間裡，AMD完成了從「有力挑戰者」到「平起平坐的領導者」的歷史性跨越。</p><p>也意味著英特爾長達數十年的絕對壟斷，已宣告結束。</p><p>這場逆轉背後的驅動力，正是來自那些最挑剔的客戶：雲端超大規模資料中心（Hyperscalers）如AWS、Azure和Google。</p><p>他們之所以越來越多地採用EPYC，原因很簡單：</p><p><strong>- 卓越的性價比：</strong> EPYC在每元成本所能提供的性能上，持續優於同代Xeon。</p><p>- <strong>更高的核心密度：</strong> 在AI和雲端原生應用中，更多的核心數意味著能同時處理更多任務，效率更高。</p><p>- <strong>領先的能源效率：</strong> 在電費成為資料中心最大營運成本之一的今天，EPYC的每瓦性能優勢極具吸引力。</p><p>AMD正憑藉實打實的產品力，從英特爾這個昔日巨人的領地中，一塊一塊地奪取市場。</p><h2 class="section" id="第三章-AI系統中的角色-為何CPU是-被低估的關鍵先生">第三章：AI系統中的角色，為何CPU是「被低估的關鍵先生」？</h2><p>既然EPYC如此成功，為何華爾街的分析師們似乎總對它輕描淡寫，而將所有熱情都給了GPU？</p><p>答案在於一個典型的AI伺服器配置比例：</p><p><strong>8顆GPU，通常搭配2顆CPU。</strong></p><p>這個<strong>4:1</strong>的比例，決定了在單一系統中，GPU在數量和總價值上都佔據主導地位。然而，這絕不意味著CPU不重要。</p><p>如果說GPU是AI工廠裡的「核心生產線」，那麼CPU就是維持整個工廠高效運轉的「中央控制室」。它負責數據的預處理、任務的調度、以及與外部世界的通訊。</p><p>正如我們先前提過的，一顆高性能的CPU，可以將AI<strong>推論（Inference）的效率提升8%到9%</strong>。</p><p>它就像一輛超級跑車的變速箱和傳動系統，即使引擎（GPU）再強大，沒有一個反應迅速、匹配得當的傳動系統，引擎的動力也只會被白白浪費在空轉上。</p><p class="button-wrapper" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe now","action":null,"class":null}' data-component-name="ButtonCreateButton"><a class="button primary" href="https://www.fomosoc.com/subscribe?"><span>Subscribe now</span></a></p><h2 class="section" id="結論-喧囂與沉靜下的雙重敘事">結論：喧囂與沉靜下的雙重敘事</h2><p>觀察AMD的發展，可以發現一條雙線並行的故事。</p><p>一條是喧囂的、聚焦於未來的AI GPU敘事，其核心是挑戰NVIDIA的市場地位。這條戰線充滿了高估值與技術突破的想像空間，吸引了市場絕大部分的關注。</p><p>另一條，則是相對沉靜、卻攸關當下根基的CPU市場版圖重劃。</p><p>在這條戰線上，其目標是與長期領導者Intel競爭。後者為前者的高速前行，提供了必要的營收與利潤支持，構成了公司當前財務表現的核心基礎。</p><p>因此，對AMD的全面評估，不僅僅是判斷其在AI GPU領域的追趕速度，也同樣需要檢視其在CPU市場上與主要對手競爭的實力與進展。這兩條戰線的成果共同決定了公司的整體表現。</p><p>當市場的目光普遍投向那場華麗的GPU對決時，其伺服器機架中正在發生的權力轉移，同樣是構成這家公司完整價值拼圖中，不可或缺的一塊。</p><h1 class="chapter" id="最終章-我對AMD的看法">最終章：我對AMD的看法</h1><p>在深入探討AMD的技術與市場地位後，一個最直接的問題擺在眼前：以當前的股價來看，其估值是否合理？未來的潛在回報與風險又是如何？</p><p>在回答這個問題前，我必須先做出<strong>重要聲明：</strong></p><h4><strong>以下內容僅為基於公開市場數據的分析框架，旨在提供一種思考視角，絕不構成任何形式的投資建議。</strong></h4><h2 class="section" id="估值框架-超越被扭曲的歷史數據">估值框架：超越被扭曲的歷史數據</h2><p>首先，若僅看AMD當前近130倍的追蹤市盈率（Trailing P/E），很容易得出股價被高估的結論。但這個數字因受到先前一次性事件的嚴重扭曲，已無法真實反映公司的盈利潛力。</p><p>因此，一個更具前瞻性的方法，是將目光投向未來。</p><p>我們不妨借鑒華爾街的普遍做法，以市場對其2026年每股收益（EPS）的共識預期（約5.45美元）為錨點，來構建一個更合理的估值模型。</p><p>透過這個模型，我們可以推演出三種可能性：</p><p><strong>1. 基本情境 (Base Case)</strong>：假設AMD穩健執行其產品路線圖，達到市場普遍預期。在這種情況下，若給予其與歷史區間相符的35倍市盈率，其目標價約在<strong>191美元</strong>，意味著溫和的上漲潛力。</p><p><strong>2. 樂觀情境 (Bull Case)</strong>：假設AMD的AI戰略大獲成功，市佔率超乎預期，推動EPS和市場信心雙雙走高。其股價則有潛力挑戰<strong>237美元</strong>的華爾街高階目標價。</p><p><strong>3. 悲觀情境 (Bear Case)</strong>：若競爭加劇、利潤未達預期等風險顯現，市場情緒轉冷，其股價則可能面臨向<strong>130美元</strong>回調的壓力。</p><h2 class="section" id="核心問題-估值溢價的合理性">核心問題：估值溢價的合理性</h2><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!qCgQ!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fabd19953-b48d-41e2-8b84-5d7130d22471_2400x1240.jpeg 424w, https://substackcdn.com/image/fetch/$s_!qCgQ!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fabd19953-b48d-41e2-8b84-5d7130d22471_2400x1240.jpeg 848w, https://substackcdn.com/image/fetch/$s_!qCgQ!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fabd19953-b48d-41e2-8b84-5d7130d22471_2400x1240.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!qCgQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fabd19953-b48d-41e2-8b84-5d7130d22471_2400x1240.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/abd19953-b48d-41e2-8b84-5d7130d22471_2400x1240.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":752,"width":1456,"resizeWidth":null,"bytes":170555,"alt":null,"title":null,"type":"image/jpeg","href":null,"belowTheFold":true,"topImage":false,"internalRedirect":"https://fomosoc.substack.com/i/170419463?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fabd19953-b48d-41e2-8b84-5d7130d22471_2400x1240.jpeg","isProcessing":false,"align":null,"offset":false}' height="752" loading="lazy" sizes="100vw" src="images/img_007_caa065a1.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!qCgQ!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fabd19953-b48d-41e2-8b84-5d7130d22471_2400x1240.jpeg 424w, https://substackcdn.com/image/fetch/$s_!qCgQ!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fabd19953-b48d-41e2-8b84-5d7130d22471_2400x1240.jpeg 848w, https://substackcdn.com/image/fetch/$s_!qCgQ!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fabd19953-b48d-41e2-8b84-5d7130d22471_2400x1240.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!qCgQ!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fabd19953-b48d-41e2-8b84-5d7130d22471_2400x1240.jpeg 1456w" width="1456"/></picture><div class="image-link-expand"></div></div></figure></div><p>這份情境分析引出了一個值得深思的核心問題：目前市場給予AMD約35倍的2026年前瞻市盈率，一個略高於其主要競爭對手NVIDIA的估值水平，這會否有些<strong>過於樂觀</strong>？</p><p>這背後隱含的假設是，市場不僅預期AMD能成功，甚至預期它能以比市場領導者更快的速度增長。這無疑是一個頗具挑戰性的前提，也是當前股價最大的爭議點。</p><h2 class="section" id="市場動能-不可忽視的強勁力量">市場動能：不可忽視的強勁力量</h2><p>然而，除了冰冷的估值數字，市場的動能與情緒同樣是不可忽視的力量。AMD的股價近期展現了幾個積極的信號：</p><p><strong>強大的韌性</strong>：在財報發布後，股價即使短暫下跌也能迅速反彈，顯示出強勁的買盤支撐。</p><p><strong>關鍵的技術支撐</strong>：從圖形上看，股價成功守住了兩條關鍵的支撐線：長期上升趨勢線與20日移動平均線（SMA）。</p><p>這表明，至少在當前階段，從動能的角度看，市場的看漲情緒依然濃厚。</p><p>綜合來看，AMD當前的股價，正處於<strong>基本面估值合理性</strong>與<strong>市場強勁動能</strong>之間的一場博弈。它並非被嚴重低估的「便宜貨」，但也未出現明顯的泡沫。</p><p>最終的投資決策，取決於每個投資者自身的風險偏好，以及對以下核心問題的回答：</p><p>您是相信AMD能夠超預期執行，證明其高於對手的估值是合理的？還是認為NVIDIA的護城河難以撼動，當前的市場熱情終將回歸基本面？<strong>抑或是，您認為在當前的市場環境下，強勁的動能本身就是最值得追隨的信號？</strong></p><p>最後，如果看到這裡的話，不妨考慮訂閱我的電子報，我們下週再見。</p><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div><p>—KP</p>
+  </article>
+  <div class="footer-cta">
+    <p>本機離線版本 • 圖片與內文完整</p>
+    <a class="primary" href="../../index.html">← 回索引</a>
+    <a href="https://www.fomosoc.com/p/gpuamd-kp2" target="_blank" rel="noopener">在原站開啟 ↗</a>
+  </div>
+</div>
+</body>
+</html>

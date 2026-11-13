@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>快速看完了微軟和Meta的財報後，腦中第一個浮現的想法</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --line: #e9e3d6; --line-soft: #f0ebdf;
+  --text: #1f2533; --text-2: #3a4256; --muted: #7c7a72; --ink: #14171e;
+  --primary: #2f6f5e; --accent: #c97b3f;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(47,111,94,.04) 0%, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(201,123,63,.04) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 28px 96px; }
+
+.meta-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px;
+  font-feature-settings: 'tnum';
+}
+.meta-bar .tag {
+  padding: 3px 9px; border-radius: 4px; font-weight: 500;
+  background: var(--line-soft); color: var(--text-2);
+}
+.meta-bar .tag.free { background: #dde9f3; color: #4a7ba6; }
+.meta-bar .tag.paid { background: #f0dbdb; color: #b06367; }
+.meta-bar a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--line); }
+.meta-bar a:hover { color: var(--primary); border-color: var(--primary); }
+
+h1.article-title {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 36px; font-weight: 400; line-height: 1.25;
+  color: var(--ink); margin: 14px 0 24px; letter-spacing: -0.005em;
+}
+h1.chapter {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 28px; font-weight: 400; line-height: 1.3;
+  color: var(--ink); margin: 56px 0 18px; padding-top: 28px;
+  border-top: 1px solid var(--line);
+  letter-spacing: -0.005em;
+}
+h2.section {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  color: var(--text); margin: 36px 0 12px;
+  padding-left: 12px; border-left: 3px solid var(--primary);
+}
+h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+
+p {
+  font-size: 16.5px; line-height: 1.85; margin: 0 0 18px;
+  color: var(--text);
+  font-family: 'Outfit', 'Noto Serif TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  font-weight: 400;
+}
+p strong, strong { color: var(--ink); font-weight: 600; }
+
+ul, ol { margin: 0 0 18px; padding-left: 26px; }
+li { font-size: 16px; line-height: 1.8; margin-bottom: 6px; }
+
+a { color: var(--primary); text-decoration: underline; text-decoration-color: rgba(47,111,94,.3); text-underline-offset: 2px; }
+a:hover { text-decoration-color: var(--primary); }
+
+blockquote {
+  margin: 28px 0; padding: 18px 24px;
+  background: var(--line-soft); border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-2); font-style: normal;
+}
+blockquote p { margin: 0; color: var(--text-2); }
+blockquote p + p { margin-top: 12px; }
+
+hr {
+  border: 0; height: 1px; background: var(--line);
+  margin: 36px auto; width: 60%;
+}
+
+/* Figure & image */
+figure {
+  margin: 32px 0; text-align: center;
+}
+.image2-inset, .captioned-image-container .image2-inset {
+  margin: 0;
+}
+.image2-inset picture, .image2-inset img {
+  display: block; max-width: 100%; height: auto; margin: 0 auto;
+  border-radius: 8px;
+}
+figure img {
+  max-width: 100%; height: auto; border-radius: 8px;
+  display: block; margin: 0 auto;
+  box-shadow: 0 4px 18px -8px rgba(20,23,30,.15);
+}
+.image2-img, .image2-image {
+  max-width: 100%; height: auto;
+}
+.captioned-image-container {
+  margin: 32px -20px;
+}
+.image-link { display: block; text-decoration: none !important; }
+.figcaption {
+  font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5;
+  text-align: center; font-style: italic;
+}
+
+/* Buttons / interactive UI from Substack we want to hide */
+.button, .pencraft, .subscription-widget, .paywall,
+[class*="paywall"], [class*="subscribe"], [class*="Subscribe"],
+.embed, .digest-post-embed { display: none !important; }
+
+.footer-cta {
+  margin-top: 60px; padding: 28px 32px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; text-align: center;
+}
+.footer-cta p { font-size: 14px; color: var(--muted); margin: 0; }
+.footer-cta a {
+  display: inline-block; margin: 4px 6px;
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--line); text-decoration: none;
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+}
+.footer-cta a.primary {
+  background: var(--primary); color: white; border-color: var(--primary);
+}
+
+.toc {
+  margin: 0 0 36px; padding: 20px 24px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.toc-title {
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+.toc ol li { counter-increment: toc; padding: 4px 0; font-size: 14px; }
+.toc ol li::before { content: counters(toc, ".") " "; color: var(--muted); margin-right: 4px; }
+.toc ol li.h1 { font-weight: 600; color: var(--ink); margin-top: 8px; }
+.toc ol li.h2 { color: var(--text-2); padding-left: 18px; }
+.toc a { color: var(--text-2); text-decoration: none; }
+.toc a:hover { color: var(--primary); }
+
+@media (max-width: 768px) {
+  .wrap { padding: 28px 18px 60px; }
+  h1.article-title { font-size: 26px; }
+  h1.chapter { font-size: 22px; }
+  p { font-size: 16px; }
+  .captioned-image-container { margin: 24px -10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta-bar">
+    <a href="../../index.html">← 索引</a>
+    <span class="tag free">🆓 公開</span>
+    <span>2025-07-31</span>
+    <span>8 字</span>
+    <a href="https://www.fomosoc.com/p/meta" target="_blank" rel="noopener">↗ 原站</a>
+  </div>
+  <h1 class="article-title">快速看完了微軟和Meta的財報後，腦中第一個浮現的想法</h1>
+  
+  <article class="body">
+<div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!C-cv!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F723fe872-1574-4e4c-98a8-a5a495dea137_1920x1080.webp 424w, https://substackcdn.com/image/fetch/$s_!C-cv!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F723fe872-1574-4e4c-98a8-a5a495dea137_1920x1080.webp 848w, https://substackcdn.com/image/fetch/$s_!C-cv!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F723fe872-1574-4e4c-98a8-a5a495dea137_1920x1080.webp 1272w, https://substackcdn.com/image/fetch/$s_!C-cv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F723fe872-1574-4e4c-98a8-a5a495dea137_1920x1080.webp 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/723fe872-1574-4e4c-98a8-a5a495dea137_1920x1080.webp","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":819,"width":1456,"resizeWidth":null,"bytes":140588,"alt":null,"title":null,"type":"image/webp","href":null,"belowTheFold":false,"topImage":true,"internalRedirect":"https://fomosoc.substack.com/i/169729459?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F723fe872-1574-4e4c-98a8-a5a495dea137_1920x1080.webp","isProcessing":false,"align":null,"offset":false}' fetchpriority="high" height="819" loading="lazy" sizes="100vw" src="images/img_002_68883632.webp" srcset="https://substackcdn.com/image/fetch/$s_!C-cv!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F723fe872-1574-4e4c-98a8-a5a495dea137_1920x1080.webp 424w, https://substackcdn.com/image/fetch/$s_!C-cv!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F723fe872-1574-4e4c-98a8-a5a495dea137_1920x1080.webp 848w, https://substackcdn.com/image/fetch/$s_!C-cv!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F723fe872-1574-4e4c-98a8-a5a495dea137_1920x1080.webp 1272w, https://substackcdn.com/image/fetch/$s_!C-cv!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F723fe872-1574-4e4c-98a8-a5a495dea137_1920x1080.webp 1456w" width="1456"/></picture><div class="image-link-expand"></div></div></figure></div><p>快速看完了微軟和Meta的財報後，腦中第一個浮現的想法是：</p><p>「擁有一個黏性極高的生態，實在太重要了。」</p><p>老實說，若單論大語言模型這個產品本身，兩家公司都不算頂尖。</p><p>Meta的Llama雷聲大雨點小，市場上幾乎沒人用；微軟雖有OpenAI這張王牌，但自家Copilot的體驗，用過的人都心知肚明有多難用。</p><p>但這就是商業的有趣之處：最好的技術，不一定能贏。</p><p>他們的生態系統實在太強了。需要精準投放廣告的公司，根本繞不開Facebook和Instagram的巨大流量池；企業想在內部系統導入AI，深度整合進Office全家桶的Copilot，幾乎是那個「沒得選」的唯一選擇。</p><p>這兩份財報再次和大家說明一個道理：他們不是在賣一個AI產品，而是在自己無可取代的生態帝國上，加裝一個AI的插件而已。</p><p>當你已經被鎖死在它的生態裡，插件是否性能最好，似乎也沒那麼重要了。</p>
+  </article>
+  <div class="footer-cta">
+    <p>本機離線版本 • 圖片與內文完整</p>
+    <a class="primary" href="../../index.html">← 回索引</a>
+    <a href="https://www.fomosoc.com/p/meta" target="_blank" rel="noopener">在原站開啟 ↗</a>
+  </div>
+</div>
+</body>
+</html>

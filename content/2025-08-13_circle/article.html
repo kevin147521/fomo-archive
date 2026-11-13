@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Circle的第一份財報：你是來賭博，還是來投資？重溫他們的真實價值</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --line: #e9e3d6; --line-soft: #f0ebdf;
+  --text: #1f2533; --text-2: #3a4256; --muted: #7c7a72; --ink: #14171e;
+  --primary: #2f6f5e; --accent: #c97b3f;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(47,111,94,.04) 0%, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(201,123,63,.04) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 28px 96px; }
+
+.meta-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px;
+  font-feature-settings: 'tnum';
+}
+.meta-bar .tag {
+  padding: 3px 9px; border-radius: 4px; font-weight: 500;
+  background: var(--line-soft); color: var(--text-2);
+}
+.meta-bar .tag.free { background: #dde9f3; color: #4a7ba6; }
+.meta-bar .tag.paid { background: #f0dbdb; color: #b06367; }
+.meta-bar a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--line); }
+.meta-bar a:hover { color: var(--primary); border-color: var(--primary); }
+
+h1.article-title {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 36px; font-weight: 400; line-height: 1.25;
+  color: var(--ink); margin: 14px 0 24px; letter-spacing: -0.005em;
+}
+h1.chapter {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 28px; font-weight: 400; line-height: 1.3;
+  color: var(--ink); margin: 56px 0 18px; padding-top: 28px;
+  border-top: 1px solid var(--line);
+  letter-spacing: -0.005em;
+}
+h2.section {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  color: var(--text); margin: 36px 0 12px;
+  padding-left: 12px; border-left: 3px solid var(--primary);
+}
+h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+
+p {
+  font-size: 16.5px; line-height: 1.85; margin: 0 0 18px;
+  color: var(--text);
+  font-family: 'Outfit', 'Noto Serif TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  font-weight: 400;
+}
+p strong, strong { color: var(--ink); font-weight: 600; }
+
+ul, ol { margin: 0 0 18px; padding-left: 26px; }
+li { font-size: 16px; line-height: 1.8; margin-bottom: 6px; }
+
+a { color: var(--primary); text-decoration: underline; text-decoration-color: rgba(47,111,94,.3); text-underline-offset: 2px; }
+a:hover { text-decoration-color: var(--primary); }
+
+blockquote {
+  margin: 28px 0; padding: 18px 24px;
+  background: var(--line-soft); border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-2); font-style: normal;
+}
+blockquote p { margin: 0; color: var(--text-2); }
+blockquote p + p { margin-top: 12px; }
+
+hr {
+  border: 0; height: 1px; background: var(--line);
+  margin: 36px auto; width: 60%;
+}
+
+/* Figure & image */
+figure {
+  margin: 32px 0; text-align: center;
+}
+.image2-inset, .captioned-image-container .image2-inset {
+  margin: 0;
+}
+.image2-inset picture, .image2-inset img {
+  display: block; max-width: 100%; height: auto; margin: 0 auto;
+  border-radius: 8px;
+}
+figure img {
+  max-width: 100%; height: auto; border-radius: 8px;
+  display: block; margin: 0 auto;
+  box-shadow: 0 4px 18px -8px rgba(20,23,30,.15);
+}
+.image2-img, .image2-image {
+  max-width: 100%; height: auto;
+}
+.captioned-image-container {
+  margin: 32px -20px;
+}
+.image-link { display: block; text-decoration: none !important; }
+.figcaption {
+  font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5;
+  text-align: center; font-style: italic;
+}
+
+/* Buttons / interactive UI from Substack we want to hide */
+.button, .pencraft, .subscription-widget, .paywall,
+[class*="paywall"], [class*="subscribe"], [class*="Subscribe"],
+.embed, .digest-post-embed { display: none !important; }
+
+.footer-cta {
+  margin-top: 60px; padding: 28px 32px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; text-align: center;
+}
+.footer-cta p { font-size: 14px; color: var(--muted); margin: 0; }
+.footer-cta a {
+  display: inline-block; margin: 4px 6px;
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--line); text-decoration: none;
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+}
+.footer-cta a.primary {
+  background: var(--primary); color: white; border-color: var(--primary);
+}
+
+.toc {
+  margin: 0 0 36px; padding: 20px 24px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.toc-title {
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+.toc ol li { counter-increment: toc; padding: 4px 0; font-size: 14px; }
+.toc ol li::before { content: counters(toc, ".") " "; color: var(--muted); margin-right: 4px; }
+.toc ol li.h1 { font-weight: 600; color: var(--ink); margin-top: 8px; }
+.toc ol li.h2 { color: var(--text-2); padding-left: 18px; }
+.toc a { color: var(--text-2); text-decoration: none; }
+.toc a:hover { color: var(--primary); }
+
+@media (max-width: 768px) {
+  .wrap { padding: 28px 18px 60px; }
+  h1.article-title { font-size: 26px; }
+  h1.chapter { font-size: 22px; }
+  p { font-size: 16px; }
+  .captioned-image-container { margin: 24px -10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta-bar">
+    <a href="../../index.html">← 索引</a>
+    <span class="tag free">🆓 公開</span>
+    <span>2025-08-13</span>
+    <span>282 字</span>
+    <a href="https://www.fomosoc.com/p/circle" target="_blank" rel="noopener">↗ 原站</a>
+  </div>
+  <h1 class="article-title">Circle的第一份財報：你是來賭博，還是來投資？重溫他們的真實價值</h1>
+  <div class="toc"><div class="toc-title">本文目錄</div><ol>
+<li class="h2"><a href="#公司起源">公司起源</a></li>
+<li class="h2"><a href="#商業模式-靠利息收入支撐的簡單生意">商業模式：靠利息收入支撐的簡單生意</a></li>
+<li class="h2"><a href="#公司支出">公司支出</a></li>
+<li class="h2"><a href="#穩定幣市場生態">穩定幣市場生態</a></li>
+<li class="h2"><a href="#GENIUS-法案-穩定幣的新里程碑">GENIUS 法案：穩定幣的新里程碑</a></li>
+<li class="h2"><a href="#潛在風險-利率與擠兌挑戰">潛在風險：利率與擠兌挑戰</a></li>
+<li class="h2"><a href="#2023的危機以及後續轉變">2023的危機以及後續轉變</a></li>
+<li class="h2"><a href="#小總結">小總結</a></li>
+</ol></div>
+  <article class="body">
+<div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!L35L!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F75c64851-8cf3-4b7e-b6ee-38df39c60fd7_700x466.avif 424w, https://substackcdn.com/image/fetch/$s_!L35L!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F75c64851-8cf3-4b7e-b6ee-38df39c60fd7_700x466.avif 848w, https://substackcdn.com/image/fetch/$s_!L35L!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F75c64851-8cf3-4b7e-b6ee-38df39c60fd7_700x466.avif 1272w, https://substackcdn.com/image/fetch/$s_!L35L!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F75c64851-8cf3-4b7e-b6ee-38df39c60fd7_700x466.avif 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/75c64851-8cf3-4b7e-b6ee-38df39c60fd7_700x466.avif","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":466,"width":700,"resizeWidth":null,"bytes":65757,"alt":null,"title":null,"type":"image/avif","href":null,"belowTheFold":false,"topImage":true,"internalRedirect":"https://fomosoc.substack.com/i/170859673?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F75c64851-8cf3-4b7e-b6ee-38df39c60fd7_700x466.avif","isProcessing":false,"align":null,"offset":false}' fetchpriority="high" height="466" loading="lazy" sizes="100vw" src="images/img_002_3d616333.png" srcset="https://substackcdn.com/image/fetch/$s_!L35L!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F75c64851-8cf3-4b7e-b6ee-38df39c60fd7_700x466.avif 424w, https://substackcdn.com/image/fetch/$s_!L35L!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F75c64851-8cf3-4b7e-b6ee-38df39c60fd7_700x466.avif 848w, https://substackcdn.com/image/fetch/$s_!L35L!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F75c64851-8cf3-4b7e-b6ee-38df39c60fd7_700x466.avif 1272w, https://substackcdn.com/image/fetch/$s_!L35L!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F75c64851-8cf3-4b7e-b6ee-38df39c60fd7_700x466.avif 1456w" width="700"/></picture><div class="image-link-expand"></div></div></figure></div><p>Circle 昨晚公佈了上市後的第一份業績。</p><p>一份超出華爾街預期的亮眼財報，換來的卻是股價高開低走，盤後甚至進一步下跌。</p><p>發生了什麼事？</p><p>首先，好消息確實是好消息。財報本身非常不錯，營收超預期，核心指標 USDC 的流通量更是年增 90%。</p><p>Circle 的商業模式很純粹：越多人用 USDC，他們手上的美元儲備就越多，能買的短債就越多，套利空間就越大。</p><p>那麼，為何市場高開低走？三個答案。</p><p><strong>第一，宏觀逆風：Fed的降息預期。</strong></p><p>這是最直接的利空。Circle 的利潤，直接掛鉤美國的利率。市場一旦預期利率走低，就等於是預告 Circle 未來的利潤率將會收縮。這是基本面的烏雲，再亮的財報也難以完全驅散。</p><p><strong>第二，一份毫不掩飾的套現計劃。</strong></p><p>盤後，公司宣布配售 1000 萬股，其中 800 萬股來自現有股東。</p><p>老實說，這簡直是「司馬昭之心，路人皆知」。</p><p>思考一下：公司上市才兩個月，如果真的缺錢發展業務，為何不在 IPO 時一次搞定？</p><p>唯一的解釋，就是管理層和早期股東們認為現在的股價「非常昂貴」，急著在高位把手上的股票賣給你。</p><p>增發新股不是問題，但上市兩個月就急不可耐地動手，姿態實在太難看。</p><p>這等於是告訴市場：「我們自己都覺得現在太貴了，你們快來接盤。」</p><p><strong>最後，也是最核心的一點：你必須明白這場遊戲的本質。</strong></p><p>這類萬眾矚目的新股，本質上就是一座新開的賭場。</p><p>開幕時，各路賭客蜂擁而至，把氣氛炒熱，籌碼滿天飛。每個人都想在新鮮感最足的時候，進去玩兩把，賺快錢。</p><p>但新鮮感是短暫的。很快，隔壁街就會有更新、更亮的賭場開幕 (比如不久前的 Figma，又或是準備上市的 Bullish)，熱錢和賭客們自然會轉移陣地。</p><p>那麼，還留在舊賭場 Circle 裡的人，還在等什麼？他們等的，無非是一個體面的價格，好讓自己離場。</p><p>參與這場遊戲沒有錯，但你必須清楚知道，你是在「賭」，還是在「投資」。</p><p>如果你是一個真正的投資者，你看重的是 Circle 獨特的業務模式，那你通常會選擇避開開盤初期的瘋狂，靜靜地在場外觀察，等到賭場的熱情退卻、籌碼塵埃落定後，再重新評估它的內在價值。</p><p>我兩個月前曾詳細拆解過 Circle 的商業模式，那個時候還未開Substack，當時在Threads/Facebook上發，我覺得值得在這裡重發一次，有興趣的可以重溫一下。</p><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div><h2 class="section" id="公司起源">公司起源</h2><p>Circle 在 2013年創立，當時的願景是作為「區塊鏈版 PayPal」。</p><p><strong>但經過幾次轉型後，如今，它已經成為穩定幣市場的「二哥」。</strong></p><p>以下是公司的幾個重要階段：</p><ul><li><p><strong>2014—2016年：</strong> 推出跨境支付工具 Circle Pay，但無法與 Venmo 等對手競爭，最終未能成功。</p></li><li><p><strong>2016—2018年：</strong> 收購加密貨幣交易所 Poloniex，但因監管問題遭受制裁，並在 2019 年關閉美國業務。</p></li><li><p><strong>2018年：</strong> <strong>迎來關鍵轉折，聯手 Coinbase 推出穩定幣 USDC</strong>，錨定美元流動性，逐漸成為穩定幣市場的核心玩家。</p></li><li><p><strong>2023年 SVB 危機：</strong> 33 億美元存款險些歸零，導致 USDC 嚴重脫錨（一度跌至 $0.87）。<strong>此後，Circle 決心變得更合規，並選擇上市來增強市場信心。</strong></p></li></ul><blockquote><p><strong>Circle 的核心 DNA 是「合規」</strong>，它選擇與政府和大機構合作，被視為加密貨幣中的「乖孩子」。</p></blockquote><div><hr/></div><h2 class="section" id="商業模式-靠利息收入支撐的簡單生意">商業模式：靠利息收入支撐的簡單生意</h2><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!twx5!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6ee4a96e-acfd-44c8-9e7a-5a60af7b963c_1200x675.avif 424w, https://substackcdn.com/image/fetch/$s_!twx5!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6ee4a96e-acfd-44c8-9e7a-5a60af7b963c_1200x675.avif 848w, https://substackcdn.com/image/fetch/$s_!twx5!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6ee4a96e-acfd-44c8-9e7a-5a60af7b963c_1200x675.avif 1272w, https://substackcdn.com/image/fetch/$s_!twx5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6ee4a96e-acfd-44c8-9e7a-5a60af7b963c_1200x675.avif 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/6ee4a96e-acfd-44c8-9e7a-5a60af7b963c_1200x675.avif","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":675,"width":1200,"resizeWidth":null,"bytes":80695,"alt":null,"title":null,"type":"image/avif","href":null,"belowTheFold":true,"topImage":false,"internalRedirect":"https://fomosoc.substack.com/i/170859673?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6ee4a96e-acfd-44c8-9e7a-5a60af7b963c_1200x675.avif","isProcessing":false,"align":null,"offset":false}' height="675" loading="lazy" sizes="100vw" src="images/img_003_a6a4f1f6.png" srcset="https://substackcdn.com/image/fetch/$s_!twx5!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6ee4a96e-acfd-44c8-9e7a-5a60af7b963c_1200x675.avif 424w, https://substackcdn.com/image/fetch/$s_!twx5!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6ee4a96e-acfd-44c8-9e7a-5a60af7b963c_1200x675.avif 848w, https://substackcdn.com/image/fetch/$s_!twx5!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6ee4a96e-acfd-44c8-9e7a-5a60af7b963c_1200x675.avif 1272w, https://substackcdn.com/image/fetch/$s_!twx5!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6ee4a96e-acfd-44c8-9e7a-5a60af7b963c_1200x675.avif 1456w" width="1200"/></picture><div class="image-link-expand"></div></div></figure></div><p>如果大家要買加密貨幣，不能直接用美金買賣，而是要通過鏈上的穩定幣再去買。</p><p>USDC是市值第二大的穩定幣，Circle就是USDC的發行商。</p><p>你把美金交給Circle，然後Circle就給你USDC，之後你就可以直接買你想要的加密貨幣。</p><p><strong>Circle 的商業模式其實非常簡單</strong>，主要收入來源如下：</p><h4>1. 儲備金收入（佔比 99%）</h4><p><strong>每發行 1 USDC，Circle 就存入 1 美元或等值的美國國債。這些資產會產生利息，成為公司的主要收入來源。</strong> 2024 年，這部分收入高達 16.8 億美元，佔總收入的 99%。</p><p>舉例來說，當美國 3 個月國債收益率達到 4.3% 時，以現在USDC流通量超過600億美元來算， Circle 今年就會有超過25億美元的利息收入。(只是粗略計算)</p><h4>2. 交易和 API 收費（佔比 1%）</h4><p>Circle 向企業和開發者提供 USDC 支付服務，並收取手續費。目前這部分收入規模較小，但未來有潛力增長。</p><h4>3. 其他收入（佔比 &lt;1%）</h4><p>包括財務管理服務（如 SeedInvest 平台），目前貢獻極為有限。</p><blockquote><p><strong>簡單來說，Circle 幾乎完全依賴利息收入。</strong> 但支付系統等新業務，未來可能有機會搶佔傳統支付市場（如 Visa 和 Mastercard）的份額，這些日後有機會再寫，如果這篇反應好的話。</p><p>有不少人會說支付市場潛力很大，但老實說，相比他們的美債利息收入，即使增長極為迅速，也基本上是九牛一毛。</p></blockquote><div><hr/></div><h2 class="section" id="公司支出">公司支出</h2><p>聽起來Circle就像一個無本生利的生意，但實際上他們有一個很重大的支出，<strong>就是跟合作夥伴（比如 Coinbase、Binance等）有收入分享協議。</strong></p><p>例如，Coinbase 作為 USDC 的主要推廣平台，可以分到 50% 的 USDC 儲備金收入。</p><p>這意味著 Circle 必須付出一定成本，來換取更大的市場份額。這背後的原因很簡單：<strong>USDC 只是穩定幣的「二哥」，還無法撼動龍頭地位。</strong></p><div><hr/></div><h2 class="section" id="穩定幣市場生態">穩定幣市場生態</h2><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!vYPH!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe1cdaa7b-7166-426a-8090-d910a6aaf172_2020x1170.webp 424w, https://substackcdn.com/image/fetch/$s_!vYPH!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe1cdaa7b-7166-426a-8090-d910a6aaf172_2020x1170.webp 848w, https://substackcdn.com/image/fetch/$s_!vYPH!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe1cdaa7b-7166-426a-8090-d910a6aaf172_2020x1170.webp 1272w, https://substackcdn.com/image/fetch/$s_!vYPH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe1cdaa7b-7166-426a-8090-d910a6aaf172_2020x1170.webp 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/e1cdaa7b-7166-426a-8090-d910a6aaf172_2020x1170.webp","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":843,"width":1456,"resizeWidth":null,"bytes":46210,"alt":null,"title":null,"type":"image/webp","href":null,"belowTheFold":true,"topImage":false,"internalRedirect":"https://fomosoc.substack.com/i/170859673?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe1cdaa7b-7166-426a-8090-d910a6aaf172_2020x1170.webp","isProcessing":false,"align":null,"offset":false}' height="843" loading="lazy" sizes="100vw" src="images/img_004_d0506721.webp" srcset="https://substackcdn.com/image/fetch/$s_!vYPH!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe1cdaa7b-7166-426a-8090-d910a6aaf172_2020x1170.webp 424w, https://substackcdn.com/image/fetch/$s_!vYPH!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe1cdaa7b-7166-426a-8090-d910a6aaf172_2020x1170.webp 848w, https://substackcdn.com/image/fetch/$s_!vYPH!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe1cdaa7b-7166-426a-8090-d910a6aaf172_2020x1170.webp 1272w, https://substackcdn.com/image/fetch/$s_!vYPH!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe1cdaa7b-7166-426a-8090-d910a6aaf172_2020x1170.webp 1456w" width="1456"/></picture><div class="image-link-expand"></div></div></figure></div><h4>1. USDT（市場份額 61%）</h4><p>作為市場老大，USDT 擁有強大的先發優勢，並且早已成為大部分用戶的習慣選擇。但 USDT 的透明度問題多次引發爭議，雖然近年來有所改善，但它的歷史「污點」讓部分機構投資者保持謹慎。</p><h4>2. USDC（市場份額 25%）</h4><p><strong>USDC 的最大優勢在於合規性。</strong> Circle 與政府和大型機構的合作關係密切，當官方推動穩定幣合法化，Circle 就是首選合作對象。</p><h4>3. 其他穩定幣（如 PayPal USD、Dai）</h4><p>這些項目份額較小，影響力有限。</p><blockquote><p><strong>值得注意的是，2024 年 USDC 的市佔率上升了 40%，而 USDT 只上升了 10%。</strong> 未來，USDC 持續增加份額的趨勢可能會越來越明顯。</p><p>而GENIUS 法案的推出，可能讓 Circle 在合規性上更勝一籌。</p></blockquote><div><hr/></div><h2 class="section" id="GENIUS-法案-穩定幣的新里程碑">GENIUS 法案：穩定幣的新里程碑</h2><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!2Jwa!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc02b75ac-cdfa-4d63-aa1b-81438db1649c_1140x760.jpeg 424w, https://substackcdn.com/image/fetch/$s_!2Jwa!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc02b75ac-cdfa-4d63-aa1b-81438db1649c_1140x760.jpeg 848w, https://substackcdn.com/image/fetch/$s_!2Jwa!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc02b75ac-cdfa-4d63-aa1b-81438db1649c_1140x760.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!2Jwa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc02b75ac-cdfa-4d63-aa1b-81438db1649c_1140x760.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/c02b75ac-cdfa-4d63-aa1b-81438db1649c_1140x760.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":760,"width":1140,"resizeWidth":null,"bytes":56346,"alt":null,"title":null,"type":"image/jpeg","href":null,"belowTheFold":true,"topImage":false,"internalRedirect":"https://fomosoc.substack.com/i/170859673?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc02b75ac-cdfa-4d63-aa1b-81438db1649c_1140x760.jpeg","isProcessing":false,"align":null,"offset":false}' height="760" loading="lazy" sizes="100vw" src="images/img_005_10b0a011.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!2Jwa!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc02b75ac-cdfa-4d63-aa1b-81438db1649c_1140x760.jpeg 424w, https://substackcdn.com/image/fetch/$s_!2Jwa!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc02b75ac-cdfa-4d63-aa1b-81438db1649c_1140x760.jpeg 848w, https://substackcdn.com/image/fetch/$s_!2Jwa!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc02b75ac-cdfa-4d63-aa1b-81438db1649c_1140x760.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!2Jwa!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc02b75ac-cdfa-4d63-aa1b-81438db1649c_1140x760.jpeg 1456w" width="1140"/></picture><div class="image-link-expand"></div></div></figure></div><p>最近，穩定幣市場因 GENIUS 法案（全名「Guiding and Establishing National Innovation for U.S. Stablecoins」）而備受矚目。</p><p><strong>這是美國第一部針對穩定幣的聯邦法規</strong>，要求穩定幣必須 1:1 由安全資產支撐（如美國國債），並接受嚴格監管。</p><blockquote><p><strong>這相當於給穩定幣市場頒發了一張「身份證」</strong>，讓它們在傳統金融體系中更合法、更可信。</p></blockquote><p>對 Circle 而言，GENIUS 法案無疑是一個重大利好：</p><ul><li><p>它提供了清晰的法律框架，讓機構投資者更放心使用 USDC。</p></li><li><p>與此同時，對透明度存疑的 USDT 構成了更大壓力。</p></li></ul><p><strong>這也是投資者對 Circle 股價興奮的原因之一。</strong></p><div><hr/></div><h2 class="section" id="潛在風險-利率與擠兌挑戰">潛在風險：利率與擠兌挑戰</h2><h4>1. 利率下降風險</h4><p>Circle在2024年創造16.8億美元收入中，99%依賴USDC儲備金的利息收益。這種模式在這幾年利率高企的時候，可以說是「會生金蛋的雞」。</p><p>當3個月美國國債收益率達4.3%以上時，每10億的流通USDC，Circle每年就進帳賺4300萬美元。</p><p><strong>但是，若美聯儲降息，這台機器將瞬間生銹。</strong></p><p>例如，每降息0.25%，Circle的年收入可能減少約3000萬美元。若利率從當前的4%水平大幅下降（例如降至2%），Circle的年收入可能減半。</p><p>不過，低利率環境也可能帶來抵消效應。低利率環境往往推動加密資產價格上漲，增加穩定幣作為交易媒介的需求。</p><blockquote><p><strong>所以，關鍵平衡點在於，USDC的規模增長能否抵消利率下行。</strong></p><p>若USDC流通量年增速維持在20%以上，可承受最多2%的利率降幅而保持收入平穩。</p></blockquote><h4>2. 擠兌風險</h4><p>Circle 本質上像一家銀行。投資者將美元存入 Circle，Circle 再投資於美國國債來賺取利息。</p><p>然而，如果加密市場出現恐慌，投資者大量贖回 USDC，Circle 就可能被迫拋售國債，造成損失甚至流動性危機。這也是 Circle 選擇上市的原因之一，希望通過透明化和多重牌照來增強市場信心。</p><div><hr/></div><h2 class="section" id="2023的危機以及後續轉變">2023的危機以及後續轉變</h2><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!CpMx!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F24b75f3d-03eb-4cd9-a466-b1db0ae17bc3_4350x2836.jpeg 424w, https://substackcdn.com/image/fetch/$s_!CpMx!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F24b75f3d-03eb-4cd9-a466-b1db0ae17bc3_4350x2836.jpeg 848w, https://substackcdn.com/image/fetch/$s_!CpMx!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F24b75f3d-03eb-4cd9-a466-b1db0ae17bc3_4350x2836.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!CpMx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F24b75f3d-03eb-4cd9-a466-b1db0ae17bc3_4350x2836.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/24b75f3d-03eb-4cd9-a466-b1db0ae17bc3_4350x2836.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":949,"width":1456,"resizeWidth":null,"bytes":3196555,"alt":null,"title":null,"type":"image/jpeg","href":null,"belowTheFold":true,"topImage":false,"internalRedirect":"https://fomosoc.substack.com/i/170859673?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F24b75f3d-03eb-4cd9-a466-b1db0ae17bc3_4350x2836.jpeg","isProcessing":false,"align":null,"offset":false}' height="949" loading="lazy" sizes="100vw" src="images/img_006_8e02257e.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!CpMx!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F24b75f3d-03eb-4cd9-a466-b1db0ae17bc3_4350x2836.jpeg 424w, https://substackcdn.com/image/fetch/$s_!CpMx!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F24b75f3d-03eb-4cd9-a466-b1db0ae17bc3_4350x2836.jpeg 848w, https://substackcdn.com/image/fetch/$s_!CpMx!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F24b75f3d-03eb-4cd9-a466-b1db0ae17bc3_4350x2836.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!CpMx!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F24b75f3d-03eb-4cd9-a466-b1db0ae17bc3_4350x2836.jpeg 1456w" width="1456"/></picture><div class="image-link-expand"></div></div></figure></div><p>當年，Circle將$33億（占儲備金8.2%）存放於矽谷銀行(SVB)，遠超FDIC保險覆蓋的$25萬額度。當SVB因擠兌倒閉時，這些資金面臨歸零風險。</p><p>市場當然十分恐慌，<strong>引發單日$30億USDC贖回潮（占流通量7.5%）。USDC交易價格暴跌13%</strong>，創穩定幣歷史最大偏離紀錄。明明應該是1:1的貨幣，卻變成1 USDC只能換回0.87美金。</p><p>當時，中心化交易所暫停USDC-USD兌換，鏈上DeFi協議緊急凍結相關抵押品。</p><p>在此之後，Circle痛定思痛，決定申請多個牌照，以及進行上市。例如是在美國申請聯邦支付牌照，在歐盟申請MiCA e-money牌照，在新加坡獲MPI主要支付機構牌照等等。</p><blockquote><p><strong>這些舉動全部都只為了一個原因，就是可以通過牌照直接持有國債，切斷傳統銀行中介風險。</strong></p><p>而他們選擇上市，是為了主動將財務透明化。例如他們會每日發布儲備金審計報告（由BDO、德勤輪查），實時公開國債持倉CUSIP編號供市場驗證等等。</p></blockquote><div><hr/></div><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div><h2 class="section" id="小總結">小總結</h2><blockquote><p>Circle 是一家充滿矛盾的公司。</p><p>理論上，區塊鏈的存在就是為了規避法律，去中心化。<strong>但Circle卻是選擇了主動擁抱監管，將自己資料盡量透明化。</strong></p><p>加密貨幣，理論上是高科技東西。<strong>但其實Circle的業務模式極為簡單和傳統。</strong> 基本上就是無本生利，將收到的錢放到短期國債收取利息。</p><p>所以，究竟它是一家科技公司，還是傳統的公司？</p><p>它究竟是去中心化？還是極為中心化？</p><p>它的收入如此依賴高利率，收入增長真的能夠維持？</p><p>許多的疑問，或許大家在看完分析後，會有自己的答案和判断。</p><p>- KP</p></blockquote>
+  </article>
+  <div class="footer-cta">
+    <p>本機離線版本 • 圖片與內文完整</p>
+    <a class="primary" href="../../index.html">← 回索引</a>
+    <a href="https://www.fomosoc.com/p/circle" target="_blank" rel="noopener">在原站開啟 ↗</a>
+  </div>
+</div>
+</body>
+</html>

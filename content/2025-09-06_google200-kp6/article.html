@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google的反壟斷案還未結束？為何晶片不能堆數量？- KP思考筆記(第6期)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --line: #e9e3d6; --line-soft: #f0ebdf;
+  --text: #1f2533; --text-2: #3a4256; --muted: #7c7a72; --ink: #14171e;
+  --primary: #2f6f5e; --accent: #c97b3f;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(47,111,94,.04) 0%, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(201,123,63,.04) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 28px 96px; }
+
+.meta-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px;
+  font-feature-settings: 'tnum';
+}
+.meta-bar .tag {
+  padding: 3px 9px; border-radius: 4px; font-weight: 500;
+  background: var(--line-soft); color: var(--text-2);
+}
+.meta-bar .tag.free { background: #dde9f3; color: #4a7ba6; }
+.meta-bar .tag.paid { background: #f0dbdb; color: #b06367; }
+.meta-bar a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--line); }
+.meta-bar a:hover { color: var(--primary); border-color: var(--primary); }
+
+h1.article-title {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 36px; font-weight: 400; line-height: 1.25;
+  color: var(--ink); margin: 14px 0 24px; letter-spacing: -0.005em;
+}
+h1.chapter {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 28px; font-weight: 400; line-height: 1.3;
+  color: var(--ink); margin: 56px 0 18px; padding-top: 28px;
+  border-top: 1px solid var(--line);
+  letter-spacing: -0.005em;
+}
+h2.section {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  color: var(--text); margin: 36px 0 12px;
+  padding-left: 12px; border-left: 3px solid var(--primary);
+}
+h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+
+p {
+  font-size: 16.5px; line-height: 1.85; margin: 0 0 18px;
+  color: var(--text);
+  font-family: 'Outfit', 'Noto Serif TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  font-weight: 400;
+}
+p strong, strong { color: var(--ink); font-weight: 600; }
+
+ul, ol { margin: 0 0 18px; padding-left: 26px; }
+li { font-size: 16px; line-height: 1.8; margin-bottom: 6px; }
+
+a { color: var(--primary); text-decoration: underline; text-decoration-color: rgba(47,111,94,.3); text-underline-offset: 2px; }
+a:hover { text-decoration-color: var(--primary); }
+
+blockquote {
+  margin: 28px 0; padding: 18px 24px;
+  background: var(--line-soft); border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-2); font-style: normal;
+}
+blockquote p { margin: 0; color: var(--text-2); }
+blockquote p + p { margin-top: 12px; }
+
+hr {
+  border: 0; height: 1px; background: var(--line);
+  margin: 36px auto; width: 60%;
+}
+
+/* Figure & image */
+figure {
+  margin: 32px 0; text-align: center;
+}
+.image2-inset, .captioned-image-container .image2-inset {
+  margin: 0;
+}
+.image2-inset picture, .image2-inset img {
+  display: block; max-width: 100%; height: auto; margin: 0 auto;
+  border-radius: 8px;
+}
+figure img {
+  max-width: 100%; height: auto; border-radius: 8px;
+  display: block; margin: 0 auto;
+  box-shadow: 0 4px 18px -8px rgba(20,23,30,.15);
+}
+.image2-img, .image2-image {
+  max-width: 100%; height: auto;
+}
+.captioned-image-container {
+  margin: 32px -20px;
+}
+.image-link { display: block; text-decoration: none !important; }
+.figcaption {
+  font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5;
+  text-align: center; font-style: italic;
+}
+
+/* Buttons / interactive UI from Substack we want to hide */
+.button, .pencraft, .subscription-widget, .paywall,
+[class*="paywall"], [class*="subscribe"], [class*="Subscribe"],
+.embed, .digest-post-embed { display: none !important; }
+
+.footer-cta {
+  margin-top: 60px; padding: 28px 32px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; text-align: center;
+}
+.footer-cta p { font-size: 14px; color: var(--muted); margin: 0; }
+.footer-cta a {
+  display: inline-block; margin: 4px 6px;
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--line); text-decoration: none;
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+}
+.footer-cta a.primary {
+  background: var(--primary); color: white; border-color: var(--primary);
+}
+
+.toc {
+  margin: 0 0 36px; padding: 20px 24px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.toc-title {
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+.toc ol li { counter-increment: toc; padding: 4px 0; font-size: 14px; }
+.toc ol li::before { content: counters(toc, ".") " "; color: var(--muted); margin-right: 4px; }
+.toc ol li.h1 { font-weight: 600; color: var(--ink); margin-top: 8px; }
+.toc ol li.h2 { color: var(--text-2); padding-left: 18px; }
+.toc a { color: var(--text-2); text-decoration: none; }
+.toc a:hover { color: var(--primary); }
+
+@media (max-width: 768px) {
+  .wrap { padding: 28px 18px 60px; }
+  h1.article-title { font-size: 26px; }
+  h1.chapter { font-size: 22px; }
+  p { font-size: 16px; }
+  .captioned-image-container { margin: 24px -10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta-bar">
+    <a href="../../index.html">← 索引</a>
+    <span class="tag free">🆓 公開</span>
+    <span>2025-09-06</span>
+    <span>208 字</span>
+    <a href="https://www.fomosoc.com/p/google200-kp6" target="_blank" rel="noopener">↗ 原站</a>
+  </div>
+  <h1 class="article-title">Google的反壟斷案還未結束？為何晶片不能堆數量？- KP思考筆記(第6期)</h1>
+  
+  <article class="body">
+<div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!fGEh!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F91ea9d6d-ea4f-4cdf-984e-8f6bd158013b_1024x1024.jpeg 424w, https://substackcdn.com/image/fetch/$s_!fGEh!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F91ea9d6d-ea4f-4cdf-984e-8f6bd158013b_1024x1024.jpeg 848w, https://substackcdn.com/image/fetch/$s_!fGEh!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F91ea9d6d-ea4f-4cdf-984e-8f6bd158013b_1024x1024.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!fGEh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F91ea9d6d-ea4f-4cdf-984e-8f6bd158013b_1024x1024.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/91ea9d6d-ea4f-4cdf-984e-8f6bd158013b_1024x1024.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":1024,"width":1024,"resizeWidth":null,"bytes":101405,"alt":null,"title":null,"type":"image/jpeg","href":null,"belowTheFold":false,"topImage":true,"internalRedirect":"https://fomosoc.substack.com/i/172767355?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F91ea9d6d-ea4f-4cdf-984e-8f6bd158013b_1024x1024.jpeg","isProcessing":false,"align":null,"offset":false}' fetchpriority="high" height="1024" loading="lazy" sizes="100vw" src="images/img_002_190a41a0.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!fGEh!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F91ea9d6d-ea4f-4cdf-984e-8f6bd158013b_1024x1024.jpeg 424w, https://substackcdn.com/image/fetch/$s_!fGEh!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F91ea9d6d-ea4f-4cdf-984e-8f6bd158013b_1024x1024.jpeg 848w, https://substackcdn.com/image/fetch/$s_!fGEh!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F91ea9d6d-ea4f-4cdf-984e-8f6bd158013b_1024x1024.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!fGEh!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F91ea9d6d-ea4f-4cdf-984e-8f6bd158013b_1024x1024.jpeg 1456w" width="1024"/></picture><div class="image-link-expand"></div></div></figure></div><p>大家好，我是KP，歡迎來到我的第6期思考筆記。</p><p>上週，我破格地寫了一篇關於美中晶片不同玩家策略的萬字長文。結果，不出所料，迴響比平時平淡一些。</p><p>我完全理解。許多朋友心中可能都有一個聲音：「這個時代，閉著眼睛買美股不就行了嗎？何必費神去研究一個如此複雜、又不討喜的市場？」</p><p>但我想藉此重申我的核心信念：</p><blockquote><p>一個真正的投資者，腦中應該只有「事實」與「邏輯」，而不應被「偏好」或「情緒」所綁架。</p><p>在投資的世界裡，唯一值得我們效忠的，不是任何國家或意識形態，而是理性和盈虧。</p></blockquote><p>很多人因為各種原因，決定不碰中港股票，這完全沒有問題。但「不投資」與「不理解」，是兩件截然不同的事。</p><p>一個簡單的事實是：Nvidia超過15%的收入來自中國。</p><p>這15%的動向，足以影響這家全球最重要公司的估值。作為Nvidia的投資者，如果你選擇對其第二大市場的動態視而不見，這難道不是一種主動放棄資訊優勢的行為嗎？</p><p>只聽自己想聽的，只看自己喜歡的，這恰恰是多數人無法在市場上長期勝出的根本原因。</p><p>而我的所有文章，正是為了挑戰這種思維慣性而存在。</p><p>這個星期的思考筆記，我有兩個主題分享：</p><ol><li><p><strong>Google司法大戰的延續：</strong> 繼上回分析後，我們再深入一層。這場世紀訴訟究竟揭示了什麼？為何我說這場戰爭遠未結束？下一步的戰場又在哪裡？</p></li><li><p><strong>美中晶片大戰的三個補充：</strong> 上篇文章發出後，一位讀者留了一則極有深度的留言，再次啟發了我。我將當時的回覆，以及後續的思考，整理成文，相信能為大家帶來新的視角。這回覆若只停留在留言區，未免太浪費了。</p></li></ol><p><em>p.s. 未來幾天我會休假，和老婆女兒到日本走走。下週的深度研究，我會嘗試在旅途中完成。篇幅或許會短一些，但文章的品質，大家不用擔心，保證有趣。雖然身在旅途，但思考不會停步。</em></p><p><em>p.p.s 關於這個專欄的下一步，我將在下週公佈一些未來的發展計劃，敬請期待。</em></p><div><hr/></div><h3><strong>主題一： Google的反壟斷案的思考以及後續</strong></h3><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!q0Zh!,w_424,c_limit,f_webp,q_auto:good,fl_lossy/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F93742ea3-1e54-4228-8576-b73b95dd1118_2200x1650.gif 424w, https://substackcdn.com/image/fetch/$s_!q0Zh!,w_848,c_limit,f_webp,q_auto:good,fl_lossy/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F93742ea3-1e54-4228-8576-b73b95dd1118_2200x1650.gif 848w, https://substackcdn.com/image/fetch/$s_!q0Zh!,w_1272,c_limit,f_webp,q_auto:good,fl_lossy/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F93742ea3-1e54-4228-8576-b73b95dd1118_2200x1650.gif 1272w, https://substackcdn.com/image/fetch/$s_!q0Zh!,w_1456,c_limit,f_webp,q_auto:good,fl_lossy/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F93742ea3-1e54-4228-8576-b73b95dd1118_2200x1650.gif 1456w" type="image/webp"/><img alt="How Google Plans to Fight the Biggest U.S. Antitrust Suit Since Microsoft -  Bloomberg" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/93742ea3-1e54-4228-8576-b73b95dd1118_2200x1650.gif","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":1092,"width":1456,"resizeWidth":null,"bytes":null,"alt":"How Google Plans to Fight the Biggest U.S. Antitrust Suit Since Microsoft -  Bloomberg","title":null,"type":null,"href":null,"belowTheFold":true,"topImage":false,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' height="1092" loading="lazy" sizes="100vw" src="images/img_003_18e31cf1.gif" srcset="https://substackcdn.com/image/fetch/$s_!q0Zh!,w_424,c_limit,f_auto,q_auto:good,fl_lossy/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F93742ea3-1e54-4228-8576-b73b95dd1118_2200x1650.gif 424w, https://substackcdn.com/image/fetch/$s_!q0Zh!,w_848,c_limit,f_auto,q_auto:good,fl_lossy/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F93742ea3-1e54-4228-8576-b73b95dd1118_2200x1650.gif 848w, https://substackcdn.com/image/fetch/$s_!q0Zh!,w_1272,c_limit,f_auto,q_auto:good,fl_lossy/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F93742ea3-1e54-4228-8576-b73b95dd1118_2200x1650.gif 1272w, https://substackcdn.com/image/fetch/$s_!q0Zh!,w_1456,c_limit,f_auto,q_auto:good,fl_lossy/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F93742ea3-1e54-4228-8576-b73b95dd1118_2200x1650.gif 1456w" title="How Google Plans to Fight the Biggest U.S. Antitrust Suit Since Microsoft -  Bloomberg" width="1456"/></picture><div class="image-link-expand"></div></div><figcaption class="figcaption">How Google Plans to Fight the Biggest U.S. Antitrust Suit Since Microsoft -  Bloomberg</figcaption></figure></div><p>這場司法部控告Google的「搜尋反壟斷案」，以Google的勝利暫告一段落。</p><p>然而，我認為，這場訴訟最大的價值之一，是讓我們這些局外人，終於清楚地窺見了科技巨頭間最驚人的秘密：</p><blockquote><p>原來Google每年支付給蘋果的費用，竟高達200億美元，只為換取一個小小的「預設」位置。</p></blockquote><p>Google會做虧本生意嗎？當然不會。這筆巨款的背後，揭示了一個更重要的事實：Google的搜尋廣告業務，究竟有多麼賺錢。</p><p>我們必須先理解這筆錢的本質。它並不是一筆固定的「授權費」，而是一個「收入分成」協議。</p><p>根據法庭文件揭露的細節，Google是將其在蘋果Safari瀏覽器上產生的所有搜尋廣告收入，分潤約36%給蘋果。</p><p>換句話說，你在iPhone的Safari上每一次點擊搜尋結果旁的廣告，假設Google因此賺到$100，它就必須分$36給蘋果，自己留下$64。</p><p>那道簡單的數學題來了。如果支付給蘋果的36%是200億美元，那麼Google從Safari上賺取一年的總收入是多少？</p><p>答案是：<strong>大約556億美元。</strong></p><p>扣除給蘋果的200億「渠道費」後，Google每年光是從這筆交易中，淨賺就超過356億美元。這筆來自Safari的收入，就佔了Google搜尋總收入的近三成（約28%）。</p><p>現在你明白了吧？這筆天價的「保護費」，Google付得心甘情願，甚至可以說是樂在其中。原因很簡單：</p><ol><li><p><strong>用戶含金量高：</strong> 蘋果用戶群的消費能力舉世聞名，是廣告商最渴望觸及的「優質流量」，廣告價值自然更高。</p></li><li><p><strong>戰略性封鎖：</strong> 這筆交易有效地將微軟等所有競爭對手，徹底擋在了全球最有價值的移動流量入口之外，是維持其搜尋壟斷地位的關鍵護城河。</p></li></ol><p>總結而言，Google與蘋果的這筆交易，是現代數字經濟中最經典的案例之一。它完美地展示了「渠道為王」的真理。</p><p>然而，當市場還在為Google保住這棵搖錢樹而慶祝時，其實搜尋案只不過是Google的其中一個戰場，司法部的戰役遠未停止。</p><p>而下一個，其實就在幾個星期後，<strong>「廣告技術案」(Ad Tech Monopoly Case)</strong>。</p><p><strong>廣告技術案是甚麼？</strong></p><p>我嘗試用例子來解釋給大家理解。</p><p>想像一下，你正在手機上瀏覽你最愛的媒體網站，例如是著名財經博主KP所寫的FOMO SOC。突然，一則「Nike最新跑鞋」的廣告出現在頁面上。</p><p>這短短幾毫秒的過程，背後就是一場由Google主導的複雜交易。讓我們來分解這場交易的三個關鍵角色：</p><ul><li><p><strong>1. 賣家：內容網站 (例如FOMO SOC網誌)</strong></p><ul><li><p><strong>目標：</strong> 網站上有許多空白的廣告欄位，他們想把這些欄位賣給出價最高的廣告商，來賺取收入，以支持他們繼續創作優質內容。</p></li><li><p><strong>使用的工具：</strong> 為了有效管理和銷售這些成千上萬的廣告位，市場上有高達90%的網站，都選擇使用Google提供的「Google Ad Manager」。這個工具就像是網站的「銷售經理」，幫助他們將廣告位打包，放上市場出售。</p></li></ul></li><li><p><strong>2. 買家：廣告商 (例如 Nike)</strong></p><ul><li><p><strong>目標：</strong> Nike想要向那些可能對運動感興趣的讀者，精準地展示他們最新款跑鞋的廣告。</p></li><li><p><strong>使用的工具：</strong> 為了在全網路上尋找並競標最符合他們目標客群的廣告位，Nike這樣的廣告商，通常會使用Google提供的廣告購買平台 (例如 DV360)。這個平台就像是Nike的「採購顧問」，幫助他們在全球數百萬個網站中，用最有效率的方式花錢買廣告。</p></li></ul></li><li><p><strong>3. 拍賣場：廣告交易平台 (Google AdX)</strong></p><ul><li><p><strong>功能：</strong> 當《FOMO SOC網誌》（賣家）的廣告位，透過Google的工具準備出售時，它會被放到一個巨大的即時拍賣場。與此同時，Nike（買家）也透過Google的工具，在這個拍賣場裡尋找目標。</p></li><li><p><strong>市場的主導者：</strong> 而市場上最大、交易量超過50%的廣告交易平台，叫做「Google AdX」----沒錯，它也是Google的。</p></li></ul></li></ul><p>現在，你看到了整個真實的流程：</p><blockquote><p>賣家（網站）用Google的工具，在Google的拍賣場上，把廣告位賣給了使用Google工具的買家（品牌）。</p></blockquote><p>這就是司法部指控的核心，一個巨大的利益衝突就此誕生：</p><ul><li><p><strong>球員兼裁判的利益衝突：</strong><br/>Google既代表想把廣告賣高價的網站，又代表想用低價買到廣告的品牌，同時還經營著決定最終成交價的拍賣場。請問，在這場交易中，Google到底希望價格高一點，還是低一點？它的立場是為了誰？答案是：為了它自己。</p></li><li><p><strong>資訊黑箱與不公平優勢：</strong><br/>司法部指控，因為Google控制了所有環節，它就像一個能看到所有人底牌的賭場莊家。它可以給使用自家購買工具的客戶（如Nike）提供不公平的優勢。例如，它可以知道其他競標者的出價，從而「暗示」Nike只需要多出$0.01就能得標，確保了使用Google工具的買家總能以最低的獲勝成本贏得競標，從而排擠了其他獨立的廣告技術公司。</p></li><li><p><strong>層層剝削的「Google稅」：</strong><br/>最直接的後果是，廣告商花的錢，並沒有真正流到內容創作者的口袋裡。研究顯示，廣告商每花1美元，經過Google生態系統的層層「服務費」和「平台費」抽取後，最終到達網站發布者手中的，可能只剩下不到0.7美元，甚至更低。中間的差價，就被這個不透明的系統以「Google稅」的形式給抽走了。</p></li></ul><p>這就是為什麼這個案子如此重要，因為它打擊的不是Google的某個單一產品，而是它在整個網路廣告生態系統利潤的核心印鈔機。</p><p>而這不只是指控，這場官司，Google暫時已經輸了。</p><p>在 2025年4月17日，美國地方法院法官Leonie Brinkema已經做出判決：<strong>Google的這些行為，確實是非法壟斷。</strong></p><p>接下來，在 2025年9月22日，法庭將要進行的是一場「量刑聽證會」。</p><p>司法部要求的最嚴厲懲罰是：<strong>強制Google必須賣掉它旗下最賺錢、也是壟斷核心的Google Ad Manager業務。</strong></p><p>這就是為什麼「廣告技術案」也十分重要，值得大家關注。</p><p>當然，這很可能和一系列的非法壟斷案一樣，最終也是拖到天長地久。</p><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div><div><hr/></div><h3><strong>主題二：美中芯片大戰的三個補充</strong></h3><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!taok!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc30ce78b-8410-43e2-ba93-8653b9c476b5_850x491.png 424w, https://substackcdn.com/image/fetch/$s_!taok!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc30ce78b-8410-43e2-ba93-8653b9c476b5_850x491.png 848w, https://substackcdn.com/image/fetch/$s_!taok!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc30ce78b-8410-43e2-ba93-8653b9c476b5_850x491.png 1272w, https://substackcdn.com/image/fetch/$s_!taok!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc30ce78b-8410-43e2-ba93-8653b9c476b5_850x491.png 1456w" type="image/webp"/><img alt="The US-China chip war - The European Institute for International Relations" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/c30ce78b-8410-43e2-ba93-8653b9c476b5_850x491.png","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":491,"width":850,"resizeWidth":null,"bytes":null,"alt":"The US-China chip war - The European Institute for International Relations","title":null,"type":null,"href":null,"belowTheFold":true,"topImage":false,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' height="491" loading="lazy" sizes="100vw" src="images/img_004_2de9510e.png" srcset="https://substackcdn.com/image/fetch/$s_!taok!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc30ce78b-8410-43e2-ba93-8653b9c476b5_850x491.png 424w, https://substackcdn.com/image/fetch/$s_!taok!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc30ce78b-8410-43e2-ba93-8653b9c476b5_850x491.png 848w, https://substackcdn.com/image/fetch/$s_!taok!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc30ce78b-8410-43e2-ba93-8653b9c476b5_850x491.png 1272w, https://substackcdn.com/image/fetch/$s_!taok!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc30ce78b-8410-43e2-ba93-8653b9c476b5_850x491.png 1456w" title="The US-China chip war - The European Institute for International Relations" width="850"/></picture><div class="image-link-expand"></div></div><figcaption class="figcaption">The US-China chip war - The European Institute for International Relations</figcaption></figure></div><h4><strong>1. 為何所有玩家，都像著了魔一樣，不惜一切代價追求所謂的「先進製程」？</strong></h4><p>首先，<strong>甚麼是先進製程？</strong></p><p>我們不妨想像一下，晶片（Chip）是一座由數十億甚至數百億個「電晶體」（Transistor）組成的超級城市。電晶體就是這座城市裡的房子和辦公室，是處理所有運算和儲存的最小單位。</p><p>而所謂的「製程」，例如常聽到的7奈米、5奈米、3奈米，指的就是這些「房子」之間最小的距離，或者說，是蓋房子時，能刻畫出的最精細線條的寬度。</p><p>數字越小，代表技術越先進。 這意味著在同樣大小的土地（晶片面積）上，你可以蓋出更多、更小、更省電的房子。</p><p>目前的現實是，能夠建造這種頂級微型城市的建築公司，全球只有三家：台積電（TSMC）、三星（Samsung），以及正在追趕的英特爾（Intel）。</p><p>那麼中國呢？</p><p>中國也有中芯國際（SMIC），他們近年的確成功為華為等客戶生產出7奈米，甚至可能接近5奈米的晶片。這聽起來像是繞過了美國的封鎖，實現了驚人的技術突破。但魔鬼，藏在細節裡。</p><p>中芯採用的，是一種被稱為「多重曝光」（multiple patterning）的技術，利用相對落後的深紫外光（DUV）設備，透過極其複雜的工序，反覆曝光、蝕刻，像是在一張紙上用一支粗筆，重複描摹數次，去刻畫出一根極細的線條。</p><p>這個過程不僅極其複雜、耗時，更直接導致了兩個致命傷：<strong>極低的良率（Yield Rate）與極高的單位成本。</strong></p><p>這也解釋了美國限制的核心：禁止他們獲得建造這些頂級城市最關鍵的「神級工具」----荷蘭ASML公司生產的極紫外光（EUV）光刻機。</p><p>EUV就像一支極細的畫筆，可以「一刀切」地完成過去DUV需要反覆描摹才能做到的事，從而保證了高良率和商業上的可行性。</p><p>一個普遍的迷思是：</p><p><em>既然先進製程這麼難，那算力不夠，靠堆疊數量不就行了嗎？用成熟製程（例如28奈米）的晶片，以量取勝不行嗎？</em></p><p>理論上或許如此，但在商業現實中，這個想法會撞上一堵名為「總體擁有成本」（Total Cost of Ownership, TCO）的牆。這堵牆由兩個無法繞開的維度構成：</p><ul><li><p><strong>第一維：能源效率----算力的「呼吸成本」</strong></p><p><br/>這不是一個關於環保的政治正確口號，而是一個關乎生存的經濟學問題：電費。先進製程（如3奈米）與成熟製程（如28奈米）最核心的差異，在於「每瓦效能」。</p><p>一顆先進製程晶片完成同樣的運算，其耗電量可能僅是成熟製程晶片的幾分之一。在全球普遍面臨電力短缺的今天，能源成本就是算力中心的「呼吸成本」。</p><p>除非電力可以無限且免費供應，否則採用成熟製程就意味著從一開始就背負了沉重的營運枷鎖，這在商業競爭中是致命的。</p></li><li><p><strong>第二維：空間效益與互連瓶頸----物理定律的詛咒</strong></p><p><br/>要用成熟製程堆疊出與先進製程匹敵的算力，不僅意味著需要倍數級增長的晶片數量、伺服器機架和資料中心面積，更會觸發一個物理定律的詛咒：通訊延遲。<br/><br/>AI運算，特別是大模型訓練，要求數萬顆晶片像一個超級大腦般緊密協同。晶片分得越散，訊號傳輸的物理距離就越長，延遲就越高。<br/><br/>這會導致整個AI叢集（Cluster）陷入一場「協同作戰的噩夢」，大量的算力都消耗在彼此的等待和溝通上，而非真正的運算。</p></li></ul><p>這就是為何在晶片的世界裡，「三個臭皮匠」永遠勝不過一個諸葛亮。性能上的巨大鴻溝，無法單純靠數量彌補。</p><blockquote><p><strong>結論：</strong> 成熟製程可以為中國打造一個滿足部分國內需求的「內循環」算力基礎，但它永遠無法成為在全球AI算力之巔，與世界級玩家一較高下的「入場券」。</p></blockquote><h4><strong>2. 中國的AI賽道：放棄「珠穆朗瑪」，主攻「遼闊平原」？</strong></h4><p>我認為，中國在全球AI牌局中最可能打出的一張王牌：一條專注於極致效率的應用型AI路徑。</p><ul><li><p><strong>第一戰場：能力之巔的「軍備競賽」<br/></strong><br/>這是金字塔頂端的對決，追求的是地表最強的性能，用於訓練千億、甚至兆級參數的基礎大模型。<br/><br/>這裡的玩家（國家實驗室、頂級科技巨頭）對價格不敏感，他們在乎的是能否比對手早一個月完成訓練，搶佔技術制高點。<br/><br/>這正是Nvidia的護城河所在。<br/><br/>其真正的壁壘不是晶片本身，而是經營了近二十年的CUDA生態系統。CUDA不僅僅是一個工具，它已經成為AI開發的「Windows作業系統」，是這個領域的「空氣和水」。轉換平台的沉沒成本高到難以想像，形成了無可撼動的用戶黏性。<br/></p></li><li><p><strong>第二戰場：效率平原的「普及戰爭」<br/></strong><br/>這是金字塔中下層的廣闊市場，包含了絕大多數的企業應用和消費場景。<br/><br/>他們不需要最強的GPT-5，他們需要的是「夠用、便宜、好用」的AI方案來解決具體問題----無論是客服、翻譯，還是內容創作。<br/><br/>這正是中國的機會，也是中國公司切入的Sweet Spot。中國在這場戰爭中，手握一套獨有的「組合拳」：<br/></p><ol><li><p><strong>無與倫比的市場：</strong> 人口足以「餵養」和快速迭代各種AI應用。</p></li><li><p><strong>全鏈條的整合能力：</strong> 能夠高效地將模型落地到千行百業的硬體與場景中。</p></li><li><p><strong>極致的成本控制：</strong> 「用三分之一的資源，做到別人80%的效果」，這種性價比在全球市場上具有致命的吸引力。</p></li></ol></li></ul><blockquote><p>因此，我認為中國未來在全球AI市場的角色，將不會是與Nvidia在「算力之巔」正面對決的登山者，而是成為「AI應用平原」上最強大的拓荒者與普及者。</p></blockquote><p>中國的創新模式向來不是從0到1，而是從1到N的極致放大。</p><p>最近的電動車產業就是一個完美的劇本：中國並未發明電動車，卻將其大眾化、普及化，並成功佔領了全球市場，尤其是在對價格敏感的發展中國家。</p><p>我相信AI將會複製這個劇本。當AI應用發展成熟時，就是中國開始向全球輸出高性價比的AI解決方案的時候。</p><h4><strong>3. 垂直整合與技術分岔：一場「被動求生」與「主動優化」的博弈</strong></h4><p>技術分岔（Decoupling）已不再是預言，而是正在發生的現實。在這場大變局中，美中雙方巨頭雖然都在走向「垂直整合」的道路，但其背後的動機卻截然不同。</p><p><strong>兩種截然不同的動機：</strong></p><ul><li><p><strong>西方巨頭（Google, Apple, Amazon）：主動的「優化策略」</strong><br/>他們的動機，是為了讓自己的核心軟體與服務（搜尋、雲端、作業系統）運行得更高效、成本更低。自研晶片（TPU, M系列）是他們主動發起的、由上而下的戰略佈局，目的是「錦上添花」。</p></li><li><p><strong>中國巨頭（華為, 阿里）：被動的「生存策略」</strong><br/>他們的動機，源於無法獲取最先進晶片的絕境。自研晶片是他們被迫走上的唯一道路，是一種由下而上的求生本能，目的是「雪中送炭」。</p></li></ul><p>短期來看，這無疑是一場巨大的資源消耗戰，是全球創新效率的倒退，會催生出互不兼容的技術標準。</p><p>但從投資的角度看，這徹底改寫了過去三十年全球科技投資的遊戲規則。</p><blockquote><p>過去，我們評估一家科技公司，核心問題是：「誰的技術最好？」</p><p>現在，以及未來十年，我們必須問一個更複雜的問題：「誰的生態圈，在哪個地緣市場佔據主導地位？」</p></blockquote><p>這個問題，不僅僅是一個新的分析維度，它將是未來十年，我們用來衡量全球科技巨頭價值的核心座標系。</p><div><hr/></div><p>謝謝你閱讀到這裡，我們下星期的深入研究再見。</p><p>最後，宣傳一下自己，我在Threads，Facebook和IG都有定期發文，另外Telegram有頻道，每天早上我會發當天重要新聞摘要，有興趣可以追蹤一下我，鏈結是:</p><p><a href="https://linktr.ee/fomo_soc">https://linktr.ee/fomo_soc</a></p><ul><li><p>KP</p><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div></li></ul>
+  </article>
+  <div class="footer-cta">
+    <p>本機離線版本 • 圖片與內文完整</p>
+    <a class="primary" href="../../index.html">← 回索引</a>
+    <a href="https://www.fomosoc.com/p/google200-kp6" target="_blank" rel="noopener">在原站開啟 ↗</a>
+  </div>
+</div>
+</body>
+</html>

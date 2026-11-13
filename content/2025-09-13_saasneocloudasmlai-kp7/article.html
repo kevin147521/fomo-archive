@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SaaS模式將會式微？NeoCloud強勢崛起？連ASML也做AI大語言模型？- KP思考筆記(第7期)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --line: #e9e3d6; --line-soft: #f0ebdf;
+  --text: #1f2533; --text-2: #3a4256; --muted: #7c7a72; --ink: #14171e;
+  --primary: #2f6f5e; --accent: #c97b3f;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(47,111,94,.04) 0%, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(201,123,63,.04) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 28px 96px; }
+
+.meta-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px;
+  font-feature-settings: 'tnum';
+}
+.meta-bar .tag {
+  padding: 3px 9px; border-radius: 4px; font-weight: 500;
+  background: var(--line-soft); color: var(--text-2);
+}
+.meta-bar .tag.free { background: #dde9f3; color: #4a7ba6; }
+.meta-bar .tag.paid { background: #f0dbdb; color: #b06367; }
+.meta-bar a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--line); }
+.meta-bar a:hover { color: var(--primary); border-color: var(--primary); }
+
+h1.article-title {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 36px; font-weight: 400; line-height: 1.25;
+  color: var(--ink); margin: 14px 0 24px; letter-spacing: -0.005em;
+}
+h1.chapter {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 28px; font-weight: 400; line-height: 1.3;
+  color: var(--ink); margin: 56px 0 18px; padding-top: 28px;
+  border-top: 1px solid var(--line);
+  letter-spacing: -0.005em;
+}
+h2.section {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  color: var(--text); margin: 36px 0 12px;
+  padding-left: 12px; border-left: 3px solid var(--primary);
+}
+h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+
+p {
+  font-size: 16.5px; line-height: 1.85; margin: 0 0 18px;
+  color: var(--text);
+  font-family: 'Outfit', 'Noto Serif TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  font-weight: 400;
+}
+p strong, strong { color: var(--ink); font-weight: 600; }
+
+ul, ol { margin: 0 0 18px; padding-left: 26px; }
+li { font-size: 16px; line-height: 1.8; margin-bottom: 6px; }
+
+a { color: var(--primary); text-decoration: underline; text-decoration-color: rgba(47,111,94,.3); text-underline-offset: 2px; }
+a:hover { text-decoration-color: var(--primary); }
+
+blockquote {
+  margin: 28px 0; padding: 18px 24px;
+  background: var(--line-soft); border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-2); font-style: normal;
+}
+blockquote p { margin: 0; color: var(--text-2); }
+blockquote p + p { margin-top: 12px; }
+
+hr {
+  border: 0; height: 1px; background: var(--line);
+  margin: 36px auto; width: 60%;
+}
+
+/* Figure & image */
+figure {
+  margin: 32px 0; text-align: center;
+}
+.image2-inset, .captioned-image-container .image2-inset {
+  margin: 0;
+}
+.image2-inset picture, .image2-inset img {
+  display: block; max-width: 100%; height: auto; margin: 0 auto;
+  border-radius: 8px;
+}
+figure img {
+  max-width: 100%; height: auto; border-radius: 8px;
+  display: block; margin: 0 auto;
+  box-shadow: 0 4px 18px -8px rgba(20,23,30,.15);
+}
+.image2-img, .image2-image {
+  max-width: 100%; height: auto;
+}
+.captioned-image-container {
+  margin: 32px -20px;
+}
+.image-link { display: block; text-decoration: none !important; }
+.figcaption {
+  font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5;
+  text-align: center; font-style: italic;
+}
+
+/* Buttons / interactive UI from Substack we want to hide */
+.button, .pencraft, .subscription-widget, .paywall,
+[class*="paywall"], [class*="subscribe"], [class*="Subscribe"],
+.embed, .digest-post-embed { display: none !important; }
+
+.footer-cta {
+  margin-top: 60px; padding: 28px 32px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; text-align: center;
+}
+.footer-cta p { font-size: 14px; color: var(--muted); margin: 0; }
+.footer-cta a {
+  display: inline-block; margin: 4px 6px;
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--line); text-decoration: none;
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+}
+.footer-cta a.primary {
+  background: var(--primary); color: white; border-color: var(--primary);
+}
+
+.toc {
+  margin: 0 0 36px; padding: 20px 24px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.toc-title {
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+.toc ol li { counter-increment: toc; padding: 4px 0; font-size: 14px; }
+.toc ol li::before { content: counters(toc, ".") " "; color: var(--muted); margin-right: 4px; }
+.toc ol li.h1 { font-weight: 600; color: var(--ink); margin-top: 8px; }
+.toc ol li.h2 { color: var(--text-2); padding-left: 18px; }
+.toc a { color: var(--text-2); text-decoration: none; }
+.toc a:hover { color: var(--primary); }
+
+@media (max-width: 768px) {
+  .wrap { padding: 28px 18px 60px; }
+  h1.article-title { font-size: 26px; }
+  h1.chapter { font-size: 22px; }
+  p { font-size: 16px; }
+  .captioned-image-container { margin: 24px -10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta-bar">
+    <a href="../../index.html">← 索引</a>
+    <span class="tag free">🆓 公開</span>
+    <span>2025-09-13</span>
+    <span>639 字</span>
+    <a href="https://www.fomosoc.com/p/saasneocloudasmlai-kp7" target="_blank" rel="noopener">↗ 原站</a>
+  </div>
+  <h1 class="article-title">SaaS模式將會式微？NeoCloud強勢崛起？連ASML也做AI大語言模型？- KP思考筆記(第7期)</h1>
+  
+  <article class="body">
+<div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!sO_L!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F57ed0b73-8cbd-4225-9c9e-49c476be9b1c_1024x1024.jpeg 424w, https://substackcdn.com/image/fetch/$s_!sO_L!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F57ed0b73-8cbd-4225-9c9e-49c476be9b1c_1024x1024.jpeg 848w, https://substackcdn.com/image/fetch/$s_!sO_L!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F57ed0b73-8cbd-4225-9c9e-49c476be9b1c_1024x1024.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!sO_L!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F57ed0b73-8cbd-4225-9c9e-49c476be9b1c_1024x1024.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/57ed0b73-8cbd-4225-9c9e-49c476be9b1c_1024x1024.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":1024,"width":1024,"resizeWidth":null,"bytes":94185,"alt":null,"title":null,"type":"image/jpeg","href":null,"belowTheFold":false,"topImage":true,"internalRedirect":"https://fomosoc.substack.com/i/173276750?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F57ed0b73-8cbd-4225-9c9e-49c476be9b1c_1024x1024.jpeg","isProcessing":false,"align":null,"offset":false}' fetchpriority="high" height="1024" loading="lazy" sizes="100vw" src="images/img_002_5a1e1446.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!sO_L!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F57ed0b73-8cbd-4225-9c9e-49c476be9b1c_1024x1024.jpeg 424w, https://substackcdn.com/image/fetch/$s_!sO_L!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F57ed0b73-8cbd-4225-9c9e-49c476be9b1c_1024x1024.jpeg 848w, https://substackcdn.com/image/fetch/$s_!sO_L!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F57ed0b73-8cbd-4225-9c9e-49c476be9b1c_1024x1024.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!sO_L!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F57ed0b73-8cbd-4225-9c9e-49c476be9b1c_1024x1024.jpeg 1456w" width="1024"/></picture><div class="image-link-expand"></div></div></figure></div><p>大家好，我是 KP，歡迎來到我的第七期思考筆記。<br/></p><p>昨晚，我公佈了專欄的新計劃，非常感恩，一個晚上就迎來了超過 100 位「創始會員」的支持。<br/><br/>我不想太過 Hard Sell，價值主張在昨天的信裡已經寫得清楚，選擇權在各位手上。<br/></p><p>既然是「思考筆記」，我們還是要回到市場，分享思考。<br/></p><p>近來也有不少新朋友加入，請容我再說明一下「FOMO 研究院」的運作哲學。我的寫作體系分為兩種形式：<br/></p><ul><li><p><strong>「深入研究」：</strong> 每週一篇的長文，通常過萬字，專注解剖一個核心主題。未來，這部分將逐步轉為付費會員專享。</p></li><li><p><strong>「思考筆記」：</strong> 每週一篇的中長文，就像你正在讀的這篇。它的定位更像一本「散文集」，將過去一週市場上有趣的火花、重要的動態，與我的個人思考和分析熔於一爐，與大家分享。</p></li></ul><p><strong><br/>「思考筆記」將會永久免費。</strong> 即使你選擇不付費，我也能保證，你從這裡得到的價值絕對是頂級的。<br/></p><p>以往，我會盡量將篇幅控制在五千字左右，原因有二：1) 週末大家想放鬆點；2) 週末我也想偷個懶。<br/></p><p>但這個星期的「思考筆記」將會是個例外，篇幅超過七千字，原因同樣有二：1) 這個星期值得深談的話題實在太多；2) 剛開啟付費，總得拿出點誠意，讓大家看到價值所在，哈哈哈。<br/></p><p>本週的思考筆記，有三大主題：</p><ul><li><p><strong>主題一：從 Sam Altman 的未來宣言，看懂世界的走向與投資的座標</strong></p></li><li><p><strong>主題二：微軟與 Nebius 的驚天合作，代表了甚麼？</strong></p></li><li><p><strong>主題三：為何半導體硬體之王ASML需要一家法國 AI 獨角獸？<br/></strong></p></li></ul><p>Nebius 和 ASML，都曾是我「深入研究」的主角。我希望做到的，正是在不同主題上持續深耕，當新的資訊出現時，我們能立刻接續思考，最終形成一個有延續性、有體系的投資世界觀。<br/><br/>(ASML的那一篇不在Substack，如果在FB/Threads有追蹤我的，應該都有看過。那篇是其中一篇我覺得寫得最好的，日後有機會會重新搬回Substack)。<br/></p><p>至於本週另一個大熱門 Oracle 怎麼不談？原因很簡單，我把它留給了下一篇「深入研究」，那將會是一個更為宏大的主題。<br/></p><p>話不多說，我們開始。</p><div><hr/></div><h3><strong>主題一：從 Sam Altman 的未來宣言，看懂世界的走向與投資的座標<br/></strong></h3><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!w9rx!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F94bdb9e7-a414-4b9f-894f-8bb0ff4ac95b_686x386.jpeg 424w, https://substackcdn.com/image/fetch/$s_!w9rx!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F94bdb9e7-a414-4b9f-894f-8bb0ff4ac95b_686x386.jpeg 848w, https://substackcdn.com/image/fetch/$s_!w9rx!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F94bdb9e7-a414-4b9f-894f-8bb0ff4ac95b_686x386.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!w9rx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F94bdb9e7-a414-4b9f-894f-8bb0ff4ac95b_686x386.jpeg 1456w" type="image/webp"/><img alt="Where is AI Taking Us? | Sam Altman &amp; Vinod Khosla" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/94bdb9e7-a414-4b9f-894f-8bb0ff4ac95b_686x386.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":386,"width":686,"resizeWidth":null,"bytes":null,"alt":"Where is AI Taking Us? | Sam Altman &amp; Vinod Khosla","title":null,"type":null,"href":null,"belowTheFold":true,"topImage":false,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' height="386" loading="lazy" sizes="100vw" src="images/img_003_2f5b33b7.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!w9rx!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F94bdb9e7-a414-4b9f-894f-8bb0ff4ac95b_686x386.jpeg 424w, https://substackcdn.com/image/fetch/$s_!w9rx!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F94bdb9e7-a414-4b9f-894f-8bb0ff4ac95b_686x386.jpeg 848w, https://substackcdn.com/image/fetch/$s_!w9rx!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F94bdb9e7-a414-4b9f-894f-8bb0ff4ac95b_686x386.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!w9rx!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F94bdb9e7-a414-4b9f-894f-8bb0ff4ac95b_686x386.jpeg 1456w" title="Where is AI Taking Us? | Sam Altman &amp; Vinod Khosla" width="686"/></picture><div class="image-link-expand"></div></div><figcaption class="figcaption">Where is AI Taking Us? | Sam Altman &amp; Vinod Khosla</figcaption></figure></div><p>最近，OpenAI 的 Sam Altman 和矽谷傳奇投資人 Vinod Khosla 有一場深度對談。<br/></p><p>Sam Altman 這個人，評價向來兩極。有人視他為洞見未來的先知，有人則認為他不過是個頂級的銷售員。但無論你站在哪一邊，作為當今 AI 浪潮的掌舵者，聆聽他對未來的構想，本身就極具價值。<br/></p><p>我為你剖析幾個對話的重點，然後再談談我的看法。<br/></p><h4><strong>第一點：軟體的終結，與「智能作業系統」的誕生<br/></strong></h4><p>Altman 毫不掩飾地揭示了 ChatGPT 的真正野心：它從不是一個聊天工具，它的終極目標，是成為每個人的<strong>「預設個人 AGI」（Default Personal AGI），一個無處不在的「智能作業系統」。<br/></strong></p><p>甚麼是「預設個人 AGI」？簡單來說，就是你的<strong>數位世界「總管」</strong>。<br/></p><blockquote><p>未來，你不再需要打開一個個 App 或網站，你只需要對你的「總管」下達指令。它不僅能調用所有工具，更能為你「創造」你需要的工具。<br/><br/>而這，也意味著 SaaS（軟體即服務）的護城河正在被夷為平地。<br/></p></blockquote><p>Altman 預言，當你想要的任何軟體都可以「即時生成」時，傳統的 SaaS 模式將被徹底瓦解。未來，你不再需要去購買、安裝和學習不同的軟體。<br/><br/>你只需要對著 AI 說：「我需要一個系統來管理我的客戶、追蹤銷售進度、並自動發送跟進郵件。」<br/></p><p>然後，AI 便會「即時編譯」出一個專屬於你的完美軟體。<br/></p><p>在他看來，《財富》500 強將迎來大洗牌。因為那些建立在「資訊不對稱」和「技術壁壘」上的巨頭，其優勢將被 AI 徹底拉平。<br/></p><p>這個「智能作業系統」的核心，不僅僅是「隨叫隨到的智能」（Intelligence on demand），更是與用戶建立的深度個人化關係。<br/><br/>它會了解你、連接你的所有數據、並按照你的意圖行事。這意味著，未來的競爭壁壘，將不再是功能或數據，而是與用戶建立的<strong>信任和依賴</strong>。<br/></p><p>誰能成為用戶最信任的那個「AI 大腦」，誰就贏得了整個生態。<br/></p><p>他的這個想法，可以追溯到 ChatGPT 誕生的故事。<br/><br/>當時 GPT-3 模型還不夠好，除了幫人寫寫行銷文案，幾乎一無是處。但他們發現一個奇怪的現象：有一小撮用戶，會整天不停地跟模型聊天。<br/><br/>這個「意外的發現」讓他們意識到，<strong>「對話」本身，就是產品</strong>。<br/></p><p>這也解釋了為何 OpenAI 會全力打造一個通用的、開放式的聊天介面，而非一個個垂直領域的助手。因為他們要打造的，是那個最底層的、通用的「作業系統」。<br/></p><h4><strong>第二點：經濟的重塑——「免費富足」與「地位遊戲」的二元世界<br/></strong></h4><p>Altman 對未來經濟的構想，極其激進。<br/><br/>他預言，AI 將帶來一場史無前例的巨大通縮，並將世界劃分為兩個截然不同的價值體系。<br/></p><ol><li><p><strong>物質世界的極致富足：<br/></strong><br/>他相信，AGI 將使醫療、教育、能源等所有基礎服務的成本趨近於零。每個人都將能免費獲得頂級的醫療建議和個人化教育。他甚至給出一個驚人的預測：「我預計 10 年後，人工智慧的成本會趨同於電力成本。」當智慧的成本趨近於零，支撐它的算力與能源就成了新的稀缺資源。<br/></p></li><li><p><strong>精神世界的「地位遊戲」：<br/></strong><br/>那麼，當物質需求被極大滿足後，人類的財富和慾望將流向何處？Altman 的答案是：<strong>「愚蠢的地位遊戲」（The silliest status games）</strong>。人們會競相抬價那些稀缺的、無法被複製的東西——無論是一幅達文西的畫作，還是一整個星系的所有權。<br/></p></li></ol><blockquote><p>這意味著，未來最大的機會，要嘛是致力於將某個領域的成本降至極低的<strong>「通縮型」生意</strong>，要嘛是創造稀缺性、滿足人類永恆的、基於生物本能的「地位焦慮」的<strong>「通脹型」生意</strong>。<br/></p></blockquote><h4><strong>第三點：進化的加速器——當 AI 成為科學家<br/></strong></h4><p>Altman 認為，AI 能力的提升，將很快進入一個<strong>「自我加速」的恐怖複利階段</strong>。<br/></p><ul><li><p><strong>第一步：工具。</strong> AI 輔助人類寫程式。</p></li><li><p><strong>第二步：夥伴。</strong> AI 幫助測試新的模型架構。</p></li><li><p><strong>第三步：主導者。</strong> AI 將能獨立地「提出假設、進行測試、並修正假設」。<br/></p></li></ul><p>一旦 AI 能夠加速 AI 自身的研究，整個科技進步的速度將不再是線性的。<br/><br/>基於此，他認為最有效的創業策略是：<strong>假設 AI 模型在所有維度上，每年都會提升大約 10 倍</strong>，然後去反推是否應該開發，以及甚麼時候開發何種產品。<br/></p><h4><strong>第四點：人類的最後壁壘——無法被編碼的「生物程式」<br/></strong></h4><p>既然 AI 能做幾乎所有的智力工作，那人類還能做什麼？<br/></p><p>Altman 說，AI 老師在知識傳授上可以完勝人類老師，但它給你的激勵，可能不如一個平庸但真心關心你的人類老師。<br/><br/>因為人類的基因裡，就寫著「在乎他人」、「渴望連結」、「追求地位」這些程式。<br/></p><blockquote><p>AI 可以完成 80% 的工作，但剩下的 20%，那些需要同理心、信任、激勵和人際連結的工作，將會變得極其珍貴。<br/><br/>未來，最有價值的工作，要嘛是<strong>駕馭 AI 的人</strong>，要嘛是 <strong>AI 無法取代的人</strong>。<br/></p></blockquote><h4><strong>我的看法：三個延續的思考<br/></strong></h4><p>聽完 Altman 的未來宣言，我深受啟發，但也有一些不同的思考。<br/></p><p><strong>1. 軟體市場的「啞鈴化」，而非完全終結<br/></strong></p><p>我同意傳統 SaaS 正面臨空前危機，但我不認為它會被完全取代。我看到的是一個<strong>「啞鈴化」(Barbell)</strong>的未來：市場的兩端會極度繁榮，而中間地帶將被徹底擠壓。<br/></p><ul><li><p><strong>啞鈴的一端：</strong> 是像 OpenAI、Google 這樣的巨無霸，提供能力無邊的<strong>通用 AGI</strong>。它們的知識庫廣泛但成本高昂，模型也因為太過巨大而速度受限。</p></li><li><p><strong>啞鈴的另一端：</strong> 則是<strong>極度垂直、極度專注</strong>的 AI 應用。它們擁有通用模型無法比擬的深度領域知識、更快的反應速度和更低的推理成本。<br/></p></li></ul><p>我認同的是，那些處於中間地帶、功能不痛不癢的普通軟體，將會最先消亡。<br/></p><p><strong>2. 從「功能護城河」到「情感護城河」<br/></strong></p><p>當 AI 將所有軟體的功能都「商品化」之後，技術本身，正從「護城河」變成了「入場券」。那麼，新的護城河是什麼？<strong>我認為是行銷與社群所建立的「情感護城河」</strong>。<br/></p><p>當所有工具都同樣強大時，用戶選擇的依據，不再是「誰能做得更好」，而是<strong>「誰讓我感覺更好」</strong>。<br/><br/>一個品牌的故事、一個社群的歸屬感、一種讓用戶覺得自己更聰明、更酷、更與眾不同的體驗——這些無法被量化的情感價值，將成為最堅固的壁壘。<br/></p><p>未來的關鍵問題不再是「你的技術為何無法被替代？」，而是<strong>「你的社群為何讓人無法離開？」</strong>。<br/></p><p><strong>3. 人類的價值：成為「地圖」之外的「嚮導」<br/></strong></p><p>在這個 AI 時代，我時常反思自己作為一個資深金融從業員的價值。AI 可以秒速處理海量數據，找出相關性，甚至給出預測。我該如何自處？<br/><br/>我認為，關鍵在於提供 AI 無法給予的三樣東西：<br/></p><ul><li><p><strong>跨領域的融會貫通：<br/></strong><br/>AI 是個垂直深挖的礦工，它能在單一領域鑽研到極致，挖掘出所有已知的數據和關聯。<br/><br/>但我的能力，是將看似不同的領域融會貫通，加上我個人在不同工作經驗之中，提煉出全新的思考。<br/></p></li><li><p><strong>真正的思考：<br/></strong><br/>AI 是史上最完美的「後照鏡」，它能清晰無比地告訴你過去的每一寸路況，並基於此計算出最可能的路徑。<br/><br/>但投資的本質，是駛向充滿迷霧的未來。如果歷史數據能完美預測未來，那投資就太簡單了：<br/><br/>我們只需要買入過去十年表現最好的資產就行了。<br/><br/>但我們都知道，市場是一個專門用來顛覆歷史規律的機器。<br/><br/>因此，我的價值不在於重複 AI 給出的「概率」，而在於提供基於經驗、直覺和勇氣的想法。<br/></p></li><li><p><strong>建立一個希望共同成長的社群：<br/></strong><br/>AI 可以成為你一對一的私人教師，給你標準答案。但真正的成長，來自於碰撞、辯論與集體智慧。<br/><br/>因此，在這裡，我的目標不是尋找標準答案的學生，而是互相挑戰、共同探索的夥伴。我們分享的不是資訊，而是觀點；我們追求的不是共識，而是更深刻的思辨。<br/><br/>AI 能給你知識，但一個高質量的社群，能給你智慧與同行的力量。<br/><br/>在這個充滿變數的 AI 時代，獨自航行是危險的，而與一群優秀的領航員共同前進，本身就是一種最強大的生存策略。<br/><br/>在這個充滿變數的 AI 時代，獨自航行是危險的，而與一群優秀的領航員共同前進，本身就是一種最強大的生存策略。</p><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div></li></ul><div><hr/></div><h3><strong>主題二：微軟與 Nebius 的驚天合作，揭示了雲端巨人的脆弱真相<br/></strong></h3><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!RVW3!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe76d6dd4-69c2-42f6-b7ce-61e7c1580af9_1200x675.jpeg 424w, https://substackcdn.com/image/fetch/$s_!RVW3!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe76d6dd4-69c2-42f6-b7ce-61e7c1580af9_1200x675.jpeg 848w, https://substackcdn.com/image/fetch/$s_!RVW3!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe76d6dd4-69c2-42f6-b7ce-61e7c1580af9_1200x675.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!RVW3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe76d6dd4-69c2-42f6-b7ce-61e7c1580af9_1200x675.jpeg 1456w" type="image/webp"/><img alt="Crypto Miners Surge on US$17.4B Microsoft–Nebius AI Chip Deal" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/e76d6dd4-69c2-42f6-b7ce-61e7c1580af9_1200x675.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":675,"width":1200,"resizeWidth":null,"bytes":null,"alt":"Crypto Miners Surge on US$17.4B Microsoft–Nebius AI Chip Deal","title":null,"type":null,"href":null,"belowTheFold":true,"topImage":false,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' height="675" loading="lazy" sizes="100vw" src="images/img_004_df2e2c28.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!RVW3!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe76d6dd4-69c2-42f6-b7ce-61e7c1580af9_1200x675.jpeg 424w, https://substackcdn.com/image/fetch/$s_!RVW3!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe76d6dd4-69c2-42f6-b7ce-61e7c1580af9_1200x675.jpeg 848w, https://substackcdn.com/image/fetch/$s_!RVW3!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe76d6dd4-69c2-42f6-b7ce-61e7c1580af9_1200x675.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!RVW3!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe76d6dd4-69c2-42f6-b7ce-61e7c1580af9_1200x675.jpeg 1456w" title="Crypto Miners Surge on US$17.4B Microsoft–Nebius AI Chip Deal" width="1200"/></picture><div class="image-link-expand"></div></div><figcaption class="figcaption">Crypto Miners Surge on US$17.4B Microsoft–Nebius AI Chip Deal</figcaption></figure></div><p>在 AI 軍備競賽進入白熱化的今天，科技巨頭的每一筆投資都牽動著市場的神經。然而，微軟（Microsoft）最近的一步棋，卻讓許多人感到意外：<br/><br/>一筆價值高達 194 億美元的 AI 基礎設施大單，竟然交給了一家許多人還很陌生的公司——Nebius。<br/></p><p>當然，如果你有持續閱讀我的文章，對 Nebius 的獨到之處應該已相當清楚。這家公司在 AI 基礎設施領域的獨特定位，正是這筆交易的關鍵。<br/></p><h4><strong>一、解碼世紀合約<br/></strong></h4><p>首先，讓我們用最直接的方式拆解這份在 2025 年 9 月 8 日公佈的協議：<br/></p><ul><li><p><strong>買家：</strong> 微軟。</p></li><li><p><strong>賣家：</strong> AI 基礎設施公司 Nebius。</p></li><li><p><strong>商品：</strong> 位於紐澤西州新資料中心的專用 GPU 基礎設施容量。</p></li><li><p><strong>金額：</strong> 一份為期多年、價值 174 億美元的保底合約，並可選擇加碼至 194 億美元。</p></li><li><p><strong>交付時間：</strong> 從 2025 年底開始分批交付，合約持續到 2031 年。<br/></p></li></ul><blockquote><p>簡單來說，微軟正在向一個「外部供應商」預訂未來多年的 AI 算力產能，以緩解自身 Azure 基礎設施的「塞車」窘境。<br/></p></blockquote><h4><strong>二、巨人的兩難：為何微軟不直接用 Azure？<br/></strong></h4><p>最關鍵的問題是：為何微軟不把這近 200 億美元訂單，交到自己的 Azure 雲手中？<br/></p><p>答案是，他們已經在這樣做了，但依然遠遠不夠。這筆交易，直接揭示了雲端產業「供不應求」的殘酷現實。<br/></p><ol><li><p><strong>AI 需求如脫韁野馬，成長的喜悅變成產能的詛咒<br/></strong><br/>Azure 的 AI 服務同比增長高達 157%，這本應是天大的好消息，卻令本已捉襟見肘的產能更為緊張。<br/><br/>微軟的財報顯示，其積壓的雲端合約訂單高達近 <strong>3000 億美元</strong>，這些都是因容量不足而無法兌現的收入。<br/><br/>這就像一家生意好到爆的餐廳，卻沒有足夠的桌椅來招待門外大排長龍的客人。<br/></p></li><li><p><strong>實體世界的鐵律：土地、能源與晶片的瓶頸<br/></strong><br/>雲端是虛擬的，但資料中心是實體的。微軟財務長 Amy Hood 直言不諱：「我們一直缺少電力和空間。」即使啟動了每年數百億美元的資本支出計畫，他們依然追不上需求的增速。<br/><br/>更致命的是，上游的晶片供應鏈早已卡住了脖子，關鍵零組件的交貨時間動輒翻倍，這讓自建資料中心成了一場緩不濟急的豪賭。<br/></p></li><li><p><strong>更聰明的財務算盤：用別人的錢，解自己的渴<br/></strong><br/>與其將數百億美元投入到一個需要數年才能完工、充滿不確定性的自建項目中，不如直接鎖定 Nebius 這樣專業玩家的現成產能。<br/><br/>這不僅能更快地服務客戶、搶佔市場，更是將建設風險和部分資本支出轉嫁給了合作夥伴，是一種極其合理的財務策略。<br/></p></li></ol><blockquote><p>簡單來說，AI 的算力需求，已經到了連巨頭都無法獨自滿足的程度。與其被產能不足卡住脖子，不如採取「自建＋外購」的混合策略。<br/></p></blockquote><h4><strong>三、天選之人：為何是 Nebius？<br/></strong></h4><p>在眾多供應商中，微軟選擇 Nebius 並非偶然。相較於 Azure 這樣什麼都做的「百貨公司」，Nebius 是一個專注於 AI 的「精品專賣店」。<br/><br/>這部分在兩週前的深入分析中已有探討，我們不妨溫故知新：<br/></p><ul><li><p><strong>AI 原生架構：</strong> Nebius 的平台從一開始就是為高強度 AI 工作負載而設計的，其軟硬體都為 GPU 效能進行了極致優化，可能比通用基礎設施提供更高的性價比。</p></li><li><p><strong>與 NVIDIA 的特殊關係：</strong> Nebius 不僅獲得了 NVIDIA 的投資支持，雙方還有戰略聯盟關係，這意味著它在獲取稀缺的先進 GPU（如 Blackwell 晶片）方面可能擁有更高的優先級。</p></li><li><p><strong>敏捷與效率：</strong> 作為一個更專注的公司，Nebius 在資料中心的設計和部署上，可能比龐大的微軟更具速度和成本優勢。<br/></p></li></ul><h4><strong>四、乘勝追擊：一堂教科書級別的融資課<br/></strong></h4><p>拿下世紀大單後，光有合約還不夠，還需要真金白銀來實現它。Nebius 的反應極為迅速，幾乎在同一時間就啟動了大規模的融資計畫，目標是籌集約 37.5 億美元。<br/></p><p>他們採取的策略是「股債並行」：<br/></p><ul><li><p>發行 <strong>27.5 億美元</strong>的可轉換公司債（Convertible Notes）。</p></li><li><p>增發 <strong>10 億美元</strong>的新股。<br/></p></li></ul><p>市場的反應印證了這筆交易的震撼力——無論是股或債，都在推出後立刻被搶購一空。<br/></p><p>這次融資最精彩的部分，在於可轉債的條款設計：<br/></p><ol><li><p><strong>極低的票面利率：</strong> 兩批債券的票息分別只有 <strong>1% 和 2.75%</strong>。這意味著 Nebius 每年需要支付的利息極少，現金流壓力非常小。</p></li><li><p><strong>極高的轉換溢價：</strong> 轉換價格設定為每股 <strong>138.75 美元</strong>，比當時的股價有高達 <strong>50% 的溢價</strong>。投資人願意接受如此高的轉換門檻，代表他們極度看好 Nebius 的未來，相信股價不僅會漲，而且會大漲超過 50%。</p></li><li><p><strong>靈活的償還方式：</strong> 公司可以選擇用現金、股票或混合方式來償還債務，這給了 Nebius 極大的操作彈性。<br/></p></li></ol><p>對於一家過去幾乎沒有負債的公司而言，這是一筆極其漂亮的交易。它讓 Nebius 在不增加沉重利息負擔的前提下，鎖定了大筆「便宜」的發展資金。<br/><br/>這筆錢將成為 Nebius 擴張的火箭燃料，讓他們有底氣去購買土地、採購伺服器，為履行與微軟的龐大合約做好萬全準備。<br/></p><h4><strong>結論<br/></strong></h4><blockquote><p>微軟與 Nebius 的合作，清晰地傳達了一個信號：<br/><br/>在當前這個階段，<strong>雲端產能的確定性，壓倒了所有地緣政治和監管上的考量</strong>。面對高達 3000 億美元的積壓訂單，微軟的首要任務是找到最快、最有效的方式來增加算力供給。<br/></p><p>而這個答案，恰好由一家總部在歐洲、但核心戰場在美國的公司提供了。這不僅是 Nebius 的勝利，更是整個「Neocloud」新興雲端產業模式的勝利。</p><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div></blockquote><div><hr/></div><h3><strong>主題三：ASML 的世紀豪賭，為何硬體之王需要一家法國 AI 獨角獸？<br/><br/></strong></h3><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!yfu9!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9b733840-a17c-4f12-a60f-ec61448643a4_1024x576.jpeg 424w, https://substackcdn.com/image/fetch/$s_!yfu9!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9b733840-a17c-4f12-a60f-ec61448643a4_1024x576.jpeg 848w, https://substackcdn.com/image/fetch/$s_!yfu9!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9b733840-a17c-4f12-a60f-ec61448643a4_1024x576.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!yfu9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9b733840-a17c-4f12-a60f-ec61448643a4_1024x576.jpeg 1456w" type="image/webp"/><img alt="The Mistral deal: ASML says business, the world hears sovereignty -  Bits&amp;Chips" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/9b733840-a17c-4f12-a60f-ec61448643a4_1024x576.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":576,"width":1024,"resizeWidth":null,"bytes":null,"alt":"The Mistral deal: ASML says business, the world hears sovereignty -  Bits&amp;Chips","title":null,"type":null,"href":null,"belowTheFold":true,"topImage":false,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' height="576" loading="lazy" sizes="100vw" src="images/img_005_73d0f9d4.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!yfu9!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9b733840-a17c-4f12-a60f-ec61448643a4_1024x576.jpeg 424w, https://substackcdn.com/image/fetch/$s_!yfu9!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9b733840-a17c-4f12-a60f-ec61448643a4_1024x576.jpeg 848w, https://substackcdn.com/image/fetch/$s_!yfu9!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9b733840-a17c-4f12-a60f-ec61448643a4_1024x576.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!yfu9!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9b733840-a17c-4f12-a60f-ec61448643a4_1024x576.jpeg 1456w" title="The Mistral deal: ASML says business, the world hears sovereignty -  Bits&amp;Chips" width="1024"/></picture><div class="image-link-expand"></div></div><figcaption class="figcaption">The Mistral deal: ASML says business, the world hears sovereignty -  Bits&amp;Chips</figcaption></figure></div><p>在現今的 AI 大戰中，收購合併幾乎每週都在發生。當中，有些棋步順理成章，有些則令人意外。<br/></p><p>而當全球半導體設備的絕對霸主——荷蘭的 ASML——宣布豪擲 13 億歐元（約 15 億美元），領投法國 AI 新創公司 Mistral AI 時，這無疑屬於後者。<br/><br/>這筆交易讓 Mistral 估值翻倍至 117 億歐元，更是一場值得深思的策略結盟。<br/></p><p>故事的兩位主角，一位是掌握著晶片製造命脈的四十歲巨人，另一位則是成立不到三年、卻已躋身全球 AI 競賽核心的法國明日之星。<br/><br/>要理解這場「世紀聯姻」，我們得先認識一下故事的另一位主角。<br/></p><h4><strong>誰是 Mistral AI？來自歐洲的 AI 挑戰者<br/></strong></h4><p>Mistral AI，這個名字取自法國南部吹向地中海的強風。<br/><br/>這家於 2023 年在巴黎成立的公司，創辦團隊堪稱夢幻：三位分別來自 Google DeepMind 和 Meta AI 的頂尖研究員。<br/></p><p>與 OpenAI 等巨頭的封閉路線不同，Mistral 從一開始就高舉「開源優先」的大旗，像武林中的「開源派」，將其部分強大的 AI 模型開放給全球開發者，允許他們自由修改與部署。這種策略讓它迅速在開發者社群中建立了聲望。<br/></p><p>其當前的王牌，是 2025 年 8 月發布的旗艦模型 Mistral Medium 3.1。那麼，在 GPT-5、Gemini 2.5 等頂級高手環伺的 2025 年，Mistral 的定位究竟在哪？<br/></p><p>簡單來說，如果將 AI 模型分為兩個級別：<br/></p><ul><li><p><strong>第一梯隊：</strong> 是像 OpenAI 的 GPT-5 和 Google 的 Gemini 2.5 這樣的「性能怪獸」，它們追求極致表現，但成本高昂。</p></li><li><p><strong>Mistral 則選擇了第二梯隊。</strong> 它的戰略定位非常清晰：不追求絕對的第一，而是走<strong>「性價比」</strong>的路線。其模型旨在提供頂級模型約 80-90% 的性能，但成本卻大幅降低，並且對硬體要求更低（例如僅需 4 張 H100 GPU 即可運行），讓企業能夠更靈活地進行私有化部署。<br/></p></li></ul><p>作為歐洲唯一能放在檯面上的大語言模型公司，Mistral 迅速成為歐洲對抗美國 AI 巨頭的最強王牌。<br/></p><h4><strong>三大角度看懂這場聯姻<br/></strong></h4><p>這筆交易讓 ASML 以 11% 的持股，成為 Mistral 的最大股東，並獲得一個董事會席位。這背後，是三個角度可以思考。<br/></p><p><strong>角度一：ASML 的自保算盤——為何硬體之王需要大語言模型？<br/></strong></p><p>ASML 的 CEO Christophe Fouquet 表示：「我們希望用 AI 淹沒整個 ASML。」<br/><br/>這句口號很動聽，但具體是什麼意思？<br/></p><p>原因是，半導體製程的複雜度已達物理極限。ASML 計劃利用 Mistral 的 AI 模型，實現驚人的營運提升，例如：<br/></p><ul><li><p>透過即時流程優化，減少 <strong>10-15%</strong> 的晶片瑕疵。</p></li><li><p>利用 AI 驅動的預測性維護，降低 <strong>20%</strong> 昂貴的機台停機時間。</p></li><li><p>強化「計算光刻」技術，與 NVIDIA 的 cuLitho 平台一較高下。<br/></p></li></ul><p>那麼，為何 ASML 不直接用市面上的 AI 服務？答案在於「商業機密」<strong>。ASML 的核心競爭力，來自其高度機密的光刻數據和製程知識，這些是公司的命脈，絕不可能上傳到任何公共 AI 模型。<br/><br/>因此，與 Mistral 建立一個「私有的戰略夥伴關係」</strong>，成為唯一可行的選擇，確保 ASML 能在保護商業機密的前提下，安全地加固自己的護城河。<br/></p><p><strong>角度二：Mistral 的勝利——找到最硬的靠山<br/></strong></p><p>對 Mistral 而言，這筆交易的意義遠不止於獲得寶貴的現金。在 AI 這場燒錢的競賽中，資金固然是彈藥，但 ASML 帶來的，更是一條清晰的「出路」。<br/></p><p>老實說，在通用聊天機器人領域，要與 OpenAI、Claude、Gemini、Grok 等巨頭正面競爭，幾乎是不可能的任務。<br/><br/>因此，Mistral 一直在尋找差異化的道路。<br/><br/>與 ASML 的結盟，使其能夠深入<strong>「工業 AI 應用」</strong>這個潛力巨大、但門檻極高的領域。<br/><br/>ASML 作為台積電、英特爾等巨頭的唯一 EUV 供應商，為 Mistral 打開了一扇通往產業核心的大門。<br/></p><p>同時，獲得歐洲最成功的科技公司力挺，極大地提升了 Mistral 的市場地位和信譽，使其在與美國 AI 巨頭的競爭中，增添了厚實的底氣。<br/></p><p><strong>角度三：歐洲的野望——「主權」的意外紅利<br/></strong></p><p>這場荷蘭與法國科技巨頭的聯姻，也被視為「歐洲科技主權」的一次重大勝利。長期以來，歐洲在尖端科技領域一直面臨人才與資本流向美國的困境。<br/><br/>在需要數十億美元擴張資金的關鍵時刻，Mistral 一度傳出可能被蘋果收購，或是由中東主權基金入股。<br/><br/>無論哪種結果，都會被視為「歐洲養大的孩子，最終卻被別人抱走」的遺憾。<br/></p><blockquote><p>ASML 的出手，恰好避免了這種情況。<br/><br/>一個歐洲的成熟龍頭，扶植一個歐洲的新創獨角獸，這正是許多歐盟官員夢寐以求的<strong>「歐洲冠軍隊」</strong>模式。<br/><br/>在全球貿易關係緊張的背景下，能夠將自家的獨角獸留在歐洲大陸，對於歐洲在 AI 世代保持競爭力，具有重大的象徵意義。</p></blockquote><h4><strong>結論：一場理性的豪賭<br/></strong></h4><p>當然，ASML 的股東中，或許會有人質疑這筆錢是否能花在刀口上。<br/><br/>然而，ASML 與 Mistral 的結盟，或許在告訴我們：在 AI 時代，硬體與軟體的邊界正在模糊，產業巨頭正在透過策略投資，將 AI 能力「內化」為自身的核心競爭力。<br/></p><p>這場聯姻，對 ASML而言，是一次確保其未來十年領先地位的策略性投資；對 Mistral 而言，是找到商業模式與永續發展路徑的關鍵一步；而對歐洲來說，則是在全球科技棋局中，下出的一步充滿希望的好棋。<br/><br/>這就是這個星期的三個主題了。<br/><br/>雖然說了不會Hard Sell，但既然你看到最後了，我還是要把握機會推銷一下你。<br/><br/>如果以上水準的文章，我也可以免費和大家分享，那證明我對自己收費文章的水準十分有信心。<br/><br/>一個月一頓普通晚餐的價錢，換來知識的增加，投資路上更安心，你真的不考慮加入成為「創始會員」嗎？</p><p class="button-wrapper" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Upgrade subscription","action":null,"class":"button-wrapper"}' data-component-name="ButtonCreateButton"><a class="button primary button-wrapper" href="https://www.fomosoc.com/subscribe?"><span>Upgrade subscription</span></a></p><p>最後，宣傳一下自己，我在Threads，Facebook和IG都有定期發文，另外Telegram有頻道，每天早上我會發當天重要新聞摘要，有興趣可以追蹤一下我，鏈結是:</p><p><a href="https://linktr.ee/fomo_soc">https://linktr.ee/fomo_soc</a><br/><br/>- KP </p>
+  </article>
+  <div class="footer-cta">
+    <p>本機離線版本 • 圖片與內文完整</p>
+    <a class="primary" href="../../index.html">← 回索引</a>
+    <a href="https://www.fomosoc.com/p/saasneocloudasmlai-kp7" target="_blank" rel="noopener">在原站開啟 ↗</a>
+  </div>
+</div>
+</body>
+</html>

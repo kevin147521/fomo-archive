@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Netflix的跨界逆襲，MSTR的魔法失靈，美團的壕溝戰 - KP思考筆記(第5期)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --line: #e9e3d6; --line-soft: #f0ebdf;
+  --text: #1f2533; --text-2: #3a4256; --muted: #7c7a72; --ink: #14171e;
+  --primary: #2f6f5e; --accent: #c97b3f;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(47,111,94,.04) 0%, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(201,123,63,.04) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 28px 96px; }
+
+.meta-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px;
+  font-feature-settings: 'tnum';
+}
+.meta-bar .tag {
+  padding: 3px 9px; border-radius: 4px; font-weight: 500;
+  background: var(--line-soft); color: var(--text-2);
+}
+.meta-bar .tag.free { background: #dde9f3; color: #4a7ba6; }
+.meta-bar .tag.paid { background: #f0dbdb; color: #b06367; }
+.meta-bar a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--line); }
+.meta-bar a:hover { color: var(--primary); border-color: var(--primary); }
+
+h1.article-title {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 36px; font-weight: 400; line-height: 1.25;
+  color: var(--ink); margin: 14px 0 24px; letter-spacing: -0.005em;
+}
+h1.chapter {
+  font-family: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  font-size: 28px; font-weight: 400; line-height: 1.3;
+  color: var(--ink); margin: 56px 0 18px; padding-top: 28px;
+  border-top: 1px solid var(--line);
+  letter-spacing: -0.005em;
+}
+h2.section {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  color: var(--text); margin: 36px 0 12px;
+  padding-left: 12px; border-left: 3px solid var(--primary);
+}
+h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+
+p {
+  font-size: 16.5px; line-height: 1.85; margin: 0 0 18px;
+  color: var(--text);
+  font-family: 'Outfit', 'Noto Serif TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  font-weight: 400;
+}
+p strong, strong { color: var(--ink); font-weight: 600; }
+
+ul, ol { margin: 0 0 18px; padding-left: 26px; }
+li { font-size: 16px; line-height: 1.8; margin-bottom: 6px; }
+
+a { color: var(--primary); text-decoration: underline; text-decoration-color: rgba(47,111,94,.3); text-underline-offset: 2px; }
+a:hover { text-decoration-color: var(--primary); }
+
+blockquote {
+  margin: 28px 0; padding: 18px 24px;
+  background: var(--line-soft); border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-2); font-style: normal;
+}
+blockquote p { margin: 0; color: var(--text-2); }
+blockquote p + p { margin-top: 12px; }
+
+hr {
+  border: 0; height: 1px; background: var(--line);
+  margin: 36px auto; width: 60%;
+}
+
+/* Figure & image */
+figure {
+  margin: 32px 0; text-align: center;
+}
+.image2-inset, .captioned-image-container .image2-inset {
+  margin: 0;
+}
+.image2-inset picture, .image2-inset img {
+  display: block; max-width: 100%; height: auto; margin: 0 auto;
+  border-radius: 8px;
+}
+figure img {
+  max-width: 100%; height: auto; border-radius: 8px;
+  display: block; margin: 0 auto;
+  box-shadow: 0 4px 18px -8px rgba(20,23,30,.15);
+}
+.image2-img, .image2-image {
+  max-width: 100%; height: auto;
+}
+.captioned-image-container {
+  margin: 32px -20px;
+}
+.image-link { display: block; text-decoration: none !important; }
+.figcaption {
+  font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5;
+  text-align: center; font-style: italic;
+}
+
+/* Buttons / interactive UI from Substack we want to hide */
+.button, .pencraft, .subscription-widget, .paywall,
+[class*="paywall"], [class*="subscribe"], [class*="Subscribe"],
+.embed, .digest-post-embed { display: none !important; }
+
+.footer-cta {
+  margin-top: 60px; padding: 28px 32px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; text-align: center;
+}
+.footer-cta p { font-size: 14px; color: var(--muted); margin: 0; }
+.footer-cta a {
+  display: inline-block; margin: 4px 6px;
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--line); text-decoration: none;
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+}
+.footer-cta a.primary {
+  background: var(--primary); color: white; border-color: var(--primary);
+}
+
+.toc {
+  margin: 0 0 36px; padding: 20px 24px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.toc-title {
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+.toc ol li { counter-increment: toc; padding: 4px 0; font-size: 14px; }
+.toc ol li::before { content: counters(toc, ".") " "; color: var(--muted); margin-right: 4px; }
+.toc ol li.h1 { font-weight: 600; color: var(--ink); margin-top: 8px; }
+.toc ol li.h2 { color: var(--text-2); padding-left: 18px; }
+.toc a { color: var(--text-2); text-decoration: none; }
+.toc a:hover { color: var(--primary); }
+
+@media (max-width: 768px) {
+  .wrap { padding: 28px 18px 60px; }
+  h1.article-title { font-size: 26px; }
+  h1.chapter { font-size: 22px; }
+  p { font-size: 16px; }
+  .captioned-image-container { margin: 24px -10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta-bar">
+    <a href="../../index.html">← 索引</a>
+    <span class="tag free">🆓 公開</span>
+    <span>2025-08-30</span>
+    <span>223 字</span>
+    <a href="https://www.fomosoc.com/p/netflixmstr-kp5" target="_blank" rel="noopener">↗ 原站</a>
+  </div>
+  <h1 class="article-title">Netflix的跨界逆襲，MSTR的魔法失靈，美團的壕溝戰 - KP思考筆記(第5期)</h1>
+  
+  <article class="body">
+<div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!OVGl!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2383bf99-ce22-4ba6-a87f-6495121d7c00_1024x1024.jpeg 424w, https://substackcdn.com/image/fetch/$s_!OVGl!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2383bf99-ce22-4ba6-a87f-6495121d7c00_1024x1024.jpeg 848w, https://substackcdn.com/image/fetch/$s_!OVGl!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2383bf99-ce22-4ba6-a87f-6495121d7c00_1024x1024.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!OVGl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2383bf99-ce22-4ba6-a87f-6495121d7c00_1024x1024.jpeg 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/2383bf99-ce22-4ba6-a87f-6495121d7c00_1024x1024.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":1024,"width":1024,"resizeWidth":null,"bytes":75970,"alt":null,"title":null,"type":"image/jpeg","href":null,"belowTheFold":false,"topImage":true,"internalRedirect":"https://fomosoc.substack.com/i/172225132?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2383bf99-ce22-4ba6-a87f-6495121d7c00_1024x1024.jpeg","isProcessing":false,"align":null,"offset":false}' fetchpriority="high" height="1024" loading="lazy" sizes="100vw" src="images/img_002_771ce477.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!OVGl!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2383bf99-ce22-4ba6-a87f-6495121d7c00_1024x1024.jpeg 424w, https://substackcdn.com/image/fetch/$s_!OVGl!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2383bf99-ce22-4ba6-a87f-6495121d7c00_1024x1024.jpeg 848w, https://substackcdn.com/image/fetch/$s_!OVGl!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2383bf99-ce22-4ba6-a87f-6495121d7c00_1024x1024.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!OVGl!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2383bf99-ce22-4ba6-a87f-6495121d7c00_1024x1024.jpeg 1456w" width="1024"/></picture><div class="image-link-expand"></div></div></figure></div><p>大家好，我是KP。歡迎來到我的第五期思考筆記。</p><p>Substack電子報終於成立一個月，來到一個小小的里程碑，訂閱人數也突破了3300人，感謝每一位的喜愛。</p><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div><p>幾天前，和一個文字工作/出版的朋友聊起，我分享了我電子報的做法：暫時是一星期一篇長文(深入研究)，一篇短文(思考筆記)。</p><p>長文是對一個主題深入研究，而短文則是一些散文集，將過去一週我一些對市場事件的看法，再加上我的一些感言，合在一起。</p><p>他問到，「長文是多長？短文是多短？」</p><p><strong>「長文最近越寫越長，一萬字變成了標配，最新的一篇到了一萬二；短文則盡量控制在五千字左右吧，其實可以寫更多，但週末大家應該輕鬆點的。」</strong></p><p>他有點嚇到，「不是吧，你的短文字數，已經是很多人的長文了，還有人看這麼長的嗎？」</p><p>也對，還有人看這麼長的文章嗎？</p><blockquote><p>至少我肯定的是，有三千多人，是一群願意一起深入理解市場，花時間學習讓自己進步的一群人。</p><p>我非常確信，這才是長久待在市場，在市場獲利的唯一方法。</p></blockquote><p>這個星期又出差了，去了四天台北，也是會議不斷。只能乘車的途中做做研究，在晚飯後回到飯店，才有時間去下筆寫作。</p><p>這星期的深入研究是我想寫很久了的一個主題，Nvidia的垂直合併策略，和Neoclouds的崛起，一直是我很想去深入了解的課題，於是趁着Nvidia公佈業績，蹭點熱度。</p><p>Neoclouds要說的大部份都已經說完，所以今次的思考筆記中，就不再寫Neoclouds，而是另開三個小主題。</p><blockquote><p>這個星期的思考，由我太太開始。她最近完全被 Netflix 的《K-Pop Demon Hunters》洗腦，這讓我開始深思 <strong>Netflix 的「圍牆」策略</strong>，以及它為何明明可以對傳統影視發起的反攻，卻停下手來？</p><p>而從一個「魔法」的成功，我們順勢來看看另一個「魔法」為何正在失靈：那就是 <strong>Michael Saylor 的比特幣煉金術，</strong>正在失去市場的興趣。我一個多月前曾經在FB/Threads上面深入深析MSTR，而今次是該篇的後續。</p><p>最後，將視線轉向一場更為殘酷、血流成河的商業競爭，探討<strong>中國的外賣大戰</strong>，這場沒有贏家的戰爭，究竟將何去何從？</p></blockquote><div><hr/></div><h3><strong>Netflix的「甜蜜煩惱」：一場關於專注與誘惑的深刻辯論</strong></h3><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!xaNe!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1f77f0cd-abec-41c8-8b0b-ede3555c74e0_800x800.jpeg 424w, https://substackcdn.com/image/fetch/$s_!xaNe!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1f77f0cd-abec-41c8-8b0b-ede3555c74e0_800x800.jpeg 848w, https://substackcdn.com/image/fetch/$s_!xaNe!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1f77f0cd-abec-41c8-8b0b-ede3555c74e0_800x800.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!xaNe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1f77f0cd-abec-41c8-8b0b-ede3555c74e0_800x800.jpeg 1456w" type="image/webp"/><img alt="KPop Demon Hunters: Trailer, Lore and News - Netflix Tudum" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/1f77f0cd-abec-41c8-8b0b-ede3555c74e0_800x800.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":800,"width":800,"resizeWidth":null,"bytes":null,"alt":"KPop Demon Hunters: Trailer, Lore and News - Netflix Tudum","title":null,"type":null,"href":null,"belowTheFold":true,"topImage":false,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' height="800" loading="lazy" sizes="100vw" src="images/img_003_5bf78bbe.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!xaNe!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1f77f0cd-abec-41c8-8b0b-ede3555c74e0_800x800.jpeg 424w, https://substackcdn.com/image/fetch/$s_!xaNe!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1f77f0cd-abec-41c8-8b0b-ede3555c74e0_800x800.jpeg 848w, https://substackcdn.com/image/fetch/$s_!xaNe!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1f77f0cd-abec-41c8-8b0b-ede3555c74e0_800x800.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!xaNe!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1f77f0cd-abec-41c8-8b0b-ede3555c74e0_800x800.jpeg 1456w" title="KPop Demon Hunters: Trailer, Lore and News - Netflix Tudum" width="800"/></picture><div class="image-link-expand"></div></div><figcaption class="figcaption">KPop Demon Hunters: Trailer, Lore and News - Netflix Tudum</figcaption></figure></div><p>最近，好萊塢上演了一場有趣的「跨界逆襲」。</p><p>主角，是Netflix一部名為《K-Pop魔王獵人》(K-Pop Demon Hunters) 的動畫電影。這部由索尼動畫製作的電影，先是在Netflix自家平台引爆。</p><p>它以驚人的速度，在十週內累積了超過2.36億次的觀看，刷新了Netflix原創電影的歷史紀錄，成為名副其實的現象級作品。</p><p>從被洗腦的歌曲，到社群媒體上瘋傳的舞蹈挑戰，再到零售商爭先恐後地上架周邊商品，它儼然成為了Netflix版的《冰雪奇緣》----一個期待已久、能夠比肩好萊塢頂級片廠的超級IP。</p><p>這場勝利的最高潮，發生在電影院。</p><p>Netflix推出一個「跟著唱Sing-Along」版本，進行限定院線放映，讓粉絲可以進電影院有看演唱會的感受。結果，這部用戶可以隨時在家免費觀看的電影，竟一舉擊敗所有好萊塢大片，登上了週末票房冠軍的寶座。</p><p>這一切，本應是Netflix最輝煌的時刻，證明了它不僅能製作熱門內容，更能反攻傳統電影行業。</p><p>然而，Netflix接下來的舉動，卻讓所有傳統片商都感到困惑：它沒有乘勝追擊、擴大上映，反而在兩天的限定放映期過後，迅速把這個「跟著唱Sing-Along」版本放回自家平台。</p><p>其實，早在2022年Netflix已經做過類似的事情。當時候，他們的自家電影《鋒迴路轉》(Knives Out) 推出續集《鋒迴路轉：抽絲剝繭》(Glass Onion)，也曾經在影院放映過1個星期，票房也相當不錯，累積1500萬美元。</p><p>但在1個星期後，他們就將Glass Onion從影院下架，放回自己平台放映。</p><p>這看起來像一個不合邏輯的商業決策。但如果我們深入思考，會發現這或許反映了Netflix的經營哲學。</p><h4><strong>傳統哲學：「完整影視生態」</strong></h4><p>這套玩法，以迪士尼為首。其核心邏輯是，電影院是IP價值的「超級放大器」。</p><p>一部電影，首先透過院線上映，將其從一個單純的「內容」，升級為一個萬眾矚目的「文化事件」。它創造了集體回憶、社會話題和媒體聲量，為IP注入了最原始、也最強大的情感能量。</p><p>這股能量，隨後會像齒輪一樣，驅動整個商業生態：</p><ol><li><p><strong>反哺串流</strong>：院線的成功，會直接轉化為Disney+上更長的觀看時數和更高的用戶黏性。</p></li><li><p><strong>拉動消費</strong>：周邊商品、原聲帶、主題樂園的門票，都會因為這份「集體記憶」而變得炙手可熱。</p></li></ol><p>從這個角度看，Netflix的行為無疑是「短視」的。它等於是親手關閉了一個能將《K-Pop魔王獵人》從一部「熱門電影」推向一個「傳世IP」的最強引擎。</p><p>它放棄的，不僅是千萬美元的票房，更是一個將IP價值最大化的黃金機會。</p><h4><strong>Netflix的哲學：「圍牆花園」的專注</strong></h4><p>但我們不妨換個角度，站在Netflix的立場思考。</p><p>我們可以把Netflix想像成一位米其林三星主廚，他的終極目標，是打造一個無與倫比的「訂閱制美食殿堂」。</p><p>這位主廚的理念是：讓顧客相信，只有支付一筆固定的「會員費」，才能進來品嚐我所有的創意。我的價值，在於這個花園裡的一切，而不是花園裡的某一棵菜。</p><p>突然有一天，他發現自己的一道沙拉，如果拿出去開成連鎖快餐店，會賣得非常好。</p><p>這時，他面臨一個抉擇：</p><ul><li><p><strong>選擇一（完整影視生態）</strong>：立刻去開快餐店，賺取巨額利潤。但這樣做，會分散他的精力，而且會讓他的高端會員覺得：「原來我花大錢才能吃到的東西，外面到處都有。」</p></li><li><p><strong>選擇二（圍牆花園）</strong>：放棄快餐店的誘惑，堅決把這道沙拉留在自己的餐廳裡。他對外宣稱：「想吃這道全世界最好的沙拉嗎？請成為我的會員。」</p></li></ul><blockquote><p>Netflix選擇了後者。它的核心戰略，是捍衛其訂閱用戶心智中的「唯一性」。它必須不斷強化一個信念：所有最好的、最值得看的東西，只在Netflix裡，別無他處。</p><p>每一次院線的成功，都是對這個信念的一次潛在侵蝕。它等於在告訴用戶：「其實你不必急著訂閱，最精彩的部分，你總有機會在別的地方看到。」</p></blockquote><p>所以，這件事的有趣之處在於，它並不存在一個絕對的「對」或「錯」。</p><p>當然，有可能我在過份解讀，Netflix會在之後把它變成一個長期在電影院上映的電影也不一定，哈哈。</p><div><hr/></div><h3><strong>Michael Saylor的煉金術，為何突然失靈了？</strong></h3><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!y9r-!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F207bb076-0f2b-4dcb-869b-20791b7d1e37_964x1132.png 424w, https://substackcdn.com/image/fetch/$s_!y9r-!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F207bb076-0f2b-4dcb-869b-20791b7d1e37_964x1132.png 848w, https://substackcdn.com/image/fetch/$s_!y9r-!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F207bb076-0f2b-4dcb-869b-20791b7d1e37_964x1132.png 1272w, https://substackcdn.com/image/fetch/$s_!y9r-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F207bb076-0f2b-4dcb-869b-20791b7d1e37_964x1132.png 1456w" type="image/webp"/><img alt="" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/207bb076-0f2b-4dcb-869b-20791b7d1e37_964x1132.png","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":1132,"width":964,"resizeWidth":null,"bytes":1303827,"alt":null,"title":null,"type":"image/png","href":null,"belowTheFold":true,"topImage":false,"internalRedirect":"https://fomosoc.substack.com/i/172225132?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F207bb076-0f2b-4dcb-869b-20791b7d1e37_964x1132.png","isProcessing":false,"align":null,"offset":false}' height="1132" loading="lazy" sizes="100vw" src="images/img_004_042bf792.png" srcset="https://substackcdn.com/image/fetch/$s_!y9r-!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F207bb076-0f2b-4dcb-869b-20791b7d1e37_964x1132.png 424w, https://substackcdn.com/image/fetch/$s_!y9r-!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F207bb076-0f2b-4dcb-869b-20791b7d1e37_964x1132.png 848w, https://substackcdn.com/image/fetch/$s_!y9r-!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F207bb076-0f2b-4dcb-869b-20791b7d1e37_964x1132.png 1272w, https://substackcdn.com/image/fetch/$s_!y9r-!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F207bb076-0f2b-4dcb-869b-20791b7d1e37_964x1132.png 1456w" width="964"/></picture><div class="image-link-expand"></div></div></figure></div><p>在加密貨幣的世界裡，Michael Saylor一直被視為一位「金融煉金術士」。</p><p>他獨創的「企業金庫」模式，將一家原本平庸的軟體公司 MicroStrategy (現商業名稱為 Strategy) ，變成了一台不斷吞噬比特幣的巨獸。其股價也因此長期享有遠高於其比特幣持倉價值的「溢價」，成為市場信心最靈敏的指標。</p><p>然而，這位煉金術士的魔法，最近似乎正在失靈。</p><p>MicroStrategy 的股價在八月已下跌近15%，同期比特幣只下降了約5%。如果你看年初至今的表現，比特幣上升了近20%，而 MicroStrategy 則上升約17%。</p><p>其相對於比特幣持倉的溢價（Premium to NAV）從高峰時的超過2倍，一度跌至僅剩約1.3倍。更致命的是，公司寄予厚望的新融資工具——優先股，市場反應並不熱烈。</p><p>MSTR理論上不是槓桿比特幣的嗎？怎麼上升速度比比特幣更慢？</p><p>這一切，都發生在比特幣價格依然處於高位的牛市背景下。這就引出了一個最根本的問題：當金礦依然閃閃發光時，為何市場卻開始質疑最成功的那個淘金者？</p><p>我們先從新理解一下Michael Saylor發明的「比特幣永動機」。其運作模式如下：</p><ol><li><p><strong>第一步</strong>：透過發債或增發股票，從資本市場籌集資金。</p></li><li><p><strong>第二步</strong>：用籌來的錢，大規模買入比特幣。</p></li><li><p><strong>第三步</strong>：市場因為其激進的比特幣策略，給予其股價一個巨大的「信心溢價」。</p></li><li><p><strong>第四步</strong>：利用被高估的股價，作為槓桿，去籌集更多的資金。</p></li><li><p><strong>循環</strong>：回到第一步，週而復始。</p></li></ol><blockquote><p>這台機器的燃料，不是比特幣本身，而是市場對「溢價會永遠存在」的信仰。投資者買的不是 MicroStrategy 這家公司，而是Saylor「點石成金」的能力。</p></blockquote><p>然而，任何永動機，最終都會被現實的物理定律所擊敗。而Saylor的這台機器，正同時遭遇四股強大的阻力。</p><h4><strong>第一股阻力：煉金術士的「失信」</strong></h4><p>信任，是所有魔法的基礎。而 MicroStrategy 最近的一個舉動，嚴重動搖了這個基礎。</p><p>公司曾在7月底承諾，不會在股價溢價低於2.5倍時增發普通股。但僅僅幾週後，他們就打破了這個承諾，在市場上增發了近90萬股新股。</p><p>這個行為，在投資者眼中，無異於一種背叛。它傳達了一個危險的信號：為了獲取資金，管理層願意犧牲現有股東的利益。當魔法師開始欺騙觀眾時，魔法的光環便開始消散。</p><h4><strong>第二股阻力：更便宜、更純粹的「魔法」</strong></h4><p>過去，投資者若想在傳統股市中大規模投資比特幣，MicroStrategy 幾乎是唯一的選擇。這個「稀缺性」，是其高溢價的根本來源。</p><p>但這一年來，現貨比特幣ETF (Spot Bitcoin ETFs) 出現了。</p><p>ETF提供了一種極其簡單、純粹的替代方案。它就像一杯「純淨水」，讓投資者可以直接獲得比特幣的曝險，而無需承擔 MicroStrategy 那杯「雞尾酒」中所包含的各種複雜風險：公司治理、高槓桿債務、以及管理層隨時可能稀釋股權的決策。</p><p>當市場上出現了更便宜、更安全的魔法時，煉金術士額外的費用好像也不太需要了。</p><h4><strong>第三股阻力：模仿者的泛濫</strong></h4><p>Saylor的成功，催生了數以百計的模仿者。根據統計，全球已有超過4.7%的比特幣，被這些「企業金庫」所持有。</p><p>這就像可口可樂的秘密配方被公開，一夜之間，市場上充斥著成千上萬種口味相似的可樂。當「企業金庫」這個模式本身不再稀缺時，作為開創者的 MicroStrategy，其獨特性和領導地位自然就被稀釋了。</p><p>事實上，成立一家比特幣金庫公司本身，並不存在稀缺性。</p><h4><strong>第四股阻力：舞台聚光燈的轉移</strong></h4><p>最後，市場的注意力正在悄然轉移。</p><p>當比特幣的敘事逐漸從「革命性資產」變為「數位黃金」時，一部分尋求更高回報的資本，開始將目光投向以太坊 (Ether) 和Solana等其他被認為在去中心化金融 (DeFi) 領域更具應用潛力的資產。</p><p>煉金術士依然在表演著將石頭變黃金的戲法，但部分觀眾已經對旁邊舞台上的新魔術更感興趣了。</p><p>過去的遊戲，是投資一個「動能故事」。你賭的是Saylor的魔法能夠持續，溢價能夠不斷膨脹，那台金融永動機能夠越轉越快。現在的遊戲，則是回歸基本面。魔法已經褪去，MicroStrategy 不再是一個「比特幣放大器」，而是一家高槓桿的比特幣控股公司。</p><p>事實是，市場正在為 MicroStrategy 的溢價重新定價。</p><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div><div><hr/></div><h3><strong>美團的壕溝戰：一場沒有贏家的戰爭</strong></h3><div class="captioned-image-container"><figure><div class="image2-inset"><picture><source sizes="100vw" srcset="https://substackcdn.com/image/fetch/$s_!sjYh!,w_424,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa4a804a5-6650-4d57-a4b0-4f9ec0e43c52_1200x800.jpeg 424w, https://substackcdn.com/image/fetch/$s_!sjYh!,w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa4a804a5-6650-4d57-a4b0-4f9ec0e43c52_1200x800.jpeg 848w, https://substackcdn.com/image/fetch/$s_!sjYh!,w_1272,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa4a804a5-6650-4d57-a4b0-4f9ec0e43c52_1200x800.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!sjYh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa4a804a5-6650-4d57-a4b0-4f9ec0e43c52_1200x800.jpeg 1456w" type="image/webp"/><img alt="Alibaba, Meituan and JD Vow End to Food Delivery Price War - Bloomberg" class="sizing-normal" data-attrs='{"src":"https://substack-post-media.s3.amazonaws.com/public/images/a4a804a5-6650-4d57-a4b0-4f9ec0e43c52_1200x800.jpeg","srcNoWatermark":null,"fullscreen":null,"imageSize":null,"height":800,"width":1200,"resizeWidth":null,"bytes":null,"alt":"Alibaba, Meituan and JD Vow End to Food Delivery Price War - Bloomberg","title":null,"type":null,"href":null,"belowTheFold":true,"topImage":false,"internalRedirect":null,"isProcessing":false,"align":null,"offset":false}' height="800" loading="lazy" sizes="100vw" src="images/img_005_cd72d844.jpeg" srcset="https://substackcdn.com/image/fetch/$s_!sjYh!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa4a804a5-6650-4d57-a4b0-4f9ec0e43c52_1200x800.jpeg 424w, https://substackcdn.com/image/fetch/$s_!sjYh!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa4a804a5-6650-4d57-a4b0-4f9ec0e43c52_1200x800.jpeg 848w, https://substackcdn.com/image/fetch/$s_!sjYh!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa4a804a5-6650-4d57-a4b0-4f9ec0e43c52_1200x800.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!sjYh!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa4a804a5-6650-4d57-a4b0-4f9ec0e43c52_1200x800.jpeg 1456w" title="Alibaba, Meituan and JD Vow End to Food Delivery Price War - Bloomberg" width="1200"/></picture><div class="image-link-expand"></div></div><figcaption class="figcaption">Alibaba, Meituan and JD Vow End to Food Delivery Price War - Bloomberg</figcaption></figure></div><p>中國外賣平台龍頭美團點評，在公佈財報後，利潤暴跌9成，股價一天跌去了超過12%。</p><p>事實上，他們的股價從十個月前的位置，已經跌去了超過一半，如果距離2021年初的高位，更是跌去了4分之3。</p><p>更令投資者憂心的是，他們向市場傳達了一個冰冷的信號：為了捍衛市佔率，他們準備放棄第三季的核心利潤。</p><p>市場立刻感受到了寒意。財報數字也證實了這點：其核心本地商業的利潤率，已從過去近20%的輝煌，跌至5.7%的歷史新低。共識預期中「2026年重返高利潤」的美好故事，正在被現實無情地擊碎。</p><p>原因很簡單，用一個充滿中國特色的字來形容：<strong>卷</strong>。</p><p>在過往幾個月，美團被兩個強勁的對手，同時「卷死了」。要理解這場戰爭，我們必須先看清三位玩家各自的戰略意圖。</p><h4><strong>玩家一：美團 (Meituan) - 帝國的守城者</strong></h4><p>在過去的十年裡，美團幾乎以一己之力，建成了中國城市裡最龐大、最高效的「即時配送」基礎設施。它就像一個帝國，修築了覆蓋全國的道路（騎手網絡），並在道路兩旁建滿了客棧和商鋪（合作商家）。</p><p>戰爭爆發前，美團的劇本是「馬放南山，坐收租稅」。它期望在結束了與餓了麼的戰鬥後，能享受長期的「網絡效應紅利」，將利潤率穩定在一個極高的水平。</p><p>但它沒想到，敵人並未遠去，反而帶著更強大的武器，從兩個完全不同的方向發起了總攻。</p><h4><strong>玩家二：阿里巴巴 (Alibaba) - 財大氣粗的「空軍」</strong></h4><p>阿里巴巴的戰略，簡單粗暴，卻極其有效：無差別的「地毯式轟炸」。</p><p>它新成立的「淘寶即時商業」部門 (淘寶閃購)，直接宣布在未來一年投入500億元人民幣的巨額補貼。</p><p>這就像一支擁有無限彈藥的空軍，它的目標不是佔領某一條街道，而是用海量的「糖衣砲彈」（補貼），直接將美團的用戶和商家，從地面陣地吸引到自己的空中堡壘裡。</p><p>效果是驚人的：有報導指該業務的日訂單量在短時間內快速增長。這證明了一件事：在絕對的利益面前，用戶的忠誠度不堪一擊。</p><h4><strong>玩家三：京東 (JD.com) - 穩紮穩打的「重裝工兵」</strong></h4><p>如果說阿里是空軍，那京東就是一支精銳的「重裝工兵」。</p><p>京東不滿足於僅僅「搶奪」道路上的車流，它要做的，是在美團的堡壘旁邊，建造一座功能更完善、結構更堅固的新堡壘。</p><p>它利用自己無可匹敵的物流能力（京東物流），並投入巨資建立自營外賣門店(七鮮小廚)。</p><p>這等於是從最上游的「生產環節」切入，試圖建立一個從「做飯」到「送飯」的，完全獨立於美團的閉環體系。這是一種更慢、更重，但一旦建成，護城河也更深的戰略。</p><h4><strong>戰爭的終局：從「成長股」到「週期股」的質變</strong></h4><p>當這三股力量絞殺在一起時，整個遊戲的性質就徹底改變了。</p><p>美團被迫應戰。它不僅要跟著阿里撒錢補貼，還要跟著京東投資「共享廚房」這類重資產業務，以防被釜底抽薪。這導致了兩個致命的後果：</p><ol><li><p><strong>成本結構的惡化</strong>：從一個輕資產的「平台中介」，逐漸變成一個需要承擔直接運營風險的「重資產玩家」。</p></li><li><p><strong>海外擴張的遲滯</strong>：國內戰場的巨大消耗，使其無法集中火力開拓香港、沙烏地阿拉伯以外的海外市場，錯失了寶貴的戰略機遇期。</p></li></ol><p>這就形成了一個非常悲觀的投資格局：利潤的「天花板」被鎖死，而成本的「地板」卻在不斷抬高。</p><p>過去，投資美團，是在賭一個「贏家通吃」的未來。你賭的是它在戰勝所有對手後，能享受壟斷性的高額利潤。這是一個典型的「成長股」故事。</p><p>但現在，這場壕溝戰的爆發，讓「贏家通吃」的结局變得遙遙無期。美團的股票，正在從一個高預期的「成長股」，逐漸質變為一個利潤隨競爭強度而劇烈波動的「週期股」。</p><p>因此，投資者現在面臨的，不再是一個關於成長的數學題，而是一個關於戰爭耐力的哲學題。</p><blockquote><p>你需要判斷的，不再是「美團的利潤率能恢復到多高？」，而是：</p><p>在這場註定沒有贏家的消耗戰中，誰的資金鏈最雄厚？誰的戰略定力最強？誰能流盡最後一滴血，並活到停戰協議簽署的那一天？</p></blockquote><p>這場戰爭的結局，可能不是某一方的勝利，而是所有參與者的精疲力竭。</p><p>問題是，外賣是美團的大本營，而對阿里巴巴和京東來說，則只是版圖中的小部份。當大本營岌岌可危的時候，我們作為投資者，還有必要參與嗎？</p><p>這就是這個星期的三個思考，我們下週中的深入研究再見。</p><p>最後，宣傳一下自己，我在Threads，Facebook和IG都有定期發文，另外Telegram有頻道，每天早上我會發當天重要新聞摘要，有興趣可以追蹤一下我，鏈結是:</p><p><a href="https://linktr.ee/fomo_soc">https://linktr.ee/fomo_soc</a></p><ul><li><p>KP</p></li></ul><div class="subscription-widget-wrap-editor" data-attrs='{"url":"https://www.fomosoc.com/subscribe?","text":"Subscribe","language":"en"}' data-component-name="SubscribeWidgetToDOM"></div>
+  </article>
+  <div class="footer-cta">
+    <p>本機離線版本 • 圖片與內文完整</p>
+    <a class="primary" href="../../index.html">← 回索引</a>
+    <a href="https://www.fomosoc.com/p/netflixmstr-kp5" target="_blank" rel="noopener">在原站開啟 ↗</a>
+  </div>
+</div>
+</body>
+</html>
