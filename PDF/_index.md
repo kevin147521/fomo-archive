@@ -1,9 +1,10 @@
 # FOMO研究院 — PDF 索引
 
-> 共 172 篇  •  總大小 2111.0 MB
+> 共 173 篇  •  總大小 2117.3 MB
 
 | 日期 | 類型 | 標題 | 字數 | 圖 | 標籤 |
 |------|------|------|------|----|------|
+| 2026-11-25 | 💎 付費 | [黃仁勳回來了，但一切就如常了嗎？中國禁令會如何影響半導體產業？- 深入分析第70期：NVIDIA + https://github.com/kevin147521/fomo-archive/releases/download/pdf-archive/%E5%8D%8A%E5%B0%8E%E9%AB%94%E7%94%A2%E6%A5%AD%5D%282026-11-25_paid_%E9%BB%83%E4%BB%81%E5%8B%B3%E5%9B%9E%E4%BE%86%E4%BA%86%EF%BC%8C%E4%BD%86%E4%B8%80%E5%88%87%E5%B0%B1%E5%A6%82%E5%B8%B8%E4%BA%86%E5%97%8E%EF%BC%9F%E4%B8%AD%E5%9C%8B%E7%A6%81%E4%BB%A4%E6%9C%83%E5%A6%82%E4%BD%95%E5%BD%B1%E9%9F%BF%E5%8D%8A%E5%B0%8E%E9%AB%94%E7%94%A2%E6%A5%AD%EF%BC%9F-%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90%E7%AC%AC70%E6%9C%9F%EF%BC%9ANVIDIA-%2B-%E5%8D%8A%E5%B0%8E%E9%AB%94%E7%94%A2%E6%A5%AD.pdf) | 8272 | 0 | 每週深入分析 |
 | 2026-11-21 | 🆓 公開 | [Anthropic上市能救嗎？NVIDIA開留人大會？ - https://github.com/kevin147521/fomo-archive/releases/download/pdf-archive/KP%E6%80%9D%E8%80%83%E7%AD%86%E8%A8%98%28%E7%AC%AC69%E6%9C%9F%29%5D%282026-11-21_free_Anthropic%E4%B8%8A%E5%B8%82%E8%83%BD%E6%95%91%E5%97%8E%EF%BC%9FNVIDIA%E9%96%8B%E7%95%99%E4%BA%BA%E5%A4%A7%E6%9C%83%EF%BC%9F-KP%E6%80%9D%E8%80%83%E7%AD%86%E8%A8%98%28%E7%AC%AC69%E6%9C%9F%29.pdf) | 8559 | 0 | 思考筆記 |
 | 2026-11-18 | 💎 付費 | [走了黃仁勳，還罩新雲嗎？還買爆供應鏈嗎？財報超標還重要嗎？ 財報解剖: NVIDIA 輝達/英偉達| https://github.com/kevin147521/fomo-archive/releases/download/pdf-archive/26%E5%B9%B411%E6%9C%88%5D%282026-11-18_paid_%E8%B5%B0%E4%BA%86%E9%BB%83%E4%BB%81%E5%8B%B3%EF%BC%8C%E9%82%84%E7%BD%A9%E6%96%B0%E9%9B%B2%E5%97%8E%EF%BC%9F%E9%82%84%E8%B2%B7%E7%88%86%E4%BE%9B%E6%87%89%E9%8F%88%E5%97%8E%EF%BC%9F%E8%B2%A1%E5%A0%B1%E8%B6%85%E6%A8%99%E9%82%84%E9%87%8D%E8%A6%81%E5%97%8E%EF%BC%9F-%E8%B2%A1%E5%A0%B1%E8%A7%A3%E5%89%96_-NVIDIA-%E8%BC%9D%E9%81%94_%E8%8B%B1%E5%81%89%E9%81%94_-26%E5%B9%B411%E6%9C%88.pdf) | 4174 | 0 | 財報解剖 |
 | 2026-11-13 | 💎 付費 | [皮褸脫下之後，NVIDIA 還有甚麼，又少了甚麼 - https://github.com/kevin147521/fomo-archive/releases/download/pdf-archive/KP%E6%80%9D%E8%80%83%E7%AD%86%E8%A8%98%28%E7%AC%AC68%E6%9C%9F%29%5D%282026-11-13_paid_%E7%9A%AE%E8%A4%B8%E8%84%AB%E4%B8%8B%E4%B9%8B%E5%BE%8C%EF%BC%8CNVIDIA-%E9%82%84%E6%9C%89%E7%94%9A%E9%BA%BC%EF%BC%8C%E5%8F%88%E5%B0%91%E4%BA%86%E7%94%9A%E9%BA%BC-KP%E6%80%9D%E8%80%83%E7%AD%86%E8%A8%98%28%E7%AC%AC68%E6%9C%9F%29.pdf) | 12125 | 0 | 思考筆記 |
